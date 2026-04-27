@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* Tailwind v4 방식으로 테마 색상 재정의 */
+@theme {
+  --color-background: #fffefc; /* 눈이 편안한 크림색 배경 */
+  --color-surface: #ffffff; /* 카드 배경 (흰색) */
+  --color-primary: #e07a5f; /* 차분한 테라코타(벽돌색) - 버튼 포인트 */
+  --color-secondary: #2d6a4f; /* 깊은 숲색 - 보조 포인트 */
+  --color-text-main: #37352f; /* 먹색 - 기본 글자색 */
+  --color-text-muted: #868e96; /* 보조 텍스트 */
+
+  /* 폰트 설정 (나중에 layout에서 변수 설정 필요) */
+  --font-sans: var(--font-pretendard), sans-serif;
+  --font-quote: var(--font-ridibatang), serif;
+}
