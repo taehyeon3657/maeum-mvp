@@ -1,39 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-
-const QUOTES = [
-  { text: "흘러가는 것들을 붙잡으려 하지 마세요.", author: "릴케" },
-  { text: "당신은 충분히 충분합니다.", author: "작자 미상" },
-  { text: "오늘 하루도 잘 버텼습니다.", author: "마음" },
-  { text: "멈춰도 괜찮아요, 잠시 쉬어가도 돼요.", author: "작자 미상" },
-  { text: "상처받은 곳에서 빛이 들어옵니다.", author: "레너드 코헨" },
-];
+import HomeDecorative from "@/src/components/home/HomeDecorative";
+import HomeHeader from "@/src/components/home/HomeHeader";
+import HomeHero from "@/src/components/home/HomeHero";
+import HomeCTA from "@/src/components/home/HomeCTA";
+import HomeStats from "@/src/components/home/HomeStats";
+import QuoteCarousel from "@/src/components/home/QuoteCarousel";
 
 export default function HomePage() {
-  const [activeQuote, setActiveQuote] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [mounted, setMounted] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
-    const interval = setInterval(() => {
-      setActiveQuote((prev) => (prev + 1) % QUOTES.length);
-    }, 3800);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
-  }, []);
-
   return (
     <>
       <style>{`
@@ -61,7 +35,6 @@ export default function HomePage() {
           overflow: hidden;
         }
 
-        /* Ambient light blob following cursor */
         .cursor-glow {
           position: fixed;
           width: 600px;
@@ -74,7 +47,6 @@ export default function HomePage() {
           z-index: 0;
         }
 
-        /* Grain texture overlay */
         .grain {
           position: fixed;
           inset: 0;
@@ -95,7 +67,6 @@ export default function HomePage() {
           padding: 0 28px;
         }
 
-        /* Header */
         .header {
           padding-top: 52px;
           display: flex;
@@ -140,7 +111,6 @@ export default function HomePage() {
           font-family: 'Noto Serif KR', serif;
         }
 
-        /* Hero section */
         .hero {
           flex: 1;
           display: flex;
@@ -200,7 +170,6 @@ export default function HomePage() {
           animation: fadeSlideUp 0.9s 0.6s ease forwards;
         }
 
-        /* Quote carousel */
         .quote-card {
           position: relative;
           background: white;
@@ -276,7 +245,6 @@ export default function HomePage() {
           border-radius: 3px;
         }
 
-        /* Stats row */
         .stats-row {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
@@ -312,7 +280,6 @@ export default function HomePage() {
           letter-spacing: 0.04em;
         }
 
-        /* CTA Section */
         .cta-section {
           padding-bottom: 44px;
           opacity: 0;
@@ -398,7 +365,6 @@ export default function HomePage() {
           opacity: 0.7;
         }
 
-        /* Decorative element */
         .deco-circle {
           position: absolute;
           right: -80px;
@@ -456,126 +422,20 @@ export default function HomePage() {
         }
       `}</style>
 
-      <div className="page-root" ref={containerRef}>
-        {/* Cursor glow */}
-        <div
-          className="cursor-glow"
-          style={{ left: mousePos.x, top: mousePos.y }}
-        />
-
-        {/* Grain */}
-        <div className="grain" />
-
-        {/* Decorative circles */}
-        <div className="deco-circle" />
-        <div className="deco-circle-inner" />
+      <div className="page-root">
+        <HomeDecorative />
 
         <div className="content">
-          {/* Header */}
-          <header className="header">
-            <div className="logo-mark">
-              <div className="logo-icon">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M9 2C9 2 3 5.5 3 9.5C3 12.5 5.5 15 9 15C12.5 15 15 12.5 15 9.5C15 5.5 9 2 9 2Z" fill="#c9a96e" opacity="0.9"/>
-                  <path d="M9 5C9 5 6 7.5 6 9.5C6 11 7.3 12 9 12C10.7 12 12 11 12 9.5C12 7.5 9 5 9 5Z" fill="#faf7f2"/>
-                </svg>
-              </div>
-              <span className="logo-text">마음</span>
-            </div>
-            <div className="header-badge">
-              <span className="live-dot" />
-              오늘도 위로 중
-            </div>
-          </header>
+          <HomeHeader />
 
-          {/* Hero */}
           <section className="hero">
-            <div className="eyebrow">
-              <div className="eyebrow-line" />
-              <span className="eyebrow-text">감정 맞춤 글귀 서비스</span>
-            </div>
-
-            <h1 className="hero-headline">
-              오늘 하루,<br />
-              <em>마음</em>은<br />
-              어떤가요?
-            </h1>
-
-            <p className="hero-sub">
-              스와이프 하나로 내 감정을 파악하고,<br />
-              딱 맞는 위로의 글귀를 매일 받아보세요.
-            </p>
-
-            {/* Quote Carousel */}
-            <QuoteCarousel active={activeQuote} />
-
-            {/* Stats */}
-            <div className="stats-row">
-              <div className="stat-item">
-                <div className="stat-num">2,400+</div>
-                <div className="stat-label">큐레이션 글귀</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-num">98%</div>
-                <div className="stat-label">만족도</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-num">매일</div>
-                <div className="stat-label">새 글귀 업데이트</div>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="cta-section">
-              <Link href="/onboarding" className="cta-primary">
-                내 감정 성향 찾기
-                <svg className="arrow-icon" viewBox="0 0 18 18" fill="none">
-                  <path d="M3 9H15M15 9L9.5 3.5M15 9L9.5 14.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </Link>
-
-              <Link href="/onboarding" className="cta-secondary">
-                가입 없이 둘러보기 →
-              </Link>
-
-              <p className="disclaimer">
-                가입 없이 바로 시작 가능 · 개인정보 안전하게 보호<br />
-                언제든 탈퇴 가능
-              </p>
-            </div>
+            <HomeHero />
+            <QuoteCarousel />
+            <HomeStats />
+            <HomeCTA />
           </section>
         </div>
       </div>
     </>
-  );
-}
-
-function QuoteCarousel({ active }: { active: number }) {
-  const [display, setDisplay] = useState(QUOTES[0]);
-  const [exiting, setExiting] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setExiting(true);
-    const t = setTimeout(() => {
-      setDisplay(QUOTES[active]);
-      setExiting(false);
-    }, 400);
-    return () => clearTimeout(t);
-  }, [active]);
-
-  return (
-    <div className="quote-card">
-      <span className="quote-mark">&quot;</span>
-      <p className={`quote-text ${exiting ? "exiting" : ""}`}>
-        {display.text}
-      </p>
-      <p className="quote-author">— {display.author}</p>
-      <div className="quote-dots">
-        {QUOTES.map((_, i) => (
-          <div key={i} className={`dot ${i === active ? "active" : ""}`} />
-        ))}
-      </div>
-    </div>
   );
 }
