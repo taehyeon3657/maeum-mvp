@@ -1,3 +1,5 @@
+"use client";
+
 import EmotionGrid from "./EmotionGrid";
 
 interface Props {
