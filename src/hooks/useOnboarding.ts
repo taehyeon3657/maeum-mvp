@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { supabase } from "@/src/lib/supabase";
+import { createClient } from "@/src/lib/supabase";
 import {
   OnboardingPrefs,
   savePrefsLocally,
@@ -46,6 +46,7 @@ export function useOnboarding() {
   /* ── Supabase 저장 mutation ── */
   const saveMutation = useMutation({
     mutationFn: async (prefs: OnboardingPrefs) => {
+      const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
 
       // 로그인 유저 → DB upsert

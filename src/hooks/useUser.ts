@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { supabase } from "../lib/supabase";
+import { createClient } from "../lib/supabase";
 
 export const useUpdateProfile = () => {
   const queryClient = useQueryClient();
@@ -11,6 +11,7 @@ export const useUpdateProfile = () => {
       mbti?: string;
       gender?: string;
     }) => {
+      const supabase = createClient();
       const { data, error } = await supabase
         .from("users")
         .upsert(profileData) // ID가 있으면 Update, 없으면 Insert
