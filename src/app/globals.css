@@ -8,6 +8,7 @@
   --color-secondary: #2d6a4f; /* 깊은 숲색 - 보조 포인트 */
   --color-text-main: #37352f; /* 먹색 - 기본 글자색 */
   --color-text-muted: #868e96; /* 보조 텍스트 */
+  --color-warm: #f0ebe1; /* 따뜻한 베이지 - hover/disabled 배경 */
 
   /* 폰트 설정 (나중에 layout에서 변수 설정 필요) */
   --font-sans: var(--font-pretendard), sans-serif;

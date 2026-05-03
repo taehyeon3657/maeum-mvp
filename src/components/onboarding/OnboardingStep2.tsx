@@ -1,3 +1,5 @@
+"use client";
+
 import TimeList from "./TimeList";
 
 interface Props {
