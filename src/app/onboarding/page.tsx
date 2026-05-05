@@ -58,7 +58,8 @@ const finish = async () => {
     router.push("/feed");
 
   } catch (error) {
-    alert("오류가 발생했습니다: ");
+    const message = error instanceof Error ? error.message : String(error);
+    alert("오류가 발생했습니다: " + message);
   }
 };
 
