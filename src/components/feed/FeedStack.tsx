@@ -11,14 +11,13 @@ import type { SwipeDirection } from "@/src/models/feed";
 
 interface Props {
   userId: string;
-  prefEmotions: string[];
 }
 
-export default function FeedStack({ userId, prefEmotions }: Props) {
+export default function FeedStack({ userId }: Props) {
   const [tutorialDone, setTutorialDone] = useState(false);
 
   const { currentQuote, nextQuote, isLoading, isEmpty, isDepleted, advance } =
-    useFeedQuotes(prefEmotions);
+    useFeedQuotes();
   const { markCardStart, getContextSnapshot } = useSessionContext();
 
   // 카드가 바뀔 때마다 읽기 시작 시간 갱신

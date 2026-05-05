@@ -7,7 +7,11 @@ import type { Quote } from "@/src/models/feed";
 const BATCH_SIZE = 20;
 const REFETCH_AT_REMAINING = 5; // 남은 카드가 이 수 이하면 추가 로딩
 
-export function useFeedQuotes(prefEmotions: string[] = []) {
+// pref_emotions로 필터링하지 않고 전체 글귀를 노출합니다.
+// pref_emotions(성향 데이터)와 emotion_tags(콘텐츠 태그)는 어휘 체계가 달라
+// 직접 매칭이 무의미하며, 오히려 bias 없이 수집한 스와이프 행동 데이터와
+// pref_emotions를 교차 분석할 때 유의미한 패턴이 나옵니다.
+export function useFeedQuotes() {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,15 +25,11 @@ export function useFeedQuotes(prefEmotions: string[] = []) {
     isFetchingRef.current = true;
 
     const supabase = createClient();
-    let query = supabase
+    const query = supabase
       .from("quotes")
       .select("id, content, author, source, emotion_tags")
       .eq("is_active", true)
       .range(offsetRef.current, offsetRef.current + BATCH_SIZE - 1);
-
-    if (prefEmotions.length > 0) {
-      query = query.overlaps("emotion_tags", prefEmotions);
-    }
 
     const { data, error } = await query;
 
@@ -40,7 +40,7 @@ export function useFeedQuotes(prefEmotions: string[] = []) {
     }
 
     isFetchingRef.current = false;
-  }, [prefEmotions, hasMore]);
+  }, [hasMore]);
 
   // 초기 로딩
   useEffect(() => {

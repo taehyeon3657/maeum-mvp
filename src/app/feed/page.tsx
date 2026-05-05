@@ -3,13 +3,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/src/lib/supabase";
-import { loadPrefsLocally } from "@/src/models/onboarding";
 import FeedStack from "@/src/components/feed/FeedStack";
 
 export default function FeedPage() {
   const router = useRouter();
   const [userId, setUserId] = useState<string | null>(null);
-  const [prefEmotions, setPrefEmotions] = useState<string[]>([]);
 
   useEffect(() => {
     const init = async () => {
@@ -22,10 +20,6 @@ export default function FeedPage() {
       }
 
       setUserId(user.id);
-
-      // localStorage에서 감정 선호도 로드 (빠른 초기화)
-      const prefs = loadPrefsLocally();
-      if (prefs?.pref_emotions) setPrefEmotions(prefs.pref_emotions);
     };
 
     init();
@@ -47,7 +41,7 @@ export default function FeedPage() {
       </header>
 
       {/* 카드 스택 */}
-      <FeedStack userId={userId} prefEmotions={prefEmotions} />
+      <FeedStack userId={userId} />
 
       {/* 하단 힌트 */}
       <div className="flex justify-center gap-8 pb-8 pt-2">
