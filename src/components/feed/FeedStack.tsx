@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFeedQuotes } from "@/src/hooks/useFeedQuotes";
+import { useFeedCooldown } from "@/src/hooks/useFeedCooldown";
 import { useSessionContext } from "@/src/hooks/useSessionContext";
 import { saveUserQuote } from "@/src/lib/userQuotes";
 import SwipeCard from "./SwipeCard";
 import QuoteCard from "./QuoteCard";
 import TutorialCard from "./TutorialCard";
+import CooldownScreen from "./CooldownScreen";
 import type { SwipeDirection } from "@/src/models/feed";
 
 interface Props {
@@ -16,9 +18,19 @@ interface Props {
 export default function FeedStack({ userId }: Props) {
   const [tutorialDone, setTutorialDone] = useState(false);
 
-  const { currentQuote, nextQuote, isLoading, isEmpty, isDepleted, advance } =
+  const { currentQuote, nextQuote, isLoading, isEmpty, isDepleted, advance, reset } =
     useFeedQuotes();
+  const { isOnCooldown, remainingMs, startCooldown, clearCooldown } = useFeedCooldown();
   const { markCardStart, getContextSnapshot } = useSessionContext();
+
+  // 세션 소진 시 쿨다운 시작 (중복 호출 방지)
+  const cooldownStartedRef = useRef(false);
+  useEffect(() => {
+    if (isDepleted && !cooldownStartedRef.current) {
+      cooldownStartedRef.current = true;
+      startCooldown();
+    }
+  }, [isDepleted, startCooldown]);
 
   // 카드가 바뀔 때마다 읽기 시작 시간 갱신
   useEffect(() => {
@@ -29,11 +41,21 @@ export default function FeedStack({ userId }: Props) {
     if (!currentQuote) return;
     const ctx = getContextSnapshot();
     advance();
-    // UI를 즉시 업데이트하고 DB 저장은 백그라운드 처리
     saveUserQuote({ user_id: userId, quote_id: currentQuote.id, action: direction, ...ctx });
   };
 
-  // ── 로딩 상태 ──
+  const handleResume = () => {
+    cooldownStartedRef.current = false;
+    clearCooldown();
+    reset();
+  };
+
+  // ── 쿨다운 중 or 막 소진 됨 ──
+  if (isOnCooldown || isDepleted) {
+    return <CooldownScreen remainingMs={remainingMs} onResume={handleResume} />;
+  }
+
+  // ── 로딩 ──
   if (isLoading) {
     return (
       <div className="flex-1 flex items-center justify-center">
@@ -51,19 +73,6 @@ export default function FeedStack({ userId }: Props) {
         <p className="font-quote text-3xl text-textMain">준비 중이에요</p>
         <p className="font-sans text-sm text-textMuted">
           아직 글귀가 없어요. 조금만 기다려 주세요.
-        </p>
-      </div>
-    );
-  }
-
-  // ── 모두 소진 ──
-  if (isDepleted) {
-    return (
-      <div className="flex-1 flex flex-col items-center justify-center gap-3 px-8 text-center">
-        <span className="text-5xl">✦</span>
-        <p className="font-quote text-3xl text-textMain">오늘은 여기까지</p>
-        <p className="font-sans text-sm text-textMuted">
-          새로운 글귀가 곧 찾아올 거예요.
         </p>
       </div>
     );
