@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={nanumSquareRound.variable}>
-      <body className="bg-gray-100 text-textMain font-sans antialiased">
+      <body className="bg-gray-100 text-textMain font-sans antialiased" suppressHydrationWarning>
         <Providers>
           <main className="max-w-md mx-auto min-h-screen bg-background shadow-2xl relative overflow-x-hidden">
             {children}
