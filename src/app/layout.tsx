@@ -15,7 +15,8 @@ const nanumSquareRound = localFont({
     { path: "../fonts/NanumSquareRoundEB.ttf", weight: "800", style: "normal" },
   ],
   variable: "--font-nsr",
-  display: "swap",
+  display: "block",
+  preload: true,
 });
 
 export default function RootLayout({
