@@ -83,7 +83,7 @@ export default function EmotionGrid({ onNext }: Props) {
           disabled={selected.length === 0}
           onClick={() => onNext(selected)}
           className={`
-            w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider mb-8 transition-all duration-300
+            w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider mb-6 transition-all duration-300
             ${selected.length === 0
               ? "bg-warm text-textMuted/50 cursor-not-allowed"
               : "bg-primary text-white shadow-lg shadow-primary/25 hover:opacity-90 active:scale-[0.98]"
