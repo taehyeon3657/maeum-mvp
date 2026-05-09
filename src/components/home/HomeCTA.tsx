@@ -16,10 +16,6 @@ export default function HomeCTA() {
         </svg>
       </Link>
 
-      <Link href="/onboarding" className="cta-secondary">
-        가입 없이 둘러보기 →
-      </Link>
-
       <p className="disclaimer">
         가입 없이 바로 시작 가능 · 개인정보 안전하게 보호<br />
         언제든 탈퇴 가능
