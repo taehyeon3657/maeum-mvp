@@ -8,7 +8,7 @@ export default function HomeHero() {
 
       <h1 className="hero-headline">
         오늘 하루,<br />
-        <em>마음</em>은<br />
+        <span className="hero-em">마음</span>은<br />
         어떤가요?
       </h1>
 
