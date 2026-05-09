@@ -1,6 +1,11 @@
+import type { Viewport } from "next";
 import localFont from "next/font/local";
 import Providers from "../components/providers";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
+};
 
 const nanumSquareRound = localFont({
   src: [

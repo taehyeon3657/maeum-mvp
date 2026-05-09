@@ -71,7 +71,7 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col max-w-[430px] mx-auto px-6">
+    <div className="h-dvh bg-background flex flex-col max-w-[430px] mx-auto px-6 overflow-hidden">
       {/* 진행 바 */}
       <div className="fixed top-0 left-0 right-0 h-[3px] z-50 max-w-[430px] mx-auto bg-primary/10">
         <div
@@ -81,7 +81,7 @@ export default function OnboardingPage() {
       </div>
 
       {/* 상단 네비게이션 */}
-      <div className="pt-10 flex items-center justify-between mb-7">
+      <div className="flex-none pt-10 flex items-center justify-between mb-7">
         {step > 1 ? (
           <button
             onClick={() => setStep(step - 1)}
@@ -117,7 +117,7 @@ export default function OnboardingPage() {
 
       {/* STEP 1: 감정 선택 */}
       {step === 1 && (
-        <div className="flex flex-col flex-1 min-h-0 animate-fade-in-up">
+        <div className="flex flex-col flex-1 min-h-0 overflow-y-auto animate-fade-in-up">
           <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">감정 성향 파악</p>
           <h1 className="font-quote text-[2.2rem] font-light text-textMain leading-snug mb-2">
             지금 당신의<br />
@@ -130,7 +130,7 @@ export default function OnboardingPage() {
 
       {/* STEP 2: 알림 시간대 */}
       {step === 2 && (
-        <div className="flex flex-col flex-1 animate-fade-in-up">
+        <div className="flex flex-col flex-1 min-h-0 overflow-y-auto animate-fade-in-up">
           <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">글귀 시간대</p>
           <h2 className="font-quote text-[2.2rem] font-light text-textMain leading-snug mb-2">
             언제 <span className="text-primary font-extrabold">글귀</span>가<br />생각나세요?
@@ -144,12 +144,13 @@ export default function OnboardingPage() {
             disabled={time === ""}
             onClick={() => setStep(3)}
             className={`
-              w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider mt-auto mb-8 transition-all duration-300
+              w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider mt-auto transition-all duration-300
               ${time === ""
                 ? "bg-warm text-textMuted/50 cursor-not-allowed"
                 : "bg-primary text-white shadow-lg shadow-primary/25 hover:opacity-90 active:scale-[0.98]"
               }
             `}
+            style={{ marginBottom: "max(32px, env(safe-area-inset-bottom))" }}
           >
             다음 →
           </button>
@@ -181,11 +182,12 @@ export default function OnboardingPage() {
             type="button"
             onClick={finish}
             disabled={isSubmitting}
-            className={`w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider shadow-lg shadow-primary/25 transition-all mb-8 ${
+            className={`w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider shadow-lg shadow-primary/25 transition-all ${
               isSubmitting
                 ? "bg-warm text-textMuted/50 cursor-not-allowed"
                 : "bg-primary text-white hover:opacity-90 active:scale-[0.98]"
             }`}
+            style={{ marginBottom: "max(32px, env(safe-area-inset-bottom))" }}
           >
             {isSubmitting ? "시작하는 중..." : "나만의 피드 시작하기 ✦"}
           </button>

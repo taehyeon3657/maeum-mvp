@@ -112,7 +112,10 @@ export default function FeedStack({ userId }: Props) {
 
       {/* 진행 도트 인디케이터 */}
       {tutorialDone && quoteProgress.total > 0 && (
-        <div className="flex items-center justify-center gap-[6px] pb-6 pt-1">
+        <div
+          className="flex-none flex items-center justify-center gap-[6px] pt-1"
+          style={{ paddingBottom: "max(24px, env(safe-area-inset-bottom))" }}
+        >
           {Array.from({ length: quoteProgress.total }).map((_, i) => (
             <div
               key={i}
@@ -130,7 +133,9 @@ export default function FeedStack({ userId }: Props) {
           ))}
         </div>
       )}
-      {!tutorialDone && <div className="pb-6" />}
+      {!tutorialDone && (
+        <div className="flex-none" style={{ paddingBottom: "max(24px, env(safe-area-inset-bottom))" }} />
+      )}
     </div>
   );
 }
