@@ -12,9 +12,9 @@ export default function TutorialCard() {
         {/* 안내 문구 */}
         <p className="font-quote text-[1.45rem] leading-[1.9] text-textMain text-center animate-fade-in-up">
           마음에 드는 글귀는<br />
-          <em className="text-primary">오른쪽으로</em>,<br />
+          <span className="text-primary font-extrabold">오른쪽으로</span>,<br />
           넘기고 싶으면<br />
-          <span className="text-textMuted/70 not-italic">왼쪽으로</span>
+          <span className="text-textMuted/70">왼쪽으로</span>
         </p>
 
         {/* 스와이프 방향 힌트 */}
@@ -53,7 +53,7 @@ export default function TutorialCard() {
 
       {/* 하단 워터마크 */}
       <div className="flex justify-end px-8 pb-6">
-        <span className="font-quote text-[11px] text-primary/30 italic tracking-[0.25em]">마음</span>
+        <span className="font-quote text-[11px] text-primary/30 font-bold tracking-[0.25em]">마음</span>
       </div>
     </div>
   );

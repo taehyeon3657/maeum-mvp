@@ -25,7 +25,7 @@ export default function CooldownScreen({ remainingMs, onResume }: Props) {
             <div className="flex flex-col gap-2">
               <p className="font-quote text-[1.9rem] text-textMain leading-snug">
                 새 글귀가<br />
-                <em className="text-primary italic">도착했어요</em>
+                <span className="text-primary font-extrabold">도착했어요</span>
                 <span className="text-primary/60"> ✦</span>
               </p>
               <p className="font-sans text-sm text-textMuted leading-relaxed">

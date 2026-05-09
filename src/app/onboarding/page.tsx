@@ -84,7 +84,7 @@ const finish = async () => {
           </button>
         ) : (
           <div className="w-10 h-10 flex items-center justify-start">
-            <span className="font-quote text-lg text-primary italic">마음</span>
+            <span className="font-quote text-lg text-primary font-extrabold">마음</span>
           </div>
         )}
         <div className="flex gap-1.5">
@@ -114,7 +114,7 @@ const finish = async () => {
           <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">감정 성향 파악</p>
           <h1 className="font-quote text-[2.2rem] font-light text-textMain leading-snug mb-2">
             지금 당신의<br />
-            <em className="text-primary italic">마음</em>은 어떤가요?
+            <span className="text-primary font-extrabold">마음</span>은 어떤가요?
           </h1>
           <p className="text-textMuted text-sm mb-6 font-sans">최대 4개까지 선택할 수 있어요.</p>
           <EmotionGrid onNext={handleEmotionNext} />
@@ -126,7 +126,7 @@ const finish = async () => {
         <div className="flex flex-col flex-1 animate-fade-in-up">
           <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">글귀 시간대</p>
           <h2 className="font-quote text-[2.2rem] font-light text-textMain leading-snug mb-2">
-            언제 <em className="text-primary italic">글귀</em>가<br />생각나세요?
+            언제 <span className="text-primary font-extrabold">글귀</span>가<br />생각나세요?
           </h2>
           <p className="text-textMuted text-sm mb-7 font-sans">선택한 시간에 맞춰 보내드려요.</p>
 
@@ -155,7 +155,7 @@ const finish = async () => {
           <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">맞춤 추천 강화</p>
           <h2 className="font-quote text-[2rem] font-light text-textMain leading-snug mb-2">
             딱 맞는<br />
-            <em className="text-primary italic">글귀</em>를<br />
+            <span className="text-primary font-extrabold">글귀</span>를<br />
             준비할게요 ✦
           </h2>
           <p className="text-textMuted text-sm mb-7 font-sans">모두 선택 사항이에요.</p>
