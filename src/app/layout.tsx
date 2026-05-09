@@ -3,9 +3,13 @@ import localFont from "next/font/local";
 import Providers from "../components/providers";
 import "./globals.css";
 
+// VERCEL_PROJECT_PRODUCTION_URL = 고정 프로덕션 URL (maeum-mvp.vercel.app)
+// VERCEL_URL = 배포마다 바뀌는 URL → og:image에 쓰면 링크 미리보기 깨짐
 const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL ??
-  (process.env.VERCEL_URL
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : "http://localhost:3000");
 
@@ -67,30 +71,22 @@ export const metadata: Metadata = {
     siteName: "마음",
     locale: "ko_KR",
     type: "website",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "마음 — 매일 당신의 마음을 울리는 글귀",
-      },
-    ],
+    // images는 opengraph-image.tsx가 자동 생성 — 명시하면 URL 불일치로 미리보기 깨짐
   },
 
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: ["/opengraph-image"],
   },
 
   icons: {
     icon: [
-      { url: "/icon", type: "image/png" },
-      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon", type: "image/png", sizes: "32x32" },
     ],
     apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }],
-    shortcut: "/favicon.ico",
+    shortcut: "/favicon.svg",
   },
 
   manifest: "/manifest.webmanifest",

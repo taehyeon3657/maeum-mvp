@@ -3,15 +3,10 @@ export default function HomeHeader() {
     <header className="header">
       <div className="logo-mark">
         <div className="logo-icon">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path
-              d="M9 2C9 2 3 5.5 3 9.5C3 12.5 5.5 15 9 15C12.5 15 15 12.5 15 9.5C15 5.5 9 2 9 2Z"
-              fill="#c9a96e"
-              opacity="0.9"
-            />
-            <path
-              d="M9 5C9 5 6 7.5 6 9.5C6 11 7.3 12 9 12C10.7 12 12 11 12 9.5C12 7.5 9 5 9 5Z"
-              fill="#faf7f2"
+              d="M12 21.593c-5.63-5.539-11-10.297-11-14.402C1 3.38 4.068 1 7.268 1c1.994 0 3.557 1.026 4.732 2.687C13.175 2.026 14.74 1 16.732 1 19.932 1 23 3.38 23 7.191c0 4.105-5.37 8.863-11 14.402z"
+              fill="white"
             />
           </svg>
         </div>

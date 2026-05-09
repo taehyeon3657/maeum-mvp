@@ -67,7 +67,8 @@
 }
 .logo-mark { display: flex; align-items: center; gap: 10px; }
 .logo-icon {
-  width: 34px; height: 34px; background: var(--ink);
+  width: 34px; height: 34px;
+  background: linear-gradient(145deg, #f0856a 0%, #c85a3e 100%);
   border-radius: 10px; display: flex; align-items: center; justify-content: center;
 }
 .logo-text {
