@@ -65,24 +65,44 @@ const finish = async () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col max-w-[430px] mx-auto px-6">
-      {/* 진행바 */}
-      <div className="fixed top-0 left-0 right-0 h-[2px] bg-primary/20 z-50 max-w-[430px] mx-auto">
-        <div 
-          className="h-full bg-primary transition-all duration-500" 
-          style={{ width: `${(step / TOTAL) * 100}%` }} 
+      {/* 진행 바 */}
+      <div className="fixed top-0 left-0 right-0 h-[3px] z-50 max-w-[430px] mx-auto bg-primary/10">
+        <div
+          className="h-full bg-gradient-to-r from-primary/70 to-primary transition-all duration-500"
+          style={{ width: `${(step / TOTAL) * 100}%` }}
         />
       </div>
 
       {/* 상단 네비게이션 */}
-      <div className="pt-8 flex items-center justify-between mb-6">
+      <div className="pt-10 flex items-center justify-between mb-7">
         {step > 1 ? (
-          <button onClick={() => setStep(step - 1)} className="w-10 h-10 rounded-full border border-primary/30 bg-surface flex items-center justify-center text-textMain hover:bg-warm transition-colors">←</button>
+          <button
+            onClick={() => setStep(step - 1)}
+            className="w-10 h-10 rounded-full border border-primary/25 bg-surface flex items-center justify-center text-textMain hover:bg-warm transition-colors shadow-sm"
+          >
+            ←
+          </button>
         ) : (
-          <div className="w-10" />
+          <div className="w-10 h-10 flex items-center justify-start">
+            <span className="font-quote text-lg text-primary italic">마음</span>
+          </div>
         )}
-        <span className="text-textMuted text-sm">{step} / {TOTAL}</span>
+        <div className="flex gap-1.5">
+          {Array.from({ length: TOTAL }).map((_, i) => (
+            <div
+              key={i}
+              className="h-[5px] rounded-full transition-all duration-400"
+              style={{
+                width: i + 1 === step ? "20px" : "5px",
+                backgroundColor: i + 1 <= step ? "#E07A5F" : "rgba(224,122,95,0.15)",
+              }}
+            />
+          ))}
+        </div>
         {step === TOTAL ? (
-          <button onClick={finish} className="text-textMuted text-sm hover:text-textMain transition-colors">건너뛰기</button>
+          <button onClick={finish} className="text-textMuted text-sm hover:text-textMain transition-colors">
+            건너뛰기
+          </button>
         ) : (
           <div className="w-16" />
         )}
@@ -90,38 +110,37 @@ const finish = async () => {
 
       {/* STEP 1: 감정 선택 */}
       {step === 1 && (
-        <div className="flex flex-col flex-1 min-h-0"> 
-          <p className="text-primary text-xs tracking-widest mb-4 font-sans">감정 성향 파악</p>
-          <h1 className="font-quote text-4xl font-light text-textMain leading-snug mb-2">
+        <div className="flex flex-col flex-1 min-h-0 animate-fade-in-up">
+          <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">감정 성향 파악</p>
+          <h1 className="font-quote text-[2.2rem] font-light text-textMain leading-snug mb-2">
             지금 당신의<br />
             <em className="text-primary italic">마음</em>은 어떤가요?
           </h1>
-          <p className="text-textMuted text-sm mb-8 font-sans">최대 4개까지 선택할 수 있어요.</p>
+          <p className="text-textMuted text-sm mb-6 font-sans">최대 4개까지 선택할 수 있어요.</p>
           <EmotionGrid onNext={handleEmotionNext} />
         </div>
       )}
 
       {/* STEP 2: 알림 시간대 */}
       {step === 2 && (
-        <div className="flex flex-col flex-1">
-          <p className="text-primary text-xs tracking-widest mb-4 font-sans">알림 시간대</p>
-          <h2 className="font-quote text-4xl font-light text-textMain leading-snug mb-2">
+        <div className="flex flex-col flex-1 animate-fade-in-up">
+          <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">글귀 시간대</p>
+          <h2 className="font-quote text-[2.2rem] font-light text-textMain leading-snug mb-2">
             언제 <em className="text-primary italic">글귀</em>가<br />생각나세요?
           </h2>
-          <p className="text-textMuted text-sm mb-8 font-sans">원하는 시간대에 매일 글귀를 보내드려요.</p>
+          <p className="text-textMuted text-sm mb-7 font-sans">선택한 시간에 맞춰 보내드려요.</p>
 
           <TimeList selected={time} onSelect={setTime} />
 
-          {/* 스타일 수정된 STEP 2 버튼 */}
           <button
             type="button"
             disabled={time === ""}
             onClick={() => setStep(3)}
             className={`
-              w-full py-5 rounded-2xl font-sans text-sm font-semibold tracking-wider mt-auto mb-8 transition-all duration-300
-              ${time === "" 
-                ? "bg-[#F2F2F2] text-[#BCBCBC] cursor-not-allowed" 
-                : "bg-primary text-white shadow-lg shadow-primary/20 hover:opacity-90 active:scale-[0.98]"
+              w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider mt-auto mb-8 transition-all duration-300
+              ${time === ""
+                ? "bg-warm text-textMuted/50 cursor-not-allowed"
+                : "bg-primary text-white shadow-lg shadow-primary/25 hover:opacity-90 active:scale-[0.98]"
               }
             `}
           >
@@ -132,25 +151,24 @@ const finish = async () => {
 
       {/* STEP 3: 추가 정보 */}
       {step === 3 && (
-        <div className="flex flex-col flex-1 overflow-y-auto">
-          <p className="text-primary text-xs tracking-widest mb-4 font-sans">맞춤 추천 강화</p>
-          <h2 className="font-quote text-3xl font-light text-textMain leading-snug mb-2">
-            선택하신 감정에<br />
-            딱 맞는 <em className="text-primary italic">글귀</em>를<br />
-            준비했어요! 🎉
+        <div className="flex flex-col flex-1 overflow-y-auto animate-fade-in-up">
+          <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">맞춤 추천 강화</p>
+          <h2 className="font-quote text-[2rem] font-light text-textMain leading-snug mb-2">
+            딱 맞는<br />
+            <em className="text-primary italic">글귀</em>를<br />
+            준비할게요 ✦
           </h2>
-          <p className="text-textMuted text-sm mb-8 font-sans">모두 선택 사항이에요.</p>
+          <p className="text-textMuted text-sm mb-7 font-sans">모두 선택 사항이에요.</p>
 
           <ProfileForm
             mbti={mbti} gender={gender} age={age}
             setMbti={setMbti} setGender={setGender} setAge={setAge}
           />
 
-          {/* 스타일 수정된 STEP 3 완료 버튼 (활성화 상태로 고정) */}
           <button
             type="button"
             onClick={finish}
-            className="w-full py-5 rounded-2xl bg-primary text-white font-sans text-sm font-semibold tracking-wider hover:opacity-90 active:scale-[0.98] shadow-lg shadow-primary/20 transition-all mb-8"
+            className="w-full py-[18px] rounded-2xl bg-primary text-white font-sans text-sm font-semibold tracking-wider hover:opacity-90 active:scale-[0.98] shadow-lg shadow-primary/25 transition-all mb-8"
           >
             나만의 피드 시작하기 ✦
           </button>

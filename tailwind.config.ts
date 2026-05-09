@@ -15,6 +15,7 @@ const config: Config = {
         secondary: "#2D6A4F",
         textMain: "#37352F",
         textMuted: "#868E96",
+        warm: "#F0EBE1",
       },
       fontFamily: {
         sans: ["var(--font-pretendard)", "sans-serif"],
