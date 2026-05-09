@@ -26,7 +26,7 @@ export default async function Image() {
           overflow: "hidden",
         }}
       >
-        {/* Background decorative circles */}
+        {/* Background decorative circles — no children, no display needed */}
         <div
           style={{
             position: "absolute",
@@ -101,31 +101,37 @@ export default async function Image() {
 
           {/* Eyebrow */}
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-            <div style={{ width: 32, height: 2, background: "#e07a5f", borderRadius: 2 }} />
+            <div style={{ width: 32, height: 2, background: "#e07a5f", borderRadius: 2, display: "flex" }} />
             <span style={{ fontSize: 13, color: "#e07a5f", letterSpacing: "0.15em", fontWeight: 800 }}>
               DAILY QUOTES
             </span>
           </div>
 
-          {/* Headline */}
+          {/* Headline — flex column so each line is a separate span */}
           <div
             style={{
+              display: "flex",
+              flexDirection: "column",
               fontSize: 52,
               fontWeight: 800,
-              color: "#1a1714",
               lineHeight: 1.25,
               letterSpacing: "-0.02em",
               marginBottom: 24,
             }}
           >
-            매일 당신의{"\n"}
-            <span style={{ color: "#e07a5f" }}>마음</span>을 울리는{"\n"}
-            글귀
+            <span style={{ color: "#1a1714" }}>매일 당신의</span>
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+              <span style={{ color: "#e07a5f" }}>마음</span>
+              <span style={{ color: "#1a1714" }}>을 울리는</span>
+            </div>
+            <span style={{ color: "#1a1714" }}>글귀</span>
           </div>
 
-          {/* Subtitle */}
+          {/* Subtitle — each line is a separate span */}
           <div
             style={{
+              display: "flex",
+              flexDirection: "column",
               fontSize: 16,
               color: "#8a8178",
               lineHeight: 1.8,
@@ -133,8 +139,8 @@ export default async function Image() {
               marginBottom: 40,
             }}
           >
-            감정을 선택하면 지금 이 순간{"\n"}
-            당신에게 꼭 맞는 글귀를 찾아드려요
+            <span>감정을 선택하면 지금 이 순간</span>
+            <span>당신에게 꼭 맞는 글귀를 찾아드려요</span>
           </div>
 
           {/* Progress dots */}
@@ -147,6 +153,7 @@ export default async function Image() {
                   height: 8,
                   borderRadius: 4,
                   background: active ? "#e07a5f" : "rgba(224,122,95,0.25)",
+                  display: "flex",
                 }}
               />
             ))}
@@ -187,6 +194,7 @@ export default async function Image() {
                 right: 0,
                 height: 4,
                 background: "linear-gradient(90deg, transparent, #e07a5f, transparent)",
+                display: "flex",
               }}
             />
 
@@ -204,9 +212,11 @@ export default async function Image() {
               "
             </div>
 
-            {/* Quote text */}
+            {/* Quote text — each line is a separate span */}
             <div
               style={{
+                display: "flex",
+                flexDirection: "column",
                 fontSize: 18,
                 fontWeight: 800,
                 color: "#1a1714",
@@ -214,9 +224,9 @@ export default async function Image() {
                 marginBottom: 20,
               }}
             >
-              지금 이 순간의 감정도{"\n"}
-              당신의 일부입니다.{"\n"}
-              있는 그대로 느끼세요.
+              <span>지금 이 순간의 감정도</span>
+              <span>당신의 일부입니다.</span>
+              <span>있는 그대로 느끼세요.</span>
             </div>
 
             {/* Author */}
@@ -227,6 +237,7 @@ export default async function Image() {
                 fontWeight: 700,
                 letterSpacing: "0.06em",
                 marginBottom: 24,
+                display: "flex",
               }}
             >
               — 마음
@@ -242,6 +253,7 @@ export default async function Image() {
                     height: 6,
                     borderRadius: 3,
                     background: active ? "#e07a5f" : "rgba(224,122,95,0.25)",
+                    display: "flex",
                   }}
                 />
               ))}
