@@ -106,6 +106,10 @@ export const metadata: Metadata = {
   },
 
   category: "lifestyle",
+
+  verification: {
+    google: "agtV9KxSbyIvK5-mgKKeKmwcrEAr4lMRfVAbLKsaQfQ",
+  },
 };
 
 export const viewport: Viewport = {
