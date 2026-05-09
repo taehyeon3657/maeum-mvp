@@ -21,7 +21,7 @@ export default function FeedPage() {
 
   if (!userId) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="h-dvh flex items-center justify-center bg-background">
         <div className="flex flex-col items-center gap-3">
           <div className="relative w-12 h-12">
             <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping" />
@@ -34,11 +34,11 @@ export default function FeedPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="h-dvh flex flex-col bg-background overflow-hidden">
       {/* 헤더 */}
-      <header className="flex items-center justify-center px-6 pt-12 pb-3">
+      <header className="flex-none flex items-center justify-center px-6 pt-8 pb-2">
         <div className="flex flex-col items-center gap-0.5">
-          <h1 className="font-quote text-[1.6rem] text-primary font-extrabold tracking-[0.12em]">마음</h1>
+          <h1 className="font-quote text-[1.5rem] text-primary font-extrabold tracking-[0.12em]">마음</h1>
           <div className="flex items-center gap-2">
             <div className="h-px w-8 bg-primary/20" />
             <span className="font-sans text-[10px] text-textMuted/60 tracking-[0.2em]">MAEUM</span>
@@ -47,7 +47,7 @@ export default function FeedPage() {
         </div>
       </header>
 
-      {/* 카드 스택 */}
+      {/* 카드 스택 — 남은 공간 전부 */}
       <FeedStack userId={userId} />
     </div>
   );

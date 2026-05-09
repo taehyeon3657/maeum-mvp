@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="ko" className={nanumSquareRound.variable}>
       <body className="bg-gray-100 text-textMain font-sans antialiased" suppressHydrationWarning>
         <Providers>
-          <main className="max-w-md mx-auto min-h-screen bg-background shadow-2xl relative overflow-x-hidden">
+          <main className="max-w-md mx-auto bg-background shadow-2xl relative overflow-x-hidden" style={{ minHeight: "100dvh" }}>
             {children}
           </main>
         </Providers>
