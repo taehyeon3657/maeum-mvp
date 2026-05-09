@@ -32,3 +32,9 @@
 .animate-fade-in-up  { animation: fadeInUp  0.45s ease-out both; }
 .animate-fade-in     { animation: fadeIn    0.35s ease-out both; }
 .animate-scale-in    { animation: scaleIn   0.4s  ease-out both; }
+
+/* 모바일 브라우저 주소창/내비게이션 바를 제외한 실제 보이는 높이 */
+.h-dvh {
+  height: 100vh;   /* 구형 브라우저 fallback */
+  height: 100dvh;  /* iOS Safari 등 모바일 브라우저 주소창 제외 */
+}
