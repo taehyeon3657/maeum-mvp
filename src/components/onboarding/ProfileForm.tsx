@@ -39,7 +39,7 @@ export default function ProfileForm({ mbti, gender, age, setMbti, setGender, set
                 type="button"
                 onClick={() => setMbti(isOn ? "" : m)}
                 className={[
-                  "py-[9px] rounded-[10px] border font-quote text-[13px]",
+                  "py-3 rounded-[10px] border font-quote text-[13px]",
                   "text-center tracking-wider transition-all duration-200 outline-none cursor-pointer",
                   isOn
                     ? "border-primary bg-primary/10 text-textMain font-medium"
