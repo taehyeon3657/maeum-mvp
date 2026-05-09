@@ -18,6 +18,12 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   devIndicators: false,
 
+  // Vercel 서버리스 번들에 폰트 파일을 명시적으로 포함
+  // (fs/promises.readFile로 읽는 파일은 자동 감지되지 않음)
+  outputFileTracingIncludes: {
+    "/opengraph-image": ["./src/fonts/*.ttf"],
+  },
+
   async headers() {
     return [
       {
