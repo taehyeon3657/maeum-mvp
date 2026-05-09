@@ -14,26 +14,28 @@ export default function SwipeCard({ onSwipe, children }: Props) {
   return (
     <div
       className="absolute inset-0"
-      style={cardStyle}
+      style={{ zIndex: 2, ...cardStyle }}
       {...handlers}
     >
-      {/* 좋아요 오버레이 (오른쪽 스와이프) */}
+      {/* 좋아요 오버레이 */}
       <div
         className="absolute inset-0 rounded-[28px] z-10 pointer-events-none flex items-start justify-start p-7"
         style={{ opacity: likeOpacity }}
       >
-        <span className="border-[3px] border-green-500 text-green-500 font-sans font-extrabold text-2xl tracking-widest px-4 py-2 rounded-xl rotate-[-12deg]">
-          좋아요 💚
+        <span className="border-[2.5px] border-green-500 text-green-500 font-quote font-bold text-xl tracking-widest px-4 py-2 rounded-xl bg-white/60 backdrop-blur-sm"
+          style={{ transform: "rotate(-10deg)" }}>
+          좋아요 ✦
         </span>
       </div>
 
-      {/* 싫어요 오버레이 (왼쪽 스와이프) */}
+      {/* 넘길게요 오버레이 */}
       <div
         className="absolute inset-0 rounded-[28px] z-10 pointer-events-none flex items-start justify-end p-7"
         style={{ opacity: dislikeOpacity }}
       >
-        <span className="border-[3px] border-rose-500 text-rose-500 font-sans font-extrabold text-2xl tracking-widest px-4 py-2 rounded-xl rotate-[12deg]">
-          넘길게요 💔
+        <span className="border-[2.5px] border-rose-400 text-rose-400 font-quote font-bold text-xl tracking-widest px-4 py-2 rounded-xl bg-white/60 backdrop-blur-sm"
+          style={{ transform: "rotate(10deg)" }}>
+          넘길게요
         </span>
       </div>
 

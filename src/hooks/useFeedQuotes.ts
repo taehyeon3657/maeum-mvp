@@ -80,6 +80,7 @@ export function useFeedQuotes(userId: string) {
     isLoading,
     isEmpty: !isLoading && quotes.length === 0,
     isDepleted: !isLoading && quotes.length > 0 && currentIndex >= quotes.length,
+    quoteProgress: { current: currentIndex, total: quotes.length },
     advance,
     reset,
   };
