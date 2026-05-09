@@ -6,23 +6,5 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
-    extend: {
-      colors: {
-        background: "#FFFEFC",
-        surface: "#FFFFFF",
-        primary: "#E07A5F",
-        secondary: "#2D6A4F",
-        textMain: "#37352F",
-        textMuted: "#868E96",
-        warm: "#F0EBE1",
-      },
-      fontFamily: {
-        sans: ["var(--font-nsr)", "Nanum Square Round", "sans-serif"],
-        quote: ["var(--font-nsr)", "Nanum Square Round", "sans-serif"],
-      },
-    },
-  },
-  plugins: [],
 };
 export default config;
