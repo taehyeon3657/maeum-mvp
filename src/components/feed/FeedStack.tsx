@@ -80,9 +80,9 @@ export default function FeedStack({ userId }: Props) {
   const hasBackCard = tutorialDone ? !!nextQuote : !!currentQuote;
 
   return (
-    <div className="flex-1 flex flex-col">
+    <div className="flex-1 min-h-0 flex flex-col">
       {/* 카드 스택 영역 */}
-      <div className="flex-1 relative mx-4 my-4">
+      <div className="flex-1 min-h-0 relative mx-4 mt-3 mb-2">
         {/* 세 번째 배경 카드 */}
         {hasBackCard && (
           <div
@@ -112,10 +112,7 @@ export default function FeedStack({ userId }: Props) {
 
       {/* 진행 도트 인디케이터 */}
       {tutorialDone && quoteProgress.total > 0 && (
-        <div
-          className="flex-none flex items-center justify-center gap-[6px] pt-1"
-          style={{ paddingBottom: "max(24px, env(safe-area-inset-bottom))" }}
-        >
+        <div className="flex-none flex items-center justify-center gap-[6px] py-4">
           {Array.from({ length: quoteProgress.total }).map((_, i) => (
             <div
               key={i}
@@ -133,9 +130,7 @@ export default function FeedStack({ userId }: Props) {
           ))}
         </div>
       )}
-      {!tutorialDone && (
-        <div className="flex-none" style={{ paddingBottom: "max(24px, env(safe-area-inset-bottom))" }} />
-      )}
+      {!tutorialDone && <div className="flex-none py-4" />}
     </div>
   );
 }

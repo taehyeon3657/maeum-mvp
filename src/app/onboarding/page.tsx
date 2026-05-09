@@ -21,7 +21,6 @@ export default function OnboardingPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  // 이미 로그인된 유저는 피드로 바로 이동
   useEffect(() => {
     const checkAuth = async () => {
       const supabase = createClient();
@@ -72,8 +71,8 @@ export default function OnboardingPage() {
 
   return (
     <div
-      className="h-dvh bg-background flex flex-col max-w-[430px] mx-auto px-6"
-      style={{ paddingBottom: "max(20px, env(safe-area-inset-bottom))" }}
+      className="min-h-dvh bg-background flex flex-col max-w-[430px] mx-auto px-6"
+      style={{ paddingBottom: "max(40px, env(safe-area-inset-bottom))" }}
     >
       {/* 진행 바 */}
       <div className="fixed top-0 left-0 right-0 h-[3px] z-50 max-w-[430px] mx-auto bg-primary/10">
@@ -84,7 +83,7 @@ export default function OnboardingPage() {
       </div>
 
       {/* 상단 네비게이션 */}
-      <div className="flex-none pt-10 flex items-center justify-between mb-7">
+      <div className="pt-10 flex items-center justify-between mb-8">
         {step > 1 ? (
           <button
             onClick={() => setStep(step - 1)}
@@ -118,38 +117,36 @@ export default function OnboardingPage() {
         )}
       </div>
 
-      {/* STEP 1: 감정 선택 — EmotionGrid가 자체적으로 내부 스크롤 처리 */}
+      {/* STEP 1: 감정 선택 */}
       {step === 1 && (
-        <div className="flex flex-col flex-1 min-h-0 animate-fade-in-up">
-          <p className="flex-none text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">감정 성향 파악</p>
-          <h1 className="flex-none font-quote text-[2.2rem] font-light text-textMain leading-snug mb-2">
+        <div className="animate-fade-in-up">
+          <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">감정 성향 파악</p>
+          <h1 className="font-quote text-[2.2rem] font-light text-textMain leading-snug mb-2">
             지금 당신의<br />
             <span className="text-primary font-extrabold">마음</span>은 어떤가요?
           </h1>
-          <p className="flex-none text-textMuted text-sm mb-6 font-sans">최대 4개까지 선택할 수 있어요.</p>
+          <p className="text-textMuted text-sm mb-7 font-sans">최대 4개까지 선택할 수 있어요.</p>
           <EmotionGrid onNext={handleEmotionNext} />
         </div>
       )}
 
       {/* STEP 2: 알림 시간대 */}
       {step === 2 && (
-        <div className="flex flex-col flex-1 min-h-0 animate-fade-in-up">
-          <p className="flex-none text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">글귀 시간대</p>
-          <h2 className="flex-none font-quote text-[2.2rem] font-light text-textMain leading-snug mb-2">
+        <div className="animate-fade-in-up">
+          <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">글귀 시간대</p>
+          <h2 className="font-quote text-[2.2rem] font-light text-textMain leading-snug mb-2">
             언제 <span className="text-primary font-extrabold">글귀</span>가<br />생각나세요?
           </h2>
-          <p className="flex-none text-textMuted text-sm mb-7 font-sans">선택한 시간에 맞춰 보내드려요.</p>
+          <p className="text-textMuted text-sm mb-7 font-sans">선택한 시간에 맞춰 보내드려요.</p>
 
-          <div className="flex-1 min-h-0 overflow-y-auto">
-            <TimeList selected={time} onSelect={setTime} />
-          </div>
+          <TimeList selected={time} onSelect={setTime} />
 
           <button
             type="button"
             disabled={time === ""}
             onClick={() => setStep(3)}
             className={`
-              flex-none w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider mt-4 mb-6 transition-all duration-300
+              w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider mt-6 transition-all duration-300
               ${time === ""
                 ? "bg-warm text-textMuted/50 cursor-not-allowed"
                 : "bg-primary text-white shadow-lg shadow-primary/25 hover:opacity-90 active:scale-[0.98]"
@@ -163,24 +160,22 @@ export default function OnboardingPage() {
 
       {/* STEP 3: 추가 정보 */}
       {step === 3 && (
-        <div className="flex flex-col flex-1 min-h-0 animate-fade-in-up">
-          <p className="flex-none text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">맞춤 추천 강화</p>
-          <h2 className="flex-none font-quote text-[2rem] font-light text-textMain leading-snug mb-2">
+        <div className="animate-fade-in-up">
+          <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">맞춤 추천 강화</p>
+          <h2 className="font-quote text-[2rem] font-light text-textMain leading-snug mb-2">
             딱 맞는<br />
             <span className="text-primary font-extrabold">글귀</span>를<br />
             준비할게요 ✦
           </h2>
-          <p className="flex-none text-textMuted text-sm mb-7 font-sans">모두 선택 사항이에요.</p>
+          <p className="text-textMuted text-sm mb-7 font-sans">모두 선택 사항이에요.</p>
 
-          <div className="flex-1 min-h-0 overflow-y-auto">
-            <ProfileForm
-              mbti={mbti} gender={gender} age={age}
-              setMbti={setMbti} setGender={setGender} setAge={setAge}
-            />
-          </div>
+          <ProfileForm
+            mbti={mbti} gender={gender} age={age}
+            setMbti={setMbti} setGender={setGender} setAge={setAge}
+          />
 
           {submitError && (
-            <p className="flex-none font-sans text-xs text-rose-500 text-center mt-3 px-2">
+            <p className="font-sans text-xs text-rose-500 text-center mt-4 px-2">
               {submitError}
             </p>
           )}
@@ -188,7 +183,7 @@ export default function OnboardingPage() {
             type="button"
             onClick={finish}
             disabled={isSubmitting}
-            className={`flex-none w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider shadow-lg shadow-primary/25 transition-all mt-4 mb-6 ${
+            className={`w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider shadow-lg shadow-primary/25 transition-all mt-6 ${
               isSubmitting
                 ? "bg-warm text-textMuted/50 cursor-not-allowed"
                 : "bg-primary text-white hover:opacity-90 active:scale-[0.98]"

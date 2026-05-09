@@ -34,7 +34,7 @@ export default function FeedPage() {
   }
 
   return (
-    <div className="h-dvh flex flex-col bg-background overflow-hidden">
+    <div className="h-dvh flex flex-col bg-background overflow-x-hidden">
       {/* 헤더 */}
       <header className="flex-none flex items-center justify-center px-6 pt-8 pb-2">
         <div className="flex flex-col items-center gap-0.5">
