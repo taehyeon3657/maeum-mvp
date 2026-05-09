@@ -26,7 +26,7 @@ export default function ProfileForm({ mbti, gender, age, setMbti, setGender, set
     <>
       {/* ── MBTI ── */}
       <div className="mb-6">
-        <p className="font-quote text-[15px] text-textMain italic leading-relaxed mb-3 flex flex-wrap items-center gap-2">
+        <p className="font-quote text-[15px] text-textMain font-semibold leading-relaxed mb-3 flex flex-wrap items-center gap-2">
           더 정확한 추천을 위해 MBTI를 알려주시겠어요?
           <OptBadge />
         </p>
@@ -58,7 +58,7 @@ export default function ProfileForm({ mbti, gender, age, setMbti, setGender, set
 
       {/* ── 성별 + 연령대 ── */}
       <div className="mb-6">
-        <p className="font-quote text-[15px] text-textMain italic leading-relaxed mb-3 flex flex-wrap items-center gap-2">
+        <p className="font-quote text-[15px] text-textMain font-semibold leading-relaxed mb-3 flex flex-wrap items-center gap-2">
           더 정확한 분석을 위해 성별과 연령대도 알려주시면 좋아요
           <OptBadge />
         </p>

@@ -40,7 +40,7 @@ export default function QuoteCard({ quote }: Props) {
 
         {/* 글귀 본문 — 세로 중앙 */}
         <div className="flex-1 flex items-center justify-center z-10 px-1">
-          <p className="font-quote text-[1.45rem] leading-[1.9] text-textMain break-keep text-center">
+          <p className="font-quote text-[1.45rem] leading-[1.9] text-textMain break-keep text-center font-bold">
             {quote.content}
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function QuoteCard({ quote }: Props) {
         <div className="flex items-end justify-between z-10">
           <div className="flex flex-col gap-0.5">
             {quote.author && (
-              <p className="font-quote text-[0.95rem] text-textMain/75 italic">
+              <p className="font-quote text-[0.95rem] text-textMain/75 font-semibold">
                 — {quote.author}
               </p>
             )}
@@ -69,7 +69,7 @@ export default function QuoteCard({ quote }: Props) {
               <p className="font-sans text-[11px] text-textMuted/50">작자 미상</p>
             )}
           </div>
-          <span className="font-quote text-[11px] text-primary/35 italic tracking-[0.25em]">
+          <span className="font-quote text-[11px] text-primary/35 font-bold tracking-[0.25em]">
             마음
           </span>
         </div>

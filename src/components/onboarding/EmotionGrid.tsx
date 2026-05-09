@@ -74,7 +74,7 @@ export default function EmotionGrid({ onNext }: Props) {
       {/* 하단 버튼 영역 */}
       <div className="pt-4 border-t border-primary/8">
         <p className="text-center mb-4 font-sans text-[11.5px] text-textMuted tracking-wider">
-          <span className="font-quote text-primary text-[15px] italic">{selected.length}</span>
+          <span className="font-quote text-primary text-[15px] font-extrabold">{selected.length}</span>
           {" "}/ 4개 선택
         </p>
 

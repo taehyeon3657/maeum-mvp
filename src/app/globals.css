@@ -10,8 +10,8 @@
   --color-text-muted: #868e96;
   --color-warm: #f0ebe1;
 
-  --font-sans: var(--font-pretendard), sans-serif;
-  --font-quote: var(--font-ridibatang), serif;
+  --font-sans: var(--font-nsr), "Nanum Square Round", sans-serif;
+  --font-quote: var(--font-nsr), "Nanum Square Round", sans-serif;
 }
 
 @keyframes fadeInUp {

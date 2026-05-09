@@ -38,7 +38,7 @@ export default function FeedPage() {
       {/* 헤더 */}
       <header className="flex items-center justify-center px-6 pt-12 pb-3">
         <div className="flex flex-col items-center gap-0.5">
-          <h1 className="font-quote text-[1.6rem] text-primary italic tracking-[0.12em]">마음</h1>
+          <h1 className="font-quote text-[1.6rem] text-primary font-extrabold tracking-[0.12em]">마음</h1>
           <div className="flex items-center gap-2">
             <div className="h-px w-8 bg-primary/20" />
             <span className="font-sans text-[10px] text-textMuted/60 tracking-[0.2em]">MAEUM</span>

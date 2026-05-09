@@ -18,8 +18,8 @@ const config: Config = {
         warm: "#F0EBE1",
       },
       fontFamily: {
-        sans: ["var(--font-pretendard)", "sans-serif"],
-        quote: ["var(--font-ridibatang)", "serif"],
+        sans: ["var(--font-nsr)", "Nanum Square Round", "sans-serif"],
+        quote: ["var(--font-nsr)", "Nanum Square Round", "sans-serif"],
       },
     },
   },
