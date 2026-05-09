@@ -62,6 +62,7 @@ export function useSwipe({ onSwipe }: UseSwipeOptions) {
     transition: isDragging ? "none" : `transform ${FLY_DURATION}ms ease`,
     cursor: isDragging ? "grabbing" : "grab",
     userSelect: "none",
+    touchAction: "none", // 모바일 스와이프 시 페이지 스크롤 간섭 방지
   };
 
   // 스와이프 방향에 따라 0~1 사이 opacity

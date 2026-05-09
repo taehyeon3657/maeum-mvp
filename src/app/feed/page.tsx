@@ -34,7 +34,7 @@ export default function FeedPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background max-w-[430px] mx-auto">
+    <div className="min-h-screen flex flex-col bg-background">
       {/* 헤더 */}
       <header className="flex items-center justify-center px-6 pt-12 pb-3">
         <div className="flex flex-col items-center gap-0.5">

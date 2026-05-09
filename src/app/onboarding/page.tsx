@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import EmotionGrid from "@/src/components/onboarding/EmotionGrid";
 import TimeList from "@/src/components/onboarding/TimeList";
@@ -18,31 +18,39 @@ export default function OnboardingPage() {
   const [mbti, setMbti] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  // 이미 로그인된 유저는 피드로 바로 이동
+  useEffect(() => {
+    const checkAuth = async () => {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) router.replace("/feed");
+    };
+    checkAuth();
+  }, [router]);
 
   const handleEmotionNext = (selectedEmotions: string[]) => {
     setEmotions(selectedEmotions);
     setStep(2);
   };
 
-const finish = async () => {
-  const supabase = createClient();
+  const finish = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    setSubmitError("");
+    const supabase = createClient();
 
-  try {
-    // 1. 익명 로그인 실행 (사용자에게 아무것도 묻지 않고 즉시 유저 생성 및 세션 발급)
-    const { data: authData, error: authError } = await supabase.auth.signInAnonymously();
+    try {
+      const { data: authData, error: authError } = await supabase.auth.signInAnonymously();
+      if (authError) throw authError;
 
-    // 만약 422 에러가 여전히 뜬다면 대시보드에서 Anonymous 기능을 켰는지 다시 확인하세요.
-    if (authError) throw authError;
+      const user = authData.user;
+      if (!user) throw new Error("유저 생성 실패");
 
-    const user = authData.user;
-    if (!user) throw new Error("유저 생성 실패");
-
-    // 2. 생성된 유저의 ID를 사용하여 users 테이블에 데이터 넣기
-    // .upsert()는 해당 ID가 있으면 업데이트, 없으면 삽입합니다.
-    const { error: dbError } = await supabase
-      .from("users")
-      .upsert({
-        id: user.id,              // Auth에서 생성된 고유 UUID
+      const { error: dbError } = await supabase.from("users").upsert({
+        id: user.id,
         pref_emotions: emotions,
         pref_time: time,
         mbti: mbti,
@@ -51,17 +59,16 @@ const finish = async () => {
         onboarded_at: new Date().toISOString(),
       });
 
-    if (dbError) throw dbError;
+      if (dbError) throw dbError;
 
-    // 3. 로컬 스토리지 저장 및 이동
-    localStorage.setItem("maeum_prefs", JSON.stringify({ emotions, time, mbti, gender, age }));
-    router.push("/feed");
-
-  } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    alert("오류가 발생했습니다: " + message);
-  }
-};
+      localStorage.setItem("maeum_prefs", JSON.stringify({ emotions, time, mbti, gender, age }));
+      router.push("/feed");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      setSubmitError(message);
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col max-w-[430px] mx-auto px-6">
@@ -165,12 +172,22 @@ const finish = async () => {
             setMbti={setMbti} setGender={setGender} setAge={setAge}
           />
 
+          {submitError && (
+            <p className="font-sans text-xs text-rose-500 text-center mb-3 px-2">
+              {submitError}
+            </p>
+          )}
           <button
             type="button"
             onClick={finish}
-            className="w-full py-[18px] rounded-2xl bg-primary text-white font-sans text-sm font-semibold tracking-wider hover:opacity-90 active:scale-[0.98] shadow-lg shadow-primary/25 transition-all mb-8"
+            disabled={isSubmitting}
+            className={`w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider shadow-lg shadow-primary/25 transition-all mb-8 ${
+              isSubmitting
+                ? "bg-warm text-textMuted/50 cursor-not-allowed"
+                : "bg-primary text-white hover:opacity-90 active:scale-[0.98]"
+            }`}
           >
-            나만의 피드 시작하기 ✦
+            {isSubmitting ? "시작하는 중..." : "나만의 피드 시작하기 ✦"}
           </button>
         </div>
       )}
