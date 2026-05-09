@@ -1,12 +1,33 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/src/lib/supabase";
 import type { Quote } from "@/src/models/feed";
 
-const SESSION_LIMIT = 10; // 1회 세션당 보여줄 글귀 수
+const SESSION_LIMIT = 10;
+const MAX_SEEN = 100; // localStorage에 보관할 최대 seen quote 수 (FIFO)
 
-export function useFeedQuotes() {
+function getSeenIds(userId: string): string[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = localStorage.getItem(`maeum_seen_quotes_${userId}`);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+function addSeenIds(userId: string, newIds: string[]) {
+  if (typeof window === "undefined") return;
+  const current = getSeenIds(userId);
+  const merged = [...current, ...newIds];
+  localStorage.setItem(
+    `maeum_seen_quotes_${userId}`,
+    JSON.stringify(merged.slice(-MAX_SEEN))
+  );
+}
+
+export function useFeedQuotes(userId: string) {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -20,22 +41,37 @@ export function useFeedQuotes() {
 
     const fetchQuotes = async () => {
       const supabase = createClient();
-      const { data, error } = await supabase
-        .from("quotes")
-        .select("id, content, author, source, emotion_tags")
-        .eq("is_active", true)
-        .limit(SESSION_LIMIT);
+      const excludeIds = getSeenIds(userId);
 
-      if (!cancelled && !error && data) setQuotes(data);
+      const { data, error } = await supabase.rpc("get_random_quotes", {
+        p_exclude_ids: excludeIds,
+        p_limit: SESSION_LIMIT,
+      });
+
+      if (!cancelled && !error && data && data.length > 0) {
+        setQuotes(data);
+        addSeenIds(userId, data.map((q: Quote) => q.id));
+      } else if (!cancelled && !error && data?.length === 0 && excludeIds.length > 0) {
+        // seen 목록에 모든 문구가 들어간 경우 → 초기화 후 재시도
+        localStorage.removeItem(`maeum_seen_quotes_${userId}`);
+        const { data: freshData, error: freshError } = await supabase.rpc(
+          "get_random_quotes",
+          { p_exclude_ids: [], p_limit: SESSION_LIMIT }
+        );
+        if (!cancelled && !freshError && freshData) {
+          setQuotes(freshData);
+          addSeenIds(userId, freshData.map((q: Quote) => q.id));
+        }
+      }
+
       if (!cancelled) setIsLoading(false);
     };
 
     fetchQuotes();
     return () => { cancelled = true; };
-  }, [resetKey]);
+  }, [resetKey, userId]);
 
   const advance = useCallback(() => setCurrentIndex((i) => i + 1), []);
-
   const reset = useCallback(() => setResetKey((k) => k + 1), []);
 
   return {

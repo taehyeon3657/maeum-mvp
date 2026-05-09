@@ -19,7 +19,7 @@ export default function FeedStack({ userId }: Props) {
   const [tutorialDone, setTutorialDone] = useState(false);
 
   const { currentQuote, nextQuote, isLoading, isEmpty, isDepleted, advance, reset } =
-    useFeedQuotes();
+    useFeedQuotes(userId);
   const { isOnCooldown, remainingMs, startCooldown, clearCooldown } = useFeedCooldown();
   const { markCardStart, getContextSnapshot } = useSessionContext();
 
