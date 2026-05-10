@@ -9,6 +9,7 @@ import SwipeCard from "./SwipeCard";
 import QuoteCard from "./QuoteCard";
 import TutorialCard from "./TutorialCard";
 import CooldownScreen from "./CooldownScreen";
+import ShareScreen from "./ShareScreen";
 import type { SwipeDirection } from "@/src/models/feed";
 
 interface Props {
@@ -17,19 +18,31 @@ interface Props {
 
 export default function FeedStack({ userId }: Props) {
   const [tutorialDone, setTutorialDone] = useState(false);
+  const [showShare, setShowShare] = useState(false);
 
   const { currentQuote, nextQuote, isLoading, isEmpty, isDepleted, quoteProgress, advance, reset } =
     useFeedQuotes(userId);
   const { isOnCooldown, remainingMs, startCooldown, clearCooldown } = useFeedCooldown();
   const { markCardStart, getContextSnapshot } = useSessionContext();
 
-  const cooldownStartedRef = useRef(false);
+  // 세션 시작 시각 (튜토리얼 완료 후 첫 카드 등장 시점)
+  const sessionStartRef = useRef<number | null>(null);
+  const [sessionDurationMs, setSessionDurationMs] = useState(0);
+
   useEffect(() => {
-    if (isDepleted && !cooldownStartedRef.current) {
-      cooldownStartedRef.current = true;
-      startCooldown();
+    if (tutorialDone && currentQuote && sessionStartRef.current === null) {
+      sessionStartRef.current = Date.now();
     }
-  }, [isDepleted, startCooldown]);
+  }, [tutorialDone, currentQuote]);
+
+  // 10개 완료 → 공유 화면 표시 (쿨다운 바로 시작하지 않음)
+  useEffect(() => {
+    if (isDepleted && !showShare && !isOnCooldown) {
+      const elapsed = sessionStartRef.current ? Date.now() - sessionStartRef.current : 0;
+      setSessionDurationMs(elapsed);
+      setShowShare(true);
+    }
+  }, [isDepleted, showShare, isOnCooldown]);
 
   useEffect(() => {
     markCardStart();
@@ -42,11 +55,21 @@ export default function FeedStack({ userId }: Props) {
     saveUserQuote({ user_id: userId, quote_id: currentQuote.id, action: direction, ...ctx });
   };
 
+  const handleShareContinue = () => {
+    setShowShare(false);
+    sessionStartRef.current = null;
+    startCooldown();
+  };
+
   const handleResume = () => {
-    cooldownStartedRef.current = false;
     clearCooldown();
     reset();
   };
+
+  // 공유 화면 (10개 완료 직후)
+  if (showShare) {
+    return <ShareScreen sessionDurationMs={sessionDurationMs} onContinue={handleShareContinue} />;
+  }
 
   if (isOnCooldown || isDepleted) {
     return <CooldownScreen remainingMs={remainingMs} onResume={handleResume} />;

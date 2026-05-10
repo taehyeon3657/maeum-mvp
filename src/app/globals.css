@@ -38,3 +38,34 @@
   height: 100vh;   /* 구형 브라우저 fallback */
   height: 100dvh;  /* iOS Safari 등 모바일 브라우저 주소창 제외 */
 }
+
+/* 공유 화면 파티클 */
+@keyframes shareParticleFall {
+  0%   { transform: translateY(-20px) rotate(0deg);  opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes sharePing {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  70%  { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes shareIconPop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  60%  { transform: scale(1.12); }
+  80%  { transform: scale(0.95); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.share-particle {
+  position: absolute;
+  animation: shareParticleFall linear infinite;
+  will-change: transform, opacity;
+}
+
+.share-icon-pop {
+  animation: shareIconPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
