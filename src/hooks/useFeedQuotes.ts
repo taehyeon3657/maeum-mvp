@@ -27,13 +27,17 @@ function addSeenIds(userId: string, newIds: string[]) {
   );
 }
 
-export function useFeedQuotes(userId: string) {
+export function useFeedQuotes(userId: string, skip = false) {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(!skip);
   const [resetKey, setResetKey] = useState(0);
 
   useEffect(() => {
+    if (skip) {
+      setIsLoading(false);
+      return;
+    }
     let cancelled = false;
     setIsLoading(true);
     setQuotes([]);
@@ -69,7 +73,7 @@ export function useFeedQuotes(userId: string) {
 
     fetchQuotes();
     return () => { cancelled = true; };
-  }, [resetKey, userId]);
+  }, [resetKey, userId, skip]);
 
   const advance = useCallback(() => setCurrentIndex((i) => i + 1), []);
   const reset = useCallback(() => setResetKey((k) => k + 1), []);

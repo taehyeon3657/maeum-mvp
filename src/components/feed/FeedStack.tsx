@@ -20,9 +20,9 @@ export default function FeedStack({ userId }: Props) {
   const [tutorialDone, setTutorialDone] = useState(false);
   const [showShare, setShowShare] = useState(false);
 
-  const { currentQuote, nextQuote, isLoading, isEmpty, isDepleted, quoteProgress, advance, reset } =
-    useFeedQuotes(userId);
   const { isOnCooldown, remainingMs, startCooldown, clearCooldown } = useFeedCooldown();
+  const { currentQuote, nextQuote, isLoading, isEmpty, isDepleted, quoteProgress, advance, reset } =
+    useFeedQuotes(userId, isOnCooldown);
   const { markCardStart, getContextSnapshot } = useSessionContext();
 
   // 세션 시작 시각 (튜토리얼 완료 후 첫 카드 등장 시점)
