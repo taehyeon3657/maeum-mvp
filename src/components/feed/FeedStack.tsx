@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useFeedQuotes } from "@/src/hooks/useFeedQuotes";
 import { useFeedCooldown } from "@/src/hooks/useFeedCooldown";
 import { useSessionContext } from "@/src/hooks/useSessionContext";
@@ -67,8 +67,19 @@ export default function FeedStack({ userId }: Props) {
   };
 
   // 공유 화면 (10개 완료 직후)
+  // iOS WebKit에서 flex-1+overflow-y:auto가 동작하지 않으므로
+  // position:absolute inset:0 패턴으로 스크롤 컨테이너를 별도 구성
   if (showShare) {
-    return <ShareScreen sessionDurationMs={sessionDurationMs} onContinue={handleShareContinue} />;
+    return (
+      <div className="flex-1 min-h-0 relative overflow-hidden">
+        <div
+          className="absolute inset-0 overflow-y-auto"
+          style={{ WebkitOverflowScrolling: "touch" } as React.CSSProperties}
+        >
+          <ShareScreen sessionDurationMs={sessionDurationMs} onContinue={handleShareContinue} />
+        </div>
+      </div>
+    );
   }
 
   if (isOnCooldown || isDepleted) {
@@ -103,9 +114,9 @@ export default function FeedStack({ userId }: Props) {
   const hasBackCard = tutorialDone ? !!nextQuote : !!currentQuote;
 
   return (
-    <div className="flex-1 min-h-0 flex flex-col">
+    <div className="flex-1 min-h-0 flex flex-col overflow-x-hidden">
       {/* 카드 스택 영역 */}
-      <div className="flex-1 min-h-0 relative mx-4 mt-3 mb-2">
+      <div className="flex-1 min-h-0 relative mx-4 mt-3 mb-2 overflow-hidden">
         {/* 세 번째 배경 카드 */}
         {hasBackCard && (
           <div
