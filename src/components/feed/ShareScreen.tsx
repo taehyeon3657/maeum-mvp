@@ -59,9 +59,9 @@ export default function ShareScreen({ sessionDurationMs, onContinue }: Props) {
   const duration = formatDuration(sessionDurationMs);
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center gap-0 px-6 animate-fade-in overflow-hidden">
+    <div className="flex-1 flex flex-col items-center px-6 pt-8 pb-8 animate-fade-in overflow-y-auto min-h-0">
       {/* 파티클 효과 */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden>
+      <div className="fixed inset-0 pointer-events-none overflow-hidden" aria-hidden>
         {PARTICLES.map((p, i) => (
           <div
             key={i}
