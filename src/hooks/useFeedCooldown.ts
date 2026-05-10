@@ -28,12 +28,8 @@ export function formatCountdown(ms: number): string {
 }
 
 export function useFeedCooldown() {
-  const [remainingMs, setRemainingMs] = useState(0);
-
-  // 클라이언트에서만 초기화
-  useEffect(() => {
-    setRemainingMs(getRemainingMs());
-  }, []);
+  // lazy initializer: 첫 렌더부터 localStorage 값으로 시작 → 하이드레이션 전에도 정확
+  const [remainingMs, setRemainingMs] = useState(() => getRemainingMs());
 
   // 쿨다운 진행 중일 때 1초마다 갱신
   useEffect(() => {
