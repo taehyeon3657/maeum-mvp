@@ -4,13 +4,14 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   Legend, ResponsiveContainer, Cell,
 } from "recharts";
-import type { AgeRow } from "@/src/hooks/useInsights";
+import type { AgeRow, TopQuote } from "@/src/hooks/useInsights";
+import TopQuoteCard from "./TopQuoteCard";
 
 const AGE_ORDER = ["10대", "20대", "30대", "40대", "50대 이상", "미입력"];
 
-interface Props { data: AgeRow[] }
+interface Props { data: AgeRow[]; topQuotes: TopQuote[] }
 
-export default function AgeChart({ data }: Props) {
+export default function AgeChart({ data, topQuotes }: Props) {
   const sorted = [...data].sort(
     (a, b) => AGE_ORDER.indexOf(a.age_group) - AGE_ORDER.indexOf(b.age_group)
   );
@@ -64,6 +65,8 @@ export default function AgeChart({ data }: Props) {
           </Bar>
         </BarChart>
       </ResponsiveContainer>
+
+      <TopQuoteCard quotes={topQuotes} label="연령대별 최애 글귀" />
     </section>
   );
 }

@@ -4,7 +4,8 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Cell, LabelList,
 } from "recharts";
-import type { MbtiRow } from "@/src/hooks/useInsights";
+import type { MbtiRow, TopQuote } from "@/src/hooks/useInsights";
+import TopQuoteCard from "./TopQuoteCard";
 
 const MBTI_GROUP_COLOR: Record<string, string> = {
   // 분석가 (NT)
@@ -17,9 +18,9 @@ const MBTI_GROUP_COLOR: Record<string, string> = {
   ISTP: "#e07a5f", ISFP: "#e07a5f", ESTP: "#e07a5f", ESFP: "#e07a5f",
 };
 
-interface Props { data: MbtiRow[] }
+interface Props { data: MbtiRow[]; topQuotes: TopQuote[] }
 
-export default function MbtiChart({ data }: Props) {
+export default function MbtiChart({ data, topQuotes }: Props) {
   const chartData = data.slice(0, 12).map((r) => ({
     name: r.mbti,
     "호감률(%)": Number(r.like_rate),
@@ -81,6 +82,8 @@ export default function MbtiChart({ data }: Props) {
           </Bar>
         </BarChart>
       </ResponsiveContainer>
+
+      <TopQuoteCard quotes={topQuotes.slice(0, 3)} label="MBTI별 최애 글귀 TOP 3" badgeColor="#9b59b6" />
     </section>
   );
 }

@@ -4,11 +4,12 @@ import {
   RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
   ResponsiveContainer, Tooltip,
 } from "recharts";
-import type { CategoryRow } from "@/src/hooks/useInsights";
+import type { CategoryRow, TopQuote } from "@/src/hooks/useInsights";
+import TopQuoteCard from "./TopQuoteCard";
 
-interface Props { data: CategoryRow[] }
+interface Props { data: CategoryRow[]; topQuotes: TopQuote[] }
 
-export default function CategoryChart({ data }: Props) {
+export default function CategoryChart({ data, topQuotes }: Props) {
   const total = data.reduce((s, r) => s + r.like_count + r.dislike_count, 0) || 1;
 
   const radarData = data.map((r) => ({
@@ -79,6 +80,8 @@ export default function CategoryChart({ data }: Props) {
           );
         })}
       </div>
+
+      <TopQuoteCard quotes={topQuotes} label="카테고리별 최애 글귀" badgeColor="#2d6a4f" />
     </section>
   );
 }

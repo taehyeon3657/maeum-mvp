@@ -3,7 +3,8 @@
 import {
   PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
-import type { GenderRow } from "@/src/hooks/useInsights";
+import type { GenderRow, TopQuote } from "@/src/hooks/useInsights";
+import TopQuoteCard from "./TopQuoteCard";
 
 const GENDER_COLOR: Record<string, string> = {
   "남성": "#4a90d9",
@@ -12,9 +13,9 @@ const GENDER_COLOR: Record<string, string> = {
   "논바이너리": "#9b59b6",
 };
 
-interface Props { data: GenderRow[] }
+interface Props { data: GenderRow[]; topQuotes: TopQuote[] }
 
-export default function GenderChart({ data }: Props) {
+export default function GenderChart({ data, topQuotes }: Props) {
   const likeData = data
     .filter((r) => r.like_count > 0)
     .map((r) => ({
@@ -109,6 +110,8 @@ export default function GenderChart({ data }: Props) {
           </div>
         </div>
       </div>
+
+      <TopQuoteCard quotes={topQuotes} label="성별 최애 글귀" badgeColor="#4a90d9" />
     </section>
   );
 }

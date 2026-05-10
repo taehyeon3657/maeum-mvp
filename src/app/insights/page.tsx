@@ -85,15 +85,15 @@ export default function InsightsPage() {
             {/* 섹션 라벨 */}
             <SectionLabel emoji="🙋" title="누가 공감했을까?" subtitle="연령·성별·MBTI 별로 살펴봐요" />
 
-            {data.age.length > 0 && <AgeChart data={data.age} />}
+            {data.age.length > 0 && <AgeChart data={data.age} topQuotes={data.topQuoteByAge} />}
 
-            {data.gender.length > 0 && <GenderChart data={data.gender} />}
+            {data.gender.length > 0 && <GenderChart data={data.gender} topQuotes={data.topQuoteByGender} />}
 
-            {data.mbti.length > 0 && <MbtiChart data={data.mbti} />}
+            {data.mbti.length > 0 && <MbtiChart data={data.mbti} topQuotes={data.topQuoteByMbti} />}
 
             <SectionLabel emoji="📚" title="어떤 주제가 인기였을까?" subtitle="카테고리별 호감 비율이에요" />
 
-            {data.category.length > 0 && <CategoryChart data={data.category} />}
+            {data.category.length > 0 && <CategoryChart data={data.category} topQuotes={data.topQuoteByCategory} />}
 
             <SectionLabel emoji="🕐" title="언제 가장 많이 읽었을까?" subtitle="시간대별 반응 흐름이에요" />
 
