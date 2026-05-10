@@ -70,6 +70,26 @@ export default function CooldownScreen({ remainingMs, onResume }: Props) {
             <div className="w-12 h-px bg-primary/15 mt-1" />
           </div>
 
+          {/* 인사이트 진입 */}
+          <div
+            className="w-full rounded-2xl px-4 py-3.5 flex items-center gap-3 active:scale-[0.98] transition-all cursor-pointer"
+            style={{ background: "linear-gradient(120deg, rgba(224,122,95,0.10) 0%, rgba(45,106,79,0.08) 100%)", border: "1px solid rgba(224,122,95,0.18)" }}
+            onClick={() => (window.location.href = "/insights")}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === "Enter" && (window.location.href = "/insights")}
+          >
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-none"
+              style={{ background: "rgba(224,122,95,0.12)" }}>
+              <span className="text-lg">📊</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-sans text-[12px] font-bold text-textMain leading-tight">모두의 취향 인사이트 보기</p>
+              <p className="font-sans text-[10px] text-textMuted leading-tight mt-0.5">기다리는 동안 살펴볼까요?</p>
+            </div>
+            <span className="text-primary text-base flex-none">→</span>
+          </div>
+
           <p className="font-sans text-xs text-textMuted/70 tracking-wide">
             1시간 뒤에 또 보러오세요 💛
           </p>
