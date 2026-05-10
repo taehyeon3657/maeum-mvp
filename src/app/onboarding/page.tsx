@@ -26,7 +26,10 @@ export default function OnboardingPage() {
     const checkAuth = async () => {
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
-      if (user) setUserId(user.id);
+      if (user) {
+        window.history.pushState(null, "", "/feed");
+        setUserId(user.id);
+      }
     };
     checkAuth();
   }, []);
@@ -63,7 +66,8 @@ export default function OnboardingPage() {
 
       localStorage.setItem("maeum_prefs", JSON.stringify({ emotions, time, mbti, gender, age }));
 
-      // router.push 대신 인라인 렌더링으로 전환 (URL 변경 없음)
+      // URL은 /feed로 조용히 변경하되 브라우저 내비게이션(로딩/깜빡임) 없이 인라인 렌더링
+      window.history.pushState(null, "", "/feed");
       setUserId(user.id);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
