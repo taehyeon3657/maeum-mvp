@@ -1,17 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import EmotionGrid from "@/src/components/onboarding/EmotionGrid";
 import TimeList from "@/src/components/onboarding/TimeList";
 import ProfileForm from "@/src/components/onboarding/ProfileForm";
+import FeedStack from "@/src/components/feed/FeedStack";
 import { createClient } from "@/src/lib/supabase";
 
 const TOTAL = 3;
 
 export default function OnboardingPage() {
-  const router = useRouter();
-
   const [step, setStep] = useState(1);
   const [emotions, setEmotions] = useState<string[]>([]);
   const [time, setTime] = useState("");
@@ -21,14 +19,17 @@ export default function OnboardingPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
+  // 인증된 userId가 있으면 피드를 인라인 렌더링 (URL 변경 없음)
+  const [userId, setUserId] = useState<string | null>(null);
+
   useEffect(() => {
     const checkAuth = async () => {
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
-      if (user) router.replace("/feed");
+      if (user) setUserId(user.id);
     };
     checkAuth();
-  }, [router]);
+  }, []);
 
   const handleEmotionNext = (selectedEmotions: string[]) => {
     setEmotions(selectedEmotions);
@@ -61,13 +62,34 @@ export default function OnboardingPage() {
       if (dbError) throw dbError;
 
       localStorage.setItem("maeum_prefs", JSON.stringify({ emotions, time, mbti, gender, age }));
-      router.push("/feed");
+
+      // router.push 대신 인라인 렌더링으로 전환 (URL 변경 없음)
+      setUserId(user.id);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       setSubmitError(message);
       setIsSubmitting(false);
     }
   };
+
+  // 피드 화면 — URL은 /onboarding 그대로, 피드 컨텐츠만 교체
+  if (userId) {
+    return (
+      <div className="h-dvh flex flex-col bg-background overflow-x-hidden">
+        <header className="flex-none flex items-center justify-center px-6 pt-8 pb-2">
+          <div className="flex flex-col items-center gap-0.5">
+            <h1 className="font-quote text-[1.5rem] text-primary font-extrabold tracking-[0.12em]">마음</h1>
+            <div className="flex items-center gap-2">
+              <div className="h-px w-8 bg-primary/20" />
+              <span className="font-sans text-[10px] text-textMuted/60 tracking-[0.2em]">MAEUM</span>
+              <div className="h-px w-8 bg-primary/20" />
+            </div>
+          </div>
+        </header>
+        <FeedStack userId={userId} />
+      </div>
+    );
+  }
 
   return (
     <div
