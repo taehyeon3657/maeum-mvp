@@ -48,6 +48,8 @@ export default function FeedStack({ userId }: Props) {
     if (isLastCard) {
       const elapsed = sessionStartRef.current ? Date.now() - sessionStartRef.current : 0;
       setSessionDurationMs(elapsed);
+      // 마지막 카드 스와이프 즉시 쿨다운 시작 — 버튼 클릭 없이 이탈해도 쿨다운 유지
+      startCooldown();
       setShowShare(true);
     }
   };
@@ -55,7 +57,6 @@ export default function FeedStack({ userId }: Props) {
   const handleShareContinue = () => {
     setShowShare(false);
     sessionStartRef.current = null;
-    startCooldown();
   };
 
   const handleResume = () => {
