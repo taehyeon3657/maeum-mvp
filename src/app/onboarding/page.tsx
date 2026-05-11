@@ -52,7 +52,8 @@ export default function OnboardingPage() {
       const user = authData.user;
       if (!user) throw new Error("유저 생성 실패");
 
-      const { error: dbError } = await supabase.from("users").upsert({
+      // 선호도 저장 실패해도 피드 진행 (non-blocking)
+      supabase.from("users").upsert({
         id: user.id,
         pref_emotions: emotions,
         pref_time: time,
@@ -60,9 +61,9 @@ export default function OnboardingPage() {
         gender: gender,
         age_group: age,
         onboarded_at: new Date().toISOString(),
+      }).then(({ error: dbError }) => {
+        if (dbError) console.warn("선호도 저장 실패:", dbError.message);
       });
-
-      if (dbError) throw dbError;
 
       localStorage.setItem("maeum_prefs", JSON.stringify({ emotions, time, mbti, gender, age }));
 

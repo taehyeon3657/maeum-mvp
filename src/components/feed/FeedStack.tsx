@@ -21,7 +21,7 @@ export default function FeedStack({ userId }: Props) {
   const [showShare, setShowShare] = useState(false);
 
   const { isOnCooldown, remainingMs, startCooldown, clearCooldown } = useFeedCooldown();
-  const { currentQuote, nextQuote, isLoading, isEmpty, isDepleted, quoteProgress, advance, reset } =
+  const { currentQuote, nextQuote, isLoading, hasError, isEmpty, isDepleted, quoteProgress, advance, reset } =
     useFeedQuotes(userId, isOnCooldown);
   const { markCardStart, getContextSnapshot } = useSessionContext();
 
@@ -35,15 +35,6 @@ export default function FeedStack({ userId }: Props) {
     }
   }, [tutorialDone, currentQuote]);
 
-  // 10개 완료 → 공유 화면 표시 (쿨다운 바로 시작하지 않음)
-  useEffect(() => {
-    if (isDepleted && !showShare && !isOnCooldown) {
-      const elapsed = sessionStartRef.current ? Date.now() - sessionStartRef.current : 0;
-      setSessionDurationMs(elapsed);
-      setShowShare(true);
-    }
-  }, [isDepleted, showShare, isOnCooldown]);
-
   useEffect(() => {
     markCardStart();
   }, [tutorialDone, currentQuote?.id, markCardStart]);
@@ -51,8 +42,14 @@ export default function FeedStack({ userId }: Props) {
   const handleQuoteSwipe = async (direction: SwipeDirection) => {
     if (!currentQuote) return;
     const ctx = getContextSnapshot();
-    advance();
+    const isLastCard = quoteProgress.current === quoteProgress.total - 1;
     saveUserQuote({ user_id: userId, quote_id: currentQuote.id, action: direction, ...ctx });
+    advance();
+    if (isLastCard) {
+      const elapsed = sessionStartRef.current ? Date.now() - sessionStartRef.current : 0;
+      setSessionDurationMs(elapsed);
+      setShowShare(true);
+    }
   };
 
   const handleShareContinue = () => {
@@ -102,11 +99,43 @@ export default function FeedStack({ userId }: Props) {
     );
   }
 
+  if (hasError) {
+    return (
+      <div className="flex-1 flex flex-col items-center justify-center gap-4 px-8 text-center">
+        <p className="font-quote text-2xl text-textMain">잠시 연결이 끊겼어요</p>
+        <p className="font-sans text-sm text-textMuted">글귀를 불러오지 못했어요.</p>
+        <button
+          onClick={reset}
+          className="mt-2 px-6 py-3 rounded-2xl bg-primary text-white font-sans text-sm font-semibold shadow-lg shadow-primary/25 hover:opacity-90 active:scale-[0.98] transition-all"
+        >
+          다시 시도하기
+        </button>
+      </div>
+    );
+  }
+
   if (isEmpty) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center gap-3 px-8 text-center">
         <p className="font-quote text-3xl text-textMain">준비 중이에요</p>
         <p className="font-sans text-sm text-textMuted">아직 글귀가 없어요. 조금만 기다려 주세요.</p>
+      </div>
+    );
+  }
+
+  // tutorialDone이 true인데 currentQuote가 없는 비정상 상태 방지
+  if (tutorialDone && !currentQuote && !isDepleted) {
+    return (
+      <div className="flex-1 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="relative w-16 h-16">
+            <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping" />
+            <div className="absolute inset-2 rounded-full bg-primary/10" />
+          </div>
+          <p className="font-quote text-xl text-textMuted animate-pulse">
+            글귀를 불러오는 중...
+          </p>
+        </div>
       </div>
     );
   }
