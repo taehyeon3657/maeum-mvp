@@ -16,7 +16,15 @@ async function initFCM() {
     const messaging = await getFirebaseMessaging();
     if (!messaging) return;
 
-    const token = await getToken(messaging, { vapidKey: VAPID_KEY });
+    let swRegistration: ServiceWorkerRegistration | undefined;
+    if ("serviceWorker" in navigator) {
+      swRegistration = await navigator.serviceWorker.register(
+        "/firebase-messaging-sw.js",
+        { scope: "/" }
+      );
+    }
+
+    const token = await getToken(messaging, { vapidKey: VAPID_KEY, serviceWorkerRegistration: swRegistration });
     console.log("✅ FCM 토큰:", token);
 
     onMessage(messaging, (payload) => {
