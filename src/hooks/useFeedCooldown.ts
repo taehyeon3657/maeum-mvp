@@ -17,6 +17,23 @@ function getRemainingMs(): number {
   }
 }
 
+async function showCooldownNotification() {
+  if (typeof window === "undefined") return;
+  if (Notification.permission !== "granted") return;
+  if (!("serviceWorker" in navigator)) return;
+  try {
+    const reg = await navigator.serviceWorker.ready;
+    await reg.showNotification("새로운 글귀가 도착했어요!", {
+      body: "1시간이 지났어요. 새로운 10개의 문장을 만나보세요.",
+      icon: "/favicon.svg",
+      badge: "/favicon.svg",
+      data: { url: "/feed" },
+    });
+  } catch (e) {
+    console.error("[cooldown] 알림 오류:", e);
+  }
+}
+
 export function formatCountdown(ms: number): string {
   const totalSec = Math.ceil(ms / 1000);
   const h = Math.floor(totalSec / 3600);
@@ -28,10 +45,9 @@ export function formatCountdown(ms: number): string {
 }
 
 export function useFeedCooldown() {
-  // lazy initializer: 첫 렌더부터 localStorage 값으로 시작 → 하이드레이션 전에도 정확
   const [remainingMs, setRemainingMs] = useState(() => getRemainingMs());
 
-  // 쿨다운 진행 중일 때 1초마다 갱신
+  // 1초마다 카운트다운 갱신
   useEffect(() => {
     if (remainingMs <= 0) return;
     const timer = setInterval(() => {
@@ -40,7 +56,17 @@ export function useFeedCooldown() {
       if (next === 0) localStorage.removeItem(COOLDOWN_KEY);
     }, 1000);
     return () => clearInterval(timer);
-  }, [remainingMs > 0]); // on/off 전환 시에만 인터벌 재설정
+  }, [remainingMs > 0]);
+
+  // 쿨다운 시작/재진입 시 남은 시간 후 알림 예약
+  useEffect(() => {
+    if (remainingMs <= 0) return;
+    const remaining = getRemainingMs();
+    if (remaining <= 0) return;
+
+    const notifyTimer = setTimeout(showCooldownNotification, remaining);
+    return () => clearTimeout(notifyTimer);
+  }, [remainingMs > 0]);
 
   const startCooldown = useCallback(() => {
     localStorage.setItem(COOLDOWN_KEY, JSON.stringify({ completedAt: Date.now() }));
