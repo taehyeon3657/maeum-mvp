@@ -3,8 +3,31 @@
 import { useEffect, useState, useCallback } from "react";
 import { getToken, onMessage } from "firebase/messaging";
 import { getFirebaseMessaging } from "@/src/lib/firebase";
+import { createClient } from "@/src/lib/supabase";
 
 const VAPID_KEY = process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY;
+
+async function saveTokenToSupabase(token: string) {
+  const supabase = createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return;
+
+  await supabase
+    .from("users")
+    .update({ fcm_token: token, last_active_at: new Date().toISOString() })
+    .eq("id", user.id);
+}
+
+export async function updateLastActive() {
+  const supabase = createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return;
+
+  await supabase
+    .from("users")
+    .update({ last_active_at: new Date().toISOString() })
+    .eq("id", user.id);
+}
 
 export function useFCM() {
   const [token, setToken] = useState<string | null>(null);
@@ -25,14 +48,13 @@ export function useFCM() {
     if (result !== "granted") return;
 
     const fcmToken = await getToken(messaging, { vapidKey: VAPID_KEY });
-    console.log("✅ FCM 토큰 (Firebase 콘솔 테스트에 붙여넣기):", fcmToken);
+    console.log("✅ FCM 토큰:", fcmToken);
     setToken(fcmToken);
+    await saveTokenToSupabase(fcmToken);
 
-    // 포그라운드 수신 (앱이 열려있을 때)
     onMessage(messaging, (payload) => {
       console.log("📩 포그라운드 메시지:", payload);
       const { title, body } = payload.notification ?? {};
-      // TODO: toast 라이브러리로 교체 권장
       if (title) window.alert(`${title}\n${body ?? ""}`);
     });
   }, []);
