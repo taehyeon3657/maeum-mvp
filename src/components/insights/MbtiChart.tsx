@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { memo, useState } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Cell, LabelList,
@@ -23,12 +23,69 @@ const MBTI_GROUP: Record<string, string> = {
 
 const RANK_MEDAL: Record<number, string> = { 1: "🥇", 2: "🥈", 3: "🥉" };
 
+type ChartEntry = { name: string; rate: number; like_count: number; color: string };
+
+// 차트를 memo로 분리 — 아코디언 state가 바뀌어도 이 컴포넌트는 재렌더링되지 않음
+const MbtiBarChart = memo(function MbtiBarChart({
+  chartData,
+  height,
+}: {
+  chartData: ChartEntry[];
+  height: number;
+}) {
+  return (
+    <div style={{ height }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          data={chartData}
+          layout="vertical"
+          barCategoryGap="20%"
+          margin={{ left: 4, right: 52, top: 4, bottom: 4 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" stroke="#f0ebe1" horizontal={false} />
+          <XAxis
+            type="number"
+            domain={[0, 100]}
+            tick={{ fontSize: 10, fill: "#868e96" }}
+            axisLine={false}
+            tickLine={false}
+            unit="%"
+          />
+          <YAxis
+            type="category"
+            dataKey="name"
+            width={38}
+            tick={{ fontSize: 11, fill: "#37352f", fontWeight: 700, fontFamily: "var(--font-nsr)" }}
+            axisLine={false}
+            tickLine={false}
+          />
+          <Tooltip
+            contentStyle={{ borderRadius: 12, border: "1px solid #f0ebe1", fontSize: 12 }}
+            formatter={(v) => [`${v}%`, "호감률"]}
+          />
+          <Bar dataKey="rate" radius={[0, 6, 6, 0]} maxBarSize={16}>
+            {chartData.map((entry, i) => (
+              <Cell key={i} fill={entry.color} fillOpacity={i === 0 ? 1 : 0.6} />
+            ))}
+            <LabelList
+              dataKey="rate"
+              position="right"
+              formatter={(v: unknown) => `${v}%`}
+              style={{ fontSize: 10, fill: "#868e96", fontFamily: "var(--font-nsr)" }}
+            />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+});
+
 interface Props { data: MbtiRow[]; topQuotes: TopQuote[] }
 
 export default function MbtiChart({ data, topQuotes }: Props) {
   const [openMbti, setOpenMbti] = useState<string | null>(null);
 
-  const chartData = data.map((r) => ({
+  const chartData: ChartEntry[] = data.map((r) => ({
     name: r.mbti,
     rate: Number(r.like_rate),
     like_count: r.like_count,
@@ -38,7 +95,6 @@ export default function MbtiChart({ data, topQuotes }: Props) {
   const chartHeight = Math.max(300, chartData.length * 34 + 50);
   const top = chartData[0];
 
-  // group quotes by MBTI
   const quotesByMbti: Record<string, TopQuote[]> = {};
   topQuotes.forEach((q) => {
     if (!quotesByMbti[q.group]) quotesByMbti[q.group] = [];
@@ -83,55 +139,12 @@ export default function MbtiChart({ data, topQuotes }: Props) {
         ))}
       </div>
 
-      {/* 바 차트 */}
-      <div style={{ height: chartHeight }}>
-      <ResponsiveContainer width="100%" height="100%" debounce={200}>
-        <BarChart
-          data={chartData}
-          layout="vertical"
-          barCategoryGap="20%"
-          margin={{ left: 4, right: 52, top: 4, bottom: 4 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke="#f0ebe1" horizontal={false} />
-          <XAxis
-            type="number"
-            domain={[0, 100]}
-            tick={{ fontSize: 10, fill: "#868e96" }}
-            axisLine={false}
-            tickLine={false}
-            unit="%"
-          />
-          <YAxis
-            type="category"
-            dataKey="name"
-            width={38}
-            tick={{ fontSize: 11, fill: "#37352f", fontWeight: 700, fontFamily: "var(--font-nsr)" }}
-            axisLine={false}
-            tickLine={false}
-          />
-          <Tooltip
-            contentStyle={{ borderRadius: 12, border: "1px solid #f0ebe1", fontSize: 12 }}
-            formatter={(v) => [`${v}%`, "호감률"]}
-          />
-          <Bar dataKey="rate" radius={[0, 6, 6, 0]} maxBarSize={16}>
-            {chartData.map((entry, i) => (
-              <Cell key={i} fill={entry.color} fillOpacity={i === 0 ? 1 : 0.6} />
-            ))}
-            <LabelList
-              dataKey="rate"
-              position="right"
-              formatter={(v: unknown) => `${v}%`}
-              style={{ fontSize: 10, fill: "#868e96", fontFamily: "var(--font-nsr)" }}
-            />
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
-      </div>
+      {/* 바 차트 (memo 컴포넌트 — 아코디언 토글로 재렌더링되지 않음) */}
+      <MbtiBarChart chartData={chartData} height={chartHeight} />
 
       {/* MBTI별 최애 글귀 아코디언 */}
       {hasAnyQuotes && (
         <div className="mt-6">
-          {/* 섹션 구분선 */}
           <div className="flex items-center gap-2 mb-3">
             <div className="h-px flex-1" style={{ background: "rgba(224,122,95,0.15)" }} />
             <p className="font-sans text-[10px] tracking-[0.18em] uppercase" style={{ color: "rgba(224,122,95,0.55)" }}>
@@ -159,7 +172,6 @@ export default function MbtiChart({ data, topQuotes }: Props) {
                     boxShadow: isOpen ? `0 4px 16px ${color}18` : "none",
                   }}
                 >
-                  {/* 아코디언 헤더 */}
                   <button
                     className="w-full flex items-center justify-between px-4 py-3 text-left transition-colors duration-150"
                     style={{ background: isOpen ? `${color}14` : `${color}08` }}
@@ -199,7 +211,6 @@ export default function MbtiChart({ data, topQuotes }: Props) {
                     </div>
                   </button>
 
-                  {/* 아코디언 본문 */}
                   {isOpen && (
                     <div
                       className="px-3 pt-2 pb-3 flex flex-col gap-2"
@@ -246,7 +257,6 @@ export default function MbtiChart({ data, topQuotes }: Props) {
             })}
           </div>
 
-          {/* 하단 안내 */}
           <p className="font-sans text-[10px] text-textMuted/50 text-center mt-3">
             각 MBTI를 탭하면 최애 글귀를 볼 수 있어요
           </p>
