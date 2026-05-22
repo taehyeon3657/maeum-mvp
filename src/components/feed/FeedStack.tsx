@@ -10,7 +10,7 @@ import QuoteCard from "./QuoteCard";
 import TutorialCard from "./TutorialCard";
 import CooldownScreen from "./CooldownScreen";
 import ShareScreen from "./ShareScreen";
-import type { SwipeDirection } from "@/src/models/feed";
+import type { Quote, SwipeDirection } from "@/src/models/feed";
 
 interface Props {
   userId: string;
@@ -19,6 +19,7 @@ interface Props {
 export default function FeedStack({ userId }: Props) {
   const [tutorialDone, setTutorialDone] = useState(false);
   const [showShare, setShowShare] = useState(false);
+  const [likedQuotes, setLikedQuotes] = useState<Quote[]>([]);
 
   const { isOnCooldown, remainingMs, startCooldown, clearCooldown } = useFeedCooldown();
   const { currentQuote, nextQuote, isLoading, hasError, isEmpty, isDepleted, quoteProgress, advance, reset } =
@@ -44,11 +45,11 @@ export default function FeedStack({ userId }: Props) {
     const ctx = getContextSnapshot();
     const isLastCard = quoteProgress.current === quoteProgress.total - 1;
     saveUserQuote({ user_id: userId, quote_id: currentQuote.id, action: direction, ...ctx });
+    if (direction === "like") setLikedQuotes((prev) => [...prev, currentQuote]);
     advance();
     if (isLastCard) {
       const elapsed = sessionStartRef.current ? Date.now() - sessionStartRef.current : 0;
       setSessionDurationMs(elapsed);
-      // 마지막 카드 스와이프 즉시 쿨다운 시작 — 버튼 클릭 없이 이탈해도 쿨다운 유지
       startCooldown();
       setShowShare(true);
     }
@@ -56,6 +57,7 @@ export default function FeedStack({ userId }: Props) {
 
   const handleShareContinue = () => {
     setShowShare(false);
+    setLikedQuotes([]);
     sessionStartRef.current = null;
   };
 
@@ -74,7 +76,11 @@ export default function FeedStack({ userId }: Props) {
           className="absolute inset-0 overflow-y-auto"
           style={{ WebkitOverflowScrolling: "touch" } as React.CSSProperties}
         >
-          <ShareScreen sessionDurationMs={sessionDurationMs} onContinue={handleShareContinue} />
+          <ShareScreen
+            sessionDurationMs={sessionDurationMs}
+            onContinue={handleShareContinue}
+            likedQuotes={likedQuotes}
+          />
         </div>
       </div>
     );

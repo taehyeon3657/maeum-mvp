@@ -1,10 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import type { Quote } from "@/src/models/feed";
+import { generateShareImage, shareImage } from "@/src/lib/generateShareImage";
 
 interface Props {
   sessionDurationMs: number;
   onContinue: () => void;
+  likedQuotes: Quote[];
 }
 
 function formatDuration(ms: number): string {
@@ -17,14 +20,37 @@ function formatDuration(ms: number): string {
   return "잠깐";
 }
 
-export default function ShareScreen({ sessionDurationMs, onContinue }: Props) {
+export default function ShareScreen({ sessionDurationMs, onContinue, likedQuotes }: Props) {
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
   const [shareState, setShareState] = useState<"idle" | "done">("idle");
+  const [imageState, setImageState] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // 좋아요한 글귀 중 첫 번째, 없으면 null
+  const shareableQuote = likedQuotes[0] ?? null;
+
+  const handleImageShare = async () => {
+    if (!shareableQuote || imageState === "loading") return;
+    setImageState("loading");
+    try {
+      const idSum = [...shareableQuote.id].reduce((a, c) => a + c.charCodeAt(0), 0);
+      const blob = await generateShareImage({
+        content: shareableQuote.content,
+        author: shareableQuote.author,
+        source: shareableQuote.source,
+        gradientIndex: idSum,
+      });
+      await shareImage(blob, shareableQuote);
+      setImageState("done");
+    } catch {
+      setImageState("error");
+      setTimeout(() => setImageState("idle"), 2500);
+    }
+  };
 
   const shareUrl = mounted ? window.location.origin : "";
   const shareText = "오늘 마음에서 10개의 글귀를 만났어요 ✨\n글귀 한 장으로 마음을 채워보세요.";
@@ -125,6 +151,43 @@ export default function ShareScreen({ sessionDurationMs, onContinue }: Props) {
           마음을 나누고 싶다면
         </p>
 
+        {/* 이미지로 공유 — 좋아요한 글귀가 있을 때만 */}
+        {shareableQuote && (
+          <button
+            onClick={handleImageShare}
+            disabled={imageState === "loading"}
+            className="w-full flex items-center justify-center gap-2.5 py-4 rounded-2xl transition-all active:scale-[0.97] disabled:opacity-60"
+            style={{
+              background:
+                imageState === "done"
+                  ? "#E07A5F"
+                  : "linear-gradient(135deg, rgba(224,122,95,0.12) 0%, rgba(244,162,97,0.12) 100%)",
+              border: "1.5px solid rgba(224,122,95,0.3)",
+              color: imageState === "done" ? "white" : "#E07A5F",
+            }}
+          >
+            <span className="text-lg">
+              {imageState === "loading" ? "⏳" : imageState === "done" ? "✓" : imageState === "error" ? "✕" : "🖼"}
+            </span>
+            <div className="flex flex-col items-start">
+              <span className="font-sans text-sm font-bold tracking-wide">
+                {imageState === "loading"
+                  ? "이미지 만드는 중..."
+                  : imageState === "done"
+                  ? "공유 완료!"
+                  : imageState === "error"
+                  ? "다시 시도해 주세요"
+                  : "글귀 이미지로 공유하기"}
+              </span>
+              {imageState === "idle" && (
+                <span className="font-sans text-[10px] opacity-70">
+                  인스타그램 스토리에 올리기 좋아요
+                </span>
+              )}
+            </div>
+          </button>
+        )}
+
         {/* 미리보기 카드 */}
         <div className="w-full rounded-2xl bg-warm border border-primary/12 px-5 py-4 flex flex-col gap-1.5">
           <div className="flex items-center gap-2">
@@ -138,7 +201,7 @@ export default function ShareScreen({ sessionDurationMs, onContinue }: Props) {
           <p className="font-sans text-[11px] text-primary/70 truncate">{shareUrl}</p>
         </div>
 
-        {/* 공유 버튼들 */}
+        {/* 링크/텍스트 공유 버튼들 */}
         <div className="flex gap-2.5">
           {/* 링크 복사 */}
           <button
