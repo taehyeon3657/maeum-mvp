@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 import { getToken, onMessage } from "firebase/messaging";
 import { getFirebaseMessaging } from "@/src/lib/firebase";
+import { updateLastActive } from "@/src/hooks/useFCM";
 
 const VAPID_KEY = process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY;
 
@@ -36,6 +37,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     initFCM();
+    updateLastActive(); // 앱 접속 시 last_active_at 갱신
   }, []);
 
   return (
