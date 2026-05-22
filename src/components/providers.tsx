@@ -1,7 +1,26 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getToken, onMessage } from "firebase/messaging";
+import { getFirebaseMessaging } from "@/src/lib/firebase";
+
+const VAPID_KEY = process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY;
+
+async function initFCM() {
+  if (typeof Notification === "undefined") return;
+  if (Notification.permission !== "granted") return;
+
+  const messaging = await getFirebaseMessaging();
+  if (!messaging) return;
+
+  const token = await getToken(messaging, { vapidKey: VAPID_KEY });
+  console.log("✅ FCM 토큰 (Firebase 콘솔 테스트에 붙여넣기):", token);
+
+  onMessage(messaging, (payload) => {
+    console.log("📩 포그라운드 메시지:", payload);
+  });
+}
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -9,11 +28,15 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 60 * 1000, // 1분 동안은 데이터를 신선하다고 간주
+            staleTime: 60 * 1000,
           },
         },
       }),
   );
+
+  useEffect(() => {
+    initFCM();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>

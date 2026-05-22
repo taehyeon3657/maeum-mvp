@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import Providers from "../components/providers";
+import NotificationPrompt from "../components/NotificationPrompt";
 import "./globals.css";
 
 // VERCEL_PROJECT_PRODUCTION_URL = 고정 프로덕션 URL (maeum-mvp.vercel.app)
@@ -198,6 +199,7 @@ export default function RootLayout({
           <main className="max-w-md mx-auto bg-background shadow-2xl relative overflow-x-hidden" style={{ minHeight: "100dvh" }}>
             {children}
           </main>
+          <NotificationPrompt />
         </Providers>
         <Analytics />
       </body>
