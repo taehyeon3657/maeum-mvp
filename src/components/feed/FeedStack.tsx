@@ -19,7 +19,9 @@ interface Props {
 export default function FeedStack({ userId }: Props) {
   const [tutorialDone, setTutorialDone] = useState(false);
   const [showShare, setShowShare] = useState(false);
-  const [likedQuotes, setLikedQuotes] = useState<Quote[]>([]);
+  // 카드별 체류시간 추적 { quote, durationMs }
+  const readQuotesRef = useRef<{ quote: Quote; durationMs: number }[]>([]);
+  const [shareQuote, setShareQuote] = useState<Quote | null>(null);
 
   const { isOnCooldown, remainingMs, startCooldown, clearCooldown } = useFeedCooldown();
   const { currentQuote, nextQuote, isLoading, hasError, isEmpty, isDepleted, quoteProgress, advance, reset } =
@@ -45,11 +47,15 @@ export default function FeedStack({ userId }: Props) {
     const ctx = getContextSnapshot();
     const isLastCard = quoteProgress.current === quoteProgress.total - 1;
     saveUserQuote({ user_id: userId, quote_id: currentQuote.id, action: direction, ...ctx });
-    if (direction === "like") setLikedQuotes((prev) => [...prev, currentQuote]);
+    // 모든 카드의 체류시간 기록 (좋아요 여부 무관)
+    readQuotesRef.current.push({ quote: currentQuote, durationMs: ctx.read_duration_ms });
     advance();
     if (isLastCard) {
       const elapsed = sessionStartRef.current ? Date.now() - sessionStartRef.current : 0;
       setSessionDurationMs(elapsed);
+      // 체류시간이 가장 길었던 글귀 선택
+      const longest = readQuotesRef.current.reduce((a, b) => (b.durationMs > a.durationMs ? b : a));
+      setShareQuote(longest.quote);
       startCooldown();
       setShowShare(true);
     }
@@ -57,7 +63,8 @@ export default function FeedStack({ userId }: Props) {
 
   const handleShareContinue = () => {
     setShowShare(false);
-    setLikedQuotes([]);
+    setShareQuote(null);
+    readQuotesRef.current = [];
     sessionStartRef.current = null;
   };
 
@@ -79,7 +86,7 @@ export default function FeedStack({ userId }: Props) {
           <ShareScreen
             sessionDurationMs={sessionDurationMs}
             onContinue={handleShareContinue}
-            likedQuotes={likedQuotes}
+            shareQuote={shareQuote}
           />
         </div>
       </div>

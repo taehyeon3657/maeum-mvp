@@ -7,7 +7,7 @@ import { generateShareImage, shareImage } from "@/src/lib/generateShareImage";
 interface Props {
   sessionDurationMs: number;
   onContinue: () => void;
-  likedQuotes: Quote[];
+  shareQuote: Quote | null; // 세션 중 체류시간이 가장 길었던 글귀
 }
 
 function formatDuration(ms: number): string {
@@ -20,7 +20,7 @@ function formatDuration(ms: number): string {
   return "잠깐";
 }
 
-export default function ShareScreen({ sessionDurationMs, onContinue, likedQuotes }: Props) {
+export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote }: Props) {
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
   const [shareState, setShareState] = useState<"idle" | "done">("idle");
   const [imageState, setImageState] = useState<"idle" | "loading" | "done" | "error">("idle");
@@ -30,21 +30,18 @@ export default function ShareScreen({ sessionDurationMs, onContinue, likedQuotes
     setMounted(true);
   }, []);
 
-  // 좋아요한 글귀 중 첫 번째, 없으면 null
-  const shareableQuote = likedQuotes[0] ?? null;
-
   const handleImageShare = async () => {
-    if (!shareableQuote || imageState === "loading") return;
+    if (!shareQuote || imageState === "loading") return;
     setImageState("loading");
     try {
-      const idSum = [...shareableQuote.id].reduce((a, c) => a + c.charCodeAt(0), 0);
+      const idSum = [...shareQuote.id].reduce((a, c) => a + c.charCodeAt(0), 0);
       const blob = await generateShareImage({
-        content: shareableQuote.content,
-        author: shareableQuote.author,
-        source: shareableQuote.source,
+        content: shareQuote.content,
+        author: shareQuote.author,
+        source: shareQuote.source,
         gradientIndex: idSum,
       });
-      await shareImage(blob, shareableQuote);
+      await shareImage(blob, shareQuote);
       setImageState("done");
     } catch {
       setImageState("error");
@@ -151,8 +148,8 @@ export default function ShareScreen({ sessionDurationMs, onContinue, likedQuotes
           마음을 나누고 싶다면
         </p>
 
-        {/* 이미지로 공유 — 좋아요한 글귀가 있을 때만 */}
-        {shareableQuote && (
+        {/* 이미지로 공유 — 체류시간이 가장 길었던 글귀 */}
+        {shareQuote && (
           <button
             onClick={handleImageShare}
             disabled={imageState === "loading"}
