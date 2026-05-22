@@ -84,7 +84,8 @@ export default function MbtiChart({ data, topQuotes }: Props) {
       </div>
 
       {/* 바 차트 */}
-      <ResponsiveContainer width="100%" height={chartHeight}>
+      <div style={{ height: chartHeight }}>
+      <ResponsiveContainer width="100%" height="100%" debounce={200}>
         <BarChart
           data={chartData}
           layout="vertical"
@@ -125,6 +126,7 @@ export default function MbtiChart({ data, topQuotes }: Props) {
           </Bar>
         </BarChart>
       </ResponsiveContainer>
+      </div>
 
       {/* MBTI별 최애 글귀 아코디언 */}
       {hasAnyQuotes && (
