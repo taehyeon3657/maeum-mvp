@@ -1,5 +1,3 @@
-"use client";
-
 import "./home.css";
 import HomeDecorative from "@/src/components/home/HomeDecorative";
 import HomeHeader from "@/src/components/home/HomeHeader";
