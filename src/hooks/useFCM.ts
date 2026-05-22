@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { getToken, onMessage } from "firebase/messaging";
+import { getToken, onMessage, isSupported } from "firebase/messaging";
 import { getFirebaseMessaging } from "@/src/lib/firebase";
 import { createClient } from "@/src/lib/supabase";
 
@@ -32,11 +32,13 @@ export async function updateLastActive() {
 export function useFCM() {
   const [token, setToken] = useState<string | null>(null);
   const [permission, setPermission] = useState<NotificationPermission>("default");
+  const [supported, setSupported] = useState<boolean | null>(null);
 
   useEffect(() => {
     if (typeof Notification !== "undefined") {
       setPermission(Notification.permission);
     }
+    isSupported().then(setSupported).catch(() => setSupported(false));
   }, []);
 
   const requestPermission = useCallback(async () => {
@@ -48,7 +50,19 @@ export function useFCM() {
       setPermission(result);
       if (result !== "granted") return;
 
-      const fcmToken = await getToken(messaging, { vapidKey: VAPID_KEY });
+      // 모바일에서 서비스 워커를 명시적으로 등록해 getToken에 전달해야 안정적으로 동작
+      let swRegistration: ServiceWorkerRegistration | undefined;
+      if ("serviceWorker" in navigator) {
+        swRegistration = await navigator.serviceWorker.register(
+          "/firebase-messaging-sw.js",
+          { scope: "/" }
+        );
+      }
+
+      const fcmToken = await getToken(messaging, {
+        vapidKey: VAPID_KEY,
+        serviceWorkerRegistration: swRegistration,
+      });
       setToken(fcmToken);
       await saveTokenToSupabase(fcmToken);
 
@@ -61,5 +75,5 @@ export function useFCM() {
     }
   }, []);
 
-  return { token, permission, requestPermission };
+  return { token, permission, requestPermission, supported };
 }
