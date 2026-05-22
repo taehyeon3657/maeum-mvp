@@ -12,15 +12,19 @@ async function initFCM() {
   if (typeof Notification === "undefined") return;
   if (Notification.permission !== "granted") return;
 
-  const messaging = await getFirebaseMessaging();
-  if (!messaging) return;
+  try {
+    const messaging = await getFirebaseMessaging();
+    if (!messaging) return;
 
-  const token = await getToken(messaging, { vapidKey: VAPID_KEY });
-  console.log("✅ FCM 토큰 (Firebase 콘솔 테스트에 붙여넣기):", token);
+    const token = await getToken(messaging, { vapidKey: VAPID_KEY });
+    console.log("✅ FCM 토큰:", token);
 
-  onMessage(messaging, (payload) => {
-    console.log("📩 포그라운드 메시지:", payload);
-  });
+    onMessage(messaging, (payload) => {
+      console.log("📩 포그라운드 메시지:", payload);
+    });
+  } catch (err) {
+    console.error("FCM 초기화 실패:", err);
+  }
 }
 
 export default function Providers({ children }: { children: React.ReactNode }) {

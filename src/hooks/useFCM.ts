@@ -40,23 +40,25 @@ export function useFCM() {
   }, []);
 
   const requestPermission = useCallback(async () => {
-    const messaging = await getFirebaseMessaging();
-    if (!messaging) return;
+    try {
+      const messaging = await getFirebaseMessaging();
+      if (!messaging) return;
 
-    const result = await Notification.requestPermission();
-    setPermission(result);
-    if (result !== "granted") return;
+      const result = await Notification.requestPermission();
+      setPermission(result);
+      if (result !== "granted") return;
 
-    const fcmToken = await getToken(messaging, { vapidKey: VAPID_KEY });
-    console.log("✅ FCM 토큰:", fcmToken);
-    setToken(fcmToken);
-    await saveTokenToSupabase(fcmToken);
+      const fcmToken = await getToken(messaging, { vapidKey: VAPID_KEY });
+      setToken(fcmToken);
+      await saveTokenToSupabase(fcmToken);
 
-    onMessage(messaging, (payload) => {
-      console.log("📩 포그라운드 메시지:", payload);
-      const { title, body } = payload.notification ?? {};
-      if (title) window.alert(`${title}\n${body ?? ""}`);
-    });
+      onMessage(messaging, (payload) => {
+        const { title, body } = payload.notification ?? {};
+        if (title) window.alert(`${title}\n${body ?? ""}`);
+      });
+    } catch (err) {
+      console.error("FCM 권한 요청 실패:", err);
+    }
   }, []);
 
   return { token, permission, requestPermission };
