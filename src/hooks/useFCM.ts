@@ -7,7 +7,7 @@ import { createClient } from "@/src/lib/supabase";
 
 const VAPID_KEY = process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY;
 
-async function saveTokenToSupabase(token: string) {
+export async function saveTokenToSupabase(token: string) {
   const supabase = createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return;
@@ -50,13 +50,14 @@ export function useFCM() {
       setPermission(result);
       if (result !== "granted") return;
 
-      // 모바일에서 서비스 워커를 명시적으로 등록해 getToken에 전달해야 안정적으로 동작
+      // SW 등록 후 activated 상태까지 대기해야 getToken이 안정적으로 동작
       let swRegistration: ServiceWorkerRegistration | undefined;
       if ("serviceWorker" in navigator) {
-        swRegistration = await navigator.serviceWorker.register(
+        await navigator.serviceWorker.register(
           "/firebase-messaging-sw.js",
           { scope: "/" }
         );
+        swRegistration = await navigator.serviceWorker.ready;
       }
 
       const fcmToken = await getToken(messaging, {
@@ -66,9 +67,19 @@ export function useFCM() {
       setToken(fcmToken);
       await saveTokenToSupabase(fcmToken);
 
-      onMessage(messaging, (payload) => {
+      onMessage(messaging, async (payload) => {
         const { title, body } = payload.notification ?? {};
-        if (title) window.alert(`${title}\n${body ?? ""}`);
+        if (!title) return;
+        // window.alert은 iOS PWA에서 차단됨 — SW를 통해 시스템 알림으로 표시
+        if ("serviceWorker" in navigator) {
+          const reg = await navigator.serviceWorker.ready;
+          reg.showNotification(title, {
+            body: body ?? "",
+            icon: "/favicon.svg",
+            badge: "/favicon.svg",
+            data: payload.data,
+          });
+        }
       });
     } catch (err) {
       console.error("FCM 권한 요청 실패:", err);
