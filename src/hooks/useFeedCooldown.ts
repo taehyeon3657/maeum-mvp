@@ -27,7 +27,7 @@ async function showCooldownNotification() {
   try {
     const reg = await navigator.serviceWorker.ready;
     await reg.showNotification("새로운 글귀가 도착했어요!", {
-      body: "1시간이 지났어요. 새로운 10개의 문장을 만나보세요.",
+      body: "1시간이 지났어요. 새로운 5개의 문장을 만나보세요.",
       icon: "/favicon.svg",
       badge: "/favicon.svg",
       data: { url: "/feed" },
