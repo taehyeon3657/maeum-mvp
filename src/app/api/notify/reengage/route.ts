@@ -2,7 +2,11 @@ import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { adminMessaging } from "@/src/lib/firebase-admin";
 
-const SIX_HOURS_AGO = () => new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString();
+// 로컬 테스트 시 REENGAGE_INACTIVE_MINUTES=1 (.env.local) 으로 1분 비활성으로 단축 가능
+const INACTIVE_MS = process.env.REENGAGE_INACTIVE_MINUTES
+  ? parseFloat(process.env.REENGAGE_INACTIVE_MINUTES) * 60 * 1000
+  : 6 * 60 * 60 * 1000;
+const INACTIVE_THRESHOLD = () => new Date(Date.now() - INACTIVE_MS).toISOString();
 
 // Vercel Cron 또는 수동 호출 시 CRON_SECRET으로 인증
 export async function GET(request: Request) {
@@ -21,7 +25,7 @@ export async function GET(request: Request) {
     .from("users")
     .select("id, fcm_token")
     .not("fcm_token", "is", null)
-    .lt("last_active_at", SIX_HOURS_AGO());
+    .lt("last_active_at", INACTIVE_THRESHOLD());
 
   if (error) {
     console.error("[reengage] Supabase 조회 실패:", error);
