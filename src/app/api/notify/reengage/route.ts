@@ -34,18 +34,35 @@ export async function GET(request: Request) {
   }
 
   const messaging = adminMessaging();
-  const { successCount, failureCount } = await messaging.sendEachForMulticast({
+  const batchResponse = await messaging.sendEachForMulticast({
     tokens,
-    notification: {
-      title: "오늘의 글귀가 기다리고 있어요",
-      body: "지금 내 마음에 꼭 맞는 한 문장을 만나보세요",
-      imageUrl: "https://maeum-mvp.vercel.app/icon",
-    },
     webpush: {
+      headers: { Urgency: "high", TTL: "86400" },
+      notification: {
+        title: "오늘의 글귀가 기다리고 있어요",
+        body: "지금 내 마음에 꼭 맞는 한 문장을 만나보세요",
+        icon: "https://maeum-mvp.vercel.app/favicon.svg",
+        badge: "https://maeum-mvp.vercel.app/favicon.svg",
+      },
       fcmOptions: { link: "https://maeum-mvp.vercel.app/feed" },
     },
   });
 
-  console.log(`[reengage] 전송 완료 — 성공: ${successCount}, 실패: ${failureCount}`);
-  return NextResponse.json({ ok: true, sent: successCount, failed: failureCount });
+  // 등록 해제된 토큰 DB에서 제거 (만료/재설치 등으로 무효화된 경우)
+  const expiredTokens = batchResponse.responses
+    .map((r, i) => {
+      const code = (r.error as { code?: string } | undefined)?.code ?? "";
+      return !r.success && (code === "messaging/registration-token-not-registered" || code === "messaging/invalid-registration-token")
+        ? tokens[i]
+        : null;
+    })
+    .filter((t): t is string => t !== null);
+
+  if (expiredTokens.length > 0) {
+    await supabase.from("users").update({ fcm_token: null }).in("fcm_token", expiredTokens);
+    console.log(`[reengage] 만료 토큰 ${expiredTokens.length}개 삭제`);
+  }
+
+  console.log(`[reengage] 전송 완료 — 성공: ${batchResponse.successCount}, 실패: ${batchResponse.failureCount}`);
+  return NextResponse.json({ ok: true, sent: batchResponse.successCount, failed: batchResponse.failureCount });
 }
