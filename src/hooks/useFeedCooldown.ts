@@ -3,7 +3,10 @@
 import { useCallback, useEffect, useState } from "react";
 
 const COOLDOWN_KEY = "maeum_feed_cooldown";
-const COOLDOWN_MS = 60 * 60 * 1000; // 1시간
+// 로컬 테스트 시 NEXT_PUBLIC_COOLDOWN_MS=60000 (.env.local) 으로 1분으로 단축 가능
+const COOLDOWN_MS = process.env.NEXT_PUBLIC_COOLDOWN_MS
+  ? parseInt(process.env.NEXT_PUBLIC_COOLDOWN_MS, 10)
+  : 60 * 60 * 1000;
 
 function getRemainingMs(): number {
   if (typeof window === "undefined") return 0;
