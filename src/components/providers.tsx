@@ -4,11 +4,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 import { getToken, onMessage } from "firebase/messaging";
 import { getFirebaseMessaging } from "@/src/lib/firebase";
-import { updateLastActive, saveTokenToSupabase } from "@/src/hooks/useFCM";
+import { updateLastActive, saveTokenToSupabase, useNativeFCMBridge, isNativeApp } from "@/src/hooks/useFCM";
 
 const VAPID_KEY = process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY;
 
 async function initFCM() {
+  // 네이티브 앱 래퍼에서는 WebView 브리지로 토큰을 받으므로 웹 FCM 초기화 생략
+  if (isNativeApp()) return;
   if (typeof Notification === "undefined") return;
   if (Notification.permission !== "granted") return;
 
@@ -49,6 +51,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         },
       }),
   );
+
+  // 네이티브 앱에서 주입된 FCM 토큰 수신
+  useNativeFCMBridge();
 
   useEffect(() => {
     initFCM();

@@ -5,6 +5,24 @@ import { getToken, onMessage, isSupported } from "firebase/messaging";
 import { getFirebaseMessaging } from "@/src/lib/firebase";
 import { createClient } from "@/src/lib/supabase";
 
+// React Native WebView에서 주입한 네이티브 FCM 토큰을 감지
+export function useNativeFCMBridge() {
+  useEffect(() => {
+    const handler = async (e: Event) => {
+      const token = (e as CustomEvent<string>).detail;
+      if (token) await saveTokenToSupabase(token);
+    };
+    window.addEventListener("native-fcm-token", handler);
+    return () => window.removeEventListener("native-fcm-token", handler);
+  }, []);
+}
+
+// UserAgent로 네이티브 앱 래퍼 여부 판별
+export function isNativeApp(): boolean {
+  if (typeof navigator === "undefined") return false;
+  return /MaeumNative\/(android|ios)/i.test(navigator.userAgent);
+}
+
 const VAPID_KEY = process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY;
 
 export async function saveTokenToSupabase(token: string) {
