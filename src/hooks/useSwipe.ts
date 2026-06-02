@@ -14,8 +14,10 @@ interface UseSwipeOptions {
 export interface SwipeHandlers {
   onPointerDown: (e: React.PointerEvent<HTMLElement>) => void;
   onPointerMove: (e: React.PointerEvent<HTMLElement>) => void;
-  onPointerUp: () => void;
-  onPointerCancel: () => void;
+  onPointerUp: (e: React.PointerEvent<HTMLElement>) => void;
+  onPointerCancel: (e: React.PointerEvent<HTMLElement>) => void;
+  onDragStart: (e: React.DragEvent<HTMLElement>) => void;
+  draggable: boolean;
 }
 
 export function useSwipe({ onSwipe }: UseSwipeOptions) {
@@ -31,7 +33,13 @@ export function useSwipe({ onSwipe }: UseSwipeOptions) {
     if (isFlying) return;
     startX.current = e.clientX;
     setIsDragging(true);
-    e.currentTarget.setPointerCapture(e.pointerId);
+    // 데스크톱에서 카드가 날아가며 언마운트될 때 캡처가 비정상 상태로
+    // 남는 것을 방지하기 위해 try/catch로 감싼다.
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      /* 캡처 실패해도 일반 버블링으로 동작 */
+    }
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
@@ -39,9 +47,16 @@ export function useSwipe({ onSwipe }: UseSwipeOptions) {
     setDragX(e.clientX - startX.current);
   };
 
-  const handlePointerUp = () => {
+  const handlePointerUp = (e?: React.PointerEvent<HTMLElement>) => {
     if (!isDragging) return;
     setIsDragging(false);
+    if (e) {
+      try {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      } catch {
+        /* 이미 해제된 경우 무시 */
+      }
+    }
 
     if (dragX >= THRESHOLD) {
       setIsFlying(true);
@@ -74,6 +89,10 @@ export function useSwipe({ onSwipe }: UseSwipeOptions) {
     onPointerMove: handlePointerMove,
     onPointerUp: handlePointerUp,
     onPointerCancel: handlePointerUp,
+    // 데스크톱 마우스 드래그 시 브라우저 네이티브 드래그가 끼어들어
+    // pointercancel을 유발하는 것을 막는다 (PC 스와이프 끊김 방지).
+    onDragStart: (e) => e.preventDefault(),
+    draggable: false,
   };
 
   return { cardStyle, likeOpacity, dislikeOpacity, isFlying, handlers };
