@@ -1,48 +1,15 @@
 import type { Quote } from "@/src/models/feed";
 
-const CATEGORY_GRADIENTS = {
-  drama: "linear-gradient(155deg, #2d1b4e 0%, #1a0f3a 55%, #0d0820 100%)",
-  love: "linear-gradient(155deg, #4a2835 0%, #382c4a 55%, #2a1f35 100%)",
-  motivation: "linear-gradient(155deg, #4a3d2a 0%, #3d2f1a 55%, #2d2415 100%)",
-  comfort: "linear-gradient(155deg, #FFFCF8 0%, #FFF0E6 55%, #FFE2CC 100%)",
-  rest: "linear-gradient(155deg, #d9ede0 0%, #c5e1d0 55%, #afd3c0 100%)",
-  daily: "linear-gradient(155deg, #FAFDF9 0%, #EDF5F0 55%, #D9EDE0 100%)",
-};
+const GRADIENTS = [
+  "linear-gradient(155deg, #FFFCF8 0%, #FFF0E6 55%, #FFE2CC 100%)",
+  "linear-gradient(155deg, #FAFDF9 0%, #EDF5F0 55%, #D9EDE0 100%)",
+  "linear-gradient(155deg, #FDFCFF 0%, #F2EDF8 55%, #E6DDF4 100%)",
+  "linear-gradient(155deg, #FFFDF4 0%, #FFF5D4 55%, #FFE8A8 100%)",
+];
 
-function getCategoryFromQuote(quote: Quote): keyof typeof CATEGORY_GRADIENTS {
-  const tags = quote.emotion_tags || [];
-  const source = quote.source || "";
-
-  if (tags.includes("명대사") && source) {
-    return "drama";
-  }
-
-  if (tags.includes("사랑") || tags.includes("우정")) {
-    return "love";
-  }
-
-  if (tags.includes("동기") || tags.includes("성장") || tags.includes("노력") || tags.includes("도전")) {
-    return "motivation";
-  }
-
-  if (tags.includes("위로") || tags.includes("치유") || tags.includes("희망")) {
-    return "comfort";
-  }
-
-  if (tags.includes("쉼") || tags.includes("여유") || tags.includes("휴식")) {
-    return "rest";
-  }
-
-  if (tags.includes("일상") || tags.includes("감사")) {
-    return "daily";
-  }
-
-  return "comfort";
-}
-
-function pickGradient(quote: Quote) {
-  const category = getCategoryFromQuote(quote);
-  return CATEGORY_GRADIENTS[category];
+function pickGradient(id: string) {
+  const n = id ? [...id].reduce((a, c) => a + c.charCodeAt(0), 0) : 0;
+  return GRADIENTS[n % GRADIENTS.length];
 }
 
 interface Props {
@@ -50,7 +17,7 @@ interface Props {
 }
 
 export default function QuoteCard({ quote }: Props) {
-  const gradient = pickGradient(quote);
+  const gradient = pickGradient(quote.id);
 
   return (
     <div
