@@ -1,0 +1,48 @@
+import React, { useCallback, useEffect, useRef } from "react";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView, StyleSheet, BackHandler, Platform } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
+import AppWebView, { AppWebViewRef } from "@/components/AppWebView";
+import { useNativeNotifications, registerBackgroundHandler } from "@/hooks/useNativeNotifications";
+
+SplashScreen.preventAutoHideAsync();
+registerBackgroundHandler();
+
+export default function App() {
+  const webViewRef = useRef<AppWebViewRef>(null);
+
+  const handleTokenReady = useCallback((token: string) => {
+    webViewRef.current?.sendFCMToken(token);
+  }, []);
+
+  const handleNavigateTo = useCallback((path: string) => {
+    webViewRef.current?.navigateTo(path);
+  }, []);
+
+  useNativeNotifications(handleTokenReady, undefined, handleNavigateTo);
+
+  // WebView 첫 로드 완료 시 스플래시 스크린 숨김
+  const handleLoadEnd = useCallback(() => {
+    SplashScreen.hideAsync();
+  }, []);
+
+  // Android 하드웨어 뒤로가기: WebView 히스토리 있으면 웹 내 뒤로, 없으면 앱 종료
+  useEffect(() => {
+    if (Platform.OS !== "android") return;
+    const handler = BackHandler.addEventListener("hardwareBackPress", () => {
+      return webViewRef.current?.goBack() ?? false;
+    });
+    return () => handler.remove();
+  }, []);
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <StatusBar style="dark" backgroundColor="#FDF8F3" />
+      <AppWebView ref={webViewRef} onLoadEnd={handleLoadEnd} />
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#FDF8F3" },
+});
