@@ -259,6 +259,26 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
         </div>
       </div>
 
+      {/* 내 마음함 배너 */}
+      <div
+        className="w-full rounded-2xl px-4 py-3.5 mb-3 flex items-center gap-3 active:scale-[0.98] transition-all cursor-pointer"
+        style={{ background: "linear-gradient(120deg, rgba(224,122,95,0.12) 0%, rgba(244,162,97,0.10) 100%)", border: "1px solid rgba(224,122,95,0.18)" }}
+        onClick={() => (window.location.href = "/collection")}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === "Enter" && (window.location.href = "/collection")}
+      >
+        <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-none"
+          style={{ background: "rgba(224,122,95,0.12)" }}>
+          <span className="text-lg">💛</span>
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="font-sans text-[12px] font-bold text-textMain leading-tight">내 마음함 보기</p>
+          <p className="font-sans text-[10px] text-textMuted leading-tight mt-0.5">좋아요한 글귀를 모아볼 수 있어요</p>
+        </div>
+        <span className="text-primary text-base flex-none">→</span>
+      </div>
+
       {/* 인사이트 배너 */}
       <div
         className="w-full rounded-2xl px-4 py-3.5 mb-5 flex items-center gap-3 active:scale-[0.98] transition-all cursor-pointer"
