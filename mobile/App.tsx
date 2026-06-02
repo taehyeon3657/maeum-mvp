@@ -1,26 +1,44 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet, BackHandler, Platform } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
 import AppWebView, { AppWebViewRef } from "@/components/AppWebView";
 import { useNativeNotifications, registerBackgroundHandler } from "@/hooks/useNativeNotifications";
 
-// 앱이 종료된 상태에서도 수신되도록 최상단에서 백그라운드 핸들러 등록
+SplashScreen.preventAutoHideAsync();
 registerBackgroundHandler();
 
 export default function App() {
   const webViewRef = useRef<AppWebViewRef>(null);
 
-  // FCM 토큰이 준비되면 WebView 안의 웹앱으로 주입
   const handleTokenReady = useCallback((token: string) => {
     webViewRef.current?.sendFCMToken(token);
   }, []);
 
-  useNativeNotifications(handleTokenReady);
+  const handleNavigateTo = useCallback((path: string) => {
+    webViewRef.current?.navigateTo(path);
+  }, []);
+
+  useNativeNotifications(handleTokenReady, undefined, handleNavigateTo);
+
+  // WebView 첫 로드 완료 시 스플래시 스크린 숨김
+  const handleLoadEnd = useCallback(() => {
+    SplashScreen.hideAsync();
+  }, []);
+
+  // Android 하드웨어 뒤로가기: WebView 히스토리 있으면 웹 내 뒤로, 없으면 앱 종료
+  useEffect(() => {
+    if (Platform.OS !== "android") return;
+    const handler = BackHandler.addEventListener("hardwareBackPress", () => {
+      return webViewRef.current?.goBack() ?? false;
+    });
+    return () => handler.remove();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="dark" backgroundColor="#FDF8F3" />
-      <AppWebView ref={webViewRef} />
+      <AppWebView ref={webViewRef} onLoadEnd={handleLoadEnd} />
     </SafeAreaView>
   );
 }

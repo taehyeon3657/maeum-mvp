@@ -1,28 +1,33 @@
-import React, { useRef, useCallback, forwardRef, useImperativeHandle } from "react";
+import React, { useRef, useCallback, forwardRef, useImperativeHandle, useState } from "react";
 import {
   StyleSheet,
   View,
   ActivityIndicator,
   Platform,
+  Text,
+  TouchableOpacity,
 } from "react-native";
-import WebView, { WebViewMessageEvent } from "react-native-webview";
+import WebView, { WebViewMessageEvent, WebViewNavigation } from "react-native-webview";
 
-// 배포된 웹 앱 URL — 환경변수로 관리
 const WEB_APP_URL =
   process.env.EXPO_PUBLIC_WEB_URL ?? "https://maeum-mvp.vercel.app";
 
 export interface AppWebViewRef {
   sendFCMToken: (token: string) => void;
+  goBack: () => boolean;
+  navigateTo: (path: string) => void;
 }
 
 interface Props {
   onMessage?: (event: WebViewMessageEvent) => void;
+  onLoadEnd?: () => void;
 }
 
-const AppWebView = forwardRef<AppWebViewRef, Props>(({ onMessage }, ref) => {
+const AppWebView = forwardRef<AppWebViewRef, Props>(({ onMessage, onLoadEnd }, ref) => {
   const webViewRef = useRef<WebView>(null);
+  const [canGoBack, setCanGoBack] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
-  // 네이티브 → 웹앱으로 FCM 토큰 전달
   const sendFCMToken = useCallback((token: string) => {
     const js = `
       window.dispatchEvent(new CustomEvent('native-fcm-token', { detail: '${token}' }));
@@ -31,16 +36,46 @@ const AppWebView = forwardRef<AppWebViewRef, Props>(({ onMessage }, ref) => {
     webViewRef.current?.injectJavaScript(js);
   }, []);
 
-  useImperativeHandle(ref, () => ({ sendFCMToken }), [sendFCMToken]);
+  const goBack = useCallback(() => {
+    if (canGoBack) {
+      webViewRef.current?.goBack();
+      return true;
+    }
+    return false;
+  }, [canGoBack]);
 
-  // Android 뒤로가기 제스처 처리
-  const handleShouldStartLoad = useCallback(
-    ({ url }: { url: string }) => {
-      // 외부 링크는 차단 (내부 라우팅만 허용)
-      return url.startsWith(WEB_APP_URL) || url.startsWith("maeum://");
-    },
-    []
-  );
+  const navigateTo = useCallback((path: string) => {
+    const url = `${WEB_APP_URL}${path}`;
+    webViewRef.current?.injectJavaScript(`window.location.href = '${url}'; true;`);
+  }, []);
+
+  useImperativeHandle(ref, () => ({ sendFCMToken, goBack, navigateTo }), [
+    sendFCMToken,
+    goBack,
+    navigateTo,
+  ]);
+
+  const handleShouldStartLoad = useCallback(({ url }: { url: string }) => {
+    return url.startsWith(WEB_APP_URL) || url.startsWith("maeum://");
+  }, []);
+
+  const handleNavigationStateChange = useCallback((state: WebViewNavigation) => {
+    setCanGoBack(state.canGoBack);
+  }, []);
+
+  const handleLoadEnd = useCallback(() => {
+    setHasError(false);
+    onLoadEnd?.();
+  }, [onLoadEnd]);
+
+  const handleError = useCallback(() => {
+    setHasError(true);
+  }, []);
+
+  const handleRetry = useCallback(() => {
+    setHasError(false);
+    webViewRef.current?.reload();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -48,31 +83,41 @@ const AppWebView = forwardRef<AppWebViewRef, Props>(({ onMessage }, ref) => {
         ref={webViewRef}
         source={{ uri: WEB_APP_URL }}
         style={styles.webview}
-        // 성능 최적화
         javaScriptEnabled
         domStorageEnabled
         sharedCookiesEnabled
         thirdPartyCookiesEnabled
         allowsInlineMediaPlayback
         mediaPlaybackRequiresUserAction={false}
-        // iOS: 상태표시줄 아래로 내용 내려오지 않도록
         contentInsetAdjustmentBehavior="automatic"
-        // Android: 하드웨어 가속
         androidLayerType="hardware"
+        // iOS 스와이프 뒤로가기 제스처
+        allowsBackForwardNavigationGestures={Platform.OS === "ios"}
+        bounces={false}
         onMessage={onMessage}
         onShouldStartLoadWithRequest={handleShouldStartLoad}
+        onNavigationStateChange={handleNavigationStateChange}
+        onLoadEnd={handleLoadEnd}
+        onError={handleError}
+        onHttpError={handleError}
         renderLoading={() => (
-          <View style={styles.loading}>
+          <View style={styles.overlay}>
             <ActivityIndicator size="large" color="#8B7355" />
           </View>
         )}
         startInLoadingState
-        // 웹뷰 캐시 유지 (앱 재실행 시 빠른 로딩)
         cacheEnabled
         cacheMode="LOAD_DEFAULT"
-        // UserAgent에 native 표시 → 웹앱에서 구분 가능
         applicationNameForUserAgent={`MaeumNative/${Platform.OS}`}
       />
+      {hasError && (
+        <View style={styles.overlay}>
+          <Text style={styles.errorText}>연결에 실패했습니다</Text>
+          <TouchableOpacity style={styles.retryButton} onPress={handleRetry}>
+            <Text style={styles.retryText}>다시 시도</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 });
@@ -83,11 +128,26 @@ export default AppWebView;
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#FDF8F3" },
   webview: { flex: 1 },
-  loading: {
-    position: "absolute",
-    inset: 0,
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#FDF8F3",
+  },
+  errorText: {
+    fontSize: 16,
+    color: "#5C4033",
+    marginBottom: 16,
+  },
+  retryButton: {
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    backgroundColor: "#8B7355",
+    borderRadius: 8,
+  },
+  retryText: {
+    color: "#FFFFFF",
+    fontSize: 14,
+    fontWeight: "600",
   },
 });

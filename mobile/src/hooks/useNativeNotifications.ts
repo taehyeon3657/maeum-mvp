@@ -2,25 +2,31 @@ import { useEffect, useRef } from "react";
 import messaging, {
   FirebaseMessagingTypes,
 } from "@react-native-firebase/messaging";
-import { Platform, Alert } from "react-native";
+import { Alert } from "react-native";
 
 export type TokenReadyCallback = (token: string) => void;
 export type MessageCallback = (
   notification: FirebaseMessagingTypes.Notification
 ) => void;
+export type NavigateCallback = (path: string) => void;
+
+function extractPath(data?: Record<string, string>): string | null {
+  return data?.path ?? data?.url ?? null;
+}
 
 export function useNativeNotifications(
   onTokenReady: TokenReadyCallback,
-  onForegroundMessage?: MessageCallback
+  onForegroundMessage?: MessageCallback,
+  onNavigate?: NavigateCallback
 ) {
   const tokenSent = useRef(false);
 
   useEffect(() => {
     let unsubscribeForeground: (() => void) | undefined;
     let unsubscribeTokenRefresh: (() => void) | undefined;
+    let unsubscribeOpened: (() => void) | undefined;
 
     const setup = async () => {
-      // 알림 권한 요청
       const authStatus = await messaging().requestPermission();
       const enabled =
         authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
@@ -28,20 +34,17 @@ export function useNativeNotifications(
 
       if (!enabled) return;
 
-      // FCM 토큰 획득 후 WebView 로 전달
       const token = await messaging().getToken();
       if (token && !tokenSent.current) {
         tokenSent.current = true;
         onTokenReady(token);
       }
 
-      // 토큰 갱신 시 재전송
       unsubscribeTokenRefresh = messaging().onTokenRefresh((newToken) => {
         tokenSent.current = false;
         onTokenReady(newToken);
       });
 
-      // 포그라운드 메시지 수신 (앱이 열려있을 때)
       unsubscribeForeground = messaging().onMessage(async (remoteMessage) => {
         const notification = remoteMessage.notification;
         if (!notification) return;
@@ -49,18 +52,22 @@ export function useNativeNotifications(
         if (onForegroundMessage) {
           onForegroundMessage(notification);
         } else {
-          // 기본 Alert 표시
-          Alert.alert(
-            notification.title ?? "마음",
-            notification.body ?? ""
-          );
+          Alert.alert(notification.title ?? "마음", notification.body ?? "");
         }
       });
 
-      // iOS: 백그라운드/종료 상태에서 알림 탭했을 때
-      if (Platform.OS === "ios") {
-        const initialNotification = await messaging().getInitialNotification();
-        if (initialNotification?.notification) {
+      // 백그라운드 상태에서 알림 탭 시 (Android + iOS 공통)
+      unsubscribeOpened = messaging().onNotificationOpenedApp((remoteMessage) => {
+        const path = extractPath(remoteMessage.data as Record<string, string>);
+        if (path) onNavigate?.(path);
+      });
+
+      // 앱 종료 상태에서 알림 탭으로 실행된 경우
+      const initialNotification = await messaging().getInitialNotification();
+      if (initialNotification) {
+        const path = extractPath(initialNotification.data as Record<string, string>);
+        if (path) onNavigate?.(path);
+        else if (initialNotification.notification) {
           onForegroundMessage?.(initialNotification.notification);
         }
       }
@@ -71,11 +78,11 @@ export function useNativeNotifications(
     return () => {
       unsubscribeForeground?.();
       unsubscribeTokenRefresh?.();
+      unsubscribeOpened?.();
     };
-  }, [onTokenReady, onForegroundMessage]);
+  }, [onTokenReady, onForegroundMessage, onNavigate]);
 }
 
-// 백그라운드/종료 상태 메시지 핸들러 — App.tsx 최상단에서 등록
 export function registerBackgroundHandler() {
   messaging().setBackgroundMessageHandler(async (_remoteMessage) => {
     // 시스템이 자동으로 알림을 표시하므로 별도 처리 불필요
