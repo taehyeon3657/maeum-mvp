@@ -20,6 +20,36 @@ Firebase 콘솔에서 다운로드한 파일을 `mobile/` 폴더에 배치:
 - Android: `google-services.json`
 - iOS: `GoogleService-Info.plist`
 
+이 파일들은 git에 커밋하지 않고 EAS file 환경변수로 관리합니다.
+EAS Build에서는 install/prebuild 전에 아래 환경변수 파일을
+`google-services.json` / `GoogleService-Info.plist`로 복사합니다.
+
+```bash
+npx eas-cli@latest env:create \
+  --name GOOGLE_SERVICES_JSON \
+  --type file \
+  --value ./google-services.json \
+  --visibility secret \
+  --scope project \
+  --environment development \
+  --environment preview \
+  --environment production \
+  --force \
+  --non-interactive
+
+npx eas-cli@latest env:create \
+  --name GOOGLE_SERVICE_INFO_PLIST \
+  --type file \
+  --value ./GoogleService-Info.plist \
+  --visibility secret \
+  --scope project \
+  --environment development \
+  --environment preview \
+  --environment production \
+  --force \
+  --non-interactive
+```
+
 ### 2. 환경변수 설정
 ```bash
 # mobile/.env

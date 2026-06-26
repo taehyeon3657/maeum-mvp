@@ -4,6 +4,7 @@
   },
   "build": {
     "development": {
+      "environment": "development",
       "developmentClient": true,
       "distribution": "internal",
       "android": {
@@ -11,6 +12,7 @@
       }
     },
     "preview": {
+      "environment": "preview",
       "distribution": "internal",
       "android": {
         "buildType": "apk"
@@ -20,8 +22,9 @@
       }
     },
     "production": {
+      "environment": "production",
       "android": {
-        "buildType": "aab"
+        "buildType": "app-bundle"
       }
     }
   },
