@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/src/lib/supabase";
 import type { Quote } from "@/src/models/feed";
 
-const SESSION_LIMIT = 5;
+const SESSION_LIMIT = 8;
 const MAX_SEEN = 100;
 
 function getSeenIds(userId: string): string[] {
@@ -23,7 +23,7 @@ function addSeenIds(userId: string, newIds: string[]) {
   const merged = [...current, ...newIds];
   localStorage.setItem(
     `maeum_seen_quotes_${userId}`,
-    JSON.stringify(merged.slice(-MAX_SEEN))
+    JSON.stringify(merged.slice(-MAX_SEEN)),
   );
 }
 
@@ -64,7 +64,10 @@ export function useFeedQuotes(userId: string, skip = false) {
 
       if (data && data.length > 0) {
         setQuotes(data);
-        addSeenIds(userId, data.map((q: Quote) => q.id));
+        addSeenIds(
+          userId,
+          data.map((q: Quote) => q.id),
+        );
         setIsLoading(false);
         return;
       }
@@ -74,14 +77,17 @@ export function useFeedQuotes(userId: string, skip = false) {
         localStorage.removeItem(`maeum_seen_quotes_${userId}`);
         const { data: freshData, error: freshError } = await supabase.rpc(
           "get_random_quotes",
-          { p_exclude_ids: [], p_limit: SESSION_LIMIT }
+          { p_exclude_ids: [], p_limit: SESSION_LIMIT },
         );
         if (cancelled) return;
         if (freshError) {
           setHasError(true);
         } else if (freshData && freshData.length > 0) {
           setQuotes(freshData);
-          addSeenIds(userId, freshData.map((q: Quote) => q.id));
+          addSeenIds(
+            userId,
+            freshData.map((q: Quote) => q.id),
+          );
         }
       }
 
@@ -89,7 +95,9 @@ export function useFeedQuotes(userId: string, skip = false) {
     };
 
     fetchQuotes();
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, [resetKey, userId, skip]);
 
   const advance = useCallback(() => setCurrentIndex((i) => i + 1), []);
@@ -109,7 +117,8 @@ export function useFeedQuotes(userId: string, skip = false) {
     isLoading,
     hasError,
     isEmpty: !isLoading && !hasError && quotes.length === 0,
-    isDepleted: !isLoading && quotes.length > 0 && currentIndex >= quotes.length,
+    isDepleted:
+      !isLoading && quotes.length > 0 && currentIndex >= quotes.length,
     quoteProgress: { current: currentIndex, total: quotes.length },
     advance,
     reset,

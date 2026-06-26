@@ -29,9 +29,17 @@ export function useSwipe({ onSwipe }: UseSwipeOptions) {
   const onSwipeRef = useRef(onSwipe);
   onSwipeRef.current = onSwipe;
 
+  // 이벤트 핸들러 내부에서 state 대신 ref를 읽어야 한다.
+  // PC에서는 pointermove가 pointerdown 직후 동기적으로 발생하는데,
+  // 이때 React 리렌더링이 아직 완료되지 않아 state 값이 stale하다.
+  const isDraggingRef = useRef(false);
+  const isFlyingRef = useRef(false);
+  const dragXRef = useRef(0);
+
   const handlePointerDown = (e: React.PointerEvent<HTMLElement>) => {
-    if (isFlying) return;
+    if (isFlyingRef.current) return;
     startX.current = e.clientX;
+    isDraggingRef.current = true;
     setIsDragging(true);
     // 데스크톱에서 카드가 날아가며 언마운트될 때 캡처가 비정상 상태로
     // 남는 것을 방지하기 위해 try/catch로 감싼다.
@@ -43,12 +51,15 @@ export function useSwipe({ onSwipe }: UseSwipeOptions) {
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
-    if (!isDragging || isFlying) return;
-    setDragX(e.clientX - startX.current);
+    if (!isDraggingRef.current || isFlyingRef.current) return;
+    const newDragX = e.clientX - startX.current;
+    dragXRef.current = newDragX;
+    setDragX(newDragX);
   };
 
   const handlePointerUp = (e?: React.PointerEvent<HTMLElement>) => {
-    if (!isDragging) return;
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
     setIsDragging(false);
     if (e) {
       try {
@@ -58,15 +69,21 @@ export function useSwipe({ onSwipe }: UseSwipeOptions) {
       }
     }
 
-    if (dragX >= THRESHOLD) {
+    const currentDragX = dragXRef.current;
+    if (currentDragX >= THRESHOLD) {
+      isFlyingRef.current = true;
       setIsFlying(true);
       setDragX(FLY_DISTANCE);
+      dragXRef.current = FLY_DISTANCE;
       setTimeout(() => onSwipeRef.current("like"), FLY_DURATION);
-    } else if (dragX <= -THRESHOLD) {
+    } else if (currentDragX <= -THRESHOLD) {
+      isFlyingRef.current = true;
       setIsFlying(true);
       setDragX(-FLY_DISTANCE);
+      dragXRef.current = -FLY_DISTANCE;
       setTimeout(() => onSwipeRef.current("dislike"), FLY_DURATION);
     } else {
+      dragXRef.current = 0;
       setDragX(0);
     }
   };
