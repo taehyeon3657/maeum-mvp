@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/src/lib/supabase";
 import type { Quote } from "@/src/models/feed";
 
-const SESSION_LIMIT = 8;
+const SESSION_LIMIT = 15;
 const MAX_SEEN = 100;
 
 function getSeenIds(userId: string): string[] {
