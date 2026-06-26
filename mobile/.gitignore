@@ -19,3 +19,7 @@ service-account.json
 .env
 .env.local
 .env.production
+
+# Expo managed workflow — EAS가 expo prebuild로 생성함
+/android
+/ios
