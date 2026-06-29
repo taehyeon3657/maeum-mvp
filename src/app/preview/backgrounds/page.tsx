@@ -1,7 +1,7 @@
 "use client";
 
 // ─────────────────────────────────────────────────────────────
-// 문구 배경 미리보기 갤러리 (로컬 전용)
+// 문구 배경 미리보기 갤러리 (URL 접근 가능 · 조회 전용)
 //
 // 모든 문구의 배경을 한 화면에서 확인하기 위한 개발용 페이지.
 // - quotes 테이블을 "조회(select)만" 한다. insert/update/카운트 증가·스와이프
@@ -15,8 +15,6 @@ import type { Quote } from "@/src/models/feed";
 import QuoteCard from "@/src/components/feed/QuoteCard";
 import { getQuoteBackground } from "@/src/lib/quoteBackground";
 
-const IS_DEV = process.env.NODE_ENV !== "production";
-
 export default function BackgroundsPreviewPage() {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [loading, setLoading] = useState(true);
@@ -26,10 +24,6 @@ export default function BackgroundsPreviewPage() {
   const [motif, setMotif] = useState<string>("all");
 
   useEffect(() => {
-    if (!IS_DEV) {
-      setLoading(false);
-      return;
-    }
     (async () => {
       const supabase = createClient();
       // 읽기 전용: 활성 문구 전체 조회 (DB 적재 없음)
@@ -89,17 +83,6 @@ export default function BackgroundsPreviewPage() {
       return true;
     });
   }, [items, q, cat, motif]);
-
-  if (!IS_DEV) {
-    return (
-      <Centered>
-        <p className="font-quote text-xl text-textMain">로컬 전용 페이지입니다</p>
-        <p className="font-sans text-sm text-textMuted mt-2">
-          이 미리보기는 개발 환경에서만 열립니다.
-        </p>
-      </Centered>
-    );
-  }
 
   return (
     <div className="min-h-dvh bg-background">
