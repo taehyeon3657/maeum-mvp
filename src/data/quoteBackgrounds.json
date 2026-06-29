@@ -1,0 +1,5051 @@
+{
+  "00118ccb-f9b1-4bd9-9d04-a275ccf46527": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(145deg, #eef2f9 0%, #b5caee 50%, #7795ea 100%)",
+    "motifColor": "#1351bf",
+    "textColor": "#202c41",
+    "mutedColor": "#415477",
+    "accentColor": "#1c53b7"
+  },
+  "00b6a742-8fcd-40a2-a923-47f24c411aa5": {
+    "category": "drama",
+    "motif": "petal",
+    "gradient": "linear-gradient(158deg, #f2e8f6 0%, #deb6ec 50%, #d57ae6 100%)",
+    "motifColor": "#9019b8",
+    "textColor": "#38223f",
+    "mutedColor": "#684375",
+    "accentColor": "#8c21af"
+  },
+  "013003ed-d43f-46ab-a08b-19ff7ada42d3": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(157deg, #f8ecf0 0%, #ecb3c5 50%, #e87b92 100%)",
+    "motifColor": "#bc174b",
+    "textColor": "#40212b",
+    "mutedColor": "#764252",
+    "accentColor": "#b4204e"
+  },
+  "015f073f-09f4-4ec3-83d0-15ef00ffd59c": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(175deg, #faf5eb 0%, #f4d89f 50%, #f9d24e 100%)",
+    "motifColor": "#b87b00",
+    "textColor": "#43371e",
+    "mutedColor": "#79663e",
+    "accentColor": "#ad780b"
+  },
+  "01625464-926d-4a67-bd78-fbf21fe47392": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(155deg, #f9f4ea 0%, #f1d49b 50%, #f4cb4c 100%)",
+    "motifColor": "#ad7303",
+    "textColor": "#43361e",
+    "mutedColor": "#79653e",
+    "accentColor": "#a6710b"
+  },
+  "01861ac8-aa8d-458d-a016-b09962d76c31": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(137deg, #f9f0ea 0%, #f3c5a3 50%, #f6ab59 100%)",
+    "motifColor": "#bd5102",
+    "textColor": "#432e1e",
+    "mutedColor": "#79573e",
+    "accentColor": "#b4520c"
+  },
+  "01cab3c0-f073-4f63-8c3c-6a666fc1a004": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(139deg, #e6f1eb 0%, #b1dec6 50%, #79cfa9 100%)",
+    "motifColor": "#2a8f58",
+    "textColor": "#263b30",
+    "mutedColor": "#4b6d5a",
+    "accentColor": "#318859"
+  },
+  "01e45997-cfc9-4c0b-8ac7-d712a49fc740": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(127deg, #eee7f3 0%, #d0b3e2 50%, #bc7dd6 100%)",
+    "motifColor": "#6f279d",
+    "textColor": "#33253c",
+    "mutedColor": "#60496f",
+    "accentColor": "#6e2f95"
+  },
+  "02252147-cff2-433e-8cb1-e0d6453dc141": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(141deg, #ece5f3 0%, #caace4 50%, #b573db 100%)",
+    "motifColor": "#641fa0",
+    "textColor": "#31243d",
+    "mutedColor": "#5d4672",
+    "accentColor": "#632798"
+  },
+  "03226cd4-84e7-464c-aa01-7757bfe162fc": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(137deg, #f9f3e9 0%, #f2ce99 50%, #f6c248 100%)",
+    "motifColor": "#af6901",
+    "textColor": "#43341e",
+    "mutedColor": "#79623e",
+    "accentColor": "#a5670b"
+  },
+  "036c1303-26bb-4a06-bee9-94e5d9b9f240": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(126deg, #eae5f3 0%, #c2ace3 50%, #a672da 100%)",
+    "motifColor": "#52209e",
+    "textColor": "#2e243d",
+    "mutedColor": "#574671",
+    "accentColor": "#542796"
+  },
+  "038f79eb-222e-4014-97a6-4ad7f9a65b6d": {
+    "category": "motivation",
+    "motif": "wave",
+    "gradient": "linear-gradient(178deg, #f9faec 0%, #eef6a4 50%, #d9fb52 100%)",
+    "motifColor": "#abbf00",
+    "textColor": "#3f431e",
+    "mutedColor": "#73793e",
+    "accentColor": "#a2b40b"
+  },
+  "04a1d223-eacb-4386-b498-a8e55e55d2c2": {
+    "category": "rest",
+    "motif": "wave",
+    "gradient": "linear-gradient(172deg, #e8f3f1 0%, #b9e4dc 50%, #7fd7ce 100%)",
+    "motifColor": "#289f88",
+    "textColor": "#253c37",
+    "mutedColor": "#496f67",
+    "accentColor": "#309783"
+  },
+  "04b205a8-6a22-4361-8065-66319e627fd5": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(167deg, #eee8f4 0%, #d1b7e6 50%, #bb7fdc 100%)",
+    "motifColor": "#6b24a8",
+    "textColor": "#31243d",
+    "mutedColor": "#5e4771",
+    "accentColor": "#6b2ca0"
+  },
+  "04d0ce30-89df-4f39-9957-473f370e893f": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(170deg, #eee9f4 0%, #ceb9e6 50%, #b382db 100%)",
+    "motifColor": "#6126a9",
+    "textColor": "#2f243d",
+    "mutedColor": "#5a4770",
+    "accentColor": "#622ea1"
+  },
+  "051a5ed5-e173-4ec5-af05-428b0b55b690": {
+    "category": "drama",
+    "motif": "light",
+    "gradient": "linear-gradient(176deg, #f0e7f5 0%, #d5b5ea 50%, #c479e3 100%)",
+    "motifColor": "#781cb2",
+    "textColor": "#34223f",
+    "mutedColor": "#614474",
+    "accentColor": "#7624aa"
+  },
+  "05714eff-97f3-4cff-8844-cb268c1543d0": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(150deg, #ece5f2 0%, #c8aee0 50%, #b178d4 100%)",
+    "motifColor": "#612698",
+    "textColor": "#31253c",
+    "mutedColor": "#5c496f",
+    "accentColor": "#602d90"
+  },
+  "05825c9e-7b10-426e-b7d9-201512a3ed59": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(150deg, #ece6f3 0%, #c6b0e3 50%, #ac78d8 100%)",
+    "motifColor": "#59239f",
+    "textColor": "#2f243d",
+    "mutedColor": "#594770",
+    "accentColor": "#5a2b97"
+  },
+  "0665decd-11c4-4f6a-9f92-6bb280a4b974": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(171deg, #eee7f4 0%, #ceb4e5 50%, #b87cdb 100%)",
+    "motifColor": "#6923a6",
+    "textColor": "#31243d",
+    "mutedColor": "#5d4771",
+    "accentColor": "#682b9e"
+  },
+  "0681115e-2a2f-4961-8401-c1f203b9484f": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(159deg, #f8edf1 0%, #ecb8ca 50%, #e7809a 100%)",
+    "motifColor": "#be1a53",
+    "textColor": "#3f222c",
+    "mutedColor": "#754354",
+    "accentColor": "#b62256"
+  },
+  "0717c34b-a08b-44af-a700-a87ef8badcb6": {
+    "category": "motivation",
+    "motif": "wave",
+    "gradient": "linear-gradient(132deg, #f7f9e8 0%, #e9f595 50%, #d2fb42 100%)",
+    "motifColor": "#99ae00",
+    "textColor": "#3e431e",
+    "mutedColor": "#72793e",
+    "accentColor": "#91a40a"
+  },
+  "0747b369-beca-4436-9446-63a0b890113c": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(158deg, #f8f1ea 0%, #f1c8a5 50%, #f1af5e 100%)",
+    "motifColor": "#b85808",
+    "textColor": "#432f1e",
+    "mutedColor": "#79593e",
+    "accentColor": "#b1590f"
+  },
+  "078388b3-c88b-4106-91b2-59802a2db912": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(134deg, #f9f5e9 0%, #f1da98 50%, #f4d949 100%)",
+    "motifColor": "#ac8003",
+    "textColor": "#43391e",
+    "mutedColor": "#796a3e",
+    "accentColor": "#a47c0a"
+  },
+  "08170990-a404-44b1-bdfb-48e8f0284032": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(145deg, #ede7f3 0%, #c9b6e3 50%, #ae7fd7 100%)",
+    "motifColor": "#5c289f",
+    "textColor": "#2f253c",
+    "mutedColor": "#59496f",
+    "accentColor": "#5d3098"
+  },
+  "0834bebc-1e41-480a-953e-af287cd2c85d": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(128deg, #ecf2f8 0%, #adcfec 50%, #6ea5e7 100%)",
+    "motifColor": "#146cb3",
+    "textColor": "#213240",
+    "mutedColor": "#415e76",
+    "accentColor": "#1c6bab"
+  },
+  "08f7ec45-5292-46b9-a0dc-7ed698febbc9": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(153deg, #eee7f3 0%, #ceb4e2 50%, #b87dd6 100%)",
+    "motifColor": "#69279e",
+    "textColor": "#32253c",
+    "mutedColor": "#5e496f",
+    "accentColor": "#682f96"
+  },
+  "094dc4be-cddc-4add-a239-3f7ad65ce60e": {
+    "category": "daily",
+    "motif": "petal",
+    "gradient": "linear-gradient(152deg, #edf2f9 0%, #b3caf2 50%, #7295f0 100%)",
+    "motifColor": "#0b53c8",
+    "textColor": "#1f2c42",
+    "mutedColor": "#3e5579",
+    "accentColor": "#1455c0"
+  },
+  "09cde070-3cf5-42fd-a3a3-17ce6b936013": {
+    "category": "drama",
+    "motif": "wave",
+    "gradient": "linear-gradient(155deg, #f0e5f3 0%, #d7ade5 50%, #ce73dc 100%)",
+    "motifColor": "#821fa2",
+    "textColor": "#37233e",
+    "mutedColor": "#674672",
+    "accentColor": "#7e269b"
+  },
+  "0a0449fe-8ed8-42c2-ba0b-164310c3f343": {
+    "category": "drama",
+    "motif": "mountain",
+    "gradient": "linear-gradient(170deg, #eae4f3 0%, #bfaae3 50%, #a270da 100%)",
+    "motifColor": "#4d1f9d",
+    "textColor": "#2d243d",
+    "mutedColor": "#564671",
+    "accentColor": "#4f2695"
+  },
+  "0a648b0e-802f-4e7c-a57d-5c1aa7a38110": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(158deg, #ebe6f2 0%, #c4afe1 50%, #a979d5 100%)",
+    "motifColor": "#572699",
+    "textColor": "#2f253c",
+    "mutedColor": "#59496f",
+    "accentColor": "#582d92"
+  },
+  "0abb3ddc-528f-4229-931b-7eecb45d9476": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(164deg, #faf5ed 0%, #f3d5a9 50%, #f4c65b 100%)",
+    "motifColor": "#bc7205",
+    "textColor": "#43341e",
+    "mutedColor": "#79613e",
+    "accentColor": "#b4700c"
+  },
+  "0c10217a-a1ea-482a-ac95-b2e525bbc6a2": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(149deg, #ece7f3 0%, #c6b2e2 50%, #ab7bd6 100%)",
+    "motifColor": "#58279c",
+    "textColor": "#2f253c",
+    "mutedColor": "#59496f",
+    "accentColor": "#592e94"
+  },
+  "0c551d81-7b88-4625-a6a6-b75db2092d95": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(128deg, #ebe6f3 0%, #c6b1e3 50%, #aa7ad9 100%)",
+    "motifColor": "#5624a0",
+    "textColor": "#2e243c",
+    "mutedColor": "#584870",
+    "accentColor": "#582c98"
+  },
+  "0cbb3657-f936-4a1c-86f3-feb71958aa83": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(178deg, #e9f3ed 0%, #bce1cb 50%, #85d1ab 100%)",
+    "motifColor": "#2f9859",
+    "textColor": "#273a2f",
+    "mutedColor": "#4b6c59",
+    "accentColor": "#37905b"
+  },
+  "0e36dd91-7f21-4322-b3b5-a6cdbad815f3": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(147deg, #ece8f3 0%, #c9b6e3 50%, #ac80d7 100%)",
+    "motifColor": "#5928a1",
+    "textColor": "#2e253c",
+    "mutedColor": "#58496f",
+    "accentColor": "#5a3099"
+  },
+  "0e7ba0d6-1bdc-4699-a209-34c3feac6193": {
+    "category": "love",
+    "motif": "wave",
+    "gradient": "linear-gradient(151deg, #f9eeec 0%, #f0b9b4 50%, #ee8e79 100%)",
+    "motifColor": "#c81f0f",
+    "textColor": "#412220",
+    "mutedColor": "#78443f",
+    "accentColor": "#c02618"
+  },
+  "0ea5a507-dca3-437d-81f6-df373fb51465": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(176deg, #edf2f8 0%, #b0cbed 50%, #729aea 100%)",
+    "motifColor": "#135bba",
+    "textColor": "#202e41",
+    "mutedColor": "#415877",
+    "accentColor": "#1b5cb2"
+  },
+  "0ef802e4-c440-4c7e-88a6-662716044305": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(167deg, #faf1ed 0%, #f5c8af 50%, #f7a965 100%)",
+    "motifColor": "#cb4c02",
+    "textColor": "#432b1e",
+    "mutedColor": "#79543e",
+    "accentColor": "#c14e0c"
+  },
+  "0f04bdf5-13d9-40d8-aa7a-941ae410298e": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(165deg, #f8eef1 0%, #edbbca 50%, #e88397 100%)",
+    "motifColor": "#c31a4c",
+    "textColor": "#3f212a",
+    "mutedColor": "#754351",
+    "accentColor": "#ba224f"
+  },
+  "0f5336f3-a552-4fe5-93e2-f6a2acbb317b": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(164deg, #f9eeeb 0%, #f2bbaa 50%, #f29363 100%)",
+    "motifColor": "#be3308",
+    "textColor": "#43271e",
+    "mutedColor": "#794c3e",
+    "accentColor": "#b6370f"
+  },
+  "0f55c740-6fa4-401d-ba53-46781717489a": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(125deg, #f9f5ea 0%, #f3db9c 50%, #f7d94b 100%)",
+    "motifColor": "#b38300",
+    "textColor": "#43391e",
+    "mutedColor": "#79693e",
+    "accentColor": "#a97e0b"
+  },
+  "1006eb0d-c0cd-4563-8ac5-627febe6ffa4": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(163deg, #f9f3e9 0%, #f3d098 50%, #f7c547 100%)",
+    "motifColor": "#af6c00",
+    "textColor": "#43351e",
+    "mutedColor": "#79633e",
+    "accentColor": "#a56a0b"
+  },
+  "102b5cf4-f1ef-4520-a11a-9efb1b7b0183": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(127deg, #e7f1eb 0%, #b3dec3 50%, #7bcea3 100%)",
+    "motifColor": "#2b8f51",
+    "textColor": "#263a2e",
+    "mutedColor": "#4b6d58",
+    "accentColor": "#328853"
+  },
+  "112613c2-a601-4c68-b75c-5114601b148f": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(174deg, #faf3ec 0%, #f5cda3 50%, #f9b853 100%)",
+    "motifColor": "#bd6000",
+    "textColor": "#43311e",
+    "mutedColor": "#795c3e",
+    "accentColor": "#b1600b"
+  },
+  "115afae0-f259-4e45-b1ff-9e35fc45b345": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(145deg, #faf2ed 0%, #f4cdb1 50%, #f6b168 100%)",
+    "motifColor": "#cb5704",
+    "textColor": "#432d1e",
+    "mutedColor": "#79573e",
+    "accentColor": "#c2590c"
+  },
+  "11c1566e-a935-447c-988b-2c0594cd6072": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(152deg, #f9f2ed 0%, #f1ceaf 50%, #f0b569 100%)",
+    "motifColor": "#c15f0a",
+    "textColor": "#422f1f",
+    "mutedColor": "#795a3e",
+    "accentColor": "#b95f12"
+  },
+  "11d76ec2-c884-4eef-bc5d-853e97b87ad1": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(171deg, #fbf6f0 0%, #f8dbbb 50%, #fcc870 100%)",
+    "motifColor": "#dd7500",
+    "textColor": "#43311e",
+    "mutedColor": "#795d3e",
+    "accentColor": "#d0740d"
+  },
+  "1246eb39-f75e-4fd7-a1fc-91b33d38a885": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(158deg, #faf3ed 0%, #f5d0b1 50%, #f7b668 100%)",
+    "motifColor": "#ce5d02",
+    "textColor": "#432f1e",
+    "mutedColor": "#79593e",
+    "accentColor": "#c45e0c"
+  },
+  "124a993f-08fa-4608-9d81-c8e56fbca577": {
+    "category": "drama",
+    "motif": "wave",
+    "gradient": "linear-gradient(142deg, #f2e4f3 0%, #e0a9e6 50%, #df6ede 100%)",
+    "motifColor": "#961ba3",
+    "textColor": "#3c233e",
+    "mutedColor": "#6f4473",
+    "accentColor": "#90229c"
+  },
+  "125de821-02ba-4d42-a872-c8a1fa57b8f8": {
+    "category": "drama",
+    "motif": "cloud",
+    "gradient": "linear-gradient(127deg, #f2eaf4 0%, #dcbfe7 50%, #cd89da 100%)",
+    "motifColor": "#892aab",
+    "textColor": "#36253c",
+    "mutedColor": "#65486f",
+    "accentColor": "#8532a2"
+  },
+  "12686ff1-4bcf-4868-a6e1-bc1fc01bfe74": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(165deg, #f8edf0 0%, #efb6c8 50%, #ec7c94 100%)",
+    "motifColor": "#c6134b",
+    "textColor": "#41202a",
+    "mutedColor": "#774052",
+    "accentColor": "#bd1c4e"
+  },
+  "13bd8c15-1e45-457e-ba4c-acfd61a09301": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(135deg, #edf1f8 0%, #b2c5ee 50%, #738deb 100%)",
+    "motifColor": "#1248bd",
+    "textColor": "#202a41",
+    "mutedColor": "#405277",
+    "accentColor": "#1a4bb5"
+  },
+  "13c448c4-2b7a-459e-8af8-ca882bd75c6a": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(169deg, #e6f1ed 0%, #b1decc 50%, #79ceb5 100%)",
+    "motifColor": "#2a8e67",
+    "textColor": "#263b33",
+    "mutedColor": "#4b6d60",
+    "accentColor": "#318766"
+  },
+  "146c059f-922b-4294-a967-cda36812bad3": {
+    "category": "comfort",
+    "motif": "wave",
+    "gradient": "linear-gradient(164deg, #faf5ed 0%, #f6dcb1 50%, #fad066 100%)",
+    "motifColor": "#d18100",
+    "textColor": "#43351e",
+    "mutedColor": "#79633e",
+    "accentColor": "#c47e0d"
+  },
+  "15b6cd91-88fb-42bd-9212-2cfca56f06b2": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(175deg, #ebe5f3 0%, #c2ace3 50%, #a773d9 100%)",
+    "motifColor": "#54219d",
+    "textColor": "#2e243d",
+    "mutedColor": "#584771",
+    "accentColor": "#552995"
+  },
+  "15dbeafe-c8e5-41c7-8dbd-0939d11cd926": {
+    "category": "drama",
+    "motif": "mountain",
+    "gradient": "linear-gradient(140deg, #eee7f3 0%, #d0b4e5 50%, #bb7cda 100%)",
+    "motifColor": "#6c24a4",
+    "textColor": "#32243d",
+    "mutedColor": "#5f4770",
+    "accentColor": "#6b2c9c"
+  },
+  "173376bc-2627-4c9c-b0dd-dcb2371eb259": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(149deg, #f7ebef 0%, #ecadc4 50%, #e87392 100%)",
+    "motifColor": "#b81550",
+    "textColor": "#40212c",
+    "mutedColor": "#764155",
+    "accentColor": "#b01d53"
+  },
+  "1855a025-a939-4873-a4d7-e62bbc1a4be0": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(135deg, #ede8f4 0%, #cbb9e6 50%, #af82db 100%)",
+    "motifColor": "#5b26a8",
+    "textColor": "#2e243d",
+    "mutedColor": "#584770",
+    "accentColor": "#5d2ea0"
+  },
+  "185c6c3e-103d-4b14-8120-d5c2a2d68ce9": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(128deg, #ece7f4 0%, #c6b2e5 50%, #aa79dc 100%)",
+    "motifColor": "#5522a5",
+    "textColor": "#2e243d",
+    "mutedColor": "#574671",
+    "accentColor": "#572a9d"
+  },
+  "1862509c-6e5a-4ded-96f6-9506799e3851": {
+    "category": "comfort",
+    "motif": "wave",
+    "gradient": "linear-gradient(142deg, #faf6ea 0%, #f6e4a3 50%, #fce957 100%)",
+    "motifColor": "#c39900",
+    "textColor": "#433b1e",
+    "mutedColor": "#796d3e",
+    "accentColor": "#b8930c"
+  },
+  "186ba1fc-0a74-4c76-ac8f-67f169201848": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(143deg, #ede6f2 0%, #cdaee1 50%, #ba78d5 100%)",
+    "motifColor": "#6c2598",
+    "textColor": "#33253c",
+    "mutedColor": "#60496f",
+    "accentColor": "#6a2d91"
+  },
+  "19dbf922-e096-44a3-960c-726bdcf1b9b2": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(140deg, #e7f2eb 0%, #b4dfc4 50%, #7ccfa4 100%)",
+    "motifColor": "#2b9152",
+    "textColor": "#263b2e",
+    "mutedColor": "#4b6d58",
+    "accentColor": "#338a54"
+  },
+  "1a2d0cf0-2f03-4cd5-a640-01fd0c836e2d": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(140deg, #f9f4ea 0%, #f1d59b 50%, #f3ce4c 100%)",
+    "motifColor": "#ad7704",
+    "textColor": "#43371e",
+    "mutedColor": "#79663e",
+    "accentColor": "#a5740b"
+  },
+  "1a3a4a00-82c0-432f-81fe-9e7a46793944": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(148deg, #faf3ed 0%, #f4ceb2 50%, #f4b36a 100%)",
+    "motifColor": "#c95a06",
+    "textColor": "#432e1e",
+    "mutedColor": "#79583e",
+    "accentColor": "#c15b0e"
+  },
+  "1a9da35b-e261-417f-bfe4-8a03f948da21": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(167deg, #e7f1ed 0%, #b4dbcc 50%, #7ecab3 100%)",
+    "motifColor": "#2f8a66",
+    "textColor": "#273a32",
+    "mutedColor": "#4d6b5f",
+    "accentColor": "#368364"
+  },
+  "1ab82d33-d965-4a2c-8b4b-b1d5e8853013": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(160deg, #f9f3ec 0%, #f2cca3 50%, #f3b755 100%)",
+    "motifColor": "#b46005",
+    "textColor": "#43311e",
+    "mutedColor": "#795d3e",
+    "accentColor": "#ad600c"
+  },
+  "1b666101-787f-4dbf-a137-e6ca1be21fbb": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(125deg, #eaf3ef 0%, #bee3d3 50%, #86d3ba 100%)",
+    "motifColor": "#2e9c6d",
+    "textColor": "#263b32",
+    "mutedColor": "#4b6d5e",
+    "accentColor": "#36946c"
+  },
+  "1bf7c01c-bf74-484c-bb24-7d0283b0ff63": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(153deg, #eee6f3 0%, #ceb1e4 50%, #b979da 100%)",
+    "motifColor": "#6a22a2",
+    "textColor": "#32243d",
+    "mutedColor": "#5e4771",
+    "accentColor": "#692a9a"
+  },
+  "1c329b67-33ea-4998-b09a-e6fe2c7fe21d": {
+    "category": "comfort",
+    "motif": "mountain",
+    "gradient": "linear-gradient(132deg, #f9ece9 0%, #f4b49f 50%, #f88c54 100%)",
+    "motifColor": "#bc2e00",
+    "textColor": "#43271e",
+    "mutedColor": "#794d3e",
+    "accentColor": "#b1340b"
+  },
+  "1c619da4-ef49-47c1-bd53-a829ee978580": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(137deg, #ede7f3 0%, #cdb5e4 50%, #b67ed9 100%)",
+    "motifColor": "#6626a2",
+    "textColor": "#31253c",
+    "mutedColor": "#5c4870",
+    "accentColor": "#662e9a"
+  },
+  "1c7e2e03-e77f-4870-a9fc-c10f6ad6dd4b": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(171deg, #f9f2e8 0%, #f2cd95 50%, #f6c245 100%)",
+    "motifColor": "#ab6801",
+    "textColor": "#43341e",
+    "mutedColor": "#79623e",
+    "accentColor": "#a2660a"
+  },
+  "1cb001d3-d419-4a85-82a4-b8a2ac2f6ca0": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(174deg, #efe9f4 0%, #d4bce5 50%, #bf86d9 100%)",
+    "motifColor": "#7429a6",
+    "textColor": "#33253c",
+    "mutedColor": "#5f496f",
+    "accentColor": "#72329e"
+  },
+  "1e2a191c-ba9b-48bd-9858-4b2389ebe1f0": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(138deg, #f9f2eb 0%, #f3cb9e 50%, #f6b84e 100%)",
+    "motifColor": "#b36002",
+    "textColor": "#43321e",
+    "mutedColor": "#795e3e",
+    "accentColor": "#aa5f0b"
+  },
+  "1e759e99-1278-4a4b-8d75-f1ed03f42f99": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(165deg, #ede7f4 0%, #cbb5e6 50%, #b17ddb 100%)",
+    "motifColor": "#5f23a6",
+    "textColor": "#2f243d",
+    "mutedColor": "#5a4771",
+    "accentColor": "#5f2b9e"
+  },
+  "1e924e8a-76fc-4a8c-b04c-b6ddaaface21": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(136deg, #faf1ec 0%, #f4c6ae 50%, #f6a565 100%)",
+    "motifColor": "#c94603",
+    "textColor": "#432a1e",
+    "mutedColor": "#79523e",
+    "accentColor": "#c0490c"
+  },
+  "1ef9c83a-ec1e-436a-bf34-755840948890": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(152deg, #f8edef 0%, #ecb6c2 50%, #e77e8b 100%)",
+    "motifColor": "#be183e",
+    "textColor": "#402128",
+    "mutedColor": "#75424e",
+    "accentColor": "#b52142"
+  },
+  "1f2ec534-5f50-4949-afea-8b0fedf0eba9": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(158deg, #e9f3ed 0%, #bae2c9 50%, #82d2a9 100%)",
+    "motifColor": "#2c9a56",
+    "textColor": "#263b2e",
+    "mutedColor": "#4a6d58",
+    "accentColor": "#349258"
+  },
+  "2002f565-f3e1-44e5-a3b2-369eb83f3999": {
+    "category": "comfort",
+    "motif": "petal",
+    "gradient": "linear-gradient(137deg, #faf1ec 0%, #f7c8ad 50%, #fca961 100%)",
+    "motifColor": "#ce4c00",
+    "textColor": "#432c1e",
+    "mutedColor": "#79543e",
+    "accentColor": "#c24f0c"
+  },
+  "205542f6-4cc4-4c63-a5c9-156800590288": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(138deg, #f9f3e9 0%, #f3d097 50%, #f8c546 100%)",
+    "motifColor": "#af6b00",
+    "textColor": "#43351e",
+    "mutedColor": "#79633e",
+    "accentColor": "#a4690a"
+  },
+  "20a7bc4b-4f14-4b2a-a310-470f74ee29ad": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(143deg, #ebf2f7 0%, #aaceeb 50%, #6ca4e7 100%)",
+    "motifColor": "#136ab1",
+    "textColor": "#213240",
+    "mutedColor": "#415f76",
+    "accentColor": "#1b6aa9"
+  },
+  "212cfb6e-d3ba-4add-9ac2-ef0c7fa89fea": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(139deg, #f9f5e9 0%, #f4de99 50%, #f9e048 100%)",
+    "motifColor": "#b28700",
+    "textColor": "#433a1e",
+    "mutedColor": "#796b3e",
+    "accentColor": "#a7810b"
+  },
+  "2181e33d-d56b-4b54-889e-9f76a433a457": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(153deg, #faf2ee 0%, #f4c8b3 50%, #f5a66a 100%)",
+    "motifColor": "#cd4604",
+    "textColor": "#432a1e",
+    "mutedColor": "#79523e",
+    "accentColor": "#c4490d"
+  },
+  "2258746c-3fb5-40a1-b6a0-1ebbf30f97f3": {
+    "category": "drama",
+    "motif": "cloud",
+    "gradient": "linear-gradient(151deg, #f3edf6 0%, #e0cbeb 50%, #cb97dd 100%)",
+    "motifColor": "#862fb6",
+    "textColor": "#34253b",
+    "mutedColor": "#61496e",
+    "accentColor": "#8438ad"
+  },
+  "22e44f9a-00b0-4780-b39c-46e9e9034682": {
+    "category": "motivation",
+    "motif": "wave",
+    "gradient": "linear-gradient(133deg, #faf9eb 0%, #f6f1a0 50%, #f4fb4e 100%)",
+    "motifColor": "#bbb000",
+    "textColor": "#43411e",
+    "mutedColor": "#79763e",
+    "accentColor": "#b0a60b"
+  },
+  "231f5c69-b684-4b2a-88fa-2851eccaa877": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(155deg, #f8ebf0 0%, #edb0c8 50%, #e97697 100%)",
+    "motifColor": "#bc1456",
+    "textColor": "#40212d",
+    "mutedColor": "#764156",
+    "accentColor": "#b41d58"
+  },
+  "23e42ae3-6bac-4560-951c-d9aae047e2e8": {
+    "category": "daily",
+    "motif": "star",
+    "gradient": "linear-gradient(141deg, #e7f0f6 0%, #9acbea 50%, #59a2e9 100%)",
+    "motifColor": "#0e6aa5",
+    "textColor": "#203441",
+    "mutedColor": "#406278",
+    "accentColor": "#15689e"
+  },
+  "2593ce41-6f93-406b-a756-02572140c4f5": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(141deg, #faf6eb 0%, #f4dea1 50%, #f7dc51 100%)",
+    "motifColor": "#b98800",
+    "textColor": "#43391e",
+    "mutedColor": "#796a3e",
+    "accentColor": "#ae830b"
+  },
+  "260a4787-fad1-4457-a130-e75ac060835d": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(136deg, #ebe5f3 0%, #c4ace3 50%, #ab74d9 100%)",
+    "motifColor": "#58219d",
+    "textColor": "#2f243d",
+    "mutedColor": "#594771",
+    "accentColor": "#592896"
+  },
+  "2687a5a6-c6c3-445d-83b9-aedae99157b3": {
+    "category": "rest",
+    "motif": "cloud",
+    "gradient": "linear-gradient(150deg, #ecf4f1 0%, #c6e4db 50%, #91d2c5 100%)",
+    "motifColor": "#359f7f",
+    "textColor": "#273a34",
+    "mutedColor": "#4c6b62",
+    "accentColor": "#3d977b"
+  },
+  "2717a156-3df2-46ea-a7c6-897b8914c704": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(162deg, #ede7f3 0%, #cbb2e5 50%, #b37adb 100%)",
+    "motifColor": "#6122a4",
+    "textColor": "#30243d",
+    "mutedColor": "#5b4771",
+    "accentColor": "#612a9c"
+  },
+  "2732fda4-f0b3-4a4d-a327-e506b48d91fb": {
+    "category": "daily",
+    "motif": "star",
+    "gradient": "linear-gradient(158deg, #e6f1f6 0%, #99cde9 50%, #58a7e8 100%)",
+    "motifColor": "#0e6fa3",
+    "textColor": "#203541",
+    "mutedColor": "#406478",
+    "accentColor": "#166c9c"
+  },
+  "27438953-60db-49aa-8e51-dc41273837d2": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(136deg, #f8ecf0 0%, #efb3c8 50%, #ec7896 100%)",
+    "motifColor": "#c41252",
+    "textColor": "#41202c",
+    "mutedColor": "#774054",
+    "accentColor": "#bb1a54"
+  },
+  "277059c5-4c7e-4e1b-b3e1-4095e67396a5": {
+    "category": "drama",
+    "motif": "star",
+    "gradient": "linear-gradient(144deg, #e4e1f1 0%, #ac9ddf 50%, #8863d7 100%)",
+    "motifColor": "#351c90",
+    "textColor": "#29233d",
+    "mutedColor": "#4f4672",
+    "accentColor": "#392389"
+  },
+  "279c55b1-51ea-4c30-9a2b-af6149b9cd57": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(169deg, #faf5ed 0%, #f5d5a5 50%, #f9c855 100%)",
+    "motifColor": "#bf7300",
+    "textColor": "#43341e",
+    "mutedColor": "#79623e",
+    "accentColor": "#b4710b"
+  },
+  "27ad3897-042d-494c-9a9d-bcaf7765c855": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(157deg, #eef3f8 0%, #b6ceed 50%, #7a9ee7 100%)",
+    "motifColor": "#175ebb",
+    "textColor": "#212e40",
+    "mutedColor": "#425875",
+    "accentColor": "#2060b3"
+  },
+  "286ba8fa-0d16-4b8b-87d5-915ec9079dd1": {
+    "category": "comfort",
+    "motif": "star",
+    "gradient": "linear-gradient(170deg, #f8e3e5 0%, #f38b91 50%, #fa453d 100%)",
+    "motifColor": "#a8000a",
+    "textColor": "#431e20",
+    "mutedColor": "#793e42",
+    "accentColor": "#9e0a13"
+  },
+  "2906b075-1730-4f19-ad1c-8a83a4b7e02f": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(134deg, #eee7f3 0%, #cfb5e5 50%, #b97ed9 100%)",
+    "motifColor": "#6a25a3",
+    "textColor": "#31253c",
+    "mutedColor": "#5d4870",
+    "accentColor": "#692d9b"
+  },
+  "29760eef-34f0-4abc-b147-e535ef39de9c": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(176deg, #ece6f3 0%, #c9aee3 50%, #b376d9 100%)",
+    "motifColor": "#62229e",
+    "textColor": "#31243d",
+    "mutedColor": "#5c4770",
+    "accentColor": "#622a96"
+  },
+  "29e566bc-5ca9-417e-b8dd-5e135208e0fc": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(145deg, #eee8f3 0%, #d0b7e4 50%, #bb80d9 100%)",
+    "motifColor": "#6d27a3",
+    "textColor": "#32253c",
+    "mutedColor": "#5e4870",
+    "accentColor": "#6c2f9b"
+  },
+  "2a01a861-e44a-4762-9767-616869f6faf6": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(142deg, #f8edef 0%, #efb7c2 50%, #ec7d88 100%)",
+    "motifColor": "#c71336",
+    "textColor": "#412027",
+    "mutedColor": "#77404b",
+    "accentColor": "#bf1c3c"
+  },
+  "2a3eadaf-62fa-4c9f-9b20-c53059deb716": {
+    "category": "drama",
+    "motif": "light",
+    "gradient": "linear-gradient(174deg, #f0e8f5 0%, #d8b7e9 50%, #c97de1 100%)",
+    "motifColor": "#7f1fb1",
+    "textColor": "#35233e",
+    "mutedColor": "#634573",
+    "accentColor": "#7c27a9"
+  },
+  "2a41834b-c8f3-42ed-9550-4d9422a08c1e": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(153deg, #eef1f8 0%, #b6c7ed 50%, #7a91e7 100%)",
+    "motifColor": "#184aba",
+    "textColor": "#212b40",
+    "mutedColor": "#425275",
+    "accentColor": "#204db2"
+  },
+  "2a71d1ff-2da1-499d-8500-665b7f0d4023": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(154deg, #e9f2ed 0%, #badecc 50%, #85cbae 100%)",
+    "motifColor": "#329060",
+    "textColor": "#283930",
+    "mutedColor": "#4d6b5b",
+    "accentColor": "#3a8860"
+  },
+  "2aa46508-2a9b-4370-ac86-b58ba35d1261": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(156deg, #faf3ee 0%, #f3d1b4 50%, #f2b86e 100%)",
+    "motifColor": "#c86009",
+    "textColor": "#432f1e",
+    "mutedColor": "#79593e",
+    "accentColor": "#c06111"
+  },
+  "2b2e5bec-a0bb-414e-b52c-573a0cf0fc4d": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(130deg, #f9f3ea 0%, #f4cf9c 50%, #f9c14b 100%)",
+    "motifColor": "#b56900",
+    "textColor": "#43331e",
+    "mutedColor": "#79613e",
+    "accentColor": "#aa670b"
+  },
+  "2b8de61e-93e5-4fb1-b706-995d8d4d1ebf": {
+    "category": "drama",
+    "motif": "mountain",
+    "gradient": "linear-gradient(162deg, #ede6f4 0%, #c9b1e8 50%, #b077e0 100%)",
+    "motifColor": "#5c1dab",
+    "textColor": "#2f233e",
+    "mutedColor": "#594573",
+    "accentColor": "#5d25a3"
+  },
+  "2c43c30b-5d12-475d-a4f3-31137d8aab4a": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(160deg, #f9f2e9 0%, #f1ca98 50%, #f3b949 100%)",
+    "motifColor": "#aa6004",
+    "textColor": "#43331e",
+    "mutedColor": "#795f3e",
+    "accentColor": "#a3600b"
+  },
+  "2ca92684-873c-4f62-a21f-0b0f2b22b7b9": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(145deg, #faf2ee 0%, #f4ccb3 50%, #f4af6b 100%)",
+    "motifColor": "#ca5406",
+    "textColor": "#432d1e",
+    "mutedColor": "#79563e",
+    "accentColor": "#c2550e"
+  },
+  "2caa4974-92a8-42ff-8d70-1cc0c71feb0b": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(166deg, #faf2eb 0%, #f4ca9d 50%, #f8b74c 100%)",
+    "motifColor": "#b65e00",
+    "textColor": "#43311e",
+    "mutedColor": "#795d3e",
+    "accentColor": "#ab5e0b"
+  },
+  "2cacc27b-d6b2-466d-8a08-e0a3433ae463": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(131deg, #ede6f3 0%, #caafe4 50%, #b376db 100%)",
+    "motifColor": "#6121a2",
+    "textColor": "#30243d",
+    "mutedColor": "#5c4671",
+    "accentColor": "#61299a"
+  },
+  "2cbcc378-1961-4dd7-887a-f768643f5fcc": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(177deg, #ede7f3 0%, #cab4e4 50%, #b07dd9 100%)",
+    "motifColor": "#5e25a1",
+    "textColor": "#2f253c",
+    "mutedColor": "#5a4870",
+    "accentColor": "#5f2d9a"
+  },
+  "2d627ad4-a5cf-4390-b57f-f3010fb7a9a0": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(139deg, #faf5ed 0%, #f3d7a8 50%, #f5ca5a 100%)",
+    "motifColor": "#bd7703",
+    "textColor": "#43351e",
+    "mutedColor": "#79633e",
+    "accentColor": "#b5750c"
+  },
+  "2e3af223-7139-445d-8a6f-3cddfb577764": {
+    "category": "daily",
+    "motif": "star",
+    "gradient": "linear-gradient(160deg, #e5f3f6 0%, #95dbeb 50%, #52bfec 100%)",
+    "motifColor": "#0b87a5",
+    "textColor": "#1f3b42",
+    "mutedColor": "#3e6e79",
+    "accentColor": "#12839e"
+  },
+  "2e510c39-7880-4659-986c-78eb10ff11ed": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(132deg, #f9f2e9 0%, #f1cb99 50%, #f3ba4a 100%)",
+    "motifColor": "#ab6204",
+    "textColor": "#43331e",
+    "mutedColor": "#795f3e",
+    "accentColor": "#a4610b"
+  },
+  "2eb24904-b2ff-4e64-ac3c-e998e7dd6f05": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(169deg, #ebe5f3 0%, #c5ace3 50%, #ac73da 100%)",
+    "motifColor": "#59209e",
+    "textColor": "#2f243d",
+    "mutedColor": "#5a4771",
+    "accentColor": "#592896"
+  },
+  "2ee16fa5-544b-4828-bdc3-d8884d7ffa4d": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(127deg, #e7f2eb 0%, #b3dfc4 50%, #7bd0a4 100%)",
+    "motifColor": "#2a9252",
+    "textColor": "#263b2e",
+    "mutedColor": "#4a6d58",
+    "accentColor": "#328a54"
+  },
+  "2f53df05-68ae-43de-beed-4e604b6ab04d": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(134deg, #faf3ee 0%, #f3ceb3 50%, #f3b26c 100%)",
+    "motifColor": "#c85808",
+    "textColor": "#432d1e",
+    "mutedColor": "#79573e",
+    "accentColor": "#c05910"
+  },
+  "301916f7-8a7b-4023-92fb-2687e5836b3c": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(148deg, #faf1ed 0%, #f3c5b1 50%, #f4a169 100%)",
+    "motifColor": "#c84106",
+    "textColor": "#43291e",
+    "mutedColor": "#79503e",
+    "accentColor": "#c0440e"
+  },
+  "30672380-3aae-4e20-b430-f0bd0d984a34": {
+    "category": "drama",
+    "motif": "cloud",
+    "gradient": "linear-gradient(162deg, #f2edf5 0%, #dec9e9 50%, #cb95da 100%)",
+    "motifColor": "#8630b0",
+    "textColor": "#34263b",
+    "mutedColor": "#624a6e",
+    "accentColor": "#8339a7"
+  },
+  "30bc1a5a-1d6d-4470-b8aa-fc392e8e8702": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(125deg, #f9f4e9 0%, #f3d999 50%, #f7d648 100%)",
+    "motifColor": "#b17d00",
+    "textColor": "#43381e",
+    "mutedColor": "#79683e",
+    "accentColor": "#a6790b"
+  },
+  "310a78df-7966-4c3c-bb39-2a39be9bd8fe": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(137deg, #ede7f3 0%, #cab4e3 50%, #b27dd8 100%)",
+    "motifColor": "#6026a0",
+    "textColor": "#30253c",
+    "mutedColor": "#5b486f",
+    "accentColor": "#612e98"
+  },
+  "310c883f-7fe5-40c7-848f-a53d85f94d33": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(162deg, #ece6f3 0%, #c7afe3 50%, #ad77d9 100%)",
+    "motifColor": "#5a229f",
+    "textColor": "#2f243d",
+    "mutedColor": "#5a4771",
+    "accentColor": "#5b2a98"
+  },
+  "312d15d6-c02c-41b4-844c-cb7fa54ff64c": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(166deg, #f9f4eb 0%, #f2d2a1 50%, #f4c453 100%)",
+    "motifColor": "#b46f04",
+    "textColor": "#43341e",
+    "mutedColor": "#79623e",
+    "accentColor": "#ad6d0b"
+  },
+  "312d1ef4-19e6-4472-bb8e-0779728086e8": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(147deg, #f9f2ed 0%, #f2cdaf 50%, #f1b369 100%)",
+    "motifColor": "#c25b09",
+    "textColor": "#432e1e",
+    "mutedColor": "#79583e",
+    "accentColor": "#ba5c11"
+  },
+  "3169ae81-cbcc-444d-b1d2-e06f1647d39b": {
+    "category": "comfort",
+    "motif": "cloud",
+    "gradient": "linear-gradient(164deg, #fbf7f3 0%, #f4e1c7 50%, #f1ce83 100%)",
+    "motifColor": "#d7830e",
+    "textColor": "#42331f",
+    "mutedColor": "#79613f",
+    "accentColor": "#cd8218"
+  },
+  "31b36fc2-4c6b-47cf-92b7-e8bd17ecd401": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(141deg, #faf5ec 0%, #f4d5a2 50%, #f8ca52 100%)",
+    "motifColor": "#bc7400",
+    "textColor": "#43351e",
+    "mutedColor": "#79633e",
+    "accentColor": "#b0720b"
+  },
+  "322a23dc-0152-49e8-a4f3-4e91f1440f1a": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(157deg, #efe8f4 0%, #d1b9e5 50%, #ba83da 100%)",
+    "motifColor": "#6c27a6",
+    "textColor": "#31253c",
+    "mutedColor": "#5d4870",
+    "accentColor": "#6b2f9e"
+  },
+  "329f4d42-c387-4ba0-b522-9fd59786d43e": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(179deg, #faf5ed 0%, #f4d8a7 50%, #f6cc58 100%)",
+    "motifColor": "#bd7902",
+    "textColor": "#43351e",
+    "mutedColor": "#79643e",
+    "accentColor": "#b4760b"
+  },
+  "32b26a36-7770-4095-9ac6-a44c9a365b17": {
+    "category": "motivation",
+    "motif": "wave",
+    "gradient": "linear-gradient(147deg, #f9faeb 0%, #eff59f 50%, #ddfa4e 100%)",
+    "motifColor": "#acb900",
+    "textColor": "#40431e",
+    "mutedColor": "#75793e",
+    "accentColor": "#a2ae0b"
+  },
+  "32d54060-a734-4675-be2f-87e5e6578326": {
+    "category": "drama",
+    "motif": "star",
+    "gradient": "linear-gradient(141deg, #e4e1f1 0%, #a99fe0 50%, #8365d7 100%)",
+    "motifColor": "#2f1d91",
+    "textColor": "#28243d",
+    "mutedColor": "#4d4671",
+    "accentColor": "#34248a"
+  },
+  "3312d780-e09d-4d9d-a04a-c68fedd12867": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(137deg, #e9f3ec 0%, #bae1c9 50%, #82d2a8 100%)",
+    "motifColor": "#2d9855",
+    "textColor": "#263b2e",
+    "mutedColor": "#4b6d58",
+    "accentColor": "#359057"
+  },
+  "33185109-caa5-40d1-87b1-2a3bab808dbd": {
+    "category": "daily",
+    "motif": "mountain",
+    "gradient": "linear-gradient(159deg, #edf3f9 0%, #b0d4f0 50%, #70a9ee 100%)",
+    "motifColor": "#0e72c1",
+    "textColor": "#1f3242",
+    "mutedColor": "#3f5f79",
+    "accentColor": "#1671b9"
+  },
+  "33af58e6-6f1d-4f02-a9d1-253d8c5625ee": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(144deg, #faf3eb 0%, #f4cda0 50%, #f9bb4f 100%)",
+    "motifColor": "#b96300",
+    "textColor": "#43321e",
+    "mutedColor": "#795e3e",
+    "accentColor": "#ae620b"
+  },
+  "34399ac3-5a3a-4d76-a615-ddb304ff21bd": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(147deg, #eee9f4 0%, #cebce5 50%, #b286d9 100%)",
+    "motifColor": "#5f2aa7",
+    "textColor": "#2f253c",
+    "mutedColor": "#59496f",
+    "accentColor": "#60329e"
+  },
+  "354779f2-b2dc-4739-bdbd-cfd774c966a3": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(150deg, #ece6f3 0%, #c8afe5 50%, #af75dc 100%)",
+    "motifColor": "#5c1fa3",
+    "textColor": "#2f233d",
+    "mutedColor": "#5a4672",
+    "accentColor": "#5d279c"
+  },
+  "3556a7b0-214b-49b3-8fa0-477eb0dfec0a": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(156deg, #eee5f3 0%, #ceade4 50%, #bd73db 100%)",
+    "motifColor": "#6e1fa1",
+    "textColor": "#33233d",
+    "mutedColor": "#604672",
+    "accentColor": "#6c2799"
+  },
+  "35b4a939-94a3-4e61-a886-7c38c252a7e4": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(173deg, #f9f2ea 0%, #f4cb9c 50%, #f8b94b 100%)",
+    "motifColor": "#b46000",
+    "textColor": "#43321e",
+    "mutedColor": "#795e3e",
+    "accentColor": "#a9600b"
+  },
+  "36504453-8801-4867-b652-bc56849a078d": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(138deg, #eee5f3 0%, #cface4 50%, #be72db 100%)",
+    "motifColor": "#701f9f",
+    "textColor": "#34243d",
+    "mutedColor": "#614672",
+    "accentColor": "#6e2798"
+  },
+  "36a09e7a-7d49-4fd3-9142-d73214d89897": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(139deg, #f9f1ea 0%, #f2c7a5 50%, #f4ae5c 100%)",
+    "motifColor": "#bd5604",
+    "textColor": "#432e1e",
+    "mutedColor": "#79583e",
+    "accentColor": "#b5570c"
+  },
+  "37b379c2-f434-41e0-99da-e0cc44333745": {
+    "category": "rest",
+    "motif": "mountain",
+    "gradient": "linear-gradient(157deg, #e7f2ee 0%, #b6e1d0 50%, #7dd3b9 100%)",
+    "motifColor": "#29976b",
+    "textColor": "#263b33",
+    "mutedColor": "#4a6e5f",
+    "accentColor": "#31906a"
+  },
+  "37c2de64-0d79-4a95-9335-c88c0c63bcd1": {
+    "category": "drama",
+    "motif": "star",
+    "gradient": "linear-gradient(143deg, #e2dff1 0%, #a296e1 50%, #7b59db 100%)",
+    "motifColor": "#2a178f",
+    "textColor": "#27223e",
+    "mutedColor": "#4c4473",
+    "accentColor": "#2f1d88"
+  },
+  "37ded0c0-ef1c-4b4c-a094-a3641b304cc3": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(138deg, #ede8f4 0%, #cbb8e8 50%, #ae7fdf 100%)",
+    "motifColor": "#5822ad",
+    "textColor": "#2e233d",
+    "mutedColor": "#574672",
+    "accentColor": "#5a2aa5"
+  },
+  "39023989-45b6-4c82-98f5-f2e6c448f5bb": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(135deg, #faf6ed 0%, #f3dda9 50%, #f4d65c 100%)",
+    "motifColor": "#bb8605",
+    "textColor": "#43381e",
+    "mutedColor": "#79683e",
+    "accentColor": "#b4830d"
+  },
+  "390b0beb-af9d-48ab-b23b-949295f2e667": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(168deg, #f8f3ea 0%, #f0cf9b 50%, #f2c24c 100%)",
+    "motifColor": "#aa6a05",
+    "textColor": "#43351e",
+    "mutedColor": "#79623e",
+    "accentColor": "#a3680c"
+  },
+  "3981b5cb-e6e0-46f2-87c2-14c0aae2798a": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(145deg, #f9f3ea 0%, #f2d19d 50%, #f5c44e 100%)",
+    "motifColor": "#b26d02",
+    "textColor": "#43341e",
+    "mutedColor": "#79623e",
+    "accentColor": "#aa6b0b"
+  },
+  "3a78d005-b45f-4afd-8fdc-f289134eba0a": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(136deg, #ecf2f8 0%, #b0ceec 50%, #72a2e8 100%)",
+    "motifColor": "#1566b6",
+    "textColor": "#213140",
+    "mutedColor": "#415c76",
+    "accentColor": "#1d66ae"
+  },
+  "3a8d607f-416e-4ea0-9f12-d9c75a0ddf43": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(146deg, #f8ebee 0%, #eeafbe 50%, #ec7485 100%)",
+    "motifColor": "#c0113a",
+    "textColor": "#412028",
+    "mutedColor": "#78404d",
+    "accentColor": "#b8193f"
+  },
+  "3b723f71-bad0-4633-8100-4b3feb3733e9": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(158deg, #f9f0eb 0%, #f2c2a9 50%, #f2a161 100%)",
+    "motifColor": "#bd4507",
+    "textColor": "#432b1e",
+    "mutedColor": "#79523e",
+    "accentColor": "#b5480f"
+  },
+  "3b88b9af-b6df-49bb-babc-3d9c846b4bc0": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(135deg, #e9f2ee 0%, #bbdfcf 50%, #86ceb5 100%)",
+    "motifColor": "#319368",
+    "textColor": "#273a31",
+    "mutedColor": "#4c6b5e",
+    "accentColor": "#398c67"
+  },
+  "3ccfc03f-3ef2-4b43-9ed1-ff52a45169db": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(147deg, #eee6f3 0%, #d1b1e4 50%, #bf79da 100%)",
+    "motifColor": "#7122a2",
+    "textColor": "#33243d",
+    "mutedColor": "#614771",
+    "accentColor": "#6f2a9a"
+  },
+  "3d09398d-7ab5-46a7-a68a-f93162fb7d92": {
+    "category": "motivation",
+    "motif": "wave",
+    "gradient": "linear-gradient(167deg, #faf8ec 0%, #f6eba1 50%, #fbf650 100%)",
+    "motifColor": "#bca300",
+    "textColor": "#433e1e",
+    "mutedColor": "#79713e",
+    "accentColor": "#b19b0b"
+  },
+  "3dc27597-13a8-43d8-938a-65cc310364c2": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(138deg, #ece5f3 0%, #c9ade3 50%, #b475d8 100%)",
+    "motifColor": "#63229d",
+    "textColor": "#31243d",
+    "mutedColor": "#5d4771",
+    "accentColor": "#632a95"
+  },
+  "3f711005-f8b9-47aa-aafa-0548daf9f86a": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(162deg, #faf3ee 0%, #f4cfb3 50%, #f4b36c 100%)",
+    "motifColor": "#ca5a06",
+    "textColor": "#432e1e",
+    "mutedColor": "#79573e",
+    "accentColor": "#c25b0f"
+  },
+  "3f816cd7-1269-4164-b4df-39a3320d873a": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(137deg, #f9efec 0%, #f2bcac 50%, #f29365 100%)",
+    "motifColor": "#c13107",
+    "textColor": "#43261e",
+    "mutedColor": "#794c3e",
+    "accentColor": "#b9350f"
+  },
+  "41889f51-dbc9-47f7-96e5-aa55afa6fae7": {
+    "category": "motivation",
+    "motif": "wave",
+    "gradient": "linear-gradient(129deg, #f9faeb 0%, #f1f6a0 50%, #e1fb4e 100%)",
+    "motifColor": "#b0ba00",
+    "textColor": "#41431e",
+    "mutedColor": "#76793e",
+    "accentColor": "#a6af0b"
+  },
+  "419b326c-4c37-4b5f-9328-669930645977": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(174deg, #ebf1f7 0%, #a9caeb 50%, #6a9de8 100%)",
+    "motifColor": "#1362b0",
+    "textColor": "#213040",
+    "mutedColor": "#415c77",
+    "accentColor": "#1a62a9"
+  },
+  "41bbfc7a-f8b6-4630-8c62-17272220680b": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(163deg, #ede8f4 0%, #ccb8e6 50%, #b181da 100%)",
+    "motifColor": "#5e26a7",
+    "textColor": "#2f243c",
+    "mutedColor": "#594870",
+    "accentColor": "#5f2e9f"
+  },
+  "4209e4f9-8af0-4ab2-b534-b39587352d9c": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(176deg, #ede6f3 0%, #cdaee3 50%, #b976d9 100%)",
+    "motifColor": "#6a229f",
+    "textColor": "#32243d",
+    "mutedColor": "#5f4771",
+    "accentColor": "#692a97"
+  },
+  "426236ea-e23a-4bb1-8160-f6e42b4f229b": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(145deg, #efe7f4 0%, #d1b5e7 50%, #bd7cdd 100%)",
+    "motifColor": "#6e22a9",
+    "textColor": "#32243d",
+    "mutedColor": "#5f4671",
+    "accentColor": "#6d2aa1"
+  },
+  "426b9e68-03a1-4884-b806-3cc9f10fae98": {
+    "category": "drama",
+    "motif": "star",
+    "gradient": "linear-gradient(174deg, #e3e0f1 0%, #a69be0 50%, #7f60d8 100%)",
+    "motifColor": "#2d1a8f",
+    "textColor": "#27233e",
+    "mutedColor": "#4d4572",
+    "accentColor": "#312188"
+  },
+  "4295ed27-6097-498b-ba70-97a24c2cef20": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(162deg, #efe9f4 0%, #d2b9e5 50%, #bc82da 100%)",
+    "motifColor": "#6f27a7",
+    "textColor": "#32253c",
+    "mutedColor": "#5e4870",
+    "accentColor": "#6e2f9e"
+  },
+  "42d82e73-a06f-426c-b3dc-b7ee92dd2a60": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(161deg, #f8ecf0 0%, #edb1c5 50%, #e97891 100%)",
+    "motifColor": "#bd154b",
+    "textColor": "#40212b",
+    "mutedColor": "#764152",
+    "accentColor": "#b51e4e"
+  },
+  "43560e22-c6dc-48f0-a5f3-0c7cfc0b2e43": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(155deg, #ece6f3 0%, #c7afe5 50%, #ad75dc 100%)",
+    "motifColor": "#5a1fa4",
+    "textColor": "#2f233d",
+    "mutedColor": "#594672",
+    "accentColor": "#5b279c"
+  },
+  "4393a667-4a8e-4f18-a7ca-0819dfa7f8a5": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(172deg, #f9f4ea 0%, #f3d49b 50%, #f6cc4b 100%)",
+    "motifColor": "#b27401",
+    "textColor": "#43361e",
+    "mutedColor": "#79653e",
+    "accentColor": "#a8710b"
+  },
+  "43d03876-bc57-41e4-b2d2-e991694eca05": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(152deg, #f9eef2 0%, #f1bbcf 50%, #ed81a0 100%)",
+    "motifColor": "#cd125a",
+    "textColor": "#41202d",
+    "mutedColor": "#784055",
+    "accentColor": "#c41b5c"
+  },
+  "44e46684-355d-4419-95fb-2b9195d1f00b": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(161deg, #f9f3ed 0%, #f2cfb1 50%, #f2b66a 100%)",
+    "motifColor": "#c45f09",
+    "textColor": "#432f1e",
+    "mutedColor": "#795a3e",
+    "accentColor": "#bc6011"
+  },
+  "45891739-e4a5-4983-8182-920c76719ba9": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(174deg, #ece7f4 0%, #c9b5e5 50%, #ac7ddb 100%)",
+    "motifColor": "#5824a5",
+    "textColor": "#2e243d",
+    "mutedColor": "#584770",
+    "accentColor": "#5a2c9d"
+  },
+  "45cb712d-bb01-4a8c-ac8f-931e48dbbe99": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(164deg, #e7f1ec 0%, #b3dbc9 50%, #7ec9af 100%)",
+    "motifColor": "#2f8961",
+    "textColor": "#283932",
+    "mutedColor": "#4d6b5e",
+    "accentColor": "#368160"
+  },
+  "463dd02c-45a1-4372-86f8-263045c623ba": {
+    "category": "drama",
+    "motif": "petal",
+    "gradient": "linear-gradient(167deg, #efe6f5 0%, #d3afeb 50%, #c273e5 100%)",
+    "motifColor": "#7317b2",
+    "textColor": "#33213f",
+    "mutedColor": "#614375",
+    "accentColor": "#711faa"
+  },
+  "46b764a1-d5af-4e51-8900-cc20a736b4fa": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(128deg, #f8f0eb 0%, #f0c4a8 50%, #efa761 100%)",
+    "motifColor": "#b84e0a",
+    "textColor": "#422d1f",
+    "mutedColor": "#79563e",
+    "accentColor": "#b05011"
+  },
+  "46cb398b-c74e-4f1a-b5d7-62b22aef470d": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(153deg, #f9f5e9 0%, #f4dd97 50%, #f9df45 100%)",
+    "motifColor": "#af8500",
+    "textColor": "#433a1e",
+    "mutedColor": "#796b3e",
+    "accentColor": "#a5800b"
+  },
+  "47c3c6e1-4ced-444f-9e20-5d07d96c6d2d": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(151deg, #e7f1ec 0%, #b5ddc9 50%, #7eccad 100%)",
+    "motifColor": "#2d8e5e",
+    "textColor": "#273a31",
+    "mutedColor": "#4c6c5c",
+    "accentColor": "#35875e"
+  },
+  "47ceeb55-9da1-4b6d-b38d-788b23a8af02": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(135deg, #f8edf1 0%, #eeb5ca 50%, #ea7c99 100%)",
+    "motifColor": "#c11554",
+    "textColor": "#40212c",
+    "mutedColor": "#764155",
+    "accentColor": "#b91e57"
+  },
+  "47f5e96c-0b62-4456-8414-2d0def406dd3": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(154deg, #ede6f3 0%, #cbaee3 50%, #b576d9 100%)",
+    "motifColor": "#65229e",
+    "textColor": "#31243d",
+    "mutedColor": "#5d4770",
+    "accentColor": "#642a96"
+  },
+  "487bf620-62fb-4ebe-817c-56c430140e2a": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(178deg, #ece6f3 0%, #c8b1e4 50%, #af79d9 100%)",
+    "motifColor": "#5d23a1",
+    "textColor": "#2f243d",
+    "mutedColor": "#5a4770",
+    "accentColor": "#5d2b99"
+  },
+  "48f2a686-2c01-4d81-a41e-090b975172b0": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(127deg, #f9eff2 0%, #eebecf 50%, #e887a0 100%)",
+    "motifColor": "#c61b58",
+    "textColor": "#3f222c",
+    "mutedColor": "#754355",
+    "accentColor": "#bd245b"
+  },
+  "490d2227-c91c-4ac9-91f2-7fe72afec75e": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(126deg, #faf2ee 0%, #f3cab3 50%, #f2aa6c 100%)",
+    "motifColor": "#c84d08",
+    "textColor": "#432b1e",
+    "mutedColor": "#79543e",
+    "accentColor": "#c05010"
+  },
+  "49376b54-4e77-4ff3-bdda-22b610216b61": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(168deg, #faf3eb 0%, #f4ce9d 50%, #f9bd4c 100%)",
+    "motifColor": "#b76500",
+    "textColor": "#43321e",
+    "mutedColor": "#795f3e",
+    "accentColor": "#ac640b"
+  },
+  "495727a5-dd0f-4781-ac02-930b846884f0": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(167deg, #eaf2ed 0%, #bde0ca 50%, #88cea9 100%)",
+    "motifColor": "#329557",
+    "textColor": "#273a2e",
+    "mutedColor": "#4c6b58",
+    "accentColor": "#3a8d59"
+  },
+  "4b9bc2bc-617d-45e8-86a6-dca51d2124be": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(166deg, #ebe6f3 0%, #c3aee2 50%, #a777d8 100%)",
+    "motifColor": "#53239c",
+    "textColor": "#2e243c",
+    "mutedColor": "#584870",
+    "accentColor": "#552b94"
+  },
+  "4baabade-a9c4-459d-a411-0c096905585f": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(158deg, #eef1f8 0%, #b7c8ed 50%, #7a92e7 100%)",
+    "motifColor": "#184cba",
+    "textColor": "#212b3f",
+    "mutedColor": "#435375",
+    "accentColor": "#214fb1"
+  },
+  "4bebcd14-0300-4cb3-a2f3-165e558c04bf": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(155deg, #f9f2e9 0%, #f3cc99 50%, #f7bd49 100%)",
+    "motifColor": "#b16400",
+    "textColor": "#43331e",
+    "mutedColor": "#79603e",
+    "accentColor": "#a7630b"
+  },
+  "4c632540-77aa-482a-883a-a9114e3d2456": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(152deg, #ecf2f8 0%, #b0d0ec 50%, #72a4e7 100%)",
+    "motifColor": "#156ab5",
+    "textColor": "#213140",
+    "mutedColor": "#425d76",
+    "accentColor": "#1d69ad"
+  },
+  "4c68accf-29a6-4642-9812-80a079e46618": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(130deg, #ece6f3 0%, #c7b0e4 50%, #ad78db 100%)",
+    "motifColor": "#5922a2",
+    "textColor": "#2f243d",
+    "mutedColor": "#594771",
+    "accentColor": "#5a299a"
+  },
+  "4ccfa304-797b-43ae-adf7-298fb88e289c": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(139deg, #eee8f4 0%, #cfb5e6 50%, #b97ddc 100%)",
+    "motifColor": "#6a23a8",
+    "textColor": "#31243d",
+    "mutedColor": "#5d4771",
+    "accentColor": "#692ba0"
+  },
+  "4e0a225e-75b5-4393-ac42-98472c332067": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(128deg, #eee8f4 0%, #ceb7e7 50%, #b57edd 100%)",
+    "motifColor": "#6423a9",
+    "textColor": "#30243d",
+    "mutedColor": "#5b4771",
+    "accentColor": "#642ba1"
+  },
+  "4e7a3329-22ad-48ca-9616-5bcd94ad58ca": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(146deg, #e9f2ee 0%, #bde0cd 50%, #86cfb0 100%)",
+    "motifColor": "#319660",
+    "textColor": "#273a30",
+    "mutedColor": "#4c6c5b",
+    "accentColor": "#398e61"
+  },
+  "4e9890bf-812b-446d-97cd-6e929d6521bd": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(167deg, #f0e9f4 0%, #d5bbe6 50%, #c185da 100%)",
+    "motifColor": "#7628a7",
+    "textColor": "#33253c",
+    "mutedColor": "#60486f",
+    "accentColor": "#74319f"
+  },
+  "4f01c3c7-be1a-4d62-8bc2-62cf14dac62a": {
+    "category": "daily",
+    "motif": "wave",
+    "gradient": "linear-gradient(144deg, #ececf8 0%, #aeafee 50%, #796eec 100%)",
+    "motifColor": "#0f12bc",
+    "textColor": "#202041",
+    "mutedColor": "#404078",
+    "accentColor": "#171ab4"
+  },
+  "4f157601-1d41-4b5e-a9dc-ee6203bcff91": {
+    "category": "drama",
+    "motif": "petal",
+    "gradient": "linear-gradient(155deg, #eee6f5 0%, #ceaeeb 50%, #bb71e6 100%)",
+    "motifColor": "#6916b2",
+    "textColor": "#312140",
+    "mutedColor": "#5d4276",
+    "accentColor": "#681eaa"
+  },
+  "4f42764f-abcc-4450-81f4-8516c6641cb3": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(144deg, #ebe6f3 0%, #c3b0e4 50%, #a677da 100%)",
+    "motifColor": "#5122a1",
+    "textColor": "#2d243d",
+    "mutedColor": "#564771",
+    "accentColor": "#532a99"
+  },
+  "4ffb233b-4ab5-4d37-a927-c20475893703": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(146deg, #f9f5eb 0%, #f3dba1 50%, #f5d652 100%)",
+    "motifColor": "#b68202",
+    "textColor": "#43381e",
+    "mutedColor": "#79683e",
+    "accentColor": "#ae7e0b"
+  },
+  "502bf46b-4809-448f-8118-a588aede13f1": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(160deg, #f9f1e9 0%, #f3c897 50%, #f7b746 100%)",
+    "motifColor": "#ae5d00",
+    "textColor": "#43321e",
+    "mutedColor": "#795e3e",
+    "accentColor": "#a45d0a"
+  },
+  "503522da-c658-4a4c-8b2d-756f1eff3195": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(169deg, #ecf0f8 0%, #afc5ee 50%, #6f8eeb 100%)",
+    "motifColor": "#114cbb",
+    "textColor": "#202b41",
+    "mutedColor": "#405378",
+    "accentColor": "#194eb3"
+  },
+  "5066951f-39b6-4483-a350-f9c0c5bac90d": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(159deg, #e9f2ee 0%, #bae0ce 50%, #84cfb2 100%)",
+    "motifColor": "#2f9464",
+    "textColor": "#273a31",
+    "mutedColor": "#4c6c5d",
+    "accentColor": "#378c64"
+  },
+  "5149ae5c-271d-4cf7-b3ca-0139ceda7e76": {
+    "category": "drama",
+    "motif": "mountain",
+    "gradient": "linear-gradient(150deg, #ede7f4 0%, #ccb4e8 50%, #b37adf 100%)",
+    "motifColor": "#5f1fab",
+    "textColor": "#2f233e",
+    "mutedColor": "#5a4572",
+    "accentColor": "#6027a3"
+  },
+  "53794bd6-835e-4b67-bc28-1db32d8ebb45": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(154deg, #eaf3ef 0%, #bee3d4 50%, #87d2bb 100%)",
+    "motifColor": "#2f9b6f",
+    "textColor": "#273a32",
+    "mutedColor": "#4b6d5f",
+    "accentColor": "#37936e"
+  },
+  "55aabbc4-f67f-4d49-85f0-7e1aced783b7": {
+    "category": "drama",
+    "motif": "wave",
+    "gradient": "linear-gradient(169deg, #f1e5f3 0%, #dbace5 50%, #d672dc 100%)",
+    "motifColor": "#8c1ea1",
+    "textColor": "#39233e",
+    "mutedColor": "#6b4672",
+    "accentColor": "#87269a"
+  },
+  "55cb48fd-11a6-43fc-9f48-acc920f1038e": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(149deg, #faf7ee 0%, #f3e0aa 50%, #f4dc5c 100%)",
+    "motifColor": "#bd8d04",
+    "textColor": "#43391e",
+    "mutedColor": "#796a3e",
+    "accentColor": "#b58a0c"
+  },
+  "55dab3a4-190d-48fb-935e-845997114f36": {
+    "category": "drama",
+    "motif": "wave",
+    "gradient": "linear-gradient(137deg, #f3e4f4 0%, #e6a7e8 50%, #e36ada 100%)",
+    "motifColor": "#a317a7",
+    "textColor": "#3e223f",
+    "mutedColor": "#734375",
+    "accentColor": "#9c1ea0"
+  },
+  "55e2c3c9-8725-4180-8f52-c0c5ec0fe5ed": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(180deg, #f8ecf0 0%, #eeb1c6 50%, #ec7693 100%)",
+    "motifColor": "#c1124e",
+    "textColor": "#41202b",
+    "mutedColor": "#774053",
+    "accentColor": "#b81a51"
+  },
+  "56a996f5-42eb-4642-8fa8-2273d860e690": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(164deg, #efe8f4 0%, #d2b9e8 50%, #bd81dd 100%)",
+    "motifColor": "#6e23ac",
+    "textColor": "#32243d",
+    "mutedColor": "#5e4671",
+    "accentColor": "#6d2ba4"
+  },
+  "5806ce26-5e6a-491d-9ec2-d16464a143de": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(136deg, #f9f3ea 0%, #f3ce9d 50%, #f6c04d 100%)",
+    "motifColor": "#b36801",
+    "textColor": "#43331e",
+    "mutedColor": "#79603e",
+    "accentColor": "#a9660b"
+  },
+  "5827d064-0df2-471f-ac8a-311db9aacfb8": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(176deg, #f9f4e9 0%, #f0d799 50%, #f3d34b 100%)",
+    "motifColor": "#aa7a04",
+    "textColor": "#43381e",
+    "mutedColor": "#79683e",
+    "accentColor": "#a3770b"
+  },
+  "58a44861-30c3-4361-a800-32b1eb1d0646": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(178deg, #ece7f4 0%, #c9b3e6 50%, #af7add 100%)",
+    "motifColor": "#5c21a7",
+    "textColor": "#2f243d",
+    "mutedColor": "#594672",
+    "accentColor": "#5d299f"
+  },
+  "58b98d42-382e-41ce-a12e-cd4109c0025f": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(126deg, #f9f4ea 0%, #f1d39e 50%, #f3c94f 100%)",
+    "motifColor": "#af7304",
+    "textColor": "#43361e",
+    "mutedColor": "#79643e",
+    "accentColor": "#a8700b"
+  },
+  "59b809c5-1c2a-484f-aeec-60ff7b43f80f": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(150deg, #eef2f8 0%, #b5ccec 50%, #789ce6 100%)",
+    "motifColor": "#185cb8",
+    "textColor": "#212e40",
+    "mutedColor": "#425875",
+    "accentColor": "#205db0"
+  },
+  "59fbcffa-e989-4f61-b94b-636a0cdcadbd": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(129deg, #e8f1ec 0%, #b8ddc7 50%, #83cba7 100%)",
+    "motifColor": "#318e56",
+    "textColor": "#28392f",
+    "mutedColor": "#4d6b59",
+    "accentColor": "#388657"
+  },
+  "5a23be6e-3c18-4b68-bc06-89ed08f42366": {
+    "category": "rest",
+    "motif": "wave",
+    "gradient": "linear-gradient(130deg, #e9f4f3 0%, #bae6e2 50%, #7fd7d9 100%)",
+    "motifColor": "#26a399",
+    "textColor": "#253c3a",
+    "mutedColor": "#48706c",
+    "accentColor": "#2e9b92"
+  },
+  "5a53041c-5bcb-4fad-9dcf-3795c6d736b6": {
+    "category": "comfort",
+    "motif": "wave",
+    "gradient": "linear-gradient(160deg, #f9f3e8 0%, #f6d49e 50%, #fbca51 100%)",
+    "motifColor": "#bd7400",
+    "textColor": "#43351e",
+    "mutedColor": "#79623e",
+    "accentColor": "#b2710b"
+  },
+  "5a7c6d80-ebda-4375-907a-9b1bdfad0595": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(153deg, #f9eef1 0%, #efbacb 50%, #eb8197 100%)",
+    "motifColor": "#c9154c",
+    "textColor": "#40212a",
+    "mutedColor": "#774151",
+    "accentColor": "#c01e4f"
+  },
+  "5c78157d-0698-4038-af2d-83e12be5f472": {
+    "category": "rest",
+    "motif": "petal",
+    "gradient": "linear-gradient(151deg, #eaf5f1 0%, #bdead9 50%, #81dfc4 100%)",
+    "motifColor": "#22af79",
+    "textColor": "#243d34",
+    "mutedColor": "#467261",
+    "accentColor": "#2aa777"
+  },
+  "5ce3bba9-e52e-44eb-9b2d-56511904a378": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(152deg, #f7ebee 0%, #ebafbf 50%, #e7768a 100%)",
+    "motifColor": "#b71743",
+    "textColor": "#40212a",
+    "mutedColor": "#754250",
+    "accentColor": "#af1f46"
+  },
+  "5d0db40f-df17-4394-bdc3-8eb7a5cbac3d": {
+    "category": "drama",
+    "motif": "star",
+    "gradient": "linear-gradient(151deg, #e4dff0 0%, #aa97dd 50%, #8a5dd5 100%)",
+    "motifColor": "#391b88",
+    "textColor": "#2b243d",
+    "mutedColor": "#524671",
+    "accentColor": "#3c2281"
+  },
+  "5d5a048a-a632-4b30-b8fd-53e118a17a1d": {
+    "category": "motivation",
+    "motif": "wave",
+    "gradient": "linear-gradient(130deg, #f9f8e9 0%, #f5ef96 50%, #f4fb44 100%)",
+    "motifColor": "#b0a600",
+    "textColor": "#43411e",
+    "mutedColor": "#79763e",
+    "accentColor": "#a69c0b"
+  },
+  "5e1ca730-762b-44c8-b7b6-92a747b6927e": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(145deg, #f9eef1 0%, #f0bacb 50%, #ec8097 100%)",
+    "motifColor": "#cb134b",
+    "textColor": "#41202a",
+    "mutedColor": "#774051",
+    "accentColor": "#c21c4f"
+  },
+  "5eaf4f4d-5b65-450b-aca4-ee2b886f4043": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(169deg, #e7f1eb 0%, #b5dbc3 50%, #80c9a2 100%)",
+    "motifColor": "#308a52",
+    "textColor": "#28392e",
+    "mutedColor": "#4d6a58",
+    "accentColor": "#388254"
+  },
+  "5ed85a8e-8c69-43cb-81a4-bd30a8627e2d": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(144deg, #efe7f4 0%, #d3b4e5 50%, #c17cdb 100%)",
+    "motifColor": "#7523a5",
+    "textColor": "#34243d",
+    "mutedColor": "#614771",
+    "accentColor": "#732b9d"
+  },
+  "5f459eb0-a011-4cf0-85d4-e96320a3c1a8": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(168deg, #f8eef3 0%, #eebbd1 50%, #e983a5 100%)",
+    "motifColor": "#c51862",
+    "textColor": "#40212e",
+    "mutedColor": "#764258",
+    "accentColor": "#bc2164"
+  },
+  "606c491c-f6bd-48d4-9dd3-f8c793f50fc6": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(174deg, #f9f4e9 0%, #f3d597 50%, #f8cf46 100%)",
+    "motifColor": "#b07500",
+    "textColor": "#43371e",
+    "mutedColor": "#79663e",
+    "accentColor": "#a5720b"
+  },
+  "60932e79-3958-46c6-99d2-549ed888b417": {
+    "category": "daily",
+    "motif": "mountain",
+    "gradient": "linear-gradient(154deg, #ecf2f8 0%, #aecfee 50%, #6ea2ec 100%)",
+    "motifColor": "#1068bb",
+    "textColor": "#203141",
+    "mutedColor": "#405d78",
+    "accentColor": "#1868b3"
+  },
+  "6197fe1c-52f0-4ed9-8eb5-306f3414e8c2": {
+    "category": "rest",
+    "motif": "star",
+    "gradient": "linear-gradient(176deg, #e2efe4 0%, #a2d8ab 50%, #69ca83 100%)",
+    "motifColor": "#248034",
+    "textColor": "#263b29",
+    "mutedColor": "#4a6d50",
+    "accentColor": "#2b7938"
+  },
+  "62a13c4c-50e4-44f6-9dbc-a03efb9b35fd": {
+    "category": "drama",
+    "motif": "leaf",
+    "gradient": "linear-gradient(128deg, #ebe6f4 0%, #c4b0e6 50%, #a777dd 100%)",
+    "motifColor": "#5220a5",
+    "textColor": "#2d233d",
+    "mutedColor": "#564672",
+    "accentColor": "#54289d"
+  },
+  "63523eb2-eee1-4174-92ec-f994681bf3a8": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(126deg, #f0e9f4 0%, #d5bbe7 50%, #c183dc 100%)",
+    "motifColor": "#7525ac",
+    "textColor": "#33243d",
+    "mutedColor": "#604770",
+    "accentColor": "#732ea3"
+  },
+  "6352ae53-10b1-4e99-9adb-2c5b931dc793": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(148deg, #ede5f2 0%, #cbaee2 50%, #b676d7 100%)",
+    "motifColor": "#66239b",
+    "textColor": "#32243c",
+    "mutedColor": "#5e4870",
+    "accentColor": "#652b94"
+  },
+  "6453b181-6a3f-4d0b-a97e-13c6fe67b431": {
+    "category": "drama",
+    "motif": "mountain",
+    "gradient": "linear-gradient(134deg, #eee7f3 0%, #d1b4e5 50%, #bd7dda 100%)",
+    "motifColor": "#6f24a4",
+    "textColor": "#33243d",
+    "mutedColor": "#5f4770",
+    "accentColor": "#6e2c9c"
+  },
+  "66187ac8-4149-4a41-a25e-b808117a5a02": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(130deg, #eee7f4 0%, #cfb3e6 50%, #ba7add 100%)",
+    "motifColor": "#6a21a7",
+    "textColor": "#32243d",
+    "mutedColor": "#5e4672",
+    "accentColor": "#69299f"
+  },
+  "667bba62-764e-4207-b8bf-a24cb2e933b4": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(136deg, #f9f1ea 0%, #f3c9a5 50%, #f6b25b 100%)",
+    "motifColor": "#bf5a03",
+    "textColor": "#432f1e",
+    "mutedColor": "#795a3e",
+    "accentColor": "#b65b0c"
+  },
+  "66f5777b-177f-46c0-a27f-c7146be2739d": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(167deg, #f9f6ea 0%, #f4df9c 50%, #f8e14c 100%)",
+    "motifColor": "#b58b00",
+    "textColor": "#433a1e",
+    "mutedColor": "#796b3e",
+    "accentColor": "#aa850b"
+  },
+  "6702a423-9acc-4ec6-939e-7af386294e70": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(149deg, #f9f2ec 0%, #f2caad 50%, #f2af66 100%)",
+    "motifColor": "#c15708",
+    "textColor": "#432e1e",
+    "mutedColor": "#79573e",
+    "accentColor": "#b95810"
+  },
+  "670ef51c-bccb-4086-b8a7-b5e62442f3e5": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(129deg, #faf0ec 0%, #f4bfac 50%, #f69963 100%)",
+    "motifColor": "#c83703",
+    "textColor": "#43281e",
+    "mutedColor": "#794e3e",
+    "accentColor": "#be3b0c"
+  },
+  "673d8752-7656-46fa-afba-05f95b8b14ca": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(164deg, #eaf3ee 0%, #bfe2cd 50%, #89d2ac 100%)",
+    "motifColor": "#309b59",
+    "textColor": "#273a2e",
+    "mutedColor": "#4b6c58",
+    "accentColor": "#38935b"
+  },
+  "67412a5a-d740-4648-9477-1c15e0a8dd5f": {
+    "category": "comfort",
+    "motif": "petal",
+    "gradient": "linear-gradient(169deg, #fbf4ee 0%, #f8d4b4 50%, #fcbc68 100%)",
+    "motifColor": "#d56400",
+    "textColor": "#432f1e",
+    "mutedColor": "#795a3e",
+    "accentColor": "#c8650d"
+  },
+  "67a9699d-3c1e-4bb9-9d40-244c7dfe89b5": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(150deg, #ebe5f3 0%, #c3ace4 50%, #a773dc 100%)",
+    "motifColor": "#531fa1",
+    "textColor": "#2e233d",
+    "mutedColor": "#574672",
+    "accentColor": "#542799"
+  },
+  "67c1b144-1087-4cb2-9158-203cae81ae03": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(146deg, #edf1f8 0%, #b2c8ec 50%, #7495e7 100%)",
+    "motifColor": "#1654b7",
+    "textColor": "#212d40",
+    "mutedColor": "#425676",
+    "accentColor": "#1e56ae"
+  },
+  "67d71124-c866-4eb2-8922-684f83d8bdef": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(178deg, #f9eef2 0%, #efbbcf 50%, #eb82a0 100%)",
+    "motifColor": "#c7165b",
+    "textColor": "#40212d",
+    "mutedColor": "#764156",
+    "accentColor": "#bf1f5d"
+  },
+  "6970cdbc-eb35-4970-ad0e-0e62286d90c2": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(127deg, #ebe6f3 0%, #c6afe3 50%, #ac77d9 100%)",
+    "motifColor": "#59239e",
+    "textColor": "#2f243d",
+    "mutedColor": "#594770",
+    "accentColor": "#5a2a96"
+  },
+  "69840f0a-bb76-4c1c-8839-76fe0cc38338": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(153deg, #f9f4ea 0%, #f2d59d 50%, #f4cd4e 100%)",
+    "motifColor": "#b07603",
+    "textColor": "#43361e",
+    "mutedColor": "#79653e",
+    "accentColor": "#a9730b"
+  },
+  "69a7820c-638c-4333-bf81-0c021ec79a5e": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(146deg, #f9f3e9 0%, #f1cf99 50%, #f3c34b 100%)",
+    "motifColor": "#ab6b04",
+    "textColor": "#43351e",
+    "mutedColor": "#79633e",
+    "accentColor": "#a4690b"
+  },
+  "69ed715d-edbd-42cf-a433-a69b2eabb0c9": {
+    "category": "love",
+    "motif": "light",
+    "gradient": "linear-gradient(164deg, #faf1f4 0%, #f4c6d3 50%, #f18c9f 100%)",
+    "motifColor": "#db104b",
+    "textColor": "#421f29",
+    "mutedColor": "#793f50",
+    "accentColor": "#d51a50"
+  },
+  "6a32867b-b261-431c-9849-96444611d35d": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(175deg, #ecf2f8 0%, #aed0ed 50%, #6fa5ea 100%)",
+    "motifColor": "#126cb8",
+    "textColor": "#203241",
+    "mutedColor": "#415e77",
+    "accentColor": "#1a6bb0"
+  },
+  "6a61c031-826a-4c67-90e5-90b18e7311b9": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(175deg, #faf0ed 0%, #f5c0af 50%, #f79866 100%)",
+    "motifColor": "#cb3402",
+    "textColor": "#43271e",
+    "mutedColor": "#794d3e",
+    "accentColor": "#c1390c"
+  },
+  "6abd0f80-97e7-428a-9af9-580cfa1a92f9": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(144deg, #f9f2ea 0%, #f1c99c 50%, #f2b74d 100%)",
+    "motifColor": "#ac5f05",
+    "textColor": "#43321e",
+    "mutedColor": "#795e3e",
+    "accentColor": "#a55e0c"
+  },
+  "6b3a5600-4721-491f-aea2-e1a070bcebed": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(137deg, #faf5ed 0%, #f3d8a8 50%, #f5cc5a 100%)",
+    "motifColor": "#be7903",
+    "textColor": "#43351e",
+    "mutedColor": "#79643e",
+    "accentColor": "#b5770c"
+  },
+  "6b463db9-3b04-4c57-8cbe-4bde532f5b23": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(159deg, #faf5eb 0%, #f4dca0 50%, #f8d84f 100%)",
+    "motifColor": "#b88400",
+    "textColor": "#43381e",
+    "mutedColor": "#79683e",
+    "accentColor": "#ad7f0b"
+  },
+  "6b48dca3-cdf6-4cb6-8891-f20871921a2c": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(164deg, #e8f1ee 0%, #b6ddce 50%, #80cbb6 100%)",
+    "motifColor": "#2f8d69",
+    "textColor": "#273a33",
+    "mutedColor": "#4c6b5f",
+    "accentColor": "#378668"
+  },
+  "6b69553a-8b28-4f9d-989e-958b136807af": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(130deg, #f8eeef 0%, #edb9c2 50%, #e88088 100%)",
+    "motifColor": "#c21836",
+    "textColor": "#402127",
+    "mutedColor": "#75424b",
+    "accentColor": "#b9213b"
+  },
+  "6b7fa63e-8ebe-456f-b44c-bdb758907533": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(176deg, #e8f2ed 0%, #b9dfcd 50%, #82cfb1 100%)",
+    "motifColor": "#2e9363",
+    "textColor": "#273a31",
+    "mutedColor": "#4c6c5c",
+    "accentColor": "#368c62"
+  },
+  "6b8c110d-3c32-4236-a16f-fb4a1ba838d8": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(140deg, #e9f3ef 0%, #bce3d4 50%, #84d3bc 100%)",
+    "motifColor": "#2d9c71",
+    "textColor": "#263b33",
+    "mutedColor": "#4a6d60",
+    "accentColor": "#35946f"
+  },
+  "6b973c61-450b-499b-b027-4a102653efe1": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(145deg, #f9f1ea 0%, #f2c9a7 50%, #f3b15e 100%)",
+    "motifColor": "#bd5906",
+    "textColor": "#432f1e",
+    "mutedColor": "#79593e",
+    "accentColor": "#b55a0d"
+  },
+  "6bcd303d-5fa7-4c43-b777-253e48cc3bd4": {
+    "category": "drama",
+    "motif": "light",
+    "gradient": "linear-gradient(137deg, #f1eaf6 0%, #d8c0ee 50%, #c385e7 100%)",
+    "motifColor": "#741cc0",
+    "textColor": "#31223f",
+    "mutedColor": "#5d4374",
+    "accentColor": "#7325b8"
+  },
+  "6c3c0b16-c46a-4d26-b314-55a25f9fb803": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(163deg, #eee7f3 0%, #ceb3e4 50%, #b97bd9 100%)",
+    "motifColor": "#6a24a2",
+    "textColor": "#32243d",
+    "mutedColor": "#5e4770",
+    "accentColor": "#692c9a"
+  },
+  "6c468263-b8f2-4b41-bcd8-ef12c6a31ad5": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(159deg, #ebf1f7 0%, #aacbeb 50%, #6c9fe7 100%)",
+    "motifColor": "#1464b0",
+    "textColor": "#213140",
+    "mutedColor": "#415d76",
+    "accentColor": "#1c64a8"
+  },
+  "6c576152-3c50-41fd-875b-74b0a13c7ac7": {
+    "category": "motivation",
+    "motif": "wave",
+    "gradient": "linear-gradient(161deg, #f9f9e8 0%, #f3f595 50%, #e5fb42 100%)",
+    "motifColor": "#abae00",
+    "textColor": "#42431e",
+    "mutedColor": "#78793e",
+    "accentColor": "#a1a40a"
+  },
+  "6cfd762a-a3a0-4d6a-8caf-f0942b2901c2": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(149deg, #faf6ed 0%, #f4dba8 50%, #f6d359 100%)",
+    "motifColor": "#be8202",
+    "textColor": "#43371e",
+    "mutedColor": "#79663e",
+    "accentColor": "#b57e0c"
+  },
+  "6e1024e0-90aa-4307-8626-2ec5d905870e": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(163deg, #f9f0eb 0%, #f1c2aa 50%, #f1a263 100%)",
+    "motifColor": "#bd4608",
+    "textColor": "#432b1e",
+    "mutedColor": "#79533e",
+    "accentColor": "#b54910"
+  },
+  "6f49dc05-ea37-4328-8abf-a5952852cb58": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(174deg, #eae5f2 0%, #c2aee1 50%, #a677d6 100%)",
+    "motifColor": "#52249a",
+    "textColor": "#2e253c",
+    "mutedColor": "#584870",
+    "accentColor": "#542c92"
+  },
+  "6fe4c4a6-c4cd-467b-999e-b91cb6048e15": {
+    "category": "drama",
+    "motif": "wave",
+    "gradient": "linear-gradient(175deg, #f2e4f4 0%, #e1aae7 50%, #e16ee0 100%)",
+    "motifColor": "#9919a7",
+    "textColor": "#3c223f",
+    "mutedColor": "#6f4474",
+    "accentColor": "#93219f"
+  },
+  "701c1bcc-a28d-4b32-9f55-574c7af50653": {
+    "category": "motivation",
+    "motif": "wave",
+    "gradient": "linear-gradient(159deg, #f9faeb 0%, #f0f69e 50%, #dffb4b 100%)",
+    "motifColor": "#adb800",
+    "textColor": "#41431e",
+    "mutedColor": "#76793e",
+    "accentColor": "#a3ad0b"
+  },
+  "70359cd8-2847-4cad-94f7-dc0749011901": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(169deg, #ede7f3 0%, #cab4e2 50%, #b17ed6 100%)",
+    "motifColor": "#60279e",
+    "textColor": "#30253c",
+    "mutedColor": "#5b496f",
+    "accentColor": "#602f96"
+  },
+  "70504893-83dd-4ae0-9a58-46ec8483f648": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(143deg, #f9f5eb 0%, #f2d99e 50%, #f5d44f 100%)",
+    "motifColor": "#b27e03",
+    "textColor": "#43381e",
+    "mutedColor": "#79683e",
+    "accentColor": "#aa7b0b"
+  },
+  "708f24de-45ea-439b-b77b-7ecc74f36e10": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(154deg, #f9f3ea 0%, #f0d09c 50%, #f2c34e 100%)",
+    "motifColor": "#ac6b05",
+    "textColor": "#43341e",
+    "mutedColor": "#79623e",
+    "accentColor": "#a56a0c"
+  },
+  "70a85bfd-1dcc-4093-a697-bd0353cab10d": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(140deg, #eee7f3 0%, #d0b5e5 50%, #bb7dda 100%)",
+    "motifColor": "#6d25a3",
+    "textColor": "#32243c",
+    "mutedColor": "#5f4870",
+    "accentColor": "#6c2d9b"
+  },
+  "70ac855a-2878-4d60-9f18-79e9a63f717c": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(138deg, #faf7ec 0%, #f6e2a1 50%, #fbe34f 100%)",
+    "motifColor": "#bb8f00",
+    "textColor": "#433a1e",
+    "mutedColor": "#796b3e",
+    "accentColor": "#b0890b"
+  },
+  "70c0c216-b85f-498e-8363-3271a5cb68e4": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(159deg, #eef3f8 0%, #b5d0ed 50%, #79a2e7 100%)",
+    "motifColor": "#1765ba",
+    "textColor": "#213040",
+    "mutedColor": "#425b76",
+    "accentColor": "#1f65b2"
+  },
+  "70d14eef-f91c-44ed-8681-a3811830f40b": {
+    "category": "drama",
+    "motif": "wave",
+    "gradient": "linear-gradient(150deg, #f0e4f4 0%, #d9a7e8 50%, #d26be2 100%)",
+    "motifColor": "#8518a6",
+    "textColor": "#38223f",
+    "mutedColor": "#694374",
+    "accentColor": "#811f9f"
+  },
+  "70ea0c96-9c9c-479c-b435-40248037b0d8": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(165deg, #faf5ee 0%, #f3d3a9 50%, #f5c15b 100%)",
+    "motifColor": "#be6d03",
+    "textColor": "#43331e",
+    "mutedColor": "#79603e",
+    "accentColor": "#b66c0c"
+  },
+  "7108064e-3832-45b2-a86d-63b29ade65c6": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(154deg, #faf4ec 0%, #f3d0a4 50%, #f5be55 100%)",
+    "motifColor": "#b96803",
+    "textColor": "#43321e",
+    "mutedColor": "#795f3e",
+    "accentColor": "#b0670b"
+  },
+  "71d623d2-e996-4b85-84cc-eb891311c0cd": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(161deg, #ede7f3 0%, #cab2e4 50%, #b17bd9 100%)",
+    "motifColor": "#6024a1",
+    "textColor": "#30243d",
+    "mutedColor": "#5b4770",
+    "accentColor": "#602c99"
+  },
+  "71e76a1b-f539-4655-a853-ff0ad853cf96": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(174deg, #f8f0ea 0%, #f1c6a5 50%, #f2ac5d 100%)",
+    "motifColor": "#b95307",
+    "textColor": "#432e1e",
+    "mutedColor": "#79583e",
+    "accentColor": "#b1550f"
+  },
+  "726d4eff-120d-4d96-80e9-15f01bb75814": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(163deg, #ebe5f3 0%, #c4ace3 50%, #ab74d9 100%)",
+    "motifColor": "#58219d",
+    "textColor": "#2f243d",
+    "mutedColor": "#594771",
+    "accentColor": "#592995"
+  },
+  "72fe95bc-fff8-4914-90f2-61bbe38f15b4": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(139deg, #eee6f2 0%, #cfb0e2 50%, #bd7ad6 100%)",
+    "motifColor": "#70259c",
+    "textColor": "#33253c",
+    "mutedColor": "#61486f",
+    "accentColor": "#6e2d94"
+  },
+  "731d826c-61dd-4495-b744-5d799b7d951a": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(170deg, #faf6ec 0%, #f5dfa4 50%, #f9dd54 100%)",
+    "motifColor": "#be8a00",
+    "textColor": "#43391e",
+    "mutedColor": "#79693e",
+    "accentColor": "#b2850b"
+  },
+  "733e7f24-471d-4bdc-b581-c0f7a3d78916": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(133deg, #eee9f4 0%, #cebae5 50%, #b484d9 100%)",
+    "motifColor": "#6328a6",
+    "textColor": "#30253c",
+    "mutedColor": "#5a486f",
+    "accentColor": "#63319e"
+  },
+  "746cef6b-c1b5-4300-ae3a-17e53ca305a1": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(146deg, #faf7ec 0%, #f5e2a4 50%, #f9e354 100%)",
+    "motifColor": "#be9100",
+    "textColor": "#433a1e",
+    "mutedColor": "#796b3e",
+    "accentColor": "#b38b0b"
+  },
+  "74bfdbd3-f26b-4d9f-bf63-ca912e2d8c8c": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(163deg, #eee8f4 0%, #cdb7e7 50%, #b47fdc 100%)",
+    "motifColor": "#6223a9",
+    "textColor": "#30243d",
+    "mutedColor": "#5b4771",
+    "accentColor": "#632ca1"
+  },
+  "74d16a76-de16-43ff-8afc-deaeb7def7ab": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(177deg, #f9f1ea 0%, #f0c69c 50%, #f2b14e 100%)",
+    "motifColor": "#ab5905",
+    "textColor": "#43311e",
+    "mutedColor": "#795c3e",
+    "accentColor": "#a4590c"
+  },
+  "74fbc1fe-cac3-4722-b734-80923aba6eb0": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(155deg, #ece7f3 0%, #c7b3e5 50%, #aa7cda 100%)",
+    "motifColor": "#5524a3",
+    "textColor": "#2e243d",
+    "mutedColor": "#574770",
+    "accentColor": "#572c9b"
+  },
+  "7530e505-8dea-498e-b505-74384f636069": {
+    "category": "daily",
+    "motif": "star",
+    "gradient": "linear-gradient(134deg, #e4eff6 0%, #8dcaea 50%, #4aa3eb 100%)",
+    "motifColor": "#0a6a9d",
+    "textColor": "#1f3642",
+    "mutedColor": "#3e6579",
+    "accentColor": "#106896"
+  },
+  "7532f43b-b485-4677-82a0-44ef642686de": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(170deg, #ecf2f8 0%, #add1ec 50%, #6fa7e8 100%)",
+    "motifColor": "#146eb4",
+    "textColor": "#213340",
+    "mutedColor": "#415f76",
+    "accentColor": "#1c6dac"
+  },
+  "759c92ad-c2bc-4386-9283-5555ab9d6c3c": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(175deg, #f9f1eb 0%, #f1c9ab 50%, #f1ae64 100%)",
+    "motifColor": "#bd5609",
+    "textColor": "#432e1e",
+    "mutedColor": "#79573e",
+    "accentColor": "#b65711"
+  },
+  "76dc747d-2667-45b2-9364-29d7f5899289": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(175deg, #ede6f4 0%, #cab1e6 50%, #b277dd 100%)",
+    "motifColor": "#6020a6",
+    "textColor": "#30233d",
+    "mutedColor": "#5b4672",
+    "accentColor": "#60289e"
+  },
+  "77014199-8140-401a-96ac-c51d644c0d86": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(156deg, #eee8f4 0%, #cfb7e7 50%, #b87fdc 100%)",
+    "motifColor": "#6823a9",
+    "textColor": "#31243d",
+    "mutedColor": "#5c4771",
+    "accentColor": "#682ba1"
+  },
+  "7720241c-1d47-4890-b5d7-a39185c4030d": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(169deg, #eee8f4 0%, #cfb8e5 50%, #b781da 100%)",
+    "motifColor": "#6726a6",
+    "textColor": "#31253c",
+    "mutedColor": "#5c4870",
+    "accentColor": "#672e9d"
+  },
+  "7796044a-981c-40e4-84f3-535af4d4cde7": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(174deg, #f9eef1 0%, #f0bbc8 50%, #ec8190 100%)",
+    "motifColor": "#cb1440",
+    "textColor": "#412028",
+    "mutedColor": "#77414e",
+    "accentColor": "#c21d44"
+  },
+  "77a9c871-4635-4ab2-8ff1-89ce7db9795c": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(169deg, #eff3f9 0%, #bacdee 50%, #7d9be8 100%)",
+    "motifColor": "#1857be",
+    "textColor": "#212d40",
+    "mutedColor": "#425675",
+    "accentColor": "#2159b5"
+  },
+  "77d61d18-dcd0-45de-bdec-0e9517390eea": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(164deg, #eaf3ef 0%, #bfe3d4 50%, #87d3ba 100%)",
+    "motifColor": "#2e9d6e",
+    "textColor": "#263b32",
+    "mutedColor": "#4b6d5e",
+    "accentColor": "#37956c"
+  },
+  "78645fd0-6dc4-4ed4-bf04-63f30955bdec": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(134deg, #f8ebef 0%, #edb0c3 50%, #ea778e 100%)",
+    "motifColor": "#be1447",
+    "textColor": "#40212a",
+    "mutedColor": "#774151",
+    "accentColor": "#b51c4a"
+  },
+  "78c61bb2-b9d5-4209-9d6b-186b33b31d35": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(173deg, #faf1ed 0%, #f3c4b2 50%, #f39d6b 100%)",
+    "motifColor": "#c83b07",
+    "textColor": "#43281e",
+    "mutedColor": "#794e3e",
+    "accentColor": "#c03f0f"
+  },
+  "7a114dca-c798-4792-94fd-ae7b188c10bc": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(126deg, #f9f5ea 0%, #f2db9d 50%, #f5d84e 100%)",
+    "motifColor": "#b18203",
+    "textColor": "#43391e",
+    "mutedColor": "#79693e",
+    "accentColor": "#a97e0b"
+  },
+  "7a2b596d-a9b6-408f-b036-ebb34b22f1b7": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(144deg, #e7f2eb 0%, #b3dec5 50%, #7bcfa7 100%)",
+    "motifColor": "#2a9156",
+    "textColor": "#263b2f",
+    "mutedColor": "#4b6d59",
+    "accentColor": "#328957"
+  },
+  "7a3af9db-11e1-47b7-ae07-3f371ed69a88": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(165deg, #ebe5f3 0%, #c6abe3 50%, #ae72da 100%)",
+    "motifColor": "#5b209d",
+    "textColor": "#30243d",
+    "mutedColor": "#5b4671",
+    "accentColor": "#5c2795"
+  },
+  "7a98c665-1f4e-46f3-ba5d-2e52a6e36f68": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(137deg, #eee8f4 0%, #cdb7e8 50%, #b47ede 100%)",
+    "motifColor": "#6122ac",
+    "textColor": "#2f243d",
+    "mutedColor": "#5a4671",
+    "accentColor": "#622aa3"
+  },
+  "7b7332e0-bc57-43d6-ad48-2ae1bf92c752": {
+    "category": "drama",
+    "motif": "wave",
+    "gradient": "linear-gradient(179deg, #f2e5f3 0%, #dfade5 50%, #dc73dc 100%)",
+    "motifColor": "#941ea2",
+    "textColor": "#3b233e",
+    "mutedColor": "#6d4672",
+    "accentColor": "#8e269b"
+  },
+  "7b87c196-5d83-44c2-93cc-09690f825726": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(167deg, #ede8f4 0%, #cbb7e8 50%, #ae7fde 100%)",
+    "motifColor": "#5822ad",
+    "textColor": "#2e233d",
+    "mutedColor": "#574672",
+    "accentColor": "#5a2aa4"
+  },
+  "7c23bff3-b02a-4151-aa20-aa25b8e2f2a0": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(127deg, #ecf3f8 0%, #b0d1eb 50%, #73a8e6 100%)",
+    "motifColor": "#166eb4",
+    "textColor": "#213240",
+    "mutedColor": "#425f75",
+    "accentColor": "#1f6dac"
+  },
+  "7e43587b-2155-4587-9bf4-07f9899add78": {
+    "category": "drama",
+    "motif": "star",
+    "gradient": "linear-gradient(149deg, #e3def0 0%, #a793dd 50%, #8657d6 100%)",
+    "motifColor": "#361986",
+    "textColor": "#2a233e",
+    "mutedColor": "#514572",
+    "accentColor": "#391f80"
+  },
+  "7e86456d-8aa4-47a6-a068-0fe6f27b2fd2": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(175deg, #f9f2eb 0%, #f3cb9e 50%, #f6b84e 100%)",
+    "motifColor": "#b36002",
+    "textColor": "#43311e",
+    "mutedColor": "#795d3e",
+    "accentColor": "#aa5f0b"
+  },
+  "7ece9e78-2406-4cca-a3ca-6ffe0bb33473": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(167deg, #f9f4eb 0%, #f2d5a0 50%, #f3cb51 100%)",
+    "motifColor": "#b27604",
+    "textColor": "#43361e",
+    "mutedColor": "#79653e",
+    "accentColor": "#aa730b"
+  },
+  "7f5d6760-1722-426b-809d-4d557e8233bf": {
+    "category": "motivation",
+    "motif": "star",
+    "gradient": "linear-gradient(132deg, #f8e9e2 0%, #f3a37d 50%, #fb852d 100%)",
+    "motifColor": "#993200",
+    "textColor": "#432a1e",
+    "mutedColor": "#79523e",
+    "accentColor": "#903509"
+  },
+  "803b559d-56b0-447a-bd39-83f0b1ae0a40": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(126deg, #e7f2ec 0%, #b5dec7 50%, #7eceaa 100%)",
+    "motifColor": "#2c9059",
+    "textColor": "#273a2f",
+    "mutedColor": "#4b6c5a",
+    "accentColor": "#34895a"
+  },
+  "8046e5af-2770-4881-88fd-f3f5d8b3a9a3": {
+    "category": "daily",
+    "motif": "light",
+    "gradient": "linear-gradient(153deg, #f0f2fa 0%, #bcc9f2 50%, #7c8cef 100%)",
+    "motifColor": "#0f3cce",
+    "textColor": "#1f2742",
+    "mutedColor": "#3f4d79",
+    "accentColor": "#1741c5"
+  },
+  "80c64cbc-20d8-49eb-a56e-128c575415d4": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(170deg, #f9f0ed 0%, #f2bfaf 50%, #f29668 100%)",
+    "motifColor": "#c33408",
+    "textColor": "#43271e",
+    "mutedColor": "#794c3e",
+    "accentColor": "#bb3910"
+  },
+  "8133afbe-4ca9-45bb-9b24-9b439eddc23a": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(157deg, #f9f1eb 0%, #f1cbaa 50%, #f1b363 100%)",
+    "motifColor": "#bc5b09",
+    "textColor": "#432f1e",
+    "mutedColor": "#795a3e",
+    "accentColor": "#b45c11"
+  },
+  "813425e2-cab3-4e49-a4fc-a09b54beca6c": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(156deg, #efe8f3 0%, #d1b6e5 50%, #bd80d9 100%)",
+    "motifColor": "#7026a4",
+    "textColor": "#33253c",
+    "mutedColor": "#5f4870",
+    "accentColor": "#6e2e9c"
+  },
+  "81357f8f-3eaf-4361-b41d-d55d253b4eb9": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(143deg, #eee9f4 0%, #cdbbe6 50%, #b184da 100%)",
+    "motifColor": "#5e28a8",
+    "textColor": "#2f253c",
+    "mutedColor": "#594870",
+    "accentColor": "#5f30a0"
+  },
+  "8139854f-1583-4215-8165-ad2741f42267": {
+    "category": "daily",
+    "motif": "light",
+    "gradient": "linear-gradient(161deg, #eff2fa 0%, #bac9f3 50%, #798df1 100%)",
+    "motifColor": "#0b40d0",
+    "textColor": "#1f2842",
+    "mutedColor": "#3e4e79",
+    "accentColor": "#1444c7"
+  },
+  "83a8db5d-49da-46ff-8f1f-14186761a469": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(160deg, #f9f0ed 0%, #f2bfb2 50%, #f1946c 100%)",
+    "motifColor": "#c4300a",
+    "textColor": "#42261f",
+    "mutedColor": "#794a3e",
+    "accentColor": "#bc3512"
+  },
+  "840df3a7-5e42-48b3-842b-51f1f9344ee4": {
+    "category": "drama",
+    "motif": "cloud",
+    "gradient": "linear-gradient(147deg, #f2ebf5 0%, #ddc3e8 50%, #cb8eda 100%)",
+    "motifColor": "#862dad",
+    "textColor": "#35253c",
+    "mutedColor": "#63496f",
+    "accentColor": "#8335a4"
+  },
+  "8430bea2-5d8d-4ae1-b9ab-398d57c00454": {
+    "category": "daily",
+    "motif": "light",
+    "gradient": "linear-gradient(139deg, #eff3fa 0%, #b7cff4 50%, #759bf4 100%)",
+    "motifColor": "#0859d2",
+    "textColor": "#1e2d43",
+    "mutedColor": "#3e5679",
+    "accentColor": "#105aca"
+  },
+  "849ef0aa-bbbc-42b0-b1ad-e8eea9d239a5": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(153deg, #ede5f2 0%, #ccade1 50%, #b976d6 100%)",
+    "motifColor": "#6a2499",
+    "textColor": "#33253c",
+    "mutedColor": "#604870",
+    "accentColor": "#692b92"
+  },
+  "84ae78af-6463-4f03-9087-89f555fc0f0c": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(160deg, #eaf0f7 0%, #a7c3ec 50%, #678fea 100%)",
+    "motifColor": "#1051b3",
+    "textColor": "#202d41",
+    "mutedColor": "#405678",
+    "accentColor": "#1853ab"
+  },
+  "85d43790-3fae-466f-b009-06da458f8c22": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(173deg, #eef2f9 0%, #b5cbef 50%, #7797eb 100%)",
+    "motifColor": "#1254c1",
+    "textColor": "#202c41",
+    "mutedColor": "#405577",
+    "accentColor": "#1b56b9"
+  },
+  "8648e189-6791-451b-88a5-4c9e243b1afe": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(159deg, #f9f4eb 0%, #f3d79e 50%, #f6cf4e 100%)",
+    "motifColor": "#b47802",
+    "textColor": "#43371e",
+    "mutedColor": "#79663e",
+    "accentColor": "#ab750b"
+  },
+  "86681ce5-156d-4ef3-8576-fb66b747a1e3": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(146deg, #eee8f4 0%, #d0b9e5 50%, #b882d9 100%)",
+    "motifColor": "#6827a5",
+    "textColor": "#31253c",
+    "mutedColor": "#5d486f",
+    "accentColor": "#68309d"
+  },
+  "873de266-3bb5-45fd-b755-01654a11a5bc": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(169deg, #eaf3ee 0%, #c1e1cd 50%, #8ccfac 100%)",
+    "motifColor": "#349859",
+    "textColor": "#27392e",
+    "mutedColor": "#4d6b58",
+    "accentColor": "#3c905c"
+  },
+  "875fc72d-2807-4efb-9392-ce9da448077a": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(128deg, #faf3ed 0%, #f4cea6 50%, #f7b957 100%)",
+    "motifColor": "#bd6201",
+    "textColor": "#43311e",
+    "mutedColor": "#795d3e",
+    "accentColor": "#b3620b"
+  },
+  "8774a1ba-d944-4896-ba1f-48a4fadd51d7": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(168deg, #ede7f3 0%, #cab5e4 50%, #b07ed8 100%)",
+    "motifColor": "#5e26a2",
+    "textColor": "#2f253c",
+    "mutedColor": "#5a4870",
+    "accentColor": "#5f2e9a"
+  },
+  "88f0c22a-23b6-4a0a-898e-813c52e35916": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(165deg, #f9f3ea 0%, #f0d19c 50%, #f2c64e 100%)",
+    "motifColor": "#ac6f05",
+    "textColor": "#43351e",
+    "mutedColor": "#79643e",
+    "accentColor": "#a56d0c"
+  },
+  "89364534-b2a7-4e8a-959f-c8d1537ca0e5": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(170deg, #eee9f4 0%, #cebae7 50%, #b383db 100%)",
+    "motifColor": "#6126a9",
+    "textColor": "#2f243c",
+    "mutedColor": "#5a4870",
+    "accentColor": "#622fa1"
+  },
+  "8a37c174-3047-4701-9b81-f18d5e7c8396": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(147deg, #f8ecf0 0%, #ecb5c5 50%, #e67d91 100%)",
+    "motifColor": "#bb1949",
+    "textColor": "#3f222a",
+    "mutedColor": "#754351",
+    "accentColor": "#b3224c"
+  },
+  "8a6b0db0-048f-4140-a98a-cbd8392c40e7": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(128deg, #ede7f3 0%, #cbb2e3 50%, #b47bd8 100%)",
+    "motifColor": "#64259f",
+    "textColor": "#31253c",
+    "mutedColor": "#5c4870",
+    "accentColor": "#632d98"
+  },
+  "8a7b9bcc-9686-4e19-93d6-75725eb62f3a": {
+    "category": "rest",
+    "motif": "wave",
+    "gradient": "linear-gradient(172deg, #e6f2f1 0%, #b0e0db 50%, #77d1d2 100%)",
+    "motifColor": "#279389",
+    "textColor": "#263b39",
+    "mutedColor": "#496e6b",
+    "accentColor": "#2e8b83"
+  },
+  "8ac3d71b-ae30-4daf-bd58-251c032f7d82": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(156deg, #ece7f4 0%, #c9b5e5 50%, #ae7ddb 100%)",
+    "motifColor": "#5a24a5",
+    "textColor": "#2e243d",
+    "mutedColor": "#584771",
+    "accentColor": "#5b2c9d"
+  },
+  "8af02f5a-ca0f-4247-9e8e-e4dcff082502": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(177deg, #f9f3ec 0%, #f2cca2 50%, #f4b953 100%)",
+    "motifColor": "#b56204",
+    "textColor": "#43321e",
+    "mutedColor": "#795e3e",
+    "accentColor": "#ad610b"
+  },
+  "8be3ad30-d7ed-4fe7-8dc3-b19dd9900b98": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(176deg, #ede6f3 0%, #cbb1e2 50%, #b579d7 100%)",
+    "motifColor": "#66259d",
+    "textColor": "#31253c",
+    "mutedColor": "#5d4870",
+    "accentColor": "#652d95"
+  },
+  "8be5c41e-45ff-4832-8178-c4cbe56002d2": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(176deg, #faf4ec 0%, #f3d1a5 50%, #f5bf56 100%)",
+    "motifColor": "#ba6903",
+    "textColor": "#43331e",
+    "mutedColor": "#795f3e",
+    "accentColor": "#b2680b"
+  },
+  "8c0c1492-9bdb-40a2-8fc4-281f2464d477": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(164deg, #e7f2ee 0%, #b4e0ce 50%, #7cd1b7 100%)",
+    "motifColor": "#2a9469",
+    "textColor": "#263b33",
+    "mutedColor": "#4a6d5f",
+    "accentColor": "#328c68"
+  },
+  "8c6153bb-cd55-45c0-9a89-d88c33ff33d3": {
+    "category": "drama",
+    "motif": "mountain",
+    "gradient": "linear-gradient(143deg, #eae4f3 0%, #c1a9e4 50%, #a76fdc 100%)",
+    "motifColor": "#531d9f",
+    "textColor": "#2e233e",
+    "mutedColor": "#584572",
+    "accentColor": "#542597"
+  },
+  "8d545a6b-db88-4093-b1cd-17bfade3a7a4": {
+    "category": "rest",
+    "motif": "wave",
+    "gradient": "linear-gradient(155deg, #e7f2f2 0%, #b4e0de 50%, #7bcbd1 100%)",
+    "motifColor": "#299490",
+    "textColor": "#263b3a",
+    "mutedColor": "#4a6e6c",
+    "accentColor": "#318c89"
+  },
+  "8d88d14a-c89d-4b7d-a914-86a9fdc9003a": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(180deg, #f8ebef 0%, #eeafc5 50%, #eb7491 100%)",
+    "motifColor": "#be124e",
+    "textColor": "#41202b",
+    "mutedColor": "#774053",
+    "accentColor": "#b61a50"
+  },
+  "8f871c87-be99-4bf6-8be7-db202cf081dc": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(133deg, #ede8f4 0%, #cab7e8 50%, #ae7fdf 100%)",
+    "motifColor": "#5821ad",
+    "textColor": "#2e233d",
+    "mutedColor": "#574672",
+    "accentColor": "#5a2aa5"
+  },
+  "90730b95-fd0f-417b-a4ab-8d76b71fed55": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(141deg, #e9f2ee 0%, #bae0d1 50%, #83cfb9 100%)",
+    "motifColor": "#2f946c",
+    "textColor": "#273a32",
+    "mutedColor": "#4c6c5f",
+    "accentColor": "#378c6b"
+  },
+  "90911504-f2bf-4325-bd6f-571b6c06cbb0": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(137deg, #faf4ec 0%, #f3d2a5 50%, #f5c157 100%)",
+    "motifColor": "#ba6c03",
+    "textColor": "#43331e",
+    "mutedColor": "#79603e",
+    "accentColor": "#b26b0b"
+  },
+  "909574d3-5270-4887-8178-2b2974d90efd": {
+    "category": "rest",
+    "motif": "mountain",
+    "gradient": "linear-gradient(143deg, #e9f3ee 0%, #b9e2cf 50%, #81d3b5 100%)",
+    "motifColor": "#2b9a66",
+    "textColor": "#263b31",
+    "mutedColor": "#4a6d5d",
+    "accentColor": "#339266"
+  },
+  "909f4d9a-4b9c-4b87-af45-d0fc432086c7": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(162deg, #eef2f9 0%, #b5c9ee 50%, #7694ea 100%)",
+    "motifColor": "#1350bf",
+    "textColor": "#202c41",
+    "mutedColor": "#415477",
+    "accentColor": "#1b52b6"
+  },
+  "91043ee5-185a-46d9-bd34-4ebe0d2e94a9": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(153deg, #f9f4e9 0%, #f4d698 50%, #f9d047 100%)",
+    "motifColor": "#b17700",
+    "textColor": "#43371e",
+    "mutedColor": "#79663e",
+    "accentColor": "#a6730b"
+  },
+  "910d7870-0dff-4b99-877b-f4c0337bf80f": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(149deg, #ece7f3 0%, #c8b3e4 50%, #ad7bda 100%)",
+    "motifColor": "#5a24a2",
+    "textColor": "#2f243d",
+    "mutedColor": "#594770",
+    "accentColor": "#5b2c9a"
+  },
+  "916ac134-8555-456c-abd6-a88526c2e76a": {
+    "category": "drama",
+    "motif": "mountain",
+    "gradient": "linear-gradient(154deg, #ede6f4 0%, #cbb0e6 50%, #b476dd 100%)",
+    "motifColor": "#621fa6",
+    "textColor": "#30233e",
+    "mutedColor": "#5c4672",
+    "accentColor": "#62279e"
+  },
+  "923a4661-088b-4365-9c3b-9152af2a5597": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(167deg, #ece6f3 0%, #c9aee3 50%, #b276d8 100%)",
+    "motifColor": "#61239d",
+    "textColor": "#31243d",
+    "mutedColor": "#5c4770",
+    "accentColor": "#612a96"
+  },
+  "926fa5a6-e615-4180-844d-5f1679f9d79e": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(137deg, #ece6f3 0%, #c6b0e3 50%, #ab79d9 100%)",
+    "motifColor": "#58239f",
+    "textColor": "#2f243d",
+    "mutedColor": "#594770",
+    "accentColor": "#592b97"
+  },
+  "929c2917-cb4f-4dca-86a9-673cf3061276": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(180deg, #efe9f4 0%, #d1b9e5 50%, #ba83da 100%)",
+    "motifColor": "#6c27a6",
+    "textColor": "#31253c",
+    "mutedColor": "#5d4870",
+    "accentColor": "#6b2f9e"
+  },
+  "92a9fa37-454f-453b-ba0b-5dff28031f42": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(140deg, #f9f2e9 0%, #f3cc98 50%, #f8be47 100%)",
+    "motifColor": "#b06500",
+    "textColor": "#43331e",
+    "mutedColor": "#79603e",
+    "accentColor": "#a5630b"
+  },
+  "940106af-5a09-465b-814b-93d5a6358337": {
+    "category": "comfort",
+    "motif": "wave",
+    "gradient": "linear-gradient(127deg, #f9f6e8 0%, #f6e59e 50%, #fbec51 100%)",
+    "motifColor": "#be9900",
+    "textColor": "#433c1e",
+    "mutedColor": "#796e3e",
+    "accentColor": "#b2920b"
+  },
+  "943b1970-d4b9-4c3a-8f74-b24d2e805ab3": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(156deg, #faf3ec 0%, #f5cda3 50%, #f9b853 100%)",
+    "motifColor": "#bd6000",
+    "textColor": "#43311e",
+    "mutedColor": "#795c3e",
+    "accentColor": "#b2600b"
+  },
+  "94803f8a-289a-448d-bf19-e5f2f77734fb": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(137deg, #f9f3eb 0%, #f3cea0 50%, #f6bc50 100%)",
+    "motifColor": "#b66501",
+    "textColor": "#43321e",
+    "mutedColor": "#795f3e",
+    "accentColor": "#ad640b"
+  },
+  "9488c09d-4cde-40bf-8f9f-c079fe7ff5fa": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(132deg, #faf2ee 0%, #f5c9b2 50%, #f6a769 100%)",
+    "motifColor": "#ce4803",
+    "textColor": "#432b1e",
+    "mutedColor": "#79523e",
+    "accentColor": "#c44b0d"
+  },
+  "94a784cf-deb2-4db8-b17a-73d116fd5054": {
+    "category": "motivation",
+    "motif": "wave",
+    "gradient": "linear-gradient(158deg, #faf9ec 0%, #f6eda3 50%, #fbfb51 100%)",
+    "motifColor": "#beaa00",
+    "textColor": "#433f1e",
+    "mutedColor": "#79733e",
+    "accentColor": "#b2a10b"
+  },
+  "959a720b-f825-47f4-89de-bd4146e3c4e5": {
+    "category": "drama",
+    "motif": "star",
+    "gradient": "linear-gradient(154deg, #e3e1f1 0%, #a69ee0 50%, #7e63d9 100%)",
+    "motifColor": "#2a1b92",
+    "textColor": "#27233e",
+    "mutedColor": "#4b4672",
+    "accentColor": "#2f228b"
+  },
+  "95f1f90d-c2fa-40bf-971b-bec89e097cd2": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(128deg, #edf2f8 0%, #b1d0ec 50%, #73a4e6 100%)",
+    "motifColor": "#166ab5",
+    "textColor": "#213140",
+    "mutedColor": "#425d75",
+    "accentColor": "#1e69ad"
+  },
+  "96077af3-338c-46f2-93c2-119511a888a9": {
+    "category": "motivation",
+    "motif": "wave",
+    "gradient": "linear-gradient(129deg, #fafaec 0%, #f5f6a2 50%, #e8fb51 100%)",
+    "motifColor": "#bbbd00",
+    "textColor": "#42431e",
+    "mutedColor": "#78793e",
+    "accentColor": "#b0b20b"
+  },
+  "962632ed-9ef3-4066-8542-269a98e88128": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(160deg, #eee6f3 0%, #cfafe5 50%, #bc76dc 100%)",
+    "motifColor": "#6d20a4",
+    "textColor": "#33233d",
+    "mutedColor": "#5f4672",
+    "accentColor": "#6b289c"
+  },
+  "9657d3f7-1fcb-46c7-afb5-12d898654ebf": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(164deg, #eee8f4 0%, #d0b7e7 50%, #b97fdc 100%)",
+    "motifColor": "#6924a9",
+    "textColor": "#31243d",
+    "mutedColor": "#5d4771",
+    "accentColor": "#692ca1"
+  },
+  "965c0f80-cb4c-496a-84f6-89f864bcd938": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(131deg, #eee7f4 0%, #d0b4e7 50%, #bb7cdd 100%)",
+    "motifColor": "#6c21a9",
+    "textColor": "#32243d",
+    "mutedColor": "#5e4672",
+    "accentColor": "#6b29a1"
+  },
+  "96635a6f-2866-42da-9ec7-844b4923f281": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(135deg, #ede7f3 0%, #cbb5e3 50%, #b17ed8 100%)",
+    "motifColor": "#6027a0",
+    "textColor": "#30253c",
+    "mutedColor": "#5b486f",
+    "accentColor": "#602e98"
+  },
+  "96830bba-f4df-4cce-a630-0cf69c42d111": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(142deg, #e9f3ed 0%, #bbe1cb 50%, #85d0ac 100%)",
+    "motifColor": "#2f975a",
+    "textColor": "#273a2f",
+    "mutedColor": "#4b6c59",
+    "accentColor": "#378f5c"
+  },
+  "9699435a-a605-402b-a88f-a80e64e2d9ee": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(135deg, #ece7f4 0%, #c9b4e6 50%, #ae7bdc 100%)",
+    "motifColor": "#5a22a7",
+    "textColor": "#2f243d",
+    "mutedColor": "#594671",
+    "accentColor": "#5c2a9e"
+  },
+  "9776eb44-a6fb-4b31-b3a6-e8fab7dad8aa": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(174deg, #f9eeec 0%, #f1b9ab 50%, #f18f64 100%)",
+    "motifColor": "#be2d08",
+    "textColor": "#43261e",
+    "mutedColor": "#794a3e",
+    "accentColor": "#b73210"
+  },
+  "97c2c892-77c5-4a89-a1e0-a43ca1122c1e": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(176deg, #f9f4ea 0%, #f1d99b 50%, #f3d54c 100%)",
+    "motifColor": "#ac7e04",
+    "textColor": "#43391e",
+    "mutedColor": "#79693e",
+    "accentColor": "#a57a0b"
+  },
+  "97ee5956-44a7-4f1a-b1d6-03472bde4ee6": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(174deg, #edf3f8 0%, #b3d0ed 50%, #75a2e9 100%)",
+    "motifColor": "#1466bb",
+    "textColor": "#213040",
+    "mutedColor": "#415b77",
+    "accentColor": "#1c66b3"
+  },
+  "984b7225-93c1-44db-ac48-60d3d9448d4b": {
+    "category": "drama",
+    "motif": "light",
+    "gradient": "linear-gradient(157deg, #f2e9f6 0%, #ddbaec 50%, #cf7fe4 100%)",
+    "motifColor": "#891db8",
+    "textColor": "#36223f",
+    "mutedColor": "#654474",
+    "accentColor": "#8525b0"
+  },
+  "99741802-a826-4754-833f-e385a0671fbb": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(141deg, #f9f2ea 0%, #f3cc9b 50%, #f6bb4b 100%)",
+    "motifColor": "#b26301",
+    "textColor": "#43321e",
+    "mutedColor": "#795f3e",
+    "accentColor": "#a8620b"
+  },
+  "999628ab-2ae1-4553-a8a0-b21a97c08d0e": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(153deg, #edf3f8 0%, #b3d2ed 50%, #75a8e8 100%)",
+    "motifColor": "#156eba",
+    "textColor": "#213240",
+    "mutedColor": "#425e76",
+    "accentColor": "#1d6db1"
+  },
+  "99f91404-362a-431e-86e4-315aad2167c0": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(160deg, #f7eaed 0%, #edacbb 50%, #eb7181 100%)",
+    "motifColor": "#bc1139",
+    "textColor": "#412028",
+    "mutedColor": "#77404d",
+    "accentColor": "#b41a3d"
+  },
+  "9a93c0b8-0d5e-4102-94f8-73baf8fd998b": {
+    "category": "drama",
+    "motif": "cloud",
+    "gradient": "linear-gradient(155deg, #f3ecf5 0%, #e2c5e9 50%, #d490dc 100%)",
+    "motifColor": "#962cb1",
+    "textColor": "#37253c",
+    "mutedColor": "#67496f",
+    "accentColor": "#9135a8"
+  },
+  "9b270303-866a-4972-a607-245c6e2f090d": {
+    "category": "love",
+    "motif": "wave",
+    "gradient": "linear-gradient(145deg, #f8edeb 0%, #efb8af 50%, #ee9173 100%)",
+    "motifColor": "#c4280f",
+    "textColor": "#41241f",
+    "mutedColor": "#78473f",
+    "accentColor": "#bb2e17"
+  },
+  "9b51515c-c750-423d-b847-4cb232a136ef": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(149deg, #f8ebee 0%, #eeb0be 50%, #ec7585 100%)",
+    "motifColor": "#c1113a",
+    "textColor": "#412028",
+    "mutedColor": "#78404d",
+    "accentColor": "#b9193e"
+  },
+  "9bbfe5e5-2cd8-464a-ac3a-c9e66c2be55b": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(162deg, #f8ecef 0%, #eeb1c0 50%, #eb7787 100%)",
+    "motifColor": "#c1123d",
+    "textColor": "#412028",
+    "mutedColor": "#77404e",
+    "accentColor": "#b91b41"
+  },
+  "9c7abac0-dbdb-46ab-8856-1dc79bdf1291": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(179deg, #f8edf1 0%, #ecb6cc 50%, #e77d9e 100%)",
+    "motifColor": "#bd185c",
+    "textColor": "#40212e",
+    "mutedColor": "#754257",
+    "accentColor": "#b5215d"
+  },
+  "9dcc21ab-ee4b-4610-8387-dc5a39dd321c": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(150deg, #eee6f3 0%, #d0b0e3 50%, #be78d9 100%)",
+    "motifColor": "#70239f",
+    "textColor": "#33243d",
+    "mutedColor": "#614770",
+    "accentColor": "#6e2b97"
+  },
+  "9e9985b5-556e-48c3-b50f-f8e9d91e60ce": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(157deg, #ece8f3 0%, #c8b6e4 50%, #ac7fd9 100%)",
+    "motifColor": "#5826a3",
+    "textColor": "#2e253c",
+    "mutedColor": "#584870",
+    "accentColor": "#592e9b"
+  },
+  "9ec4b49d-77af-420b-8f6c-b5a4dc6bf3fa": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(173deg, #f9efeb 0%, #f2bca8 50%, #f39660 100%)",
+    "motifColor": "#be3706",
+    "textColor": "#43281e",
+    "mutedColor": "#794e3e",
+    "accentColor": "#b73b0e"
+  },
+  "9f23d687-105f-46b8-be39-14c6714f0eea": {
+    "category": "daily",
+    "motif": "leaf",
+    "gradient": "linear-gradient(143deg, #ecf0f9 0%, #afc4f0 50%, #6e8bee 100%)",
+    "motifColor": "#0d48c0",
+    "textColor": "#1f2b42",
+    "mutedColor": "#3f5279",
+    "accentColor": "#154bb8"
+  },
+  "9f392826-8d14-400f-a229-6fda3f6978cf": {
+    "category": "drama",
+    "motif": "wave",
+    "gradient": "linear-gradient(127deg, #f3e6f4 0%, #e4afe9 50%, #e274e0 100%)",
+    "motifColor": "#a11aad",
+    "textColor": "#3c223f",
+    "mutedColor": "#704474",
+    "accentColor": "#9a22a5"
+  },
+  "9f53d787-9ef3-4c6e-ac2c-8a2fbac86999": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(145deg, #ede5f2 0%, #cdace2 50%, #bb73d9 100%)",
+    "motifColor": "#6b219c",
+    "textColor": "#33243d",
+    "mutedColor": "#604771",
+    "accentColor": "#6a2994"
+  },
+  "a033c686-d522-4536-a31c-3d4525c83be7": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(167deg, #f7ebf0 0%, #ecb0c9 50%, #e9769a 100%)",
+    "motifColor": "#bc155a",
+    "textColor": "#40212e",
+    "mutedColor": "#764157",
+    "accentColor": "#b31d5b"
+  },
+  "a0478044-3ea7-4bbe-8939-258f29a89b33": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(157deg, #faf4ec 0%, #f5d4a2 50%, #f9c652 100%)",
+    "motifColor": "#bc7000",
+    "textColor": "#43341e",
+    "mutedColor": "#79613e",
+    "accentColor": "#b16e0b"
+  },
+  "a124d36e-7a3a-412b-b68a-4483b8c2407c": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(152deg, #e8f2ed 0%, #b9dfcc 50%, #82ceaf 100%)",
+    "motifColor": "#2f935f",
+    "textColor": "#273a30",
+    "mutedColor": "#4c6c5b",
+    "accentColor": "#378c60"
+  },
+  "a176bc4a-5d00-493a-98ac-c2c89fc7fd42": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(170deg, #e7f2eb 0%, #b5dec4 50%, #7ecea4 100%)",
+    "motifColor": "#2d9052",
+    "textColor": "#273a2e",
+    "mutedColor": "#4b6c58",
+    "accentColor": "#348954"
+  },
+  "a1b8422f-b1a3-4dd2-a273-c2b0f605fc92": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(147deg, #f9f4e9 0%, #f3d797 50%, #f8d345 100%)",
+    "motifColor": "#af7900",
+    "textColor": "#43381e",
+    "mutedColor": "#79673e",
+    "accentColor": "#a4750a"
+  },
+  "a1c1150b-0958-47fa-9202-4d8939e0629e": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(146deg, #ecf0f8 0%, #aec4ec 50%, #6f8ee8 100%)",
+    "motifColor": "#144db5",
+    "textColor": "#212c40",
+    "mutedColor": "#415476",
+    "accentColor": "#1c4fad"
+  },
+  "a23ea8b4-6f33-4618-bf43-098e61d62273": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(133deg, #eee6f4 0%, #ceb2e6 50%, #ba79dc 100%)",
+    "motifColor": "#6a21a5",
+    "textColor": "#32243d",
+    "mutedColor": "#5e4671",
+    "accentColor": "#69299d"
+  },
+  "a275608b-d604-46be-a142-4887e339af14": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(147deg, #ede7f3 0%, #cbb5e4 50%, #b27ed9 100%)",
+    "motifColor": "#6125a3",
+    "textColor": "#30253c",
+    "mutedColor": "#5b4870",
+    "accentColor": "#622d9b"
+  },
+  "a2b5727d-3ad0-4343-82e2-110737dc652d": {
+    "category": "daily",
+    "motif": "star",
+    "gradient": "linear-gradient(126deg, #e3f0f6 0%, #8cccea 50%, #48a6ec 100%)",
+    "motifColor": "#096c9c",
+    "textColor": "#1f3742",
+    "mutedColor": "#3e6679",
+    "accentColor": "#106a95"
+  },
+  "a2bf3acf-a6da-42f7-9a38-180c84096321": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(140deg, #ede8f4 0%, #cab8e8 50%, #ad80de 100%)",
+    "motifColor": "#5722ad",
+    "textColor": "#2d243d",
+    "mutedColor": "#574671",
+    "accentColor": "#592ba4"
+  },
+  "a3301845-8962-4fef-a7a0-d698af6bdf56": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(176deg, #f9f2eb 0%, #f1c9a0 50%, #f3b352 100%)",
+    "motifColor": "#b15b05",
+    "textColor": "#43311e",
+    "mutedColor": "#795c3e",
+    "accentColor": "#aa5b0c"
+  },
+  "a3a53a48-847f-428a-8be5-86e687292ddf": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(169deg, #f0e8f5 0%, #d6b9e9 50%, #c480df 100%)",
+    "motifColor": "#7821af",
+    "textColor": "#33233e",
+    "mutedColor": "#614672",
+    "accentColor": "#762aa7"
+  },
+  "a3d4f004-b59b-4157-aa4e-ad82272dcf4b": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(130deg, #faf2ed 0%, #f4c9b2 50%, #f4a96a 100%)",
+    "motifColor": "#ca4b06",
+    "textColor": "#432b1e",
+    "mutedColor": "#79533e",
+    "accentColor": "#c24d0e"
+  },
+  "a3e5967b-5c06-4c47-800a-6564400d637a": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(147deg, #f8ecee 0%, #eeb1bf 50%, #eb7687 100%)",
+    "motifColor": "#c0133c",
+    "textColor": "#412028",
+    "mutedColor": "#77404e",
+    "accentColor": "#b71b41"
+  },
+  "a434e711-0a03-42db-9cea-0f05fe8e9635": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(161deg, #ebe5f3 0%, #c4ade4 50%, #aa73db 100%)",
+    "motifColor": "#5720a0",
+    "textColor": "#2f243d",
+    "mutedColor": "#594671",
+    "accentColor": "#582798"
+  },
+  "a4a61053-e2a5-4c6d-a6fa-d5e3c036405d": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(146deg, #faeff2 0%, #f6beca 50%, #f6818f 100%)",
+    "motifColor": "#e20636",
+    "textColor": "#431e26",
+    "mutedColor": "#793e4b",
+    "accentColor": "#d90f3b"
+  },
+  "a5f87580-1696-411f-a23f-ce6496ff2cde": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(172deg, #edf1f8 0%, #b1caed 50%, #7497e8 100%)",
+    "motifColor": "#1557b8",
+    "textColor": "#212e40",
+    "mutedColor": "#415776",
+    "accentColor": "#1d59b0"
+  },
+  "a644ef39-6c2d-4241-a1d3-dbe0da9da06e": {
+    "category": "daily",
+    "motif": "wave",
+    "gradient": "linear-gradient(149deg, #ededf9 0%, #b1b0f1 50%, #7c6ff1 100%)",
+    "motifColor": "#0b0ac6",
+    "textColor": "#1f1f42",
+    "mutedColor": "#3f3e79",
+    "accentColor": "#1313be"
+  },
+  "a736c200-5c99-4b77-b14d-535c3939e997": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(150deg, #f9f1e9 0%, #f2c599 50%, #f5b049 100%)",
+    "motifColor": "#ad5802",
+    "textColor": "#43301e",
+    "mutedColor": "#795c3e",
+    "accentColor": "#a5580b"
+  },
+  "a74299cb-33c7-4f5b-b6f2-e31d4a0d378a": {
+    "category": "motivation",
+    "motif": "leaf",
+    "gradient": "linear-gradient(131deg, #faf5ec 0%, #f5d6a2 50%, #facc51 100%)",
+    "motifColor": "#bc7600",
+    "textColor": "#43351e",
+    "mutedColor": "#79633e",
+    "accentColor": "#b1730b"
+  },
+  "a923a1ae-6052-434a-a612-120ced94b972": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(150deg, #fbf2ee 0%, #f8cbb3 50%, #fcaa67 100%)",
+    "motifColor": "#d44a00",
+    "textColor": "#432b1e",
+    "mutedColor": "#79533e",
+    "accentColor": "#c84e0d"
+  },
+  "a942f76f-2104-4f09-8540-aa7ba962607e": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(130deg, #f9f5ea 0%, #f2da9b 50%, #f5d74b 100%)",
+    "motifColor": "#af7f02",
+    "textColor": "#43391e",
+    "mutedColor": "#79693e",
+    "accentColor": "#a77b0b"
+  },
+  "aaf2cd7d-b2e3-42b1-8142-ab720837f3e5": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(175deg, #f8edf0 0%, #efb8c6 50%, #eb7e8f 100%)",
+    "motifColor": "#c61542",
+    "textColor": "#402029",
+    "mutedColor": "#77414f",
+    "accentColor": "#bd1d46"
+  },
+  "abd9af12-fb64-4c2a-8ecf-9aafcd6f56dd": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(159deg, #f8ecf0 0%, #edb2c5 50%, #ea7892 100%)",
+    "motifColor": "#c0144b",
+    "textColor": "#40212b",
+    "mutedColor": "#774152",
+    "accentColor": "#b71c4e"
+  },
+  "abefd391-0ae5-49fb-84ac-9685c47ca6c3": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(155deg, #eee9f4 0%, #cfbbe6 50%, #b684db 100%)",
+    "motifColor": "#6427a9",
+    "textColor": "#30253c",
+    "mutedColor": "#5b4870",
+    "accentColor": "#6530a1"
+  },
+  "ace3eca9-fb9b-401e-8a06-643038710ed1": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(170deg, #f9f4ec 0%, #f2d5a5 50%, #f3c857 100%)",
+    "motifColor": "#b77405",
+    "textColor": "#43351e",
+    "mutedColor": "#79633e",
+    "accentColor": "#af720c"
+  },
+  "acebc14d-eb78-44c6-9b88-99587ed6ddae": {
+    "category": "drama",
+    "motif": "wave",
+    "gradient": "linear-gradient(169deg, #f3e6f4 0%, #e2b0e8 50%, #df75e1 100%)",
+    "motifColor": "#9a1cac",
+    "textColor": "#3b223e",
+    "mutedColor": "#6e4473",
+    "accentColor": "#9424a4"
+  },
+  "ad7ddea8-7e82-4299-a04c-2c256e739a7f": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(157deg, #e7f2ec 0%, #b5dec9 50%, #7ecead 100%)",
+    "motifColor": "#2c905e",
+    "textColor": "#273a30",
+    "mutedColor": "#4b6c5c",
+    "accentColor": "#34885e"
+  },
+  "ad946a77-c135-48dc-a347-5edd5e25139f": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(161deg, #f9f6ec 0%, #f2dfa5 50%, #f4dc57 100%)",
+    "motifColor": "#b78b04",
+    "textColor": "#433a1e",
+    "mutedColor": "#796b3e",
+    "accentColor": "#b0870c"
+  },
+  "ae99a75e-cf82-4c95-8d09-d0e86daee542": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(152deg, #f9f0ec 0%, #f4c2ab 50%, #f6a061 100%)",
+    "motifColor": "#c64103",
+    "textColor": "#432a1e",
+    "mutedColor": "#79513e",
+    "accentColor": "#bc450c"
+  },
+  "aeb73dfe-9544-4344-920f-c24ec2040b28": {
+    "category": "rest",
+    "motif": "wave",
+    "gradient": "linear-gradient(148deg, #e7f2f2 0%, #b4e1e0 50%, #7cccd2 100%)",
+    "motifColor": "#299693",
+    "textColor": "#263b3b",
+    "mutedColor": "#4a6e6d",
+    "accentColor": "#318e8c"
+  },
+  "af642a15-d013-45b6-9a7f-38012e190175": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(166deg, #f9f2eb 0%, #f2caa1 50%, #f4b452 100%)",
+    "motifColor": "#b35c04",
+    "textColor": "#43311e",
+    "mutedColor": "#795c3e",
+    "accentColor": "#ac5c0b"
+  },
+  "b0007be1-cbb7-4a94-9e4f-4eb52e55698f": {
+    "category": "comfort",
+    "motif": "wave",
+    "gradient": "linear-gradient(180deg, #faf6eb 0%, #f7e1a7 50%, #fce05b 100%)",
+    "motifColor": "#c89200",
+    "textColor": "#43391e",
+    "mutedColor": "#79693e",
+    "accentColor": "#bc8c0c"
+  },
+  "b046c72d-b7f7-41d9-9e38-2ebcc95014d4": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(154deg, #ede5f3 0%, #caade3 50%, #b575d9 100%)",
+    "motifColor": "#65229d",
+    "textColor": "#32243d",
+    "mutedColor": "#5e4771",
+    "accentColor": "#642996"
+  },
+  "b10805ca-6a34-4d76-8386-f531d621734c": {
+    "category": "rest",
+    "motif": "cloud",
+    "gradient": "linear-gradient(175deg, #ebf3f1 0%, #c1e1db 50%, #8dcec8 100%)",
+    "motifColor": "#359784",
+    "textColor": "#283936",
+    "mutedColor": "#4d6a65",
+    "accentColor": "#3d8f7f"
+  },
+  "b1670a83-192d-48aa-bdfd-ac08ed22161e": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(161deg, #eae5f2 0%, #c0ace2 50%, #a374d8 100%)",
+    "motifColor": "#4f229c",
+    "textColor": "#2d243d",
+    "mutedColor": "#574771",
+    "accentColor": "#512994"
+  },
+  "b1979419-9b89-4bce-a3b6-b2d1bf657232": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(140deg, #faf5eb 0%, #f6d99e 50%, #fbd44c 100%)",
+    "motifColor": "#b87d00",
+    "textColor": "#43371e",
+    "mutedColor": "#79663e",
+    "accentColor": "#ad790b"
+  },
+  "b1eaeaf7-cf89-4254-ba7a-678b2e58cb11": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(165deg, #f9f6eb 0%, #f3dea0 50%, #f6dc50 100%)",
+    "motifColor": "#b68802",
+    "textColor": "#43391e",
+    "mutedColor": "#796a3e",
+    "accentColor": "#ad830b"
+  },
+  "b1f701b0-b5a0-4e43-aba5-70861af075bb": {
+    "category": "drama",
+    "motif": "star",
+    "gradient": "linear-gradient(179deg, #e2dff0 0%, #a097dd 50%, #795dd4 100%)",
+    "motifColor": "#2a1b87",
+    "textColor": "#27243d",
+    "mutedColor": "#4c4671",
+    "accentColor": "#2f2281"
+  },
+  "b275e529-2132-450e-84e7-85f81c1020c9": {
+    "category": "rest",
+    "motif": "mountain",
+    "gradient": "linear-gradient(139deg, #e9f3ef 0%, #bbe1d1 50%, #84d0b8 100%)",
+    "motifColor": "#2e976c",
+    "textColor": "#273a32",
+    "mutedColor": "#4b6c5f",
+    "accentColor": "#368f6a"
+  },
+  "b27643be-6d9c-47fc-a59b-bc8c38d9beac": {
+    "category": "comfort",
+    "motif": "wave",
+    "gradient": "linear-gradient(167deg, #faf5ed 0%, #f6ddaf 50%, #f9d465 100%)",
+    "motifColor": "#cf8700",
+    "textColor": "#43361e",
+    "mutedColor": "#79653e",
+    "accentColor": "#c3830c"
+  },
+  "b332d65f-99e9-434b-97ba-3208b636cecc": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(171deg, #f9eef2 0%, #efbbcd 50%, #eb829b 100%)",
+    "motifColor": "#c91651",
+    "textColor": "#40212b",
+    "mutedColor": "#764153",
+    "accentColor": "#c01f54"
+  },
+  "b3a01ce4-020c-4607-b7e9-8860f5811561": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(145deg, #e9f2ec 0%, #bae0c9 50%, #84cfa8 100%)",
+    "motifColor": "#2f9555",
+    "textColor": "#273a2e",
+    "mutedColor": "#4c6c58",
+    "accentColor": "#378e57"
+  },
+  "b41db65b-2831-4cdf-bed2-d7b89f9dcada": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(168deg, #ede9f4 0%, #ccbae7 50%, #b083db 100%)",
+    "motifColor": "#5c26a9",
+    "textColor": "#2e243d",
+    "mutedColor": "#584770",
+    "accentColor": "#5e2ea1"
+  },
+  "b55bcf32-f0ab-43a9-a53e-7465b7e3eea7": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(137deg, #ece7f3 0%, #c7b4e3 50%, #aa7dd8 100%)",
+    "motifColor": "#5626a0",
+    "textColor": "#2e253c",
+    "mutedColor": "#58486f",
+    "accentColor": "#582e98"
+  },
+  "b58a8288-a3d8-4d15-9c22-7d1e8fade379": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(131deg, #ede5f2 0%, #ceace2 50%, #bc74d8 100%)",
+    "motifColor": "#6d229c",
+    "textColor": "#33243d",
+    "mutedColor": "#614771",
+    "accentColor": "#6b2994"
+  },
+  "b827bee2-e961-499b-bb49-884fab25b5a1": {
+    "category": "drama",
+    "motif": "wave",
+    "gradient": "linear-gradient(169deg, #f3e8f5 0%, #e4b8e9 50%, #e07ee1 100%)",
+    "motifColor": "#a11fb1",
+    "textColor": "#3b233e",
+    "mutedColor": "#6e4573",
+    "accentColor": "#9b27a9"
+  },
+  "b82f9f04-bddd-4775-a76a-96c2f403beca": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(133deg, #eee7f3 0%, #d1b5e3 50%, #bc7fd7 100%)",
+    "motifColor": "#6f289f",
+    "textColor": "#33253c",
+    "mutedColor": "#60496f",
+    "accentColor": "#6e3097"
+  },
+  "b8b8c8ff-6db5-463a-9622-c4cbded239cb": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(143deg, #faf3ed 0%, #f5ceb2 50%, #f6b369 100%)",
+    "motifColor": "#cd5903",
+    "textColor": "#432e1e",
+    "mutedColor": "#79573e",
+    "accentColor": "#c45a0c"
+  },
+  "b990d35c-2f75-470c-82cf-f48f9b9b262b": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(177deg, #faf6ed 0%, #f3dea6 50%, #f5db57 100%)",
+    "motifColor": "#ba8a03",
+    "textColor": "#43391e",
+    "mutedColor": "#796a3e",
+    "accentColor": "#b2860b"
+  },
+  "baed19d2-bb33-45a7-987a-243064394bdf": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(137deg, #ece8f4 0%, #c8b6e6 50%, #aa7edb 100%)",
+    "motifColor": "#5524a7",
+    "textColor": "#2d243d",
+    "mutedColor": "#574771",
+    "accentColor": "#572c9f"
+  },
+  "baf134fd-075d-4d6d-953a-dd4b485971c0": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(179deg, #f8f0e9 0%, #f2c4a2 50%, #f3ab58 100%)",
+    "motifColor": "#b85205",
+    "textColor": "#432e1e",
+    "mutedColor": "#79583e",
+    "accentColor": "#b1530c"
+  },
+  "bbdd7248-99e0-4432-95fc-d616d90d791d": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(130deg, #ede8f4 0%, #cbb9e7 50%, #ae81dd 100%)",
+    "motifColor": "#5924aa",
+    "textColor": "#2e243d",
+    "mutedColor": "#574771",
+    "accentColor": "#5b2ca2"
+  },
+  "bcfb8259-2356-4b5b-971b-89f14f7617b4": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(133deg, #f9f4e9 0%, #f4d598 50%, #f9cf46 100%)",
+    "motifColor": "#b07500",
+    "textColor": "#43371e",
+    "mutedColor": "#79663e",
+    "accentColor": "#a5720b"
+  },
+  "bd1ca5ef-2e2a-4e3a-b0f9-702436d96c6f": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(174deg, #faf4ed 0%, #f3d1a7 50%, #f5c059 100%)",
+    "motifColor": "#bb6a04",
+    "textColor": "#43331e",
+    "mutedColor": "#795f3e",
+    "accentColor": "#b3690b"
+  },
+  "bd78b1fe-d75d-4bc6-b719-348b3ec5778a": {
+    "category": "drama",
+    "motif": "petal",
+    "gradient": "linear-gradient(138deg, #f3e8f6 0%, #e0b7ed 50%, #d87be7 100%)",
+    "motifColor": "#9418ba",
+    "textColor": "#38213f",
+    "mutedColor": "#694375",
+    "accentColor": "#9021b2"
+  },
+  "bdb3b31c-0b74-4f0d-951a-6f895ee63342": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(127deg, #f9f5ea 0%, #f1dc9d 50%, #f4da4e 100%)",
+    "motifColor": "#af8304",
+    "textColor": "#43391e",
+    "mutedColor": "#796a3e",
+    "accentColor": "#a8800b"
+  },
+  "bdd40cb0-dd4d-458a-a684-dd78ac9f1da7": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(140deg, #f7ebef 0%, #ecb0c1 50%, #e7778c 100%)",
+    "motifColor": "#b91744",
+    "textColor": "#40212a",
+    "mutedColor": "#764251",
+    "accentColor": "#b11f48"
+  },
+  "bf33ca23-1d9a-4e18-a670-c592b4d4db48": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(127deg, #f7ebee 0%, #edaebf 50%, #ea7488 100%)",
+    "motifColor": "#bc1341",
+    "textColor": "#412029",
+    "mutedColor": "#77414f",
+    "accentColor": "#b41b44"
+  },
+  "c00e3e9a-0140-45d7-866a-a319e2b1fe14": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(141deg, #f7ebef 0%, #ecaec2 50%, #e9748e 100%)",
+    "motifColor": "#ba1549",
+    "textColor": "#40212b",
+    "mutedColor": "#764152",
+    "accentColor": "#b11d4c"
+  },
+  "c03fd078-1e58-421d-bfea-846e4a7e3fc7": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(177deg, #f9f1e9 0%, #f4c798 50%, #f9b347 100%)",
+    "motifColor": "#b15a00",
+    "textColor": "#43311e",
+    "mutedColor": "#795c3e",
+    "accentColor": "#a65a0b"
+  },
+  "c0a53894-cd12-4b98-987f-f8ae4a7c0704": {
+    "category": "drama",
+    "motif": "star",
+    "gradient": "linear-gradient(170deg, #e3dff1 0%, #a796de 50%, #845bd7 100%)",
+    "motifColor": "#331a8a",
+    "textColor": "#29233e",
+    "mutedColor": "#504672",
+    "accentColor": "#372083"
+  },
+  "c1318ff3-2072-4eb3-bee1-86784748fc0c": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(137deg, #eee7f4 0%, #d0b4e7 50%, #bb7bdd 100%)",
+    "motifColor": "#6b21a8",
+    "textColor": "#32243d",
+    "mutedColor": "#5e4672",
+    "accentColor": "#6b29a0"
+  },
+  "c17da1a6-4715-4b38-a650-fa7fd3be19a5": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(153deg, #e8f3ef 0%, #b9e4d3 50%, #7fd6bd 100%)",
+    "motifColor": "#289f70",
+    "textColor": "#253c33",
+    "mutedColor": "#496f60",
+    "accentColor": "#30976e"
+  },
+  "c1e41372-2926-4265-b440-a112d43e510b": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(133deg, #efe9f4 0%, #d1b9e6 50%, #bb83db 100%)",
+    "motifColor": "#6c27a8",
+    "textColor": "#31253c",
+    "mutedColor": "#5d4870",
+    "accentColor": "#6c2fa0"
+  },
+  "c251c8b8-64e5-42c2-9b34-b0c241b25600": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(172deg, #f8eef0 0%, #eeb9c6 50%, #ea818e 100%)",
+    "motifColor": "#c5173f",
+    "textColor": "#402128",
+    "mutedColor": "#76424e",
+    "accentColor": "#bc1f44"
+  },
+  "c270a30d-0496-44b2-81cc-85d4843774e6": {
+    "category": "love",
+    "motif": "wave",
+    "gradient": "linear-gradient(143deg, #f9edec 0%, #f1b6b1 50%, #f08b75 100%)",
+    "motifColor": "#ca1b0c",
+    "textColor": "#42221f",
+    "mutedColor": "#79433e",
+    "accentColor": "#c12215"
+  },
+  "c27292c8-4af4-4841-ac1b-059767b8c0eb": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(161deg, #efe7f4 0%, #d4b4e7 50%, #c27bdd 100%)",
+    "motifColor": "#7621a9",
+    "textColor": "#34233d",
+    "mutedColor": "#614672",
+    "accentColor": "#7429a1"
+  },
+  "c2807c27-2688-4f1e-881f-4b59115696c6": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(143deg, #e9f3ed 0%, #bce2cb 50%, #84d2ab 100%)",
+    "motifColor": "#2d9a59",
+    "textColor": "#263b2e",
+    "mutedColor": "#4b6d58",
+    "accentColor": "#35925a"
+  },
+  "c2b47fef-03ae-4737-9f23-78621423f06c": {
+    "category": "rest",
+    "motif": "star",
+    "gradient": "linear-gradient(139deg, #e1f0e3 0%, #9fdba6 50%, #64cf7a 100%)",
+    "motifColor": "#20842b",
+    "textColor": "#253c27",
+    "mutedColor": "#496f4d",
+    "accentColor": "#277d30"
+  },
+  "c2dc5174-2a94-4350-88b3-76839b59b3a5": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(154deg, #eee8f4 0%, #cfb9e7 50%, #b681dd 100%)",
+    "motifColor": "#6524ab",
+    "textColor": "#30243d",
+    "mutedColor": "#5b4771",
+    "accentColor": "#652ca3"
+  },
+  "c33bd14f-c417-47d5-9730-f9c277ced2a8": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(151deg, #ebeff8 0%, #a9bfec 50%, #6986ea 100%)",
+    "motifColor": "#1145b3",
+    "textColor": "#202b41",
+    "mutedColor": "#405277",
+    "accentColor": "#1848ac"
+  },
+  "c40fefa2-75f5-48b2-bf5f-610287d6ce90": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(165deg, #ecf2f8 0%, #afcfec 50%, #72a3e7 100%)",
+    "motifColor": "#1569b4",
+    "textColor": "#213140",
+    "mutedColor": "#425d76",
+    "accentColor": "#1d68ac"
+  },
+  "c41cd228-fbca-444d-bc78-14f1a866bb19": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(147deg, #f9f4ea 0%, #f1d49e 50%, #f3ca4f 100%)",
+    "motifColor": "#af7304",
+    "textColor": "#43361e",
+    "mutedColor": "#79643e",
+    "accentColor": "#a8710b"
+  },
+  "c4915651-fa95-406f-9190-036715f820ab": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(148deg, #eaf3ed 0%, #bee1cc 50%, #89d0ac 100%)",
+    "motifColor": "#31985a",
+    "textColor": "#273a2e",
+    "mutedColor": "#4c6c58",
+    "accentColor": "#3a905c"
+  },
+  "c4a528e2-61c0-4266-adff-c942713fda76": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(135deg, #f9f5e8 0%, #f4dc95 50%, #fadf43 100%)",
+    "motifColor": "#ae8200",
+    "textColor": "#433a1e",
+    "mutedColor": "#796b3e",
+    "accentColor": "#a37d0a"
+  },
+  "c507e6a1-8297-4cf0-86e3-bd92a32f93f4": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(139deg, #f8eef1 0%, #eeb8c8 50%, #e98094 100%)",
+    "motifColor": "#c31749",
+    "textColor": "#40212a",
+    "mutedColor": "#764251",
+    "accentColor": "#bb204c"
+  },
+  "c57abf93-06aa-4ac3-b7d0-ad75ed884d87": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(134deg, #ebe5f3 0%, #c6ade3 50%, #ad75d9 100%)",
+    "motifColor": "#5b229d",
+    "textColor": "#30243d",
+    "mutedColor": "#5a4771",
+    "accentColor": "#5b2996"
+  },
+  "c696b765-5c92-4937-8509-fa32575491a8": {
+    "category": "rest",
+    "motif": "cloud",
+    "gradient": "linear-gradient(172deg, #eef5f3 0%, #cce7df 50%, #97d5c9 100%)",
+    "motifColor": "#36a785",
+    "textColor": "#273a34",
+    "mutedColor": "#4c6b62",
+    "accentColor": "#3f9e81"
+  },
+  "c6ca47b9-1fff-4c1e-9dad-e27aeff0309a": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(131deg, #eaf2ee 0%, #bde0cf 50%, #88ceb3 100%)",
+    "motifColor": "#329465",
+    "textColor": "#273931",
+    "mutedColor": "#4d6b5c",
+    "accentColor": "#3a8c65"
+  },
+  "c8312478-64a5-4ba7-8370-0e99af463525": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(141deg, #f9f3ea 0%, #f3cc9d 50%, #f6bb4d 100%)",
+    "motifColor": "#b36301",
+    "textColor": "#43321e",
+    "mutedColor": "#795f3e",
+    "accentColor": "#a9620b"
+  },
+  "c9b07a23-39a1-493a-933e-86356682800d": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(150deg, #f8ecf0 0%, #eeb2c7 50%, #ec7794 100%)",
+    "motifColor": "#c21250",
+    "textColor": "#41202c",
+    "mutedColor": "#774054",
+    "accentColor": "#ba1a52"
+  },
+  "caa4a05d-7032-498f-91c5-4a8f616aeae9": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(144deg, #f9f2ea 0%, #f1cc9b 50%, #f3bc4d 100%)",
+    "motifColor": "#ac6404",
+    "textColor": "#43331e",
+    "mutedColor": "#79603e",
+    "accentColor": "#a5630c"
+  },
+  "cb157d96-2d61-4e0d-8acb-e9fcd8fcecbc": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(134deg, #eee8f4 0%, #d0b8e6 50%, #b981db 100%)",
+    "motifColor": "#6a26a7",
+    "textColor": "#31243c",
+    "mutedColor": "#5d4870",
+    "accentColor": "#6a2e9f"
+  },
+  "cbd63029-7a04-4411-a55f-f8102f3e3137": {
+    "category": "motivation",
+    "motif": "leaf",
+    "gradient": "linear-gradient(157deg, #faf7ee 0%, #f5deac 50%, #f7d55e 100%)",
+    "motifColor": "#c48602",
+    "textColor": "#43371e",
+    "mutedColor": "#79673e",
+    "accentColor": "#ba830c"
+  },
+  "cbfbdac8-95b1-4500-9899-67e9eb2f0fcb": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(127deg, #efe8f4 0%, #d1b7e7 50%, #bb7fdd 100%)",
+    "motifColor": "#6b22ab",
+    "textColor": "#31243d",
+    "mutedColor": "#5d4671",
+    "accentColor": "#6b2ba3"
+  },
+  "cc218785-3a56-4da4-bc52-7cb2fa2337ff": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(162deg, #f9f1ec 0%, #f3c8ac 50%, #f5aa64 100%)",
+    "motifColor": "#c54f05",
+    "textColor": "#432c1e",
+    "mutedColor": "#79553e",
+    "accentColor": "#bd510d"
+  },
+  "cc5bebab-eeb3-46e9-bb6f-53e9838d21eb": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(133deg, #ede8f4 0%, #ccb8e6 50%, #b080db 100%)",
+    "motifColor": "#5d25a8",
+    "textColor": "#2f243d",
+    "mutedColor": "#594770",
+    "accentColor": "#5e2da0"
+  },
+  "cd19bb94-25f0-4d91-bec0-7e4e2b8360c4": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(168deg, #f9f2e9 0%, #f2cd98 50%, #f5bf48 100%)",
+    "motifColor": "#ad6602",
+    "textColor": "#43341e",
+    "mutedColor": "#79613e",
+    "accentColor": "#a4650a"
+  },
+  "cd4883ad-b362-4252-8e54-bd2141c2fe8c": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(146deg, #ede6f2 0%, #cdb0e1 50%, #ba7ad5 100%)",
+    "motifColor": "#6c269a",
+    "textColor": "#33253c",
+    "mutedColor": "#60496f",
+    "accentColor": "#6a2e92"
+  },
+  "cd6d8873-142c-4ac8-b525-eb159d890c50": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(141deg, #ecf0f8 0%, #aec6ed 50%, #7091e9 100%)",
+    "motifColor": "#1350b7",
+    "textColor": "#202c40",
+    "mutedColor": "#415577",
+    "accentColor": "#1b52af"
+  },
+  "ce0e2e4a-d024-4248-8faa-da4f6dc4699e": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(128deg, #ece6f3 0%, #c7b1e5 50%, #ac79db 100%)",
+    "motifColor": "#5922a3",
+    "textColor": "#2f243d",
+    "mutedColor": "#594771",
+    "accentColor": "#5a2a9b"
+  },
+  "ce64de88-5b7f-44b6-ad28-83d90537eadd": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(158deg, #ece6f3 0%, #c9b0e2 50%, #b178d7 100%)",
+    "motifColor": "#60249d",
+    "textColor": "#30253c",
+    "mutedColor": "#5c4870",
+    "accentColor": "#602c95"
+  },
+  "cf010e9b-d063-48aa-bab3-b01a8371ba39": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(137deg, #ebf2f7 0%, #a9cfeb 50%, #6ba5e7 100%)",
+    "motifColor": "#136cb0",
+    "textColor": "#213340",
+    "mutedColor": "#415f76",
+    "accentColor": "#1b6ba8"
+  },
+  "cf1dff27-432c-4b14-930e-2748d96294fb": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(156deg, #eaf1f8 0%, #a8cced 50%, #68a0ea 100%)",
+    "motifColor": "#1067b4",
+    "textColor": "#203241",
+    "mutedColor": "#405e78",
+    "accentColor": "#1766ac"
+  },
+  "cf7f017d-4b12-42a5-9b76-9209f586d501": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(135deg, #edf2f8 0%, #b2cfeb 50%, #75a2e6 100%)",
+    "motifColor": "#1766b5",
+    "textColor": "#213040",
+    "mutedColor": "#425c75",
+    "accentColor": "#2066ad"
+  },
+  "cf980f88-641b-4e2d-afbe-be90f7b3b332": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(141deg, #eee7f3 0%, #d1b3e4 50%, #be7bd9 100%)",
+    "motifColor": "#7125a1",
+    "textColor": "#33243c",
+    "mutedColor": "#604870",
+    "accentColor": "#6f2c99"
+  },
+  "d056e125-b092-4cf6-affd-cf110b8e11ea": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(129deg, #faf5eb 0%, #f4d89e 50%, #f8d04e 100%)",
+    "motifColor": "#b77a00",
+    "textColor": "#43371e",
+    "mutedColor": "#79663e",
+    "accentColor": "#ac760b"
+  },
+  "d0741a3c-ab82-4ab2-af4b-591b621a26c1": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(143deg, #f7ecf0 0%, #ecb4c5 50%, #e77c91 100%)",
+    "motifColor": "#bb1949",
+    "textColor": "#3f212a",
+    "mutedColor": "#754352",
+    "accentColor": "#b2214c"
+  },
+  "d0bec446-3fc4-4231-bb93-e3a99036ab6d": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(152deg, #eef1f8 0%, #b6c7ed 50%, #7990e8 100%)",
+    "motifColor": "#164abc",
+    "textColor": "#212b40",
+    "mutedColor": "#425276",
+    "accentColor": "#1f4db3"
+  },
+  "d0e8fb50-40ad-4318-807f-994a5635c643": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(134deg, #f9f4ea 0%, #f4d69b 50%, #f9d04a 100%)",
+    "motifColor": "#b47800",
+    "textColor": "#43371e",
+    "mutedColor": "#79663e",
+    "accentColor": "#a9740b"
+  },
+  "d112e87a-94fb-4d73-b94e-74cf781c1815": {
+    "category": "rest",
+    "motif": "wave",
+    "gradient": "linear-gradient(172deg, #e7f2f1 0%, #b2e1dd 50%, #78d3d4 100%)",
+    "motifColor": "#26978d",
+    "textColor": "#253c3a",
+    "mutedColor": "#496f6b",
+    "accentColor": "#2e8f87"
+  },
+  "d146bc92-2a4e-4d06-9529-cec9135d47de": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(150deg, #f8eef1 0%, #efbbcb 50%, #ea8298 100%)",
+    "motifColor": "#c6174e",
+    "textColor": "#40212b",
+    "mutedColor": "#764252",
+    "accentColor": "#be2051"
+  },
+  "d176c57b-2195-489c-bb93-e956bc7e23dc": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(137deg, #faf4ec 0%, #f3cfa5 50%, #f6bb56 100%)",
+    "motifColor": "#bb6502",
+    "textColor": "#43321e",
+    "mutedColor": "#795e3e",
+    "accentColor": "#b2640b"
+  },
+  "d1b25ee5-4505-451a-81c7-3dbdbfeeb62a": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(145deg, #faf5ed 0%, #f5daa6 50%, #f9d056 100%)",
+    "motifColor": "#c07d00",
+    "textColor": "#43361e",
+    "mutedColor": "#79653e",
+    "accentColor": "#b47a0c"
+  },
+  "d22d53e9-4e71-474f-a7b4-2430d833734e": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(175deg, #f8edf0 0%, #edb7c5 50%, #e97f90 100%)",
+    "motifColor": "#c21743",
+    "textColor": "#402129",
+    "mutedColor": "#76424f",
+    "accentColor": "#b92047"
+  },
+  "d3cb165b-363e-47db-8290-92518feaa35d": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(154deg, #f9f4ea 0%, #f4d49d 50%, #f8ca4c 100%)",
+    "motifColor": "#b67300",
+    "textColor": "#43351e",
+    "mutedColor": "#79643e",
+    "accentColor": "#ab700b"
+  },
+  "d3d22c8a-5d85-4e60-a12f-13a4b05af4c4": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(128deg, #ece6f3 0%, #c8b0e5 50%, #af77dc 100%)",
+    "motifColor": "#5c21a3",
+    "textColor": "#2f243d",
+    "mutedColor": "#5a4671",
+    "accentColor": "#5d289b"
+  },
+  "d3fb17ac-bc38-4724-8bba-d2fe707f4ffb": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(142deg, #faf2ea 0%, #f4cb9c 50%, #f9b94b 100%)",
+    "motifColor": "#b56000",
+    "textColor": "#43321e",
+    "mutedColor": "#795e3e",
+    "accentColor": "#ab600b"
+  },
+  "d416dad6-6e0f-4ac4-ac12-723b08a501e4": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(152deg, #faf6ed 0%, #f4dba6 50%, #f6d457 100%)",
+    "motifColor": "#bd8202",
+    "textColor": "#43371e",
+    "mutedColor": "#79673e",
+    "accentColor": "#b37e0b"
+  },
+  "d43f43ff-4db3-4897-8d53-31b1a0f34d46": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(173deg, #faf3eb 0%, #f4cea1 50%, #f8bc50 100%)",
+    "motifColor": "#ba6500",
+    "textColor": "#43321e",
+    "mutedColor": "#795e3e",
+    "accentColor": "#af640b"
+  },
+  "d4bb933e-4892-4987-95bb-6f4150a544e6": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(140deg, #f9eef1 0%, #f0bbc8 50%, #ed8291 100%)",
+    "motifColor": "#cc1440",
+    "textColor": "#412028",
+    "mutedColor": "#77404e",
+    "accentColor": "#c31d45"
+  },
+  "d6836c8a-2bbb-46cc-a19a-6845f9a9ce48": {
+    "category": "comfort",
+    "motif": "wave",
+    "gradient": "linear-gradient(169deg, #faf6ed 0%, #f7deb0 50%, #fbd665 100%)",
+    "motifColor": "#d18900",
+    "textColor": "#43361e",
+    "mutedColor": "#79653e",
+    "accentColor": "#c4850d"
+  },
+  "d68a0b82-d12c-415c-9826-dd49ed161546": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(138deg, #f9efeb 0%, #f0bfab 50%, #f09a64 100%)",
+    "motifColor": "#bb3d0a",
+    "textColor": "#42291f",
+    "mutedColor": "#794f3e",
+    "accentColor": "#b34012"
+  },
+  "d690765c-f0eb-445d-83a8-5c4b70dea867": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(164deg, #f0e9f5 0%, #d7bae8 50%, #c482de 100%)",
+    "motifColor": "#7923ad",
+    "textColor": "#34243d",
+    "mutedColor": "#614671",
+    "accentColor": "#772ca5"
+  },
+  "d81df354-4e0c-4509-94f9-c6d566c8d403": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(165deg, #faf5ed 0%, #f3d5a9 50%, #f5c55b 100%)",
+    "motifColor": "#be7104",
+    "textColor": "#43341e",
+    "mutedColor": "#79613e",
+    "accentColor": "#b56f0c"
+  },
+  "d835943f-2c1e-4f6c-a075-cca478a2b7f5": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(144deg, #f7ecef 0%, #ecb4c1 50%, #e77c89 100%)",
+    "motifColor": "#bb183d",
+    "textColor": "#3f2128",
+    "mutedColor": "#75434e",
+    "accentColor": "#b32142"
+  },
+  "d940dfb2-8bac-49a9-b772-8cb1ca5ea316": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(150deg, #efe9f4 0%, #d2bae6 50%, #bb84db 100%)",
+    "motifColor": "#6c27a9",
+    "textColor": "#31253c",
+    "mutedColor": "#5d4870",
+    "accentColor": "#6b2fa1"
+  },
+  "da60748f-3d56-46ff-9279-f7038f702976": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(141deg, #f9f0ec 0%, #f3c0ac 50%, #f59c63 100%)",
+    "motifColor": "#c43c05",
+    "textColor": "#43291e",
+    "mutedColor": "#79503e",
+    "accentColor": "#bc400d"
+  },
+  "db319df5-4134-41ee-a328-8e162bf92ee3": {
+    "category": "daily",
+    "motif": "wave",
+    "gradient": "linear-gradient(131deg, #eeeff9 0%, #b5baf2 50%, #7775f0 100%)",
+    "motifColor": "#0c1bca",
+    "textColor": "#1f2242",
+    "mutedColor": "#3e4379",
+    "accentColor": "#1422c2"
+  },
+  "db76e695-5760-4b87-8aa3-f4f6d3895d09": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(165deg, #ece8f4 0%, #c8b6e5 50%, #aa7fda 100%)",
+    "motifColor": "#5425a5",
+    "textColor": "#2d243c",
+    "mutedColor": "#564870",
+    "accentColor": "#562e9d"
+  },
+  "dc63c99c-7f78-4653-bce2-c481bae558ad": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(171deg, #faf1ee 0%, #f3c7b4 50%, #f2a26e 100%)",
+    "motifColor": "#c74209",
+    "textColor": "#43291e",
+    "mutedColor": "#79503e",
+    "accentColor": "#bf4512"
+  },
+  "dcde8dec-0eea-45a1-83da-6902b14eec7b": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(179deg, #edf1f8 0%, #b3c8ed 50%, #7592e9 100%)",
+    "motifColor": "#144fbb",
+    "textColor": "#212c40",
+    "mutedColor": "#415476",
+    "accentColor": "#1d51b3"
+  },
+  "dd4b75de-f374-4766-851a-c60637292a5a": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(154deg, #faf6ed 0%, #f4dca7 50%, #f7d558 100%)",
+    "motifColor": "#bf8401",
+    "textColor": "#43371e",
+    "mutedColor": "#79673e",
+    "accentColor": "#b5800c"
+  },
+  "deacd5de-5d7f-412d-aeca-e44ac53757dc": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(134deg, #e9f4ef 0%, #bbe5d5 50%, #82d6be 100%)",
+    "motifColor": "#29a072",
+    "textColor": "#253c33",
+    "mutedColor": "#496f60",
+    "accentColor": "#319870"
+  },
+  "decb3b10-034d-45cc-af93-9f2cfb3c3c35": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(160deg, #efe8f4 0%, #d3b8e5 50%, #bf82d9 100%)",
+    "motifColor": "#7327a5",
+    "textColor": "#33253c",
+    "mutedColor": "#60486f",
+    "accentColor": "#71309d"
+  },
+  "e07b87f7-5908-4c07-85dd-15e9ccc95ee5": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(161deg, #f8ecef 0%, #eeb4c3 50%, #ea7a8d 100%)",
+    "motifColor": "#c01544",
+    "textColor": "#402129",
+    "mutedColor": "#764150",
+    "accentColor": "#b81d48"
+  },
+  "e10244d6-635c-41e2-bdd6-e4f9a442331c": {
+    "category": "drama",
+    "motif": "cloud",
+    "gradient": "linear-gradient(148deg, #f2ecf5 0%, #dcc5ea 50%, #c88ede 100%)",
+    "motifColor": "#7f29b4",
+    "textColor": "#33253c",
+    "mutedColor": "#614870",
+    "accentColor": "#7d32ab"
+  },
+  "e12847c3-3187-45bd-86e5-9ab2192d2930": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(160deg, #e8f2ec 0%, #badec8 50%, #84cca9 100%)",
+    "motifColor": "#319158",
+    "textColor": "#273a2f",
+    "mutedColor": "#4c6b59",
+    "accentColor": "#388959"
+  },
+  "e161b402-bd37-452e-bb59-b93b5ca34da5": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(172deg, #faf3ec 0%, #f3cea3 50%, #f6bb54 100%)",
+    "motifColor": "#b96502",
+    "textColor": "#43321e",
+    "mutedColor": "#795e3e",
+    "accentColor": "#b0640b"
+  },
+  "e1f0e6e3-07de-4714-816e-5baac4eb364b": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(171deg, #eff2f8 0%, #b9cbed 50%, #7d98e7 100%)",
+    "motifColor": "#1953bc",
+    "textColor": "#222c3f",
+    "mutedColor": "#435475",
+    "accentColor": "#2255b3"
+  },
+  "e26878c9-6a60-4397-90ad-e8706f6c87f7": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(150deg, #f9f4ea 0%, #f0d79b 50%, #f2d14c 100%)",
+    "motifColor": "#ac7905",
+    "textColor": "#43381e",
+    "mutedColor": "#79673e",
+    "accentColor": "#a4760c"
+  },
+  "e276842b-ac39-4bf1-b964-627be4cf3ac5": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(165deg, #f9eef0 0%, #f0b9c4 50%, #ed7f8a 100%)",
+    "motifColor": "#cb1237",
+    "textColor": "#412027",
+    "mutedColor": "#78404b",
+    "accentColor": "#c21b3c"
+  },
+  "e2b3304c-d3bf-4e23-afd1-43d7b5ba0211": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(160deg, #f7ecef 0%, #ebb3c0 50%, #e67b88 100%)",
+    "motifColor": "#ba193c",
+    "textColor": "#3f2228",
+    "mutedColor": "#75434e",
+    "accentColor": "#b12141"
+  },
+  "e38f4fd6-90f5-4dcf-9b47-1bb40ea5ca19": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(142deg, #f9f3eb 0%, #f4cc9d 50%, #f8b94d 100%)",
+    "motifColor": "#b66100",
+    "textColor": "#43321e",
+    "mutedColor": "#795e3e",
+    "accentColor": "#ab610b"
+  },
+  "e3b49d3d-ecf3-43d7-96ac-f1fcbd274dd0": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(144deg, #ebeff7 0%, #adc1e9 50%, #708ce4 100%)",
+    "motifColor": "#184aae",
+    "textColor": "#222c3f",
+    "mutedColor": "#435475",
+    "accentColor": "#1f4da6"
+  },
+  "e3f9f907-8229-4d9c-9014-eeaa6abc9c18": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(179deg, #eef2f8 0%, #b5ccec 50%, #799be6 100%)",
+    "motifColor": "#185ab8",
+    "textColor": "#212e40",
+    "mutedColor": "#425775",
+    "accentColor": "#205bb0"
+  },
+  "e540b3de-8001-4047-8f3b-3d990c9fd74c": {
+    "category": "love",
+    "motif": "star",
+    "gradient": "linear-gradient(160deg, #f6e4f1 0%, #ec94d2 50%, #ee55b1 100%)",
+    "motifColor": "#ab097b",
+    "textColor": "#421f38",
+    "mutedColor": "#793e68",
+    "accentColor": "#a41078"
+  },
+  "e541ed8d-1572-4d39-9087-dc9e61cc668d": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(141deg, #ede8f5 0%, #cbb9e8 50%, #ad80df 100%)",
+    "motifColor": "#5722ae",
+    "textColor": "#2d233d",
+    "mutedColor": "#574672",
+    "accentColor": "#592aa6"
+  },
+  "e594a828-0e74-4508-8985-309e89901b45": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(150deg, #e8f2ed 0%, #b9e0cb 50%, #81d0ae 100%)",
+    "motifColor": "#2d965e",
+    "textColor": "#263a30",
+    "mutedColor": "#4b6d5b",
+    "accentColor": "#358e5f"
+  },
+  "e59e484b-1c58-4f20-9ff2-a4a394632fc2": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(137deg, #ede8f3 0%, #ccb9e4 50%, #b183d8 100%)",
+    "motifColor": "#5f28a4",
+    "textColor": "#2f253c",
+    "mutedColor": "#5a496f",
+    "accentColor": "#60319b"
+  },
+  "e5a4cce1-26fc-4ee4-8897-6ca47f1d418f": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(150deg, #f9f2eb 0%, #f2ca9f 50%, #f4b651 100%)",
+    "motifColor": "#b25f04",
+    "textColor": "#43311e",
+    "mutedColor": "#795d3e",
+    "accentColor": "#aa5f0b"
+  },
+  "e66b9e9e-a8f7-4bb2-865c-3bd47bced3c5": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(134deg, #eee8f4 0%, #d0b7e6 50%, #b97fdb 100%)",
+    "motifColor": "#6924a8",
+    "textColor": "#31243d",
+    "mutedColor": "#5d4771",
+    "accentColor": "#692c9f"
+  },
+  "e789cda1-4492-41aa-821b-0e94c34a915a": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(153deg, #eee7f3 0%, #d0b4e3 50%, #bd7ed6 100%)",
+    "motifColor": "#70279e",
+    "textColor": "#33253c",
+    "mutedColor": "#60496f",
+    "accentColor": "#6e2f96"
+  },
+  "e7a89a58-dcb9-4185-811f-f97a8a80c7a5": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(162deg, #f9f3ea 0%, #f1d09c 50%, #f3c24d 100%)",
+    "motifColor": "#ae6b04",
+    "textColor": "#43341e",
+    "mutedColor": "#79623e",
+    "accentColor": "#a7690b"
+  },
+  "e7b462a0-b043-483b-8314-bac5c5e335d3": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(169deg, #ede7f4 0%, #cbb5e6 50%, #b17cdc 100%)",
+    "motifColor": "#5e22a7",
+    "textColor": "#2f243d",
+    "mutedColor": "#5a4771",
+    "accentColor": "#5f2a9f"
+  },
+  "e8549131-72be-40d0-94a5-0d4eac930598": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(141deg, #faf5ed 0%, #f3d9a8 50%, #f5ce5a 100%)",
+    "motifColor": "#bc7b04",
+    "textColor": "#43361e",
+    "mutedColor": "#79653e",
+    "accentColor": "#b4790b"
+  },
+  "ea4eec51-aa11-4452-ad17-151c1985ca84": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(165deg, #f8edef 0%, #efb7c0 50%, #ec7d84 100%)",
+    "motifColor": "#c71331",
+    "textColor": "#412026",
+    "mutedColor": "#77404a",
+    "accentColor": "#be1b37"
+  },
+  "eb1c412e-7934-44b1-b647-c502a9e8f50c": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(141deg, #faf6eb 0%, #f5dda0 50%, #f9da4f 100%)",
+    "motifColor": "#b98500",
+    "textColor": "#43391e",
+    "mutedColor": "#79693e",
+    "accentColor": "#ae800b"
+  },
+  "eb7397c2-7ef4-4e1e-9f03-cccddebbae3f": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(138deg, #faf4eb 0%, #f5d69f 50%, #f9cd4e 100%)",
+    "motifColor": "#b97700",
+    "textColor": "#43361e",
+    "mutedColor": "#79643e",
+    "accentColor": "#ae730b"
+  },
+  "eca8ca58-0e7a-473b-94ef-531b8f2b16b7": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(179deg, #f8ebee 0%, #edaebf 50%, #eb7387 100%)",
+    "motifColor": "#bd123f",
+    "textColor": "#412029",
+    "mutedColor": "#77404f",
+    "accentColor": "#b51a43"
+  },
+  "ed5990ac-e4e1-49a0-b3d8-443e45f1fc41": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(178deg, #f8edf1 0%, #edb5cb 50%, #e87c9c 100%)",
+    "motifColor": "#be175a",
+    "textColor": "#40212d",
+    "mutedColor": "#764257",
+    "accentColor": "#b5205b"
+  },
+  "ee9bb8b0-1f08-4ec5-950b-2694a6e66be2": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(178deg, #f9f2e9 0%, #f2cb9a 50%, #f4bb4a 100%)",
+    "motifColor": "#ad6203",
+    "textColor": "#43331e",
+    "mutedColor": "#795f3e",
+    "accentColor": "#a5610b"
+  },
+  "ee9d824e-a553-4775-94a0-288c4e827ed8": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(132deg, #ece6f3 0%, #c9b0e3 50%, #b278d8 100%)",
+    "motifColor": "#61239e",
+    "textColor": "#31243d",
+    "mutedColor": "#5c4770",
+    "accentColor": "#612b96"
+  },
+  "ef4403dc-6278-4dff-b203-74c58f5a73ad": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(179deg, #eaf2ef 0%, #bfe0d4 50%, #8acebb 100%)",
+    "motifColor": "#339571",
+    "textColor": "#283933",
+    "mutedColor": "#4d6b60",
+    "accentColor": "#3b8d6f"
+  },
+  "ef6e29bd-bba0-4f05-a243-4225f8722e98": {
+    "category": "drama",
+    "motif": "light",
+    "gradient": "linear-gradient(167deg, #f1ebf6 0%, #dac2ee 50%, #c588e5 100%)",
+    "motifColor": "#781ec0",
+    "textColor": "#32223f",
+    "mutedColor": "#5e4474",
+    "accentColor": "#7727b7"
+  },
+  "f0076321-289b-4ff9-94ef-79a4a056f2c0": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(174deg, #f9f0e9 0%, #f2c6a3 50%, #f4ae5a 100%)",
+    "motifColor": "#bb5504",
+    "textColor": "#432e1e",
+    "mutedColor": "#79593e",
+    "accentColor": "#b3560c"
+  },
+  "f0d19a3c-32aa-40f5-9762-1883b94b85f6": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(162deg, #f9f3eb 0%, #f3d09e 50%, #f6c14e 100%)",
+    "motifColor": "#b46a02",
+    "textColor": "#43341e",
+    "mutedColor": "#79613e",
+    "accentColor": "#aa680b"
+  },
+  "f1826604-e157-4634-8237-f6ec6cba930c": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(136deg, #f9eef2 0%, #f0bccb 50%, #ec8297 100%)",
+    "motifColor": "#cc144a",
+    "textColor": "#41202a",
+    "mutedColor": "#774151",
+    "accentColor": "#c31d4e"
+  },
+  "f18813fc-f2a9-45e2-beb1-889396405be3": {
+    "category": "comfort",
+    "motif": "star",
+    "gradient": "linear-gradient(128deg, #f7e5e4 0%, #f1968c 50%, #f66340 100%)",
+    "motifColor": "#a61001",
+    "textColor": "#43211e",
+    "mutedColor": "#79443e",
+    "accentColor": "#9d180a"
+  },
+  "f1ca7d96-3dd7-4a2c-a902-39b13b9f3c18": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(164deg, #faf4ec 0%, #f3d0a5 50%, #f6bf56 100%)",
+    "motifColor": "#bb6902",
+    "textColor": "#43321e",
+    "mutedColor": "#795f3e",
+    "accentColor": "#b2680b"
+  },
+  "f1df13d6-9533-4e75-95b5-9e66a5774042": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(148deg, #f0e8f4 0%, #d5b8e7 50%, #c37fdd 100%)",
+    "motifColor": "#7723ab",
+    "textColor": "#33243d",
+    "mutedColor": "#614671",
+    "accentColor": "#752ba3"
+  },
+  "f2b70686-b6b9-4525-9d15-e60cb0dd611e": {
+    "category": "drama",
+    "motif": "light",
+    "gradient": "linear-gradient(136deg, #f0e8f6 0%, #d5b8ed 50%, #c27be7 100%)",
+    "motifColor": "#7318bc",
+    "textColor": "#322140",
+    "mutedColor": "#5f4275",
+    "accentColor": "#7220b4"
+  },
+  "f2c6fe76-fbe6-4a39-ab50-49a5e55583e8": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(142deg, #e7f2ee 0%, #b3dfce 50%, #7ccfb7 100%)",
+    "motifColor": "#2b916a",
+    "textColor": "#263b33",
+    "mutedColor": "#4b6d60",
+    "accentColor": "#328968"
+  },
+  "f33397fd-639a-4cdd-a6ba-4249c3ff78d5": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(133deg, #f9f4ea 0%, #f2d89c 50%, #f4d24d 100%)",
+    "motifColor": "#af7b03",
+    "textColor": "#43381e",
+    "mutedColor": "#79673e",
+    "accentColor": "#a7780b"
+  },
+  "f45cdc0b-beeb-4885-8c49-abaf6b93f076": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(135deg, #efe8f4 0%, #d4b8e6 50%, #c281db 100%)",
+    "motifColor": "#7625a7",
+    "textColor": "#33243d",
+    "mutedColor": "#614770",
+    "accentColor": "#742e9f"
+  },
+  "f4ebfafa-c614-4567-b206-7793034c7554": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(164deg, #f7ebf0 0%, #edafc7 50%, #e97596 100%)",
+    "motifColor": "#bb1455",
+    "textColor": "#40212d",
+    "mutedColor": "#774156",
+    "accentColor": "#b31c57"
+  },
+  "f5b9adeb-a139-42fc-8686-11a0c840d992": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(160deg, #faf1ed 0%, #f4c6b2 50%, #f5a269 100%)",
+    "motifColor": "#cb4105",
+    "textColor": "#43291e",
+    "mutedColor": "#79503e",
+    "accentColor": "#c3440d"
+  },
+  "f5bdb662-cd84-4aad-bd9c-8fdb46877e65": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(145deg, #eee6f3 0%, #d0b1e3 50%, #be79d8 100%)",
+    "motifColor": "#70249f",
+    "textColor": "#33243c",
+    "mutedColor": "#614870",
+    "accentColor": "#6e2c97"
+  },
+  "f7e32408-9e79-45ea-9a10-0ccb59e1bd9a": {
+    "category": "motivation",
+    "motif": "wave",
+    "gradient": "linear-gradient(154deg, #f9faec 0%, #f0f6a3 50%, #ddfb51 100%)",
+    "motifColor": "#afbe00",
+    "textColor": "#40431e",
+    "mutedColor": "#75793e",
+    "accentColor": "#a5b30b"
+  },
+  "f7e32d73-8923-4fb2-92f9-9689997b0550": {
+    "category": "daily",
+    "motif": "cloud",
+    "gradient": "linear-gradient(158deg, #ebf1f7 0%, #adc9ea 50%, #709be4 100%)",
+    "motifColor": "#185eae",
+    "textColor": "#222f3f",
+    "mutedColor": "#435a75",
+    "accentColor": "#1f5ea6"
+  },
+  "f860d76b-ab0f-4105-a5fd-b99b404a317f": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(166deg, #f9eef2 0%, #efbbcf 50%, #ea83a1 100%)",
+    "motifColor": "#c7175c",
+    "textColor": "#40212d",
+    "mutedColor": "#764256",
+    "accentColor": "#be205e"
+  },
+  "f89de278-9366-405d-844d-0a133b04c80a": {
+    "category": "love",
+    "motif": "light",
+    "gradient": "linear-gradient(135deg, #f9eef1 0%, #f3b8c7 50%, #f37b8f 100%)",
+    "motifColor": "#d50a40",
+    "textColor": "#431e28",
+    "mutedColor": "#793e4e",
+    "accentColor": "#cc1344"
+  },
+  "f8afcd09-6ffa-4fa5-9254-5aeba2045ac7": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(167deg, #f9f4e8 0%, #f2d594 50%, #f7d243 100%)",
+    "motifColor": "#ab7700",
+    "textColor": "#43381e",
+    "mutedColor": "#79673e",
+    "accentColor": "#a0730a"
+  },
+  "f9cefaf2-cef6-4f1b-9fee-6fe913a5b829": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(135deg, #efe8f4 0%, #d5b8e6 50%, #c281db 100%)",
+    "motifColor": "#7625a8",
+    "textColor": "#33243d",
+    "mutedColor": "#614770",
+    "accentColor": "#742da0"
+  },
+  "fa2bea34-90a4-4493-a229-0d5240b6c623": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(153deg, #f7ecef 0%, #ecb4c3 50%, #e77b8e 100%)",
+    "motifColor": "#bb1845",
+    "textColor": "#40212a",
+    "mutedColor": "#754250",
+    "accentColor": "#b32149"
+  },
+  "fba2e80e-690d-49ee-ba33-1dea8c7f8b7f": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(125deg, #ece5f3 0%, #c8ade5 50%, #b074dc 100%)",
+    "motifColor": "#5e1fa2",
+    "textColor": "#30233d",
+    "mutedColor": "#5b4672",
+    "accentColor": "#5e279a"
+  },
+  "fbd2a215-f2eb-4696-8fbb-012675ecf38b": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(145deg, #efe9f4 0%, #d1bae7 50%, #b982dc 100%)",
+    "motifColor": "#6925ab",
+    "textColor": "#31243d",
+    "mutedColor": "#5c4771",
+    "accentColor": "#692da3"
+  },
+  "fc55efa3-7319-4fb5-8add-caaefea3b20e": {
+    "category": "comfort",
+    "motif": "star",
+    "gradient": "linear-gradient(140deg, #f8e4e5 0%, #f28e92 50%, #f74c41 100%)",
+    "motifColor": "#aa0007",
+    "textColor": "#431e20",
+    "mutedColor": "#793e41",
+    "accentColor": "#a00a10"
+  },
+  "fcc5901d-7654-434d-bf60-f6891aeedc0b": {
+    "category": "comfort",
+    "motif": "light",
+    "gradient": "linear-gradient(148deg, #faf3ee 0%, #f3cfb3 50%, #f3b56b 100%)",
+    "motifColor": "#c85c07",
+    "textColor": "#432e1e",
+    "mutedColor": "#79583e",
+    "accentColor": "#c05d10"
+  },
+  "fd891b24-9e1d-4fbd-9e26-a9161764854d": {
+    "category": "drama",
+    "motif": "mountain",
+    "gradient": "linear-gradient(165deg, #ece7f3 0%, #c7b3e4 50%, #ac7bd9 100%)",
+    "motifColor": "#5924a2",
+    "textColor": "#2f243d",
+    "mutedColor": "#594770",
+    "accentColor": "#5a2c9a"
+  },
+  "fe9d5b33-2200-4deb-88c3-f5efd4a76e50": {
+    "category": "drama",
+    "motif": "plain",
+    "gradient": "linear-gradient(156deg, #efe9f4 0%, #d2bae7 50%, #bb83dd 100%)",
+    "motifColor": "#6b25ac",
+    "textColor": "#31243d",
+    "mutedColor": "#5d4771",
+    "accentColor": "#6b2da3"
+  },
+  "fee83ccc-b8e3-4510-9fcb-b5b5357ede58": {
+    "category": "motivation",
+    "motif": "mountain",
+    "gradient": "linear-gradient(175deg, #f9f3ea 0%, #f2d19c 50%, #f5c64c 100%)",
+    "motifColor": "#b06e02",
+    "textColor": "#43351e",
+    "mutedColor": "#79633e",
+    "accentColor": "#a86c0b"
+  },
+  "ff2a9f40-3a28-4284-81fe-b533c0e8245c": {
+    "category": "love",
+    "motif": "petal",
+    "gradient": "linear-gradient(146deg, #f7ebee 0%, #edadbc 50%, #ea7383 100%)",
+    "motifColor": "#bc133a",
+    "textColor": "#412028",
+    "mutedColor": "#77414d",
+    "accentColor": "#b31b3e"
+  },
+  "ff2e0666-cd45-49d9-9fd0-3ce1f04c1006": {
+    "category": "comfort",
+    "motif": "wave",
+    "gradient": "linear-gradient(136deg, #faf5ec 0%, #f7daad 50%, #fccf61 100%)",
+    "motifColor": "#ce7e00",
+    "textColor": "#43351e",
+    "mutedColor": "#79623e",
+    "accentColor": "#c27b0c"
+  },
+  "ffbfd68b-0c61-4439-a324-703b1cf93bce": {
+    "category": "rest",
+    "motif": "leaf",
+    "gradient": "linear-gradient(148deg, #eaf3ef 0%, #bde1d3 50%, #88cfba 100%)",
+    "motifColor": "#31976e",
+    "textColor": "#273a32",
+    "mutedColor": "#4c6c5f",
+    "accentColor": "#398f6d"
+  }
+}
