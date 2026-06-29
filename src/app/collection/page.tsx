@@ -5,18 +5,7 @@ import { useRouter } from "next/navigation";
 import { createClient } from "@/src/lib/supabase";
 import { useUserCollection } from "@/src/hooks/useUserCollection";
 import type { CollectionItem } from "@/src/hooks/useUserCollection";
-
-const GRADIENTS = [
-  "linear-gradient(155deg, #FFFCF8 0%, #FFF0E6 55%, #FFE2CC 100%)",
-  "linear-gradient(155deg, #FAFDF9 0%, #EDF5F0 55%, #D9EDE0 100%)",
-  "linear-gradient(155deg, #FDFCFF 0%, #F2EDF8 55%, #E6DDF4 100%)",
-  "linear-gradient(155deg, #FFFDF4 0%, #FFF5D4 55%, #FFE8A8 100%)",
-];
-
-function pickGradient(id: string) {
-  const n = id ? [...id].reduce((a, c) => a + c.charCodeAt(0), 0) : 0;
-  return GRADIENTS[n % GRADIENTS.length];
-}
+import { getQuoteBackground } from "@/src/lib/quoteBackground";
 
 function formatRelativeDate(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -31,35 +20,60 @@ function formatRelativeDate(iso: string): string {
 
 function CollectionCard({ item }: { item: CollectionItem }) {
   const { quote, likedAt } = item;
-  const gradient = pickGradient(quote.id);
+  const bg = getQuoteBackground(quote);
 
   return (
     <div
       className="w-full rounded-3xl overflow-hidden shadow-sm"
-      style={{ background: gradient, border: "1px solid rgba(224,122,95,0.08)" }}
+      style={{
+        backgroundImage: bg.backgroundImage,
+        border: "1px solid rgba(224,122,95,0.08)",
+      }}
     >
-      <div className="h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      <div
+        className="h-[2px]"
+        style={{
+          background: `linear-gradient(to right, transparent, ${bg.accentColor}, transparent)`,
+        }}
+      />
       <div className="px-6 py-5">
-        <p className="font-quote text-[1.15rem] leading-[1.85] text-textMain font-bold break-keep mb-4">
+        <p
+          className="font-quote text-[1.15rem] leading-[1.85] font-bold break-keep mb-4"
+          style={{ color: bg.textColor }}
+        >
           {quote.content}
         </p>
         <div className="flex items-end justify-between">
           <div className="flex flex-col gap-0.5">
             {quote.author && (
-              <p className="font-quote text-[0.85rem] text-textMain/70 font-semibold">
+              <p
+                className="font-quote text-[0.85rem] font-semibold"
+                style={{ color: bg.textColor, opacity: 0.8 }}
+              >
                 — {quote.author}
               </p>
             )}
             {quote.source && (
-              <p className="font-sans text-[10px] text-textMuted tracking-wide">
+              <p
+                className="font-sans text-[10px] tracking-wide"
+                style={{ color: bg.mutedColor }}
+              >
                 〈{quote.source}〉
               </p>
             )}
             {!quote.author && !quote.source && (
-              <p className="font-sans text-[10px] text-textMuted/50">작자 미상</p>
+              <p
+                className="font-sans text-[10px]"
+                style={{ color: bg.mutedColor, opacity: 0.6 }}
+              >
+                작자 미상
+              </p>
             )}
           </div>
-          <span className="font-sans text-[10px] text-textMuted/50 shrink-0 ml-3">
+          <span
+            className="font-sans text-[10px] shrink-0 ml-3"
+            style={{ color: bg.mutedColor, opacity: 0.7 }}
+          >
             {formatRelativeDate(likedAt)}
           </span>
         </div>
