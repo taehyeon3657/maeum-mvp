@@ -111,18 +111,33 @@ function specFor(quote: Quote): QuoteSpec {
 }
 
 // ── 메인 ───────────────────────────────────────────────────────
-export function getQuoteBackground(quote: Quote): QuoteBackground {
+// withMotif=false 면 추상 모티프 레이어를 빼고 그레인+그라디언트만 쓴다
+// (도트 장면을 얹는 카드에서 이미지가 겹치지 않도록).
+export function getQuoteBackground(
+  quote: Quote,
+  opts: { withMotif?: boolean } = {}
+): QuoteBackground {
+  const withMotif = opts.withMotif ?? true;
   const spec = specFor(quote);
   const m = motifLayer(spec.motif, spec.motifColor);
 
   // 합성 순서(위 → 아래): 그레인 → 모티프 → 그라디언트
+  const style = withMotif
+    ? {
+        backgroundImage: `${GRAIN_URL}, ${m.url}, ${spec.gradient}`,
+        backgroundSize: `120px 120px, ${m.size}, cover`,
+        backgroundRepeat: `repeat, ${m.repeat}, no-repeat`,
+        backgroundPosition: `0 0, ${m.position}, center`,
+      }
+    : {
+        backgroundImage: `${GRAIN_URL}, ${spec.gradient}`,
+        backgroundSize: `120px 120px, cover`,
+        backgroundRepeat: `repeat, no-repeat`,
+        backgroundPosition: `0 0, center`,
+      };
+
   return {
-    style: {
-      backgroundImage: `${GRAIN_URL}, ${m.url}, ${spec.gradient}`,
-      backgroundSize: `120px 120px, ${m.size}, cover`,
-      backgroundRepeat: `repeat, ${m.repeat}, no-repeat`,
-      backgroundPosition: `0 0, ${m.position}, center`,
-    },
+    style,
     textColor: spec.textColor,
     mutedColor: spec.mutedColor,
     accentColor: spec.accentColor,

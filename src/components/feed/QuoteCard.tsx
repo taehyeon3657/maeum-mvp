@@ -1,12 +1,16 @@
 import type { Quote } from "@/src/models/feed";
 import { getQuoteBackground } from "@/src/lib/quoteBackground";
+import { getQuoteScene } from "@/src/lib/quoteScene";
+import { pixelSceneUrl } from "@/src/lib/pixelScene";
 
 interface Props {
   quote: Quote;
 }
 
 export default function QuoteCard({ quote }: Props) {
-  const bg = getQuoteBackground(quote);
+  // 내용에 맞는 도트 장면이 있으면 추상 모티프 대신 그 장면을 보여준다
+  const scene = getQuoteScene(quote);
+  const bg = getQuoteBackground(quote, { withMotif: !scene });
 
   return (
     <div
@@ -31,6 +35,21 @@ export default function QuoteCard({ quote }: Props) {
         >
           &ldquo;
         </div>
+
+        {/* 내용에 맞는 도트 장면 (있을 때만) */}
+        {scene && (
+          <div
+            className="z-10 mt-2 mb-1 h-[34%] min-h-[120px]"
+            style={{
+              backgroundImage: pixelSceneUrl(scene),
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "contain",
+              imageRendering: "pixelated",
+            }}
+            aria-hidden
+          />
+        )}
 
         {/* 글귀 본문 — 세로 중앙 */}
         <div className="flex-1 flex items-center justify-center z-10 px-1">
