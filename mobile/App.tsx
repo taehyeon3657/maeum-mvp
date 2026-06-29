@@ -21,7 +21,7 @@ import {
 import {
   cancelInactivityNotification,
   configureInactivityChannel,
-  scheduleInactivityNotification,
+  scheduleInactivityNotifications,
   useInactivityNotificationNavigation,
 } from "@/notifications/inactivityNotifications";
 
@@ -54,7 +54,7 @@ export default function App() {
       if (state === "active") {
         void cancelInactivityNotification();
       } else if (state === "background") {
-        void scheduleInactivityNotification();
+        void scheduleInactivityNotifications();
       }
     };
 
