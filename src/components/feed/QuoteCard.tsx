@@ -11,12 +11,13 @@ interface Props {
 
 export default function QuoteCard({ quote }: Props) {
   const bg = getQuoteBackground(quote);
-  // has_image === false 면 CDN 에 그림이 없으므로 URL 자체를 만들지 않는다
-  // (실패할 게 뻔한 네트워크 요청 방지). undefined(미상)면 종전처럼 로드로 확인.
-  const imgUrl = quote.has_image === false ? null : quoteImageUrl(quote.id);
+  const imgUrl = quoteImageUrl(quote.id);
 
-  // 최종 표시 여부는 실제 로드 성공/실패로 판단한다.
-  // 로드 전·실패 시에는 기존 그라디언트 배경을 그대로 쓴다.
+  // 이미지 표시 여부는 "실제 로드 성공/실패"로만 판단한다(self-healing).
+  //  - has_image 플래그는 피드 정렬(이미지 우선) 용도로만 쓰고, 렌더링은
+  //    여기서 건드리지 않는다. 플래그가 실제 파일 존재와 어긋나도(예: DB 갱신
+  //    누락) 화면에는 영향을 주지 않게 하기 위함.
+  //  - 로드 전·실패 시에는 기존 그라디언트 배경을 그대로 쓴다.
   const [imgOk, setImgOk] = useState(false);
   useEffect(() => {
     setImgOk(false);
