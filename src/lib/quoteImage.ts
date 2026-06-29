@@ -1,20 +1,23 @@
 // ─────────────────────────────────────────────────────────────
-// 문구 배경 이미지 URL (Supabase Storage CDN)
+// 문구 배경 이미지 URL (공개 CDN)
 //
-// 같은 Supabase 프로젝트의 Storage 버킷에 <quote-id>.png 로 업로드된
-// 이미지를 public CDN URL 로 가져온다. 파일이 없으면 QuoteCard 가
-// 로드 실패를 감지해 기존 그라디언트 배경으로 fallback 한다.
+// 공개 CDN 베이스 URL 에서 <quote-id>.png 를 가져온다.
+// Cloudflare R2 public 버킷(r2.dev) 또는 R2 에 연결한 커스텀 도메인 등
+// 어떤 CDN 이든 NEXT_PUBLIC_QUOTE_IMAGE_BASE_URL 만 바꾸면 된다.
+// (객체 키 = <id>.png, 버킷명은 공개 URL 에 포함돼 있으므로 경로에 넣지 않음)
 //
-// 버킷명은 NEXT_PUBLIC_QUOTE_IMAGE_BUCKET 으로 덮어쓸 수 있다(기본 quotesImage).
+// 파일이 없으면 QuoteCard 가 로드 실패를 감지해 그라디언트 배경으로 fallback.
+//
+// 예)
+//   NEXT_PUBLIC_QUOTE_IMAGE_BASE_URL=https://pub-xxxxxxxx.r2.dev
+//   NEXT_PUBLIC_QUOTE_IMAGE_BASE_URL=https://img.maeum.app
 // ─────────────────────────────────────────────────────────────
 
-const BUCKET = process.env.NEXT_PUBLIC_QUOTE_IMAGE_BUCKET || "quotesImage";
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_QUOTE_IMAGE_BASE_URL;
 
 /** <id>.png 의 public CDN URL. 환경변수 미설정 시 null. */
 export function quoteImageUrl(quoteId: string): string | null {
-  if (!SUPABASE_URL || !quoteId) return null;
-  return `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${encodeURIComponent(
-    quoteId
-  )}.png`;
+  if (!BASE_URL || !quoteId) return null;
+  const base = BASE_URL.replace(/\/+$/, "");
+  return `${base}/${encodeURIComponent(quoteId)}.png`;
 }
