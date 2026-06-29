@@ -103,8 +103,8 @@ export default function BackgroundsPreviewPage() {
 
   return (
     <div className="min-h-dvh bg-background">
-      {/* 헤더 / 컨트롤 */}
-      <header className="sticky top-0 z-20 bg-[rgba(255,254,252,0.92)] backdrop-blur-md border-b border-primary/10 px-5 py-3">
+      {/* 헤더 / 컨트롤 — fixed 라 카드 크기에 영향 없음 */}
+      <header className="fixed top-0 left-0 right-0 z-30 bg-[rgba(255,254,252,0.92)] backdrop-blur-md border-b border-primary/10 px-5 py-3">
         <div className="flex items-baseline gap-3 mb-2">
           <h1 className="font-quote text-lg font-extrabold text-textMain tracking-tight">
             배경 미리보기
@@ -135,25 +135,16 @@ export default function BackgroundsPreviewPage() {
         </Centered>
       )}
 
-      {/* 그리드 */}
-      <main className="px-5 py-6">
-        <div className="grid gap-4 [grid-template-columns:repeat(auto-fill,minmax(240px,1fr))]">
-          {filtered.map(({ quote, category, motif }) => (
-            <div key={quote.id} className="flex flex-col gap-1">
-              <div className="h-[360px]">
-                <QuoteCard quote={quote} />
-              </div>
-              <div className="flex items-center gap-2 px-1">
-                <span className="font-sans text-[10px] text-textMuted/70 tracking-wide">
-                  {category} · {motif}
-                </span>
-                <code className="font-mono text-[9px] text-textMuted/40 ml-auto truncate max-w-[120px]">
-                  {quote.id.slice(0, 8)}
-                </code>
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* 피드와 동일 크기의 카드 — 한 화면에 하나씩, 스크롤로 넘김 */}
+      <main>
+        {filtered.map(({ quote, category, motif }) => (
+          <FeedFrame
+            key={quote.id}
+            quote={quote}
+            category={category}
+            motif={motif}
+          />
+        ))}
 
         {!loading && !error && filtered.length === 0 && (
           <p className="text-center font-sans text-sm text-textMuted py-20">
@@ -161,6 +152,66 @@ export default function BackgroundsPreviewPage() {
           </p>
         )}
       </main>
+    </div>
+  );
+}
+
+// 피드(/feed)의 레이아웃 골격을 그대로 복제해 카드를 "완전히 같은 크기"로 렌더.
+// 헤더·진행도트 영역은 보이지 않게(invisible) 높이만 차지시켜 카드 영역이
+// 피드와 픽셀 단위로 동일해진다. (feed/page.tsx + FeedStack.tsx 구조 일치)
+function FeedFrame({
+  quote,
+  category,
+  motif,
+}: {
+  quote: Quote;
+  category: string;
+  motif: string;
+}) {
+  return (
+    <div className="h-dvh flex flex-col bg-background overflow-hidden relative">
+      {/* 피드 헤더와 동일한 높이 확보 (비표시) */}
+      <header
+        className="flex-none flex items-center justify-center px-6 pt-8 pb-2 invisible"
+        aria-hidden
+      >
+        <div className="flex flex-col items-center gap-0.5">
+          <h1 className="font-quote text-[1.5rem] font-extrabold tracking-[0.12em]">
+            마음
+          </h1>
+          <div className="flex items-center gap-2">
+            <div className="h-px w-8" />
+            <span className="font-sans text-[10px] tracking-[0.2em]">MAEUM</span>
+            <div className="h-px w-8" />
+          </div>
+        </div>
+      </header>
+
+      {/* FeedStack 의 카드 스택 영역과 동일한 여백/구조 */}
+      <div className="flex-1 min-h-0 flex flex-col overflow-x-hidden">
+        <div className="flex-1 min-h-0 relative mx-4 mt-3 mb-2 overflow-hidden">
+          {/* 피드의 SwipeCard(absolute inset-0)와 동일하게 채움 */}
+          <div className="absolute inset-0">
+            <QuoteCard quote={quote} />
+          </div>
+          {/* 메타 오버레이 (크기에 영향 없음) */}
+          <div className="absolute top-2 left-2 z-20 flex items-center gap-2 px-2 py-0.5 rounded-full bg-black/35 backdrop-blur-sm pointer-events-none">
+            <span className="font-sans text-[10px] text-white/90 tracking-wide">
+              {category} · {motif}
+            </span>
+            <code className="font-mono text-[9px] text-white/55">
+              {quote.id.slice(0, 8)}
+            </code>
+          </div>
+        </div>
+        {/* 진행 도트 영역과 동일한 높이 확보 (비표시) */}
+        <div
+          className="flex-none flex items-center justify-center gap-[6px] py-4 invisible"
+          aria-hidden
+        >
+          <div className="h-[5px] w-5 rounded-full" />
+        </div>
+      </div>
     </div>
   );
 }
