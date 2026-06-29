@@ -39,6 +39,7 @@
     "plugins": [
       "expo-asset",
       "expo-dev-client",
+      "expo-notifications",
       [
         "@react-native-firebase/app",
         {}

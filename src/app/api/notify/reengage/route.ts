@@ -6,7 +6,13 @@ import { adminMessaging } from "@/src/lib/firebase-admin";
 const INACTIVE_MS = process.env.REENGAGE_INACTIVE_MINUTES
   ? parseFloat(process.env.REENGAGE_INACTIVE_MINUTES) * 60 * 1000
   : 6 * 60 * 60 * 1000;
-const INACTIVE_THRESHOLD = () => new Date(Date.now() - INACTIVE_MS).toISOString();
+const INACTIVE_THRESHOLD = () =>
+  new Date(Date.now() - INACTIVE_MS).toISOString();
+const APP_ORIGIN =
+  process.env.NEXT_PUBLIC_APP_ORIGIN ?? "https://maeum-mvp.vercel.app";
+const REENGAGE_TITLE = "오늘의 글귀가 기다리고 있어요";
+const REENGAGE_BODY = "지금 내 마음에 꼭 맞는 한 문장을 만나보세요";
+const REENGAGE_PATH = "/feed";
 
 // Vercel Cron 또는 수동 호출 시 CRON_SECRET으로 인증
 export async function GET(request: Request) {
@@ -29,7 +35,10 @@ export async function GET(request: Request) {
 
   if (error) {
     console.error("[reengage] Supabase 조회 실패:", error);
-    return NextResponse.json({ ok: false, error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { ok: false, error: error.message },
+      { status: 500 },
+    );
   }
 
   const tokens = (users ?? []).map((u) => u.fcm_token as string);
@@ -40,15 +49,36 @@ export async function GET(request: Request) {
   const messaging = adminMessaging();
   const batchResponse = await messaging.sendEachForMulticast({
     tokens,
+    notification: {
+      title: REENGAGE_TITLE,
+      body: REENGAGE_BODY,
+    },
+    data: {
+      path: REENGAGE_PATH,
+      url: REENGAGE_PATH,
+    },
+    android: {
+      priority: "high",
+      notification: {
+        sound: "default",
+      },
+    },
+    apns: {
+      payload: {
+        aps: {
+          sound: "default",
+        },
+      },
+    },
     webpush: {
       headers: { Urgency: "high", TTL: "86400" },
       notification: {
-        title: "오늘의 글귀가 기다리고 있어요",
-        body: "지금 내 마음에 꼭 맞는 한 문장을 만나보세요",
-        icon: "https://maeum-mvp.vercel.app/favicon.svg",
-        badge: "https://maeum-mvp.vercel.app/favicon.svg",
+        title: REENGAGE_TITLE,
+        body: REENGAGE_BODY,
+        icon: `${APP_ORIGIN}/favicon.svg`,
+        badge: `${APP_ORIGIN}/favicon.svg`,
       },
-      fcmOptions: { link: "https://maeum-mvp.vercel.app/feed" },
+      fcmOptions: { link: `${APP_ORIGIN}${REENGAGE_PATH}` },
     },
   });
 
@@ -56,17 +86,28 @@ export async function GET(request: Request) {
   const expiredTokens = batchResponse.responses
     .map((r, i) => {
       const code = (r.error as { code?: string } | undefined)?.code ?? "";
-      return !r.success && (code === "messaging/registration-token-not-registered" || code === "messaging/invalid-registration-token")
+      return !r.success &&
+        (code === "messaging/registration-token-not-registered" ||
+          code === "messaging/invalid-registration-token")
         ? tokens[i]
         : null;
     })
     .filter((t): t is string => t !== null);
 
   if (expiredTokens.length > 0) {
-    await supabase.from("users").update({ fcm_token: null }).in("fcm_token", expiredTokens);
+    await supabase
+      .from("users")
+      .update({ fcm_token: null })
+      .in("fcm_token", expiredTokens);
     console.log(`[reengage] 만료 토큰 ${expiredTokens.length}개 삭제`);
   }
 
-  console.log(`[reengage] 전송 완료 — 성공: ${batchResponse.successCount}, 실패: ${batchResponse.failureCount}`);
-  return NextResponse.json({ ok: true, sent: batchResponse.successCount, failed: batchResponse.failureCount });
+  console.log(
+    `[reengage] 전송 완료 — 성공: ${batchResponse.successCount}, 실패: ${batchResponse.failureCount}`,
+  );
+  return NextResponse.json({
+    ok: true,
+    sent: batchResponse.successCount,
+    failed: batchResponse.failureCount,
+  });
 }

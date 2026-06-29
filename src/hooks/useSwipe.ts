@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { SwipeDirection } from "@/src/models/feed";
 
 const THRESHOLD = 80;    // 스와이프 확정 최소 거리 (px)
@@ -27,7 +27,10 @@ export function useSwipe({ onSwipe }: UseSwipeOptions) {
 
   const startX = useRef(0);
   const onSwipeRef = useRef(onSwipe);
-  onSwipeRef.current = onSwipe;
+
+  useEffect(() => {
+    onSwipeRef.current = onSwipe;
+  }, [onSwipe]);
 
   // 이벤트 핸들러 내부에서 state 대신 ref를 읽어야 한다.
   // PC에서는 pointermove가 pointerdown 직후 동기적으로 발생하는데,

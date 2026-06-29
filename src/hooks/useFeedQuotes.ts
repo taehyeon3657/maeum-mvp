@@ -4,8 +4,18 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/src/lib/supabase";
 import type { Quote } from "@/src/models/feed";
 
-const SESSION_LIMIT = 15;
+const SESSION_LIMIT = 8;
 const MAX_SEEN = 100;
+
+type FeedQuotesState =
+  | { key: null; status: "idle"; quotes: Quote[] }
+  | { key: string; status: "success"; quotes: Quote[] }
+  | { key: string; status: "error"; quotes: Quote[] };
+
+interface IndexState {
+  key: string | null;
+  value: number;
+}
 
 function getSeenIds(userId: string): string[] {
   if (typeof window === "undefined") return [];
@@ -28,22 +38,22 @@ function addSeenIds(userId: string, newIds: string[]) {
 }
 
 export function useFeedQuotes(userId: string, skip = false) {
-  const [quotes, setQuotes] = useState<Quote[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(!skip);
-  const [hasError, setHasError] = useState(false);
+  const [quoteState, setQuoteState] = useState<FeedQuotesState>({
+    key: null,
+    status: "idle",
+    quotes: [],
+  });
+  const [indexState, setIndexState] = useState<IndexState>({
+    key: null,
+    value: 0,
+  });
   const [resetKey, setResetKey] = useState(0);
+  const requestKey = skip ? null : `${userId}:${resetKey}`;
 
   useEffect(() => {
-    if (skip) {
-      setIsLoading(false);
-      return;
-    }
+    if (!requestKey) return;
+
     let cancelled = false;
-    setIsLoading(true);
-    setHasError(false);
-    setQuotes([]);
-    setCurrentIndex(0);
 
     const fetchQuotes = async () => {
       const supabase = createClient();
@@ -57,18 +67,16 @@ export function useFeedQuotes(userId: string, skip = false) {
       if (cancelled) return;
 
       if (error) {
-        setHasError(true);
-        setIsLoading(false);
+        setQuoteState({ key: requestKey, status: "error", quotes: [] });
         return;
       }
 
       if (data && data.length > 0) {
-        setQuotes(data);
         addSeenIds(
           userId,
           data.map((q: Quote) => q.id),
         );
-        setIsLoading(false);
+        setQuoteState({ key: requestKey, status: "success", quotes: data });
         return;
       }
 
@@ -81,33 +89,56 @@ export function useFeedQuotes(userId: string, skip = false) {
         );
         if (cancelled) return;
         if (freshError) {
-          setHasError(true);
+          setQuoteState({ key: requestKey, status: "error", quotes: [] });
         } else if (freshData && freshData.length > 0) {
-          setQuotes(freshData);
           addSeenIds(
             userId,
             freshData.map((q: Quote) => q.id),
           );
+          setQuoteState({
+            key: requestKey,
+            status: "success",
+            quotes: freshData,
+          });
+        } else {
+          setQuoteState({ key: requestKey, status: "success", quotes: [] });
         }
+        return;
       }
 
-      setIsLoading(false);
+      setQuoteState({ key: requestKey, status: "success", quotes: [] });
     };
 
-    fetchQuotes();
+    void fetchQuotes();
     return () => {
       cancelled = true;
     };
-  }, [resetKey, userId, skip]);
+  }, [requestKey, userId]);
 
-  const advance = useCallback(() => setCurrentIndex((i) => i + 1), []);
+  const quotes =
+    requestKey &&
+    quoteState.key === requestKey &&
+    quoteState.status === "success"
+      ? quoteState.quotes
+      : [];
+  const currentIndex = indexState.key === requestKey ? indexState.value : 0;
+  const isLoading = requestKey !== null && quoteState.key !== requestKey;
+  const hasError =
+    requestKey !== null &&
+    quoteState.key === requestKey &&
+    quoteState.status === "error";
+
+  const advance = useCallback(() => {
+    if (!requestKey) return;
+    setIndexState((current) =>
+      current.key === requestKey
+        ? { key: requestKey, value: current.value + 1 }
+        : { key: requestKey, value: 1 },
+    );
+  }, [requestKey]);
 
   // reset() 호출 시 즉시 로딩 상태로 전환 → stale isDepleted 방지
   const reset = useCallback(() => {
-    setQuotes([]);
-    setCurrentIndex(0);
-    setIsLoading(true);
-    setHasError(false);
     setResetKey((k) => k + 1);
   }, []);
 
