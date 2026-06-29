@@ -1,6 +1,13 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, BackHandler, Platform } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  BackHandler,
+  Platform,
+  AppState,
+  AppStateStatus,
+} from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import type { WebViewMessageEvent } from "react-native-webview";
 import AppWebView, { AppWebViewRef } from "@/components/AppWebView";
@@ -11,6 +18,12 @@ import {
   scheduleCooldownNotification,
   useCooldownNotificationNavigation,
 } from "@/notifications/cooldownNotifications";
+import {
+  cancelInactivityNotification,
+  configureInactivityChannel,
+  scheduleInactivityNotification,
+  useInactivityNotificationNavigation,
+} from "@/notifications/inactivityNotifications";
 
 SplashScreen.preventAutoHideAsync();
 registerBackgroundHandler();
@@ -28,9 +41,28 @@ export default function App() {
 
   useNativeNotifications(handleTokenReady, undefined, handleNavigateTo);
   useCooldownNotificationNavigation(handleNavigateTo);
+  useInactivityNotificationNavigation(handleNavigateTo);
 
   useEffect(() => {
     void configureNotificationChannel();
+    void configureInactivityChannel();
+  }, []);
+
+  // 장시간 미접속 재방문 알림: 앱이 백그라운드로 가면 예약, 다시 활성화되면 취소
+  useEffect(() => {
+    const handleAppStateChange = (state: AppStateStatus) => {
+      if (state === "active") {
+        void cancelInactivityNotification();
+      } else if (state === "background") {
+        void scheduleInactivityNotification();
+      }
+    };
+
+    const subscription = AppState.addEventListener("change", handleAppStateChange);
+    // 앱 시작 시점(활성 상태)에는 이전에 예약된 알림을 취소
+    void cancelInactivityNotification();
+
+    return () => subscription.remove();
   }, []);
 
   const handleWebViewMessage = useCallback((event: WebViewMessageEvent) => {
