@@ -196,7 +196,15 @@ export default function RootLayout({
       </head>
       <body className="bg-gray-100 text-textMain font-sans antialiased" suppressHydrationWarning>
         <Providers>
-          <main className="max-w-md mx-auto bg-background shadow-2xl relative overflow-x-hidden" style={{ minHeight: "100dvh" }}>
+          <main
+            className="max-w-md mx-auto bg-background shadow-2xl relative overflow-x-hidden"
+            style={{
+              minHeight: "100dvh",
+              // Android/iOS 시스템 바(상단 상태바·하단 내비게이션) 안전영역 확보 — 잘림 방지
+              paddingTop: "env(safe-area-inset-top, 0px)",
+              paddingBottom: "env(safe-area-inset-bottom, 0px)",
+            }}
+          >
             {children}
           </main>
           <NotificationPrompt />
