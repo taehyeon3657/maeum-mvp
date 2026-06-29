@@ -86,8 +86,12 @@ export default function BackgroundsPreviewPage() {
 
   return (
     <div className="min-h-dvh bg-background">
-      {/* 헤더 / 컨트롤 — fixed 라 카드 크기에 영향 없음 */}
-      <header className="fixed top-0 left-0 right-0 z-30 bg-[rgba(255,254,252,0.92)] backdrop-blur-md border-b border-primary/10 px-5 py-3">
+      {/* 헤더 / 컨트롤 — fixed 라 카드 크기에 영향 없음.
+          상태바에 겹치지 않게 상단 안전영역만큼 패딩 추가(바 배경은 상태바까지 덮음) */}
+      <header
+        className="fixed top-0 left-0 right-0 z-30 bg-[rgba(255,254,252,0.92)] backdrop-blur-md border-b border-primary/10 px-5 py-3"
+        style={{ paddingTop: "calc(0.75rem + env(safe-area-inset-top, 0px))" }}
+      >
         <div className="flex items-baseline gap-3 mb-2">
           <h1 className="font-quote text-lg font-extrabold text-textMain tracking-tight">
             배경 미리보기
