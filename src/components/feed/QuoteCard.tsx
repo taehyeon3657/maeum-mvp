@@ -11,7 +11,7 @@ export default function QuoteCard({ quote }: Props) {
   return (
     <div
       className="w-full h-full flex flex-col rounded-[28px] shadow-2xl shadow-primary/10 select-none overflow-hidden animate-scale-in"
-      style={{ backgroundImage: bg.backgroundImage }}
+      style={bg.style}
     >
       {/* 상단 포인트 라인 */}
       <div

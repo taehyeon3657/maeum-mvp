@@ -25,10 +25,7 @@ function CollectionCard({ item }: { item: CollectionItem }) {
   return (
     <div
       className="w-full rounded-3xl overflow-hidden shadow-sm"
-      style={{
-        backgroundImage: bg.backgroundImage,
-        border: "1px solid rgba(224,122,95,0.08)",
-      }}
+      style={{ ...bg.style, border: "1px solid rgba(224,122,95,0.08)" }}
     >
       <div
         className="h-[2px]"
