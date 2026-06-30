@@ -16,6 +16,7 @@ export type QuoteImageResolution =
 
 type CachedImageState = "loaded" | "failed" | Promise<"loaded" | "failed">;
 
+const IMAGE_LOAD_TIMEOUT_MS = 10_000;
 const imageCache = new Map<string, CachedImageState>();
 
 function candidateImageUrl(quote: Quote | null): string | null {
@@ -41,10 +42,12 @@ function loadImageUrl(url: string): Promise<boolean> {
   const promise = new Promise<"loaded" | "failed">((resolve) => {
     const img = new Image();
     let settled = false;
+    const timeoutId = window.setTimeout(() => settle("failed"), IMAGE_LOAD_TIMEOUT_MS);
 
     const settle = (state: "loaded" | "failed") => {
       if (settled) return;
       settled = true;
+      window.clearTimeout(timeoutId);
       imageCache.set(url, state);
       resolve(state);
     };
@@ -84,6 +87,12 @@ export async function resolveQuoteImage(
 
   const loaded = await loadImageUrl(url);
   return loaded ? { status: "image", url } : { status: "fallback", url: null };
+}
+
+export async function resolveQuoteImages(
+  quotes: readonly Quote[],
+): Promise<QuoteImageResolution[]> {
+  return Promise.all(quotes.map((quote) => resolveQuoteImage(quote)));
 }
 
 export function useResolvedQuoteImage(quote: Quote | null): QuoteImageResolution {

@@ -14,7 +14,12 @@ import { createClient } from "@/src/lib/supabase";
 import type { Quote } from "@/src/models/feed";
 import QuoteCard from "@/src/components/feed/QuoteCard";
 import { getQuoteBackground } from "@/src/lib/quoteBackground";
-import { resolveQuoteImage } from "@/src/hooks/useQuoteImage";
+import { resolveQuoteImages } from "@/src/hooks/useQuoteImage";
+import {
+  dedupePreviewItems,
+  matchesPreviewFilters,
+  normalizeEmotionTags,
+} from "@/src/lib/previewBackgroundsCore.mjs";
 
 const PAGE_SIZE = 15;
 
@@ -83,22 +88,20 @@ export default function BackgroundsPreviewPage() {
       ...row,
       emotion_tags:
         typeof row.emotion_tags === "string"
-          ? safeParse(row.emotion_tags)
+          ? normalizeEmotionTags(row.emotion_tags)
           : row.emotion_tags ?? [],
     })) as Quote[];
 
-    const resolvedItems = await Promise.all(
-      normalized.map(async (quote) => {
-        const bg = getQuoteBackground(quote);
-        const image = await resolveQuoteImage(quote);
-        return {
-          quote,
-          category: bg.category,
-          motif: bg.motif,
-          imageUrl: image.url,
-        };
-      }),
-    );
+    const images = await resolveQuoteImages(normalized);
+    const resolvedItems = normalized.map((quote, index) => {
+      const bg = getQuoteBackground(quote);
+      return {
+        quote,
+        category: bg.category,
+        motif: bg.motif,
+        imageUrl: images[index]?.url ?? null,
+      };
+    });
 
     if (!mountedRef.current) return;
 
@@ -152,19 +155,9 @@ export default function BackgroundsPreviewPage() {
   );
 
   const filtered = useMemo(() => {
-    const needle = q.trim();
-    return items.filter((i) => {
-      if (cat !== "all" && i.category !== cat) return false;
-      if (motif !== "all" && i.motif !== motif) return false;
-      if (
-        needle &&
-        !i.quote.content.includes(needle) &&
-        !(i.quote.author || "").includes(needle) &&
-        !(i.quote.source || "").includes(needle)
-      )
-        return false;
-      return true;
-    });
+    return items.filter((item) =>
+      matchesPreviewFilters(item, { query: q, category: cat, motif }),
+    );
   }, [items, q, cat, motif]);
 
   return (
@@ -321,26 +314,8 @@ function FeedFrame({
 }
 
 // ── helpers ────────────────────────────────────────────────────
-function safeParse(s: string): string[] {
-  try {
-    const v = JSON.parse(s);
-    return Array.isArray(v) ? v : [];
-  } catch {
-    return [];
-  }
-}
-
 function uniqueSorted(arr: string[]): string[] {
   return [...new Set(arr)].sort();
-}
-
-function dedupePreviewItems(items: PreviewItem[]): PreviewItem[] {
-  const seen = new Set<string>();
-  return items.filter((item) => {
-    if (seen.has(item.quote.id)) return false;
-    seen.add(item.quote.id);
-    return true;
-  });
 }
 
 function Select({
