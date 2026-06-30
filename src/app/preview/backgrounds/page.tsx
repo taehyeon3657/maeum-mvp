@@ -38,6 +38,7 @@ export default function BackgroundsPreviewPage() {
   const [totalCount, setTotalCount] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [q, setQ] = useState("");
+  const [debouncedQ, setDebouncedQ] = useState("");
   const [cat, setCat] = useState<string>("all");
   const [motif, setMotif] = useState<string>("all");
   const sentinelRef = useRef<HTMLDivElement | null>(null);
@@ -45,10 +46,19 @@ export default function BackgroundsPreviewPage() {
   const loadingRef = useRef(false);
   const hasMoreRef = useRef(true);
   const mountedRef = useRef(true);
+  // loadNextPage 클로저 안에서 최신 검색어를 읽기 위해 ref로 동기화
+  const searchRef = useRef("");
+
+  // 검색어 400ms debounce
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedQ(q), 400);
+    return () => clearTimeout(timer);
+  }, [q]);
 
   const loadNextPage = useCallback(async () => {
     if (loadingRef.current || !hasMoreRef.current) return;
 
+    const search = searchRef.current;
     const from = offsetRef.current;
     const to = from + PAGE_SIZE - 1;
     const isInitialLoad = from === 0;
@@ -60,13 +70,20 @@ export default function BackgroundsPreviewPage() {
     }
 
     const supabase = createClient();
-    // 읽기 전용: 활성 문구를 15개씩 조회하고, 이미지 성공/실패 resolve 후 화면에 붙인다.
-    const { data, error, count } = await supabase
+    let query = supabase
       .from("quotes")
       .select("id, content, author, source, emotion_tags, has_image", {
         count: "exact",
       })
-      .eq("is_active", true)
+      .eq("is_active", true);
+
+    if (search) {
+      query = query.or(
+        `content.ilike.%${search}%,author.ilike.%${search}%,source.ilike.%${search}%`,
+      );
+    }
+
+    const { data, error, count } = await query
       .order("has_image", { ascending: false })
       .order("created_at", { ascending: true })
       .order("id", { ascending: true })
@@ -121,13 +138,25 @@ export default function BackgroundsPreviewPage() {
     loadingRef.current = false;
   }, []);
 
+  // debouncedQ 변경 시 목록 초기화 후 DB 재조회
+  useEffect(() => {
+    searchRef.current = debouncedQ;
+    setItems([]);
+    setTotalCount(null);
+    setError(null);
+    offsetRef.current = 0;
+    hasMoreRef.current = true;
+    loadingRef.current = false;
+    setHasMore(true);
+    void loadNextPage();
+  }, [debouncedQ, loadNextPage]);
+
   useEffect(() => {
     mountedRef.current = true;
-    void loadNextPage();
     return () => {
       mountedRef.current = false;
     };
-  }, [loadNextPage]);
+  }, []);
 
   useEffect(() => {
     if (!hasMore) return;
