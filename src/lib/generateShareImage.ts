@@ -3,6 +3,7 @@ interface GenerateOptions {
   author: string | null;
   source: string | null;
   gradientIndex?: number;
+  /** /api/quote-image/[id] 프록시를 통해 로드할 이미지 URL (same-origin, CORS 불필요) */
   imageUrl?: string | null;
 }
 
@@ -34,7 +35,7 @@ function wrapText(ctx: CanvasRenderingContext2D, text: string, maxWidth: number)
 function loadImage(src: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
-    img.crossOrigin = "anonymous";
+    // same-origin 프록시 URL이므로 crossOrigin 불필요
     img.onload = () => resolve(img);
     img.onerror = reject;
     img.src = src;

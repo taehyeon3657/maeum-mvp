@@ -4,7 +4,7 @@ import { useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import type { Quote } from "@/src/models/feed";
 import { generateShareImage, shareImage } from "@/src/lib/generateShareImage";
-import { quoteImageUrl } from "@/src/lib/quoteImage";
+import { resolveQuoteImage } from "@/src/hooks/useQuoteImage";
 import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
 
 interface Props {
@@ -56,7 +56,11 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
     setImageState("loading");
     try {
       const idSum = [...shareQuote.id].reduce((a, c) => a + c.charCodeAt(0), 0);
-      const imageUrl = shareQuote.has_image ? quoteImageUrl(shareQuote.id) : null;
+      const resolved = await resolveQuoteImage(shareQuote);
+      // same-origin 프록시 경유: R2 CORS 제약 없이 canvas에 그릴 수 있음
+      const imageUrl = resolved.status === "image"
+        ? `/api/quote-image/${encodeURIComponent(shareQuote.id)}`
+        : null;
       const blob = await generateShareImage({
         content: shareQuote.content,
         author: shareQuote.author,
