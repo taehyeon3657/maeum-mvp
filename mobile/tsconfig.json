@@ -3,6 +3,8 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "react-native",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "ignoreDeprecations": "5.0",
     "types": ["node"],
     "paths": {
