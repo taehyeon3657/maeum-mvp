@@ -5,6 +5,11 @@ import { useRouter } from "next/navigation";
 import { createClient } from "@/src/lib/supabase";
 import { useUserCollection } from "@/src/hooks/useUserCollection";
 import type { CollectionItem } from "@/src/hooks/useUserCollection";
+import {
+  createAuthGateState,
+  getAuthGateErrorMessage,
+  type AuthGateState,
+} from "@/src/lib/authGateCore.mjs";
 import { getQuoteBackground } from "@/src/lib/quoteBackground";
 
 function formatRelativeDate(iso: string): string {
@@ -81,18 +86,67 @@ function CollectionCard({ item }: { item: CollectionItem }) {
 
 export default function CollectionPage() {
   const router = useRouter();
-  const [userId, setUserId] = useState<string | null>(null);
-  const { items, loading, error } = useUserCollection(userId);
+  const [authState, setAuthState] = useState<AuthGateState>({ status: "loading" });
+  const [authAttempt, setAuthAttempt] = useState(0);
+  const { items, loading, error } = useUserCollection(
+    authState.status === "authenticated" ? authState.userId : null,
+  );
 
   useEffect(() => {
+    let active = true;
+
     const init = async () => {
-      const supabase = createClient();
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) { router.replace("/onboarding"); return; }
-      setUserId(user.id);
+      try {
+        const supabase = createClient();
+        const {
+          data: { user },
+          error: authError,
+        } = await supabase.auth.getUser();
+
+        if (!active) return;
+
+        const nextAuthState = createAuthGateState({
+          userId: user?.id ?? null,
+          errorMessage: authError?.message ?? null,
+        });
+
+        setAuthState(nextAuthState);
+        if (nextAuthState.status === "redirecting") {
+          router.replace("/onboarding");
+        }
+      } catch (authError) {
+        if (!active) return;
+        setAuthState({
+          status: "error",
+          message: getAuthGateErrorMessage(authError),
+        });
+      }
     };
-    init();
-  }, [router]);
+    void init();
+
+    return () => {
+      active = false;
+    };
+  }, [authAttempt, router]);
+
+  const retryAuth = () => {
+    setAuthState({ status: "loading" });
+    setAuthAttempt((attempt) => attempt + 1);
+  };
+
+  if (authState.status === "loading" || authState.status === "redirecting") {
+    return (
+      <CollectionGateLoading
+        label={authState.status === "redirecting" ? "온보딩으로 이동 중..." : "마음함을 여는 중..."}
+      />
+    );
+  }
+
+  if (authState.status === "error") {
+    return (
+      <CollectionGateError message={authState.message} onRetry={retryAuth} />
+    );
+  }
 
   return (
     <div className="min-h-dvh flex flex-col" style={{ background: "var(--color-background)" }}>
@@ -107,7 +161,7 @@ export default function CollectionPage() {
       >
         <div className="flex items-center gap-2">
           <button
-            onClick={() => history.back()}
+            onClick={() => router.back()}
             className="w-8 h-8 rounded-full flex items-center justify-center"
             style={{ background: "rgba(224,122,95,0.08)" }}
             aria-label="뒤로가기"
@@ -161,7 +215,7 @@ export default function CollectionPage() {
 
       {/* 본문 */}
       <main className="flex-1 px-5 pb-10 flex flex-col gap-3">
-        {(loading || !userId) && (
+        {loading && (
           <div className="flex flex-col items-center justify-center gap-4 py-20">
             <div className="relative w-14 h-14">
               <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping" />
@@ -197,7 +251,7 @@ export default function CollectionPage() {
               글귀를 읽다가 마음에 드는 게 있으면<br />오른쪽으로 스와이프해 보세요
             </p>
             <button
-              onClick={() => (window.location.href = "/feed")}
+              onClick={() => router.push("/feed")}
               className="mt-3 px-6 py-3 rounded-2xl text-white font-sans text-sm font-bold tracking-wider shadow-lg"
               style={{ background: "#e07a5f", boxShadow: "0 4px 16px rgba(224,122,95,0.3)" }}
             >
@@ -219,7 +273,7 @@ export default function CollectionPage() {
                 더 많은 글귀와<br />만나보세요
               </p>
               <button
-                onClick={() => (window.location.href = "/feed")}
+                onClick={() => router.push("/feed")}
                 className="px-6 py-3 rounded-2xl text-white font-sans text-sm font-bold tracking-wider shadow-lg"
                 style={{ background: "#e07a5f", boxShadow: "0 4px 16px rgba(224,122,95,0.3)" }}
               >
@@ -229,6 +283,49 @@ export default function CollectionPage() {
           </>
         )}
       </main>
+    </div>
+  );
+}
+
+function CollectionGateLoading({ label }: { label: string }) {
+  return (
+    <div className="h-dvh flex items-center justify-center bg-background">
+      <div className="flex flex-col items-center gap-3">
+        <div className="relative w-12 h-12">
+          <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping" />
+          <div className="absolute inset-3 rounded-full bg-primary/20" />
+        </div>
+        <p className="font-quote text-xl text-textMuted animate-pulse">{label}</p>
+      </div>
+    </div>
+  );
+}
+
+function CollectionGateError({
+  message,
+  onRetry,
+}: {
+  message: string;
+  onRetry: () => void;
+}) {
+  return (
+    <div className="h-dvh flex items-center justify-center bg-background px-8 text-center">
+      <div className="flex flex-col items-center gap-4">
+        <div className="relative w-12 h-12">
+          <div className="absolute inset-0 rounded-full border-2 border-primary/20" />
+          <div className="absolute inset-3 rounded-full bg-primary/20" />
+        </div>
+        <div className="flex flex-col gap-1">
+          <p className="font-quote text-2xl text-textMain">마음함을 열 수 없어요</p>
+          <p className="font-sans text-sm text-textMuted leading-relaxed">{message}</p>
+        </div>
+        <button
+          onClick={onRetry}
+          className="mt-2 px-6 py-3 rounded-2xl bg-primary text-white font-sans text-sm font-semibold shadow-lg shadow-primary/25 hover:opacity-90 active:scale-[0.98] transition-all"
+        >
+          다시 시도하기
+        </button>
+      </div>
     </div>
   );
 }

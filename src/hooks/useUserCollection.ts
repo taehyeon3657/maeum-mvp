@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createClient } from "@/src/lib/supabase";
+import { normalizeCollectionRows } from "@/src/lib/collectionCore.mjs";
 import type { Quote } from "@/src/models/feed";
 
 export interface CollectionItem {
@@ -20,6 +21,7 @@ export function useUserCollection(userId: string | null) {
 
   useEffect(() => {
     if (!userId) return;
+    let cancelled = false;
 
     const fetch = async () => {
       setState((s) => ({ ...s, loading: true, error: null }));
@@ -33,21 +35,25 @@ export function useUserCollection(userId: string | null) {
         .order("created_at", { ascending: false });
 
       if (error) {
+        if (cancelled) return;
         setState({ items: [], loading: false, error: error.message });
         return;
       }
 
-      const items: CollectionItem[] = (data ?? [])
-        .filter((row) => row.quotes !== null)
-        .map((row) => ({
-          likedAt: row.created_at as string,
-          quote: row.quotes as unknown as Quote,
-        }));
+      if (cancelled) return;
 
-      setState({ items, loading: false, error: null });
+      setState({
+        items: normalizeCollectionRows(data) as CollectionItem[],
+        loading: false,
+        error: null,
+      });
     };
 
-    fetch();
+    void fetch();
+
+    return () => {
+      cancelled = true;
+    };
   }, [userId]);
 
   return state;
