@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useSyncExternalStore } from "react";
+import { useRouter } from "next/navigation";
 import type { Quote } from "@/src/models/feed";
 import { generateShareImage, shareImage } from "@/src/lib/generateShareImage";
+import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
 
 interface Props {
   sessionDurationMs: number;
@@ -37,6 +39,7 @@ function getNativeShareSupport() {
 }
 
 export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote }: Props) {
+  const router = useRouter();
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
   const [shareState, setShareState] = useState<"idle" | "done">("idle");
   const [imageState, setImageState] = useState<"idle" | "loading" | "done" | "error">("idle");
@@ -271,13 +274,11 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
       </div>
 
       {/* 내 마음함 배너 */}
-      <div
+      <button
+        type="button"
         className="w-full rounded-2xl px-4 py-3.5 mb-3 flex items-center gap-3 active:scale-[0.98] transition-all cursor-pointer"
         style={{ background: "linear-gradient(120deg, rgba(224,122,95,0.12) 0%, rgba(244,162,97,0.10) 100%)", border: "1px solid rgba(224,122,95,0.18)" }}
-        onClick={() => (window.location.href = "/collection")}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => e.key === "Enter" && (window.location.href = "/collection")}
+        onClick={() => router.push(APP_ROUTES.collection)}
       >
         <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-none"
           style={{ background: "rgba(224,122,95,0.12)" }}>
@@ -288,16 +289,14 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
           <p className="font-sans text-[10px] text-textMuted leading-tight mt-0.5">좋아요한 글귀를 모아볼 수 있어요</p>
         </div>
         <span className="text-primary text-base flex-none">→</span>
-      </div>
+      </button>
 
       {/* 인사이트 배너 */}
-      <div
+      <button
+        type="button"
         className="w-full rounded-2xl px-4 py-3.5 mb-5 flex items-center gap-3 active:scale-[0.98] transition-all cursor-pointer"
         style={{ background: "linear-gradient(120deg, rgba(224,122,95,0.10) 0%, rgba(45,106,79,0.08) 100%)", border: "1px solid rgba(224,122,95,0.18)" }}
-        onClick={() => (window.location.href = "/insights")}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => e.key === "Enter" && (window.location.href = "/insights")}
+        onClick={() => router.push(APP_ROUTES.insights)}
       >
         <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-none"
           style={{ background: "rgba(224,122,95,0.12)" }}>
@@ -308,7 +307,7 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
           <p className="font-sans text-[10px] text-textMuted leading-tight mt-0.5">연령·성별·MBTI·카테고리·시간대 분석</p>
         </div>
         <span className="text-primary text-base flex-none">→</span>
-      </div>
+      </button>
 
       {/* 구분선 */}
       <div className="w-full flex items-center gap-3 mb-5">

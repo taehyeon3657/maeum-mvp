@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/src/lib/supabase";
 import { normalizeCollectionRows } from "@/src/lib/collectionCore.mjs";
 import type { Quote } from "@/src/models/feed";
@@ -18,6 +18,7 @@ interface State {
 
 export function useUserCollection(userId: string | null) {
   const [state, setState] = useState<State>({ items: [], loading: true, error: null });
+  const [requestKey, setRequestKey] = useState(0);
 
   useEffect(() => {
     if (!userId) return;
@@ -54,7 +55,11 @@ export function useUserCollection(userId: string | null) {
     return () => {
       cancelled = true;
     };
-  }, [userId]);
+  }, [userId, requestKey]);
 
-  return state;
+  const retry = useCallback(() => {
+    setRequestKey((key) => key + 1);
+  }, []);
+
+  return { ...state, retry };
 }

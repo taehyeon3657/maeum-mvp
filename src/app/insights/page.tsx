@@ -1,14 +1,17 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useInsights } from "@/src/hooks/useInsights";
 import AgeChart from "@/src/components/insights/AgeChart";
 import GenderChart from "@/src/components/insights/GenderChart";
 import MbtiChart from "@/src/components/insights/MbtiChart";
 import CategoryChart from "@/src/components/insights/CategoryChart";
 import TimeChart from "@/src/components/insights/TimeChart";
+import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
 
 export default function InsightsPage() {
-  const { data, loading, error } = useInsights();
+  const router = useRouter();
+  const { data, loading, error, retry } = useInsights();
 
   return (
     <div
@@ -20,7 +23,7 @@ export default function InsightsPage() {
         style={{ background: "rgba(255,254,252,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(224,122,95,0.08)" }}>
         <div className="flex items-center gap-2">
           <button
-            onClick={() => history.back()}
+            onClick={() => router.back()}
             className="w-8 h-8 rounded-full flex items-center justify-center"
             style={{ background: "rgba(224,122,95,0.08)" }}
             aria-label="뒤로가기"
@@ -71,7 +74,7 @@ export default function InsightsPage() {
             <p className="font-quote text-xl text-textMain">데이터를 불러올 수 없어요</p>
             <p className="font-sans text-sm text-textMuted">{error}</p>
             <button
-              onClick={() => window.location.reload()}
+              onClick={retry}
               className="mt-2 px-5 py-2.5 rounded-xl text-white text-sm font-bold"
               style={{ background: "#e07a5f" }}
             >
@@ -120,7 +123,7 @@ export default function InsightsPage() {
                 매일 새로운 글귀가 쌓일수록<br />더 풍부한 인사이트를 볼 수 있어요
               </p>
               <button
-                onClick={() => (window.location.href = "/feed")}
+                onClick={() => router.push(APP_ROUTES.feed)}
                 className="px-6 py-3 rounded-2xl text-white font-sans text-sm font-bold tracking-wider shadow-lg"
                 style={{ background: "#e07a5f", boxShadow: "0 4px 16px rgba(224,122,95,0.3)" }}
               >

@@ -9,6 +9,7 @@ import {
   getFeedAuthErrorMessage,
   type FeedAuthState,
 } from "@/src/lib/feedAuthCore.mjs";
+import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
 
 export default function FeedPage() {
   const router = useRouter();
@@ -35,7 +36,7 @@ export default function FeedPage() {
 
         setAuthState(nextAuthState);
         if (nextAuthState.status === "redirecting") {
-          router.replace("/onboarding");
+          router.replace(APP_ROUTES.onboarding);
         }
       } catch (error) {
         if (!active) return;

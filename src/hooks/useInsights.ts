@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/src/lib/supabase";
 
 export interface AgeRow      { age_group: string; like_count: number; dislike_count: number }
@@ -33,8 +33,10 @@ export function useInsights() {
   const [data, setData]       = useState<InsightsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError]     = useState<string | null>(null);
+  const [requestKey, setRequestKey] = useState(0);
 
   useEffect(() => {
+    let cancelled = false;
     const supabase = createClient();
 
     async function fetch() {
@@ -55,6 +57,7 @@ export function useInsights() {
         const anyError = [age, gender, mbti, category, hour, tqAge, tqGender, tqMbti, tqCategory]
           .find((r) => r.error);
         if (anyError?.error) throw new Error("데이터를 불러오는 데 실패했어요.");
+        if (cancelled) return;
 
         type AgeQuoteRaw      = { age_group: string; content: string; author: string | null; like_count: number };
         type GenderQuoteRaw   = { gender: string;    content: string; author: string | null; like_count: number };
@@ -80,15 +83,29 @@ export function useInsights() {
             group: r.category_name, groupEmoji: r.category_emoji, content: r.content, author: r.author, like_count: r.like_count,
           })),
         });
+        setError(null);
       } catch (e) {
+        if (cancelled) return;
+        setData(null);
         setError(e instanceof Error ? e.message : "알 수 없는 오류가 발생했어요.");
       } finally {
+        if (cancelled) return;
         setLoading(false);
       }
     }
 
-    fetch();
+    void fetch();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [requestKey]);
+
+  const retry = useCallback(() => {
+    setLoading(true);
+    setError(null);
+    setRequestKey((key) => key + 1);
   }, []);
 
-  return { data, loading, error };
+  return { data, loading, error, retry };
 }

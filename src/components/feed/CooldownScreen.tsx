@@ -1,6 +1,8 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { formatCountdown } from "@/src/hooks/useFeedCooldown";
+import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
 
 interface Props {
   remainingMs: number;
@@ -8,6 +10,7 @@ interface Props {
 }
 
 export default function CooldownScreen({ remainingMs, onResume }: Props) {
+  const router = useRouter();
   const isDone = remainingMs === 0;
 
   return (
@@ -71,13 +74,11 @@ export default function CooldownScreen({ remainingMs, onResume }: Props) {
           </div>
 
           {/* 인사이트 진입 */}
-          <div
+          <button
+            type="button"
             className="w-full rounded-2xl px-4 py-3.5 flex items-center gap-3 active:scale-[0.98] transition-all cursor-pointer"
             style={{ background: "linear-gradient(120deg, rgba(224,122,95,0.10) 0%, rgba(45,106,79,0.08) 100%)", border: "1px solid rgba(224,122,95,0.18)" }}
-            onClick={() => (window.location.href = "/insights")}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => e.key === "Enter" && (window.location.href = "/insights")}
+            onClick={() => router.push(APP_ROUTES.insights)}
           >
             <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-none"
               style={{ background: "rgba(224,122,95,0.12)" }}>
@@ -88,7 +89,7 @@ export default function CooldownScreen({ remainingMs, onResume }: Props) {
               <p className="font-sans text-[10px] text-textMuted leading-tight mt-0.5">기다리는 동안 살펴볼까요?</p>
             </div>
             <span className="text-primary text-base flex-none">→</span>
-          </div>
+          </button>
 
           <p className="font-sans text-xs text-textMuted/70 tracking-wide">
             1시간 뒤에 또 보러오세요 💛

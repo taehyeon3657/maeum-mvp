@@ -6,6 +6,7 @@ import {
   createCooldownNotificationMessage,
   getCooldownRemainingMs,
 } from "@/src/lib/feedCooldownCore.mjs";
+import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
 
 const COOLDOWN_KEY = "maeum_feed_cooldown";
 const COOLDOWN_NOTIFICATION_TITLE = "새로운 글귀가 도착했어요!";
@@ -51,7 +52,7 @@ function scheduleNativeCooldownNotification(delayMs: number) {
     remainingMs: delayMs,
     title: COOLDOWN_NOTIFICATION_TITLE,
     body: COOLDOWN_NOTIFICATION_BODY,
-    path: "/feed",
+    path: APP_ROUTES.feed,
   });
   if (message) postNativeMessage(message);
 }
@@ -71,7 +72,7 @@ async function showCooldownNotification() {
       body: COOLDOWN_NOTIFICATION_BODY,
       icon: "/favicon.svg",
       badge: "/favicon.svg",
-      data: { url: "/feed" },
+      data: { url: APP_ROUTES.feed },
     });
   } catch (e) {
     console.error("[cooldown] 알림 오류:", e);

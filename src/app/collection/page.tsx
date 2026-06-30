@@ -10,6 +10,7 @@ import {
   getAuthGateErrorMessage,
   type AuthGateState,
 } from "@/src/lib/authGateCore.mjs";
+import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
 import { getQuoteBackground } from "@/src/lib/quoteBackground";
 
 function formatRelativeDate(iso: string): string {
@@ -88,7 +89,7 @@ export default function CollectionPage() {
   const router = useRouter();
   const [authState, setAuthState] = useState<AuthGateState>({ status: "loading" });
   const [authAttempt, setAuthAttempt] = useState(0);
-  const { items, loading, error } = useUserCollection(
+  const { items, loading, error, retry: retryCollection } = useUserCollection(
     authState.status === "authenticated" ? authState.userId : null,
   );
 
@@ -112,7 +113,7 @@ export default function CollectionPage() {
 
         setAuthState(nextAuthState);
         if (nextAuthState.status === "redirecting") {
-          router.replace("/onboarding");
+          router.replace(APP_ROUTES.onboarding);
         }
       } catch (authError) {
         if (!active) return;
@@ -232,7 +233,7 @@ export default function CollectionPage() {
             <span className="text-4xl">😔</span>
             <p className="font-quote text-xl text-textMain">불러올 수 없어요</p>
             <button
-              onClick={() => window.location.reload()}
+              onClick={retryCollection}
               className="mt-2 px-5 py-2.5 rounded-xl text-white text-sm font-bold"
               style={{ background: "#e07a5f" }}
             >
@@ -251,7 +252,7 @@ export default function CollectionPage() {
               글귀를 읽다가 마음에 드는 게 있으면<br />오른쪽으로 스와이프해 보세요
             </p>
             <button
-              onClick={() => router.push("/feed")}
+              onClick={() => router.push(APP_ROUTES.feed)}
               className="mt-3 px-6 py-3 rounded-2xl text-white font-sans text-sm font-bold tracking-wider shadow-lg"
               style={{ background: "#e07a5f", boxShadow: "0 4px 16px rgba(224,122,95,0.3)" }}
             >
@@ -273,7 +274,7 @@ export default function CollectionPage() {
                 더 많은 글귀와<br />만나보세요
               </p>
               <button
-                onClick={() => router.push("/feed")}
+                onClick={() => router.push(APP_ROUTES.feed)}
                 className="px-6 py-3 rounded-2xl text-white font-sans text-sm font-bold tracking-wider shadow-lg"
                 style={{ background: "#e07a5f", boxShadow: "0 4px 16px rgba(224,122,95,0.3)" }}
               >
