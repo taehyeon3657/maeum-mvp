@@ -56,7 +56,8 @@ export async function generateShareImage(options: GenerateOptions): Promise<Blob
       const scale = Math.max(SIZE / img.naturalWidth, SIZE / img.naturalHeight);
       const w = img.naturalWidth * scale;
       const h = img.naturalHeight * scale;
-      ctx.drawImage(img, (SIZE - w) / 2, (SIZE - h) / 2, w, h);
+      // 하단 고정: 인물이 있는 하단이 잘리지 않고 상단이 크롭됨
+      ctx.drawImage(img, (SIZE - w) / 2, SIZE - h, w, h);
       hasImg = true;
     } catch {
       // fallback to gradient
