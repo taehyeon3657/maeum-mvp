@@ -2,6 +2,11 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/src/lib/supabase";
+import {
+  dedupeQuotesById,
+  mergeSeenQuoteIds,
+  parseSeenQuoteIds,
+} from "@/src/lib/feedQuotesCore.mjs";
 import type { Quote } from "@/src/models/feed";
 
 const SESSION_LIMIT = 8;
@@ -21,7 +26,7 @@ function getSeenIds(userId: string): string[] {
   if (typeof window === "undefined") return [];
   try {
     const raw = localStorage.getItem(`maeum_seen_quotes_${userId}`);
-    return raw ? JSON.parse(raw) : [];
+    return parseSeenQuoteIds(raw);
   } catch {
     return [];
   }
@@ -30,10 +35,10 @@ function getSeenIds(userId: string): string[] {
 function addSeenIds(userId: string, newIds: string[]) {
   if (typeof window === "undefined") return;
   const current = getSeenIds(userId);
-  const merged = [...current, ...newIds];
+  const merged = mergeSeenQuoteIds(current, newIds, MAX_SEEN);
   localStorage.setItem(
     `maeum_seen_quotes_${userId}`,
-    JSON.stringify(merged.slice(-MAX_SEEN)),
+    JSON.stringify(merged),
   );
 }
 
@@ -71,17 +76,19 @@ export function useFeedQuotes(userId: string, skip = false) {
         return;
       }
 
-      if (data && data.length > 0) {
+      const quotes = dedupeQuotesById((data ?? []) as Quote[]);
+
+      if (quotes.length > 0) {
         addSeenIds(
           userId,
-          data.map((q: Quote) => q.id),
+          quotes.map((q) => q.id),
         );
-        setQuoteState({ key: requestKey, status: "success", quotes: data });
+        setQuoteState({ key: requestKey, status: "success", quotes });
         return;
       }
 
       // seen 목록에 모든 문구가 들어간 경우 → 초기화 후 재시도
-      if (data?.length === 0 && excludeIds.length > 0) {
+      if (quotes.length === 0 && excludeIds.length > 0) {
         localStorage.removeItem(`maeum_seen_quotes_${userId}`);
         const { data: freshData, error: freshError } = await supabase.rpc(
           "get_random_quotes",
@@ -90,18 +97,21 @@ export function useFeedQuotes(userId: string, skip = false) {
         if (cancelled) return;
         if (freshError) {
           setQuoteState({ key: requestKey, status: "error", quotes: [] });
-        } else if (freshData && freshData.length > 0) {
-          addSeenIds(
-            userId,
-            freshData.map((q: Quote) => q.id),
-          );
-          setQuoteState({
-            key: requestKey,
-            status: "success",
-            quotes: freshData,
-          });
         } else {
-          setQuoteState({ key: requestKey, status: "success", quotes: [] });
+          const freshQuotes = dedupeQuotesById((freshData ?? []) as Quote[]);
+          if (freshQuotes.length > 0) {
+            addSeenIds(
+              userId,
+              freshQuotes.map((q) => q.id),
+            );
+            setQuoteState({
+              key: requestKey,
+              status: "success",
+              quotes: freshQuotes,
+            });
+          } else {
+            setQuoteState({ key: requestKey, status: "success", quotes: [] });
+          }
         }
         return;
       }
