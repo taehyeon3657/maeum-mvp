@@ -97,6 +97,7 @@ export async function scheduleInactivityNotifications(
           data: { kind: INACTIVITY_NOTIFICATION_KIND, path },
         },
         trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
           channelId: INACTIVITY_CHANNEL_ID,
           seconds: Math.max(1, Math.ceil(stage.delayMs / 1000)),
         },

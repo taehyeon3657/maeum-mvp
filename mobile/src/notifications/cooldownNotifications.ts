@@ -69,6 +69,12 @@ export async function scheduleCooldownNotification({
   body = "1시간이 지났어요. 새로운 5개의 문장을 만나보세요.",
   path = "/feed",
 }: CooldownNotificationOptions) {
+  const seconds = Math.ceil(delayMs / 1000);
+  if (!Number.isFinite(seconds) || seconds <= 0) {
+    await cancelCooldownNotification();
+    return;
+  }
+
   await configureNotificationChannel();
   const hasPermission = await ensureNotificationPermission();
   if (!hasPermission) return;
@@ -83,8 +89,9 @@ export async function scheduleCooldownNotification({
       data: { kind: COOLDOWN_NOTIFICATION_KIND, path },
     },
     trigger: {
+      type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
       channelId: COOLDOWN_CHANNEL_ID,
-      seconds: Math.max(1, Math.ceil(delayMs / 1000)),
+      seconds,
     },
   });
 }

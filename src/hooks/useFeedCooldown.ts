@@ -113,7 +113,6 @@ export function useFeedCooldown() {
   const startCooldown = useCallback(() => {
     localStorage.setItem(COOLDOWN_KEY, JSON.stringify({ completedAt: Date.now() }));
     setRemainingMs(COOLDOWN_MS);
-    scheduleNativeCooldownNotification(COOLDOWN_MS);
   }, []);
 
   const clearCooldown = useCallback(() => {

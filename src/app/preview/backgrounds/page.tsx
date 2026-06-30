@@ -9,55 +9,138 @@
 // - 프로덕션 빌드에서는 노출되지 않도록 NODE_ENV 로 가드한다.
 // ─────────────────────────────────────────────────────────────
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createClient } from "@/src/lib/supabase";
 import type { Quote } from "@/src/models/feed";
 import QuoteCard from "@/src/components/feed/QuoteCard";
 import { getQuoteBackground } from "@/src/lib/quoteBackground";
+import { resolveQuoteImage } from "@/src/hooks/useQuoteImage";
+
+const PAGE_SIZE = 15;
+
+interface PreviewItem {
+  quote: Quote;
+  category: string;
+  motif: string;
+  imageUrl: string | null;
+}
 
 export default function BackgroundsPreviewPage() {
-  const [quotes, setQuotes] = useState<Quote[]>([]);
+  const [items, setItems] = useState<PreviewItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [totalCount, setTotalCount] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [q, setQ] = useState("");
   const [cat, setCat] = useState<string>("all");
   const [motif, setMotif] = useState<string>("all");
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const offsetRef = useRef(0);
+  const loadingRef = useRef(false);
+  const hasMoreRef = useRef(true);
+  const mountedRef = useRef(true);
 
-  useEffect(() => {
-    (async () => {
-      const supabase = createClient();
-      // 읽기 전용: 활성 문구 전체 조회 (DB 적재 없음)
-      const { data, error } = await supabase
-        .from("quotes")
-        .select("id, content, author, source, emotion_tags")
-        .eq("is_active", true)
-        .order("created_at", { ascending: true });
+  const loadNextPage = useCallback(async () => {
+    if (loadingRef.current || !hasMoreRef.current) return;
 
-      if (error) {
-        setError(error.message);
-      } else {
-        const normalized: Quote[] = (data ?? []).map((row) => ({
-          ...row,
-          emotion_tags:
-            typeof row.emotion_tags === "string"
-              ? safeParse(row.emotion_tags)
-              : row.emotion_tags ?? [],
-        })) as Quote[];
-        setQuotes(normalized);
-      }
+    const from = offsetRef.current;
+    const to = from + PAGE_SIZE - 1;
+    const isInitialLoad = from === 0;
+    loadingRef.current = true;
+
+    if (mountedRef.current) {
+      if (isInitialLoad) setLoading(true);
+      else setLoadingMore(true);
+    }
+
+    const supabase = createClient();
+    // 읽기 전용: 활성 문구를 15개씩 조회하고, 이미지 성공/실패 resolve 후 화면에 붙인다.
+    const { data, error, count } = await supabase
+      .from("quotes")
+      .select("id, content, author, source, emotion_tags, has_image", {
+        count: "exact",
+      })
+      .eq("is_active", true)
+      .order("has_image", { ascending: false })
+      .order("created_at", { ascending: true })
+      .order("id", { ascending: true })
+      .range(from, to);
+
+    if (!mountedRef.current) return;
+
+    if (error) {
+      setError(error.message);
       setLoading(false);
-    })();
+      setLoadingMore(false);
+      hasMoreRef.current = false;
+      setHasMore(false);
+      loadingRef.current = false;
+      return;
+    }
+
+    const normalized: Quote[] = (data ?? []).map((row) => ({
+      ...row,
+      emotion_tags:
+        typeof row.emotion_tags === "string"
+          ? safeParse(row.emotion_tags)
+          : row.emotion_tags ?? [],
+    })) as Quote[];
+
+    const resolvedItems = await Promise.all(
+      normalized.map(async (quote) => {
+        const bg = getQuoteBackground(quote);
+        const image = await resolveQuoteImage(quote);
+        return {
+          quote,
+          category: bg.category,
+          motif: bg.motif,
+          imageUrl: image.url,
+        };
+      }),
+    );
+
+    if (!mountedRef.current) return;
+
+    const nextOffset = from + normalized.length;
+    const nextHasMore =
+      normalized.length === PAGE_SIZE &&
+      (typeof count !== "number" || nextOffset < count);
+
+    setItems((current) => dedupePreviewItems([...current, ...resolvedItems]));
+    setTotalCount(count ?? null);
+    setError(null);
+    setLoading(false);
+    setLoadingMore(false);
+    setHasMore(nextHasMore);
+    offsetRef.current = nextOffset;
+    hasMoreRef.current = nextHasMore;
+    loadingRef.current = false;
   }, []);
 
-  // 메타(카테고리·모티프)는 배경 생성기에서 그대로 가져온다
-  const items = useMemo(
-    () =>
-      quotes.map((quote) => {
-        const bg = getQuoteBackground(quote);
-        return { quote, category: bg.category, motif: bg.motif };
-      }),
-    [quotes]
-  );
+  useEffect(() => {
+    mountedRef.current = true;
+    void loadNextPage();
+    return () => {
+      mountedRef.current = false;
+    };
+  }, [loadNextPage]);
+
+  useEffect(() => {
+    if (!hasMore) return;
+    const target = sentinelRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) void loadNextPage();
+      },
+      { rootMargin: "1200px 0px" },
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [hasMore, loadNextPage]);
 
   const categories = useMemo(
     () => ["all", ...uniqueSorted(items.map((i) => i.category))],
@@ -97,7 +180,11 @@ export default function BackgroundsPreviewPage() {
             배경 미리보기
           </h1>
           <span className="font-sans text-xs text-textMuted">
-            {loading ? "불러오는 중…" : `${filtered.length} / ${items.length}개`}
+            {loading && items.length === 0
+              ? "불러오는 중…"
+              : `${filtered.length} / ${items.length}개 로드${
+                  totalCount !== null ? ` (${totalCount}개 중)` : ""
+                }`}
           </span>
           <span className="font-sans text-[10px] text-primary/60 ml-auto tracking-wide">
             조회 전용 · DB 적재 없음
@@ -124,19 +211,47 @@ export default function BackgroundsPreviewPage() {
 
       {/* 피드와 동일 크기의 카드 — 한 화면에 하나씩, 스크롤로 넘김 */}
       <main>
-        {filtered.map(({ quote, category, motif }) => (
+        {loading && items.length === 0 && !error && (
+          <Centered>
+            <div className="flex flex-col items-center gap-4">
+              <div className="relative w-14 h-14">
+                <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping" />
+                <div className="absolute inset-3 rounded-full bg-primary/20" />
+              </div>
+              <p className="font-quote text-xl text-textMuted animate-pulse">
+                문구와 이미지를 준비하는 중...
+              </p>
+            </div>
+          </Centered>
+        )}
+
+        {filtered.map(({ quote, category, motif, imageUrl }) => (
           <FeedFrame
             key={quote.id}
             quote={quote}
             category={category}
             motif={motif}
+            imageUrl={imageUrl}
           />
         ))}
 
-        {!loading && !error && filtered.length === 0 && (
+        {!loading && !loadingMore && !error && filtered.length === 0 && (
           <p className="text-center font-sans text-sm text-textMuted py-20">
             조건에 맞는 문구가 없어요.
           </p>
+        )}
+
+        {hasMore && (
+          <div
+            ref={sentinelRef}
+            className="flex items-center justify-center py-10"
+          >
+            {loadingMore && (
+              <p className="font-sans text-xs text-textMuted">
+                다음 문구를 준비하는 중...
+              </p>
+            )}
+          </div>
         )}
       </main>
     </div>
@@ -150,10 +265,12 @@ function FeedFrame({
   quote,
   category,
   motif,
+  imageUrl,
 }: {
   quote: Quote;
   category: string;
   motif: string;
+  imageUrl: string | null;
 }) {
   return (
     <div className="h-dvh flex flex-col bg-background overflow-hidden relative">
@@ -179,7 +296,7 @@ function FeedFrame({
         <div className="flex-1 min-h-0 relative mx-4 mt-3 mb-2 overflow-hidden">
           {/* 피드의 SwipeCard(absolute inset-0)와 동일하게 채움 */}
           <div className="absolute inset-0">
-            <QuoteCard quote={quote} />
+            <QuoteCard quote={quote} imageUrl={imageUrl} />
           </div>
           {/* 메타 오버레이 (크기에 영향 없음) */}
           <div className="absolute top-2 left-2 z-20 flex items-center gap-2 px-2 py-0.5 rounded-full bg-black/35 backdrop-blur-sm pointer-events-none">
@@ -215,6 +332,15 @@ function safeParse(s: string): string[] {
 
 function uniqueSorted(arr: string[]): string[] {
   return [...new Set(arr)].sort();
+}
+
+function dedupePreviewItems(items: PreviewItem[]): PreviewItem[] {
+  const seen = new Set<string>();
+  return items.filter((item) => {
+    if (seen.has(item.quote.id)) return false;
+    seen.add(item.quote.id);
+    return true;
+  });
 }
 
 function Select({

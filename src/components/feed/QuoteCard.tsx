@@ -1,36 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import type { Quote } from "@/src/models/feed";
 import { getQuoteBackground } from "@/src/lib/quoteBackground";
-import { quoteImageUrl } from "@/src/lib/quoteImage";
 
 interface Props {
   quote: Quote;
+  imageUrl: string | null;
 }
 
-export default function QuoteCard({ quote }: Props) {
+export default function QuoteCard({ quote, imageUrl }: Props) {
   const bg = getQuoteBackground(quote);
-  const imgUrl = quoteImageUrl(quote.id);
-
-  // 이미지 표시 여부는 "실제 로드 성공/실패"로만 판단한다(self-healing).
-  //  - has_image 플래그는 피드 정렬(이미지 우선) 용도로만 쓰고, 렌더링은
-  //    여기서 건드리지 않는다. 플래그가 실제 파일 존재와 어긋나도(예: DB 갱신
-  //    누락) 화면에는 영향을 주지 않게 하기 위함.
-  //  - 로드 전·실패 시에는 기존 그라디언트 배경을 그대로 쓴다.
-  const [imgOk, setImgOk] = useState(false);
-  useEffect(() => {
-    setImgOk(false);
-    if (!imgUrl) return;
-    let alive = true;
-    const img = new window.Image();
-    img.onload = () => alive && setImgOk(true);
-    img.onerror = () => alive && setImgOk(false);
-    img.src = imgUrl;
-    return () => {
-      alive = false;
-    };
-  }, [imgUrl]);
+  const imgOk = imageUrl !== null;
 
   // 이미지 모드 색상 (어두운 스크림 위 밝은 텍스트)
   const textColor = imgOk ? "#ffffff" : bg.textColor;
@@ -40,7 +20,7 @@ export default function QuoteCard({ quote }: Props) {
 
   const rootStyle = imgOk
     ? {
-        backgroundImage: `url("${imgUrl}")`,
+        backgroundImage: `url("${imageUrl}")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -49,7 +29,7 @@ export default function QuoteCard({ quote }: Props) {
 
   return (
     <div
-      className="w-full h-full flex flex-col rounded-[28px] shadow-2xl shadow-primary/10 select-none overflow-hidden animate-scale-in"
+      className="relative w-full h-full flex flex-col rounded-[28px] shadow-2xl shadow-primary/10 select-none overflow-hidden animate-scale-in"
       style={rootStyle}
     >
       {/* 상단 포인트 라인 (이미지 모드에서는 생략) */}

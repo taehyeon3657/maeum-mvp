@@ -4,6 +4,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { useFeedQuotes } from "@/src/hooks/useFeedQuotes";
 import { useFeedCooldown } from "@/src/hooks/useFeedCooldown";
 import { useSessionContext } from "@/src/hooks/useSessionContext";
+import {
+  usePreloadQuoteImage,
+  useResolvedQuoteImage,
+} from "@/src/hooks/useQuoteImage";
 import { saveUserQuote } from "@/src/lib/userQuotes";
 import SwipeCard from "./SwipeCard";
 import QuoteCard from "./QuoteCard";
@@ -27,20 +31,28 @@ export default function FeedStack({ userId }: Props) {
   const { currentQuote, nextQuote, isLoading, hasError, isEmpty, isDepleted, quoteProgress, advance, reset } =
     useFeedQuotes(userId, isOnCooldown);
   const { markCardStart, getContextSnapshot } = useSessionContext();
+  const currentQuoteImage = useResolvedQuoteImage(currentQuote);
+  usePreloadQuoteImage(nextQuote);
+  const isCurrentQuoteVisualLoading =
+    tutorialDone && !!currentQuote && currentQuoteImage.status === "loading";
+  const isCurrentQuoteReady =
+    !!currentQuote && currentQuoteImage.status !== "loading";
 
   // 세션 시작 시각 (튜토리얼 완료 후 첫 카드 등장 시점)
   const sessionStartRef = useRef<number | null>(null);
   const [sessionDurationMs, setSessionDurationMs] = useState(0);
 
   useEffect(() => {
-    if (tutorialDone && currentQuote && sessionStartRef.current === null) {
+    if (tutorialDone && isCurrentQuoteReady && sessionStartRef.current === null) {
       sessionStartRef.current = Date.now();
     }
-  }, [tutorialDone, currentQuote]);
+  }, [tutorialDone, isCurrentQuoteReady, currentQuote?.id]);
 
   useEffect(() => {
-    markCardStart();
-  }, [tutorialDone, currentQuote?.id, markCardStart]);
+    if (tutorialDone && isCurrentQuoteReady) {
+      markCardStart();
+    }
+  }, [tutorialDone, currentQuote?.id, isCurrentQuoteReady, markCardStart]);
 
   const handleQuoteSwipe = async (direction: SwipeDirection) => {
     if (!currentQuote) return;
@@ -97,7 +109,7 @@ export default function FeedStack({ userId }: Props) {
     return <CooldownScreen remainingMs={remainingMs} onResume={handleResume} />;
   }
 
-  if (isLoading) {
+  if (isLoading || isCurrentQuoteVisualLoading) {
     return (
       <div className="flex-1 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
@@ -182,7 +194,7 @@ export default function FeedStack({ userId }: Props) {
           </SwipeCard>
         ) : currentQuote ? (
           <SwipeCard key={currentQuote.id} onSwipe={handleQuoteSwipe}>
-            <QuoteCard quote={currentQuote} />
+            <QuoteCard quote={currentQuote} imageUrl={currentQuoteImage.url} />
           </SwipeCard>
         ) : null}
       </div>
