@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "check": "pnpm lint && pnpm typecheck && pnpm --dir mobile typecheck && pnpm build"
+    "test:contracts": "node --test tests/*.test.mjs",
+    "check": "pnpm lint && pnpm typecheck && pnpm --dir mobile typecheck && pnpm test:contracts && pnpm build"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.2",

@@ -2,6 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { quoteImageUrl } from "@/src/lib/quoteImage";
+import {
+  getQuoteImageCandidateUrl,
+  getQuoteImageKey,
+  getQuoteImageResolutionFromCache,
+} from "@/src/lib/quoteImageResolution.mjs";
 import type { Quote } from "@/src/models/feed";
 
 export type QuoteImageResolution =
@@ -14,23 +19,17 @@ type CachedImageState = "loaded" | "failed" | Promise<"loaded" | "failed">;
 const imageCache = new Map<string, CachedImageState>();
 
 function candidateImageUrl(quote: Quote | null): string | null {
-  if (!quote || quote.has_image === false) return null;
-  return quoteImageUrl(quote.id);
+  return getQuoteImageCandidateUrl(quote, quoteImageUrl);
 }
 
 function imageKey(quote: Quote | null): string | null {
-  if (!quote) return null;
-  return `${quote.id}:${quote.has_image === false ? "no-image" : "maybe-image"}:${quoteImageUrl(quote.id) ?? "no-url"}`;
+  return getQuoteImageKey(quote, quoteImageUrl);
 }
 
 function cachedResolution(quote: Quote | null): QuoteImageResolution {
-  const url = candidateImageUrl(quote);
-  if (!url) return { status: "fallback", url: null };
-
-  const cached = imageCache.get(url);
-  if (cached === "loaded") return { status: "image", url };
-  if (cached === "failed") return { status: "fallback", url: null };
-  return { status: "loading", url: null };
+  return getQuoteImageResolutionFromCache(quote, quoteImageUrl, (url) =>
+    imageCache.get(url),
+  );
 }
 
 function loadImageUrl(url: string): Promise<boolean> {

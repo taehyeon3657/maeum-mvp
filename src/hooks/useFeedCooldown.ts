@@ -2,6 +2,10 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { isNativeApp } from "@/src/hooks/useFCM";
+import {
+  createCooldownNotificationMessage,
+  getCooldownRemainingMs,
+} from "@/src/lib/feedCooldownCore.mjs";
 
 const COOLDOWN_KEY = "maeum_feed_cooldown";
 const COOLDOWN_NOTIFICATION_TITLE = "새로운 글귀가 도착했어요!";
@@ -23,13 +27,17 @@ function getRemainingMs(): number {
   if (!raw) return 0;
   try {
     const { completedAt } = JSON.parse(raw);
-    return Math.max(0, COOLDOWN_MS - (Date.now() - completedAt));
+    return getCooldownRemainingMs({
+      completedAt,
+      now: Date.now(),
+      cooldownMs: COOLDOWN_MS,
+    });
   } catch {
     return 0;
   }
 }
 
-function postNativeMessage(message: Record<string, unknown>): boolean {
+function postNativeMessage(message: object): boolean {
   if (typeof window === "undefined" || !isNativeApp()) return false;
   const bridge = (window as NativeBridgeWindow).ReactNativeWebView;
   if (!bridge) return false;
@@ -39,13 +47,13 @@ function postNativeMessage(message: Record<string, unknown>): boolean {
 }
 
 function scheduleNativeCooldownNotification(delayMs: number) {
-  postNativeMessage({
-    type: "scheduleCooldownNotification",
-    delayMs,
+  const message = createCooldownNotificationMessage({
+    remainingMs: delayMs,
     title: COOLDOWN_NOTIFICATION_TITLE,
     body: COOLDOWN_NOTIFICATION_BODY,
     path: "/feed",
   });
+  if (message) postNativeMessage(message);
 }
 
 function cancelNativeCooldownNotification() {

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Platform } from "react-native";
 import * as Notifications from "expo-notifications";
+import { getCooldownNotificationTriggerSeconds } from "./cooldownNotificationCore.mjs";
 
 const COOLDOWN_NOTIFICATION_KIND = "feed-cooldown";
 const COOLDOWN_CHANNEL_ID = "maeum-cooldown";
@@ -69,8 +70,8 @@ export async function scheduleCooldownNotification({
   body = "1시간이 지났어요. 새로운 5개의 문장을 만나보세요.",
   path = "/feed",
 }: CooldownNotificationOptions) {
-  const seconds = Math.ceil(delayMs / 1000);
-  if (!Number.isFinite(seconds) || seconds <= 0) {
+  const seconds = getCooldownNotificationTriggerSeconds(delayMs);
+  if (seconds === null) {
     await cancelCooldownNotification();
     return;
   }
