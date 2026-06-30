@@ -8,6 +8,7 @@ import {
   usePreloadQuoteImage,
   useResolvedQuoteImage,
 } from "@/src/hooks/useQuoteImage";
+import { createSessionCompletionSnapshot } from "@/src/lib/feedSessionCore.mjs";
 import { saveUserQuote } from "@/src/lib/userQuotes";
 import SwipeCard from "./SwipeCard";
 import QuoteCard from "./QuoteCard";
@@ -20,11 +21,22 @@ interface Props {
   userId: string;
 }
 
+const SAVE_FLUSH_TIMEOUT_MS = 3_000;
+
+function wait(ms: number): Promise<void> {
+  return new Promise((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
+}
+
 export default function FeedStack({ userId }: Props) {
   const [tutorialDone, setTutorialDone] = useState(false);
   const [showShare, setShowShare] = useState(false);
+  const [isFinishingSession, setIsFinishingSession] = useState(false);
   // 카드별 체류시간 추적 { quote, durationMs }
   const readQuotesRef = useRef<{ quote: Quote; durationMs: number }[]>([]);
+  const pendingSavesRef = useRef<Promise<void>[]>([]);
+  const mountedRef = useRef(true);
   const [shareQuote, setShareQuote] = useState<Quote | null>(null);
 
   const { isOnCooldown, remainingMs, startCooldown, clearCooldown } = useFeedCooldown();
@@ -43,6 +55,13 @@ export default function FeedStack({ userId }: Props) {
   const [sessionDurationMs, setSessionDurationMs] = useState(0);
 
   useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
+
+  useEffect(() => {
     if (tutorialDone && isCurrentQuoteReady && sessionStartRef.current === null) {
       sessionStartRef.current = Date.now();
     }
@@ -54,29 +73,63 @@ export default function FeedStack({ userId }: Props) {
     }
   }, [tutorialDone, currentQuote?.id, isCurrentQuoteReady, markCardStart]);
 
-  const handleQuoteSwipe = async (direction: SwipeDirection) => {
+  const enqueueQuoteSave = (payload: Parameters<typeof saveUserQuote>[0]) => {
+    const savePromise = saveUserQuote(payload);
+    pendingSavesRef.current = [...pendingSavesRef.current, savePromise];
+    void savePromise.finally(() => {
+      pendingSavesRef.current = pendingSavesRef.current.filter(
+        (pending) => pending !== savePromise,
+      );
+    });
+    return savePromise;
+  };
+
+  const flushPendingSaves = async () => {
+    const pending = [...pendingSavesRef.current];
+    if (pending.length === 0) return;
+
+    await Promise.race([
+      Promise.allSettled(pending),
+      wait(SAVE_FLUSH_TIMEOUT_MS),
+    ]);
+  };
+
+  const completeSession = async () => {
+    setIsFinishingSession(true);
+    await flushPendingSaves();
+    if (!mountedRef.current) return;
+
+    const snapshot = createSessionCompletionSnapshot({
+      readQuotes: readQuotesRef.current,
+      startedAt: sessionStartRef.current,
+      now: Date.now(),
+    });
+    setSessionDurationMs(snapshot.durationMs);
+    setShareQuote(snapshot.shareQuote);
+    startCooldown();
+    setShowShare(true);
+    setIsFinishingSession(false);
+  };
+
+  const handleQuoteSwipe = (direction: SwipeDirection) => {
     if (!currentQuote) return;
     const ctx = getContextSnapshot();
     const isLastCard = quoteProgress.current === quoteProgress.total - 1;
-    saveUserQuote({ user_id: userId, quote_id: currentQuote.id, action: direction, ...ctx });
+    enqueueQuoteSave({ user_id: userId, quote_id: currentQuote.id, action: direction, ...ctx });
     // 모든 카드의 체류시간 기록 (좋아요 여부 무관)
     readQuotesRef.current.push({ quote: currentQuote, durationMs: ctx.read_duration_ms });
     advance();
     if (isLastCard) {
-      const elapsed = sessionStartRef.current ? Date.now() - sessionStartRef.current : 0;
-      setSessionDurationMs(elapsed);
-      // 체류시간이 가장 길었던 글귀 선택
-      const longest = readQuotesRef.current.reduce((a, b) => (b.durationMs > a.durationMs ? b : a));
-      setShareQuote(longest.quote);
-      startCooldown();
-      setShowShare(true);
+      void completeSession();
     }
   };
 
   const handleShareContinue = () => {
     setShowShare(false);
+    setIsFinishingSession(false);
     setShareQuote(null);
     readQuotesRef.current = [];
+    pendingSavesRef.current = [];
     sessionStartRef.current = null;
   };
 
@@ -100,6 +153,22 @@ export default function FeedStack({ userId }: Props) {
             onContinue={handleShareContinue}
             shareQuote={shareQuote}
           />
+        </div>
+      </div>
+    );
+  }
+
+  if (isFinishingSession) {
+    return (
+      <div className="flex-1 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="relative w-16 h-16">
+            <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping" />
+            <div className="absolute inset-2 rounded-full bg-primary/10" />
+          </div>
+          <p className="font-quote text-xl text-textMuted animate-pulse">
+            기록을 정리하는 중...
+          </p>
         </div>
       </div>
     );
