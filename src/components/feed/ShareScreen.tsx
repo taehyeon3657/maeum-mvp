@@ -4,6 +4,7 @@ import { useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import type { Quote } from "@/src/models/feed";
 import { generateShareImage, shareImage } from "@/src/lib/generateShareImage";
+import { quoteImageUrl } from "@/src/lib/quoteImage";
 import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
 
 interface Props {
@@ -55,11 +56,13 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
     setImageState("loading");
     try {
       const idSum = [...shareQuote.id].reduce((a, c) => a + c.charCodeAt(0), 0);
+      const imageUrl = shareQuote.has_image ? quoteImageUrl(shareQuote.id) : null;
       const blob = await generateShareImage({
         content: shareQuote.content,
         author: shareQuote.author,
         source: shareQuote.source,
         gradientIndex: idSum,
+        imageUrl,
       });
       await shareImage(blob, shareQuote);
       setImageState("done");
