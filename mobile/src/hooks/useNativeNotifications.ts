@@ -84,7 +84,7 @@ export function useNativeNotifications(
 }
 
 export function registerBackgroundHandler() {
-  messaging().setBackgroundMessageHandler(async (_remoteMessage) => {
+  messaging().setBackgroundMessageHandler(async () => {
     // 시스템이 자동으로 알림을 표시하므로 별도 처리 불필요
   });
 }

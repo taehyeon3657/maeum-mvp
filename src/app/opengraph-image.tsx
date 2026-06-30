@@ -209,7 +209,7 @@ export default async function Image() {
                 display: "flex",
               }}
             >
-              "
+              &quot;
             </div>
 
             {/* Quote text — each line is a separate span */}

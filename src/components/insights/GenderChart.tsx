@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer,
+  PieChart, Pie, Cell, Tooltip, ResponsiveContainer,
 } from "recharts";
 import type { GenderRow, TopQuote } from "@/src/hooks/useInsights";
 import TopQuoteCard from "./TopQuoteCard";

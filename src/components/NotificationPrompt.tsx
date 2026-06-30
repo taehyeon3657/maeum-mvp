@@ -1,31 +1,66 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { useFCM } from "@/src/hooks/useFCM";
 
+const PROMPT_DISMISSED_KEY = "fcm-prompt-dismissed";
+const PROMPT_DISMISSED_EVENT = "maeum:fcm-prompt-dismissed";
+
+function subscribeToBrowserReady(onStoreChange: () => void) {
+  if (typeof window === "undefined") return () => {};
+
+  const timeoutId = window.setTimeout(onStoreChange, 0);
+  return () => window.clearTimeout(timeoutId);
+}
+
+function getDeviceFlags() {
+  if (typeof window === "undefined") return 0;
+
+  const ua = window.navigator.userAgent;
+  const isIOS = /iPad|iPhone|iPod/.test(ua);
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    (window.navigator as unknown as { standalone?: boolean }).standalone === true;
+  const inApp =
+    /KAKAOTALK/i.test(ua) ||
+    /Instagram/i.test(ua) ||
+    /FBAN|FBAV/i.test(ua) ||
+    /; wv\)/.test(ua);
+
+  return (isIOS && !isStandalone ? 1 : 0) | (inApp ? 2 : 0);
+}
+
 function useDeviceState() {
-  const [isIOSNonPWA, setIsIOSNonPWA] = useState(false);
-  const [isInAppBrowser, setIsInAppBrowser] = useState(false);
+  const deviceFlags = useSyncExternalStore(subscribeToBrowserReady, getDeviceFlags, () => 0);
+  return {
+    isIOSNonPWA: (deviceFlags & 1) !== 0,
+    isInAppBrowser: (deviceFlags & 2) !== 0,
+  };
+}
 
-  useEffect(() => {
-    const ua = navigator.userAgent;
+function getPromptDismissedSnapshot() {
+  if (typeof window === "undefined") return false;
 
-    const isIOS = /iPad|iPhone|iPod/.test(ua);
-    const isStandalone =
-      window.matchMedia("(display-mode: standalone)").matches ||
-      (window.navigator as unknown as { standalone?: boolean }).standalone === true;
-    setIsIOSNonPWA(isIOS && !isStandalone);
+  try {
+    return window.localStorage.getItem(PROMPT_DISMISSED_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
 
-    // 카카오톡·인스타·페북 등 인앱 브라우저 감지 (Android WebView 포함)
-    const inApp =
-      /KAKAOTALK/i.test(ua) ||
-      /Instagram/i.test(ua) ||
-      /FBAN|FBAV/i.test(ua) ||
-      /; wv\)/.test(ua); // Android Chrome WebView 공통 마커
-    setIsInAppBrowser(inApp);
-  }, []);
+function subscribeToPromptDismissed(onStoreChange: () => void) {
+  if (typeof window === "undefined") return () => {};
 
-  return { isIOSNonPWA, isInAppBrowser };
+  const timeoutId = window.setTimeout(onStoreChange, 0);
+  const handleChange = () => onStoreChange();
+  window.addEventListener("storage", handleChange);
+  window.addEventListener(PROMPT_DISMISSED_EVENT, handleChange);
+
+  return () => {
+    window.clearTimeout(timeoutId);
+    window.removeEventListener("storage", handleChange);
+    window.removeEventListener(PROMPT_DISMISSED_EVENT, handleChange);
+  };
 }
 
 function openInExternalBrowser() {
@@ -38,17 +73,15 @@ function openInExternalBrowser() {
 export default function NotificationPrompt() {
   const { permission, requestPermission, supported } = useFCM();
   const { isIOSNonPWA, isInAppBrowser } = useDeviceState();
-  const [dismissed, setDismissed] = useState(false);
-
-  useEffect(() => {
-    if (localStorage.getItem("fcm-prompt-dismissed") === "1") {
-      setDismissed(true);
-    }
-  }, []);
+  const dismissed = useSyncExternalStore(
+    subscribeToPromptDismissed,
+    getPromptDismissedSnapshot,
+    () => false
+  );
 
   const dismiss = () => {
-    localStorage.setItem("fcm-prompt-dismissed", "1");
-    setDismissed(true);
+    window.localStorage.setItem(PROMPT_DISMISSED_KEY, "1");
+    window.dispatchEvent(new Event(PROMPT_DISMISSED_EVENT));
   };
 
   if (dismissed) return null;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore } from "react";
 import type { Quote } from "@/src/models/feed";
 import { generateShareImage, shareImage } from "@/src/lib/generateShareImage";
 
@@ -20,15 +20,32 @@ function formatDuration(ms: number): string {
   return "잠깐";
 }
 
+function subscribeToBrowserReady(onStoreChange: () => void) {
+  if (typeof window === "undefined") return () => {};
+
+  const timeoutId = window.setTimeout(onStoreChange, 0);
+  return () => window.clearTimeout(timeoutId);
+}
+
+function getBrowserOrigin() {
+  if (typeof window === "undefined") return "";
+  return window.location.origin;
+}
+
+function getNativeShareSupport() {
+  return typeof navigator !== "undefined" && typeof navigator.share === "function";
+}
+
 export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote }: Props) {
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
   const [shareState, setShareState] = useState<"idle" | "done">("idle");
   const [imageState, setImageState] = useState<"idle" | "loading" | "done" | "error">("idle");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const shareUrl = useSyncExternalStore(subscribeToBrowserReady, getBrowserOrigin, () => "");
+  const canNativeShare = useSyncExternalStore(
+    subscribeToBrowserReady,
+    getNativeShareSupport,
+    () => false
+  );
 
   const handleImageShare = async () => {
     if (!shareQuote || imageState === "loading") return;
@@ -49,14 +66,8 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
     }
   };
 
-  const shareUrl = mounted ? window.location.origin : "";
   const shareText = "오늘 마음에서 10개의 글귀를 만났어요 ✨\n글귀 한 장으로 마음을 채워보세요.";
   const shareTitle = "마음 — 글귀 한 장으로 마음을 채워요";
-
-  const canNativeShare =
-    mounted &&
-    typeof navigator !== "undefined" &&
-    typeof navigator.share === "function";
 
   const handleNativeShare = async () => {
     if (!canNativeShare) return;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const QUOTES = [
   { text: "흘러가는 것들을 붙잡으려 하지 마세요.", author: "릴케" },
@@ -11,25 +11,28 @@ const QUOTES = [
 ];
 
 export default function QuoteCarousel() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [display, setDisplay] = useState(QUOTES[0]);
+  const [displayIndex, setDisplayIndex] = useState(0);
   const [exiting, setExiting] = useState(false);
+  const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % QUOTES.length);
+      setExiting(true);
+      transitionTimeoutRef.current = setTimeout(() => {
+        setDisplayIndex((prev) => (prev + 1) % QUOTES.length);
+        setExiting(false);
+      }, 400);
     }, 3800);
-    return () => clearInterval(interval);
+
+    return () => {
+      clearInterval(interval);
+      if (transitionTimeoutRef.current) {
+        clearTimeout(transitionTimeoutRef.current);
+      }
+    };
   }, []);
 
-  useEffect(() => {
-    setExiting(true);
-    const t = setTimeout(() => {
-      setDisplay(QUOTES[activeIndex]);
-      setExiting(false);
-    }, 400);
-    return () => clearTimeout(t);
-  }, [activeIndex]);
+  const display = QUOTES[displayIndex];
 
   return (
     <div className="quote-card">
@@ -38,7 +41,7 @@ export default function QuoteCarousel() {
       <p className="quote-author">— {display.author}</p>
       <div className="quote-dots">
         {QUOTES.map((_, i) => (
-          <div key={i} className={`dot ${i === activeIndex ? "active" : ""}`} />
+          <div key={i} className={`dot ${i === displayIndex ? "active" : ""}`} />
         ))}
       </div>
     </div>

@@ -47,15 +47,17 @@ export async function updateLastActive() {
     .eq("id", user.id);
 }
 
+function getInitialPermission(): NotificationPermission {
+  if (typeof Notification === "undefined") return "default";
+  return Notification.permission;
+}
+
 export function useFCM() {
   const [token, setToken] = useState<string | null>(null);
-  const [permission, setPermission] = useState<NotificationPermission>("default");
+  const [permission, setPermission] = useState<NotificationPermission>(getInitialPermission);
   const [supported, setSupported] = useState<boolean | null>(null);
 
   useEffect(() => {
-    if (typeof Notification !== "undefined") {
-      setPermission(Notification.permission);
-    }
     isSupported().then(setSupported).catch(() => setSupported(false));
   }, []);
 
