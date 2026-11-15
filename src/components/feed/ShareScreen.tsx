@@ -178,10 +178,10 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
             style={{
               background:
                 imageState === "done"
-                  ? "#E07A5F"
+                  ? "var(--color-brand-start)"
                   : "linear-gradient(135deg, rgba(224,122,95,0.12) 0%, rgba(244,162,97,0.12) 100%)",
               border: "1.5px solid rgba(224,122,95,0.3)",
-              color: imageState === "done" ? "white" : "#E07A5F",
+              color: imageState === "done" ? "white" : "var(--color-brand-start)",
             }}
           >
             <span className="text-lg">
@@ -227,8 +227,8 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
             className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl border transition-all active:scale-[0.97]"
             style={{
               background: copyState === "copied" ? "rgba(224,122,95,0.1)" : "white",
-              borderColor: copyState === "copied" ? "#E07A5F" : "rgba(224,122,95,0.2)",
-              color: copyState === "copied" ? "#E07A5F" : "#868e96",
+              borderColor: copyState === "copied" ? "var(--color-brand-start)" : "rgba(224,122,95,0.2)",
+              color: copyState === "copied" ? "var(--color-brand-start)" : "#868e96",
             }}
           >
             <span className="text-base">
@@ -245,8 +245,8 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
               onClick={handleNativeShare}
               className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl transition-all active:scale-[0.97]"
               style={{
-                background: shareState === "done" ? "#E07A5F" : "rgba(224,122,95,0.08)",
-                color: shareState === "done" ? "white" : "#E07A5F",
+                background: shareState === "done" ? "var(--color-brand-start)" : "rgba(224,122,95,0.08)",
+                color: shareState === "done" ? "white" : "var(--color-brand-start)",
               }}
             >
               <span className="text-base">{shareState === "done" ? "✓" : "↗"}</span>
@@ -267,8 +267,8 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
               }}
               className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl transition-all active:scale-[0.97]"
               style={{
-                background: shareState === "done" ? "#E07A5F" : "rgba(224,122,95,0.08)",
-                color: shareState === "done" ? "white" : "#E07A5F",
+                background: shareState === "done" ? "var(--color-brand-start)" : "rgba(224,122,95,0.08)",
+                color: shareState === "done" ? "white" : "var(--color-brand-start)",
               }}
             >
               <span className="text-base">{shareState === "done" ? "✓" : "📋"}</span>
@@ -326,7 +326,7 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
       {/* 계속하기 버튼 */}
       <button
         onClick={onContinue}
-        className="w-full py-4 rounded-2xl bg-primary text-white font-sans text-sm font-semibold tracking-widest shadow-lg shadow-primary/20 hover:opacity-90 active:scale-[0.97] transition-all"
+        className="brand-fill w-full py-4"
       >
         잠시 쉬어갈게요 🌙
       </button>

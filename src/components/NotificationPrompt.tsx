@@ -101,7 +101,7 @@ export default function NotificationPrompt() {
           <div className="flex gap-2">
             <button
               onClick={openInExternalBrowser}
-              className="flex-1 bg-primary text-white text-sm font-bold py-2 rounded-xl"
+              className="brand-fill flex-1 py-2"
             >
               브라우저로 열기
             </button>
@@ -144,15 +144,15 @@ export default function NotificationPrompt() {
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-sm">
-      <div className="bg-white rounded-2xl shadow-lg px-5 py-4 flex flex-col gap-3">
+      <div className="bg-white rounded-2xl px-5 py-4 flex flex-col gap-3" style={{ boxShadow: "var(--shadow-popover)" }}>
         <div>
-          <p className="font-bold text-sm text-textMain">오늘의 글귀 알림 받기</p>
-          <p className="text-xs text-gray-500 mt-0.5">매일 딱 한 번, 마음을 울리는 글귀를 보내드려요</p>
+          <p className="font-bold text-sm" style={{ color: "var(--color-text-primary)" }}>오늘의 글귀 알림 받기</p>
+          <p className="text-sm mt-0.5" style={{ color: "var(--color-text-secondary)" }}>매일 딱 한 번, 마음을 울리는 글귀를 보내드려요</p>
         </div>
         <div className="flex gap-2">
           <button
             onClick={requestPermission}
-            className="flex-1 bg-primary text-white text-sm font-bold py-2 rounded-xl"
+            className="brand-fill flex-1 py-2"
           >
             허용하기
           </button>

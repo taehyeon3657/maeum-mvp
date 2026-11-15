@@ -19,26 +19,25 @@ export default function InsightsPage() {
       style={{ background: "var(--color-background)" }}
     >
       {/* 헤더 */}
-      <header className="sticky top-0 z-20 flex items-center justify-between px-5 py-4"
-        style={{ background: "rgba(255,254,252,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(224,122,95,0.08)" }}>
+      <header className="app-topbar sticky top-0 z-20"
+        style={{ borderBottom: "1px solid rgba(253,38,122,0.08)" }}>
         <div className="flex items-center gap-2">
           <button
             onClick={() => router.back()}
-            className="w-8 h-8 rounded-full flex items-center justify-center"
-            style={{ background: "rgba(224,122,95,0.08)" }}
+            className="app-icon-btn"
             aria-label="뒤로가기"
           >
-            <span className="text-sm text-primary">←</span>
+            <span className="text-base text-textMain">←</span>
           </button>
           <span className="font-quote text-base font-extrabold text-textMain tracking-tight">마음 인사이트</span>
         </div>
-        <span className="font-sans text-[11px] text-textMuted/70 tracking-widest">INSIGHTS ✦</span>
+        <span className="match-badge">실시간</span>
       </header>
 
       {/* 히어로 배너 */}
       <div className="px-5 pt-6 pb-4">
         <div className="rounded-3xl overflow-hidden px-6 py-5 relative"
-          style={{ background: "linear-gradient(135deg, #e07a5f 0%, #f4a261 60%, #2d6a4f 100%)" }}>
+          style={{ background: "var(--gradient-brand-button)" }}>
           <div className="absolute inset-0 opacity-10"
             style={{ backgroundImage: "radial-gradient(circle at 80% 20%, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
           <p className="font-quote text-white text-[1.4rem] font-extrabold leading-snug mb-1 relative">
@@ -75,8 +74,7 @@ export default function InsightsPage() {
             <p className="font-sans text-sm text-textMuted">{error}</p>
             <button
               onClick={retry}
-              className="mt-2 px-5 py-2.5 rounded-xl text-white text-sm font-bold"
-              style={{ background: "#e07a5f" }}
+              className="brand-fill mt-2 px-5 py-2.5"
             >
               다시 시도
             </button>
@@ -124,8 +122,7 @@ export default function InsightsPage() {
               </p>
               <button
                 onClick={() => router.push(APP_ROUTES.feed)}
-                className="px-6 py-3 rounded-2xl text-white font-sans text-sm font-bold tracking-wider shadow-lg"
-                style={{ background: "#e07a5f", boxShadow: "0 4px 16px rgba(224,122,95,0.3)" }}
+                className="brand-fill px-6 py-3"
               >
                 오늘의 글귀 보러 가기
               </button>

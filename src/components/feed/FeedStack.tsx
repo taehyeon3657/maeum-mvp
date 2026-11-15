@@ -10,11 +10,13 @@ import {
 } from "@/src/hooks/useQuoteImage";
 import { createSessionCompletionSnapshot } from "@/src/lib/feedSessionCore.mjs";
 import { saveUserQuote } from "@/src/lib/userQuotes";
-import SwipeCard from "./SwipeCard";
+import SwipeCard, { type SwipeCardHandle } from "./SwipeCard";
 import QuoteCard from "./QuoteCard";
 import TutorialCard from "./TutorialCard";
 import CooldownScreen from "./CooldownScreen";
 import ShareScreen from "./ShareScreen";
+import FeedActionBar from "./FeedActionBar";
+import type { SwipeCommand } from "@/src/hooks/useSwipe";
 import type { Quote, SwipeDirection } from "@/src/models/feed";
 
 interface Props {
@@ -38,6 +40,8 @@ export default function FeedStack({ userId }: Props) {
   const pendingSavesRef = useRef<Promise<void>[]>([]);
   const mountedRef = useRef(true);
   const [shareQuote, setShareQuote] = useState<Quote | null>(null);
+  const [actionsLocked, setActionsLocked] = useState(false);
+  const cardRef = useRef<SwipeCardHandle>(null);
 
   const { isOnCooldown, remainingMs, startCooldown, clearCooldown } = useFeedCooldown();
   const { currentQuote, nextQuote, isLoading, hasError, isEmpty, isDepleted, quoteProgress, advance, reset } =
@@ -72,6 +76,10 @@ export default function FeedStack({ userId }: Props) {
       markCardStart();
     }
   }, [tutorialDone, currentQuote?.id, isCurrentQuoteReady, markCardStart]);
+
+  useEffect(() => {
+    setActionsLocked(false);
+  }, [tutorialDone, currentQuote?.id]);
 
   const enqueueQuoteSave = (payload: Parameters<typeof saveUserQuote>[0]) => {
     const savePromise = saveUserQuote(payload);
@@ -109,6 +117,12 @@ export default function FeedStack({ userId }: Props) {
     startCooldown();
     setShowShare(true);
     setIsFinishingSession(false);
+  };
+
+  const triggerSwipe = (command: SwipeCommand) => {
+    if (actionsLocked) return;
+    setActionsLocked(true);
+    cardRef.current?.swipe(command);
   };
 
   const handleQuoteSwipe = (direction: SwipeDirection) => {
@@ -201,7 +215,7 @@ export default function FeedStack({ userId }: Props) {
         <p className="font-sans text-sm text-textMuted">글귀를 불러오지 못했어요.</p>
         <button
           onClick={reset}
-          className="mt-2 px-6 py-3 rounded-2xl bg-primary text-white font-sans text-sm font-semibold shadow-lg shadow-primary/25 hover:opacity-90 active:scale-[0.98] transition-all"
+          className="brand-fill mt-2 px-6 py-3"
         >
           다시 시도하기
         </button>
@@ -239,56 +253,52 @@ export default function FeedStack({ userId }: Props) {
 
   return (
     <div className="flex-1 min-h-0 flex flex-col overflow-x-hidden">
-      {/* 카드 스택 영역 */}
-      <div className="flex-1 min-h-0 relative mx-4 mt-3 mb-2 overflow-hidden">
-        {/* 세 번째 배경 카드 */}
+      <div className="feed-stage">
         {hasBackCard && (
           <div
-            className="absolute inset-0 rounded-[28px] bg-warm/60 border border-primary/8"
+            className="feed-back-card absolute inset-0 rounded-[var(--radius-card)] bg-warm/60 border border-primary/8"
             style={{ transform: "scale(0.90) translateY(22px)", zIndex: 0, opacity: 0.5 }}
           />
         )}
-        {/* 두 번째 배경 카드 */}
         {hasBackCard && (
           <div
-            className="absolute inset-0 rounded-[28px] bg-warm/80 border border-primary/10 shadow-sm"
-            style={{ transform: "scale(0.95) translateY(11px)", zIndex: 1 }}
+            className="feed-back-card absolute inset-0 rounded-[var(--radius-card)] bg-warm/80 border border-primary/10"
+            style={{ transform: "scale(0.95) translateY(11px)", zIndex: 1, boxShadow: "var(--shadow-rest)" }}
           />
         )}
 
-        {/* 앞 카드 */}
         {!tutorialDone ? (
-          <SwipeCard key="tutorial" onSwipe={() => setTutorialDone(true)}>
+          <SwipeCard ref={cardRef} key="tutorial" onSwipe={() => setTutorialDone(true)}>
             <TutorialCard />
           </SwipeCard>
         ) : currentQuote ? (
-          <SwipeCard key={currentQuote.id} onSwipe={handleQuoteSwipe}>
+          <SwipeCard ref={cardRef} key={currentQuote.id} onSwipe={handleQuoteSwipe}>
             <QuoteCard quote={currentQuote} imageUrl={currentQuoteImage.url} />
           </SwipeCard>
         ) : null}
       </div>
 
-      {/* 진행 도트 인디케이터 */}
       {tutorialDone && quoteProgress.total > 0 && (
-        <div className="flex-none flex items-center justify-center gap-[6px] py-4">
+        <div className="flex-none flex items-center justify-center gap-[6px] pt-2">
           {Array.from({ length: quoteProgress.total }).map((_, i) => (
             <div
               key={i}
               className="h-[5px] rounded-full transition-all duration-400"
               style={{
                 width: i === quoteProgress.current ? "20px" : "5px",
-                backgroundColor:
-                  i < quoteProgress.current
-                    ? "rgba(224,122,95,0.5)"
-                    : i === quoteProgress.current
-                    ? "#E07A5F"
-                    : "rgba(224,122,95,0.15)",
+                background:
+                  i === quoteProgress.current
+                    ? "var(--gradient-brand)"
+                    : i < quoteProgress.current
+                    ? "rgba(253, 38, 122, 0.45)"
+                    : "rgba(253, 38, 122, 0.16)",
               }}
             />
           ))}
         </div>
       )}
-      {!tutorialDone && <div className="flex-none py-4" />}
+
+      <FeedActionBar disabled={actionsLocked} onAction={triggerSwipe} />
     </div>
   );
 }

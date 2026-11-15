@@ -68,7 +68,7 @@
 .logo-mark { display: flex; align-items: center; gap: 10px; }
 .logo-icon {
   width: 34px; height: 34px;
-  background: linear-gradient(145deg, #f0856a 0%, #c85a3e 100%);
+  background: var(--gradient-brand-emphasis);
   border-radius: 10px; display: flex; align-items: center; justify-content: center;
 }
 .logo-text {
@@ -77,10 +77,12 @@
   color: var(--ink); letter-spacing: 0.04em;
 }
 .header-badge {
-  background: rgba(255,255,255,0.7); backdrop-filter: blur(8px);
-  border: 1px solid var(--border); border-radius: 20px;
-  padding: 6px 14px; font-size: 11px; color: var(--muted);
-  letter-spacing: 0.08em; font-family: var(--nsr); font-weight: 400;
+  height: 22px; padding: 0 8px;
+  background: var(--gradient-brand-emphasis);
+  border: none; border-radius: var(--radius-pill);
+  font-size: 0.6875rem; color: #fff;
+  letter-spacing: 0.06em; font-family: var(--nsr); font-weight: 700;
+  display: inline-flex; align-items: center;
 }
 
 /* ── 히어로 ── */
@@ -90,7 +92,7 @@
 }
 .eyebrow-line { width: 28px; height: 1.5px; background: var(--rust); border-radius: 2px; }
 .eyebrow-text {
-  font-size: 11px; color: var(--rust); letter-spacing: 0.15em;
+  font-size: 11px; color: var(--color-brand-start); letter-spacing: 0.15em;
   font-family: var(--nsr); font-weight: 700;
 }
 .hero-headline {
@@ -100,10 +102,17 @@
   opacity: 0; animation: fadeSlideUp 0.9s 0.45s ease forwards;
   letter-spacing: -0.02em;
 }
-.hero-em { color: var(--rust); }
+.hero-em {
+  display: inline-block;
+  background-image: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
 .hero-sub {
-  font-family: var(--nsr); font-size: 14.5px; color: var(--muted);
-  line-height: 1.95; font-weight: 400; margin-bottom: 40px;
+  font-family: var(--nsr); font-size: var(--text-body); color: var(--color-text-secondary);
+  line-height: 1.7; font-weight: 400; margin-bottom: 40px;
   opacity: 0; animation: fadeSlideUp 0.9s 0.6s ease forwards;
 }
 
@@ -165,35 +174,30 @@
 .cta-primary {
   display: flex; align-items: center; justify-content: center; gap: 10px;
   width: 100%; padding: 20px 24px;
-  background: var(--rust); color: white;
-  border: none; border-radius: 16px;
+  background: var(--gradient-brand-button); color: var(--color-text-on-brand);
+  border: none; border-radius: var(--radius-control);
   font-family: var(--nsr); font-size: 15.5px; font-weight: 800;
   letter-spacing: 0.04em; cursor: pointer; text-decoration: none;
-  transition: all 0.25s ease; position: relative; overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease; position: relative; overflow: hidden;
   margin-bottom: 22px;
-  box-shadow: 0 8px 32px rgba(224,122,95,0.35);
+  box-shadow: 0 8px 24px rgba(253, 38, 122, 0.28);
 }
-.cta-primary::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
-  opacity: 0; transition: opacity 0.25s ease;
-}
-.cta-primary:hover::before { opacity: 1; }
-.cta-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(224,122,95,0.45); }
-.cta-primary:active { transform: translateY(0); }
+.cta-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(253, 38, 122, 0.34); }
+.cta-primary:active { transform: scale(0.98); }
+.cta-primary:focus-visible { outline: 2px solid rgba(26, 23, 20, 0.8); outline-offset: 2px; }
 .arrow-icon { width: 18px; height: 18px; transition: transform 0.25s ease; }
 .cta-primary:hover .arrow-icon { transform: translateX(4px); }
 
 .disclaimer {
-  text-align: center; font-size: 10.5px; color: var(--muted);
-  font-family: var(--nsr); letter-spacing: 0.03em;
-  line-height: 1.8; opacity: 0.7;
+  text-align: center; font-size: var(--text-caption); color: var(--color-text-secondary);
+  font-family: var(--nsr); letter-spacing: 0.02em;
+  line-height: 1.45;
 }
 
 /* ── 라이브 닷 ── */
 .live-dot {
-  width: 7px; height: 7px; border-radius: 50%; background: var(--rust);
-  animation: pulse-dot 2s ease infinite; display: inline-block; margin-right: 6px;
+  width: 6px; height: 6px; border-radius: 50%; background: #fff;
+  display: inline-block; margin-right: 6px;
 }
 
 /* ── 애니메이션 ── */

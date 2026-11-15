@@ -192,9 +192,9 @@ export default function CollectionDetailModal({ item, onClose }: Props) {
           disabled={saveState === "loading"}
           className="flex-1 h-12 rounded-full flex items-center justify-center gap-2 font-sans text-sm font-bold active:scale-[0.97] transition-all disabled:opacity-70"
           style={{
-            background: saveState === "done" ? "#2d6a4f" : "#e07a5f",
+            background: saveState === "done" ? "#15803d" : "var(--gradient-brand-button)",
             color: "white",
-            boxShadow: "0 4px 16px rgba(224,122,95,0.35)",
+            boxShadow: saveState === "done" ? "none" : "0 8px 24px rgba(253, 38, 122, 0.28)",
           }}
         >
           {saveState === "loading" ? (

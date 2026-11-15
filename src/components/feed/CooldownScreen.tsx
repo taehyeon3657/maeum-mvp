@@ -39,7 +39,7 @@ export default function CooldownScreen({ remainingMs, onResume }: Props) {
 
           <button
             onClick={onResume}
-            className="px-10 py-4 rounded-2xl bg-primary text-white font-sans text-sm font-semibold tracking-widest shadow-xl shadow-primary/25 hover:opacity-90 active:scale-[0.97] transition-all"
+            className="brand-fill px-10 py-4"
           >
             만나러 가기 →
           </button>

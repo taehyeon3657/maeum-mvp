@@ -83,30 +83,23 @@ export default function CollectionPage() {
     <div className="min-h-dvh flex flex-col" style={{ background: "var(--color-background)" }}>
       {/* 헤더 */}
       <header
-        className="sticky top-0 z-20 flex items-center justify-between px-5 py-4"
-        style={{
-          background: "rgba(255,254,252,0.92)",
-          backdropFilter: "blur(12px)",
-          borderBottom: "1px solid rgba(224,122,95,0.08)",
-        }}
+        className="app-topbar sticky top-0 z-20"
+        style={{ borderBottom: "1px solid rgba(253,38,122,0.08)" }}
       >
         <div className="flex items-center gap-2">
           <button
             onClick={() => router.back()}
-            className="w-8 h-8 rounded-full flex items-center justify-center"
-            style={{ background: "rgba(224,122,95,0.08)" }}
+            className="app-icon-btn"
             aria-label="뒤로가기"
           >
-            <span className="text-sm text-primary">←</span>
+            <span className="text-base text-textMain">←</span>
           </button>
           <span className="font-quote text-base font-extrabold text-textMain tracking-tight">
             내 마음함
           </span>
         </div>
         {!loading && items.length > 0 && (
-          <span className="font-sans text-[11px] text-textMuted/70 tracking-widest">
-            {items.length}개 ✦
-          </span>
+          <span className="match-badge">{items.length}개</span>
         )}
       </header>
 
@@ -115,7 +108,7 @@ export default function CollectionPage() {
         <div
           className="rounded-3xl overflow-hidden px-6 py-5 relative"
           style={{
-            background: "linear-gradient(135deg, #e07a5f 0%, #f4a261 60%, #e8b4a0 100%)",
+            background: "var(--gradient-brand-button)",
           }}
         >
           <div
@@ -164,8 +157,7 @@ export default function CollectionPage() {
             <p className="font-quote text-xl text-textMain">불러올 수 없어요</p>
             <button
               onClick={retryCollection}
-              className="mt-2 px-5 py-2.5 rounded-xl text-white text-sm font-bold"
-              style={{ background: "#e07a5f" }}
+              className="brand-fill mt-2 px-5 py-2.5"
             >
               다시 시도
             </button>
@@ -183,8 +175,7 @@ export default function CollectionPage() {
             </p>
             <button
               onClick={() => router.push(APP_ROUTES.feed)}
-              className="mt-3 px-6 py-3 rounded-2xl text-white font-sans text-sm font-bold tracking-wider shadow-lg"
-              style={{ background: "#e07a5f", boxShadow: "0 4px 16px rgba(224,122,95,0.3)" }}
+              className="brand-fill mt-3 px-6 py-3"
             >
               글귀 보러 가기
             </button>
@@ -211,8 +202,7 @@ export default function CollectionPage() {
               </p>
               <button
                 onClick={() => router.push(APP_ROUTES.feed)}
-                className="px-6 py-3 rounded-2xl text-white font-sans text-sm font-bold tracking-wider shadow-lg"
-                style={{ background: "#e07a5f", boxShadow: "0 4px 16px rgba(224,122,95,0.3)" }}
+                className="brand-fill px-6 py-3"
               >
                 오늘의 글귀 보러 가기
               </button>
@@ -262,7 +252,7 @@ function CollectionGateError({
         </div>
         <button
           onClick={onRetry}
-          className="mt-2 px-6 py-3 rounded-2xl bg-primary text-white font-sans text-sm font-semibold shadow-lg shadow-primary/25 hover:opacity-90 active:scale-[0.98] transition-all"
+          className="brand-fill mt-2 px-6 py-3"
         >
           다시 시도하기
         </button>

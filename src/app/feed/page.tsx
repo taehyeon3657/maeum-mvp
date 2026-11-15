@@ -10,6 +10,7 @@ import {
   type FeedAuthState,
 } from "@/src/lib/feedAuthCore.mjs";
 import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
+import { BarChart3, Library } from "lucide-react";
 
 export default function FeedPage() {
   const router = useRouter();
@@ -82,7 +83,7 @@ export default function FeedPage() {
           </div>
           <button
             onClick={retryAuth}
-            className="mt-2 px-6 py-3 rounded-2xl bg-primary text-white font-sans text-sm font-semibold shadow-lg shadow-primary/25 hover:opacity-90 active:scale-[0.98] transition-all"
+            className="brand-fill mt-2 px-6 py-3"
           >
             다시 시도하기
           </button>
@@ -94,15 +95,27 @@ export default function FeedPage() {
   return (
     <div className="h-dvh flex flex-col bg-background overflow-hidden">
       {/* 헤더 */}
-      <header className="flex-none flex items-center justify-center px-6 pt-8 pb-2">
-        <div className="flex flex-col items-center gap-0.5">
-          <h1 className="font-quote text-[1.5rem] text-primary font-extrabold tracking-[0.12em]">마음</h1>
-          <div className="flex items-center gap-2">
-            <div className="h-px w-8 bg-primary/20" />
-            <span className="font-sans text-[10px] text-textMuted/60 tracking-[0.2em]">MAEUM</span>
-            <div className="h-px w-8 bg-primary/20" />
-          </div>
-        </div>
+      <header className="app-topbar">
+        <button
+          type="button"
+          className="app-icon-btn"
+          aria-label="내 마음함"
+          onClick={() => router.push(APP_ROUTES.collection)}
+        >
+          <Library strokeWidth={2} aria-hidden />
+        </button>
+        <h1 className="app-wordmark font-quote">
+          마음
+          <span className="app-tab-indicator" aria-hidden />
+        </h1>
+        <button
+          type="button"
+          className="app-icon-btn"
+          aria-label="인사이트"
+          onClick={() => router.push(APP_ROUTES.insights)}
+        >
+          <BarChart3 strokeWidth={2} aria-hidden />
+        </button>
       </header>
 
       {/* 카드 스택 — 남은 공간 전부 */}
