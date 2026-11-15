@@ -1,15 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { BarChart3, Library } from "lucide-react";
 import EmotionGrid from "@/src/components/onboarding/EmotionGrid";
 import TimeList from "@/src/components/onboarding/TimeList";
 import ProfileForm from "@/src/components/onboarding/ProfileForm";
 import FeedStack from "@/src/components/feed/FeedStack";
 import { createClient } from "@/src/lib/supabase";
+import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
 
 const TOTAL = 3;
 
 export default function OnboardingPage() {
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [emotions, setEmotions] = useState<string[]>([]);
   const [time, setTime] = useState("");
@@ -80,15 +84,27 @@ export default function OnboardingPage() {
   if (userId) {
     return (
       <div className="h-dvh flex flex-col bg-background overflow-x-hidden">
-        <header className="flex-none flex items-center justify-center px-6 pt-8 pb-2">
-          <div className="flex flex-col items-center gap-0.5">
-            <h1 className="font-quote text-[1.5rem] text-primary font-extrabold tracking-[0.12em]">마음</h1>
-            <div className="flex items-center gap-2">
-              <div className="h-px w-8 bg-primary/20" />
-              <span className="font-sans text-[10px] text-textMuted/60 tracking-[0.2em]">MAEUM</span>
-              <div className="h-px w-8 bg-primary/20" />
-            </div>
-          </div>
+        <header className="app-topbar">
+          <button
+            type="button"
+            className="app-icon-btn"
+            aria-label="내 마음함"
+            onClick={() => router.push(APP_ROUTES.collection)}
+          >
+            <Library strokeWidth={2} aria-hidden />
+          </button>
+          <h1 className="app-wordmark font-quote">
+            마음
+            <span className="app-tab-indicator" aria-hidden />
+          </h1>
+          <button
+            type="button"
+            className="app-icon-btn"
+            aria-label="인사이트"
+            onClick={() => router.push(APP_ROUTES.insights)}
+          >
+            <BarChart3 strokeWidth={2} aria-hidden />
+          </button>
         </header>
         <FeedStack userId={userId} />
       </div>
@@ -101,10 +117,10 @@ export default function OnboardingPage() {
       style={{ paddingBottom: "max(40px, env(safe-area-inset-bottom))" }}
     >
       {/* 진행 바 */}
-      <div className="fixed top-0 left-0 right-0 h-[3px] z-50 max-w-[430px] mx-auto bg-primary/10">
+      <div className="fixed top-0 left-0 right-0 h-[2px] z-50 max-w-[430px] mx-auto" style={{ background: "rgba(253,38,122,0.16)" }}>
         <div
-          className="h-full bg-gradient-to-r from-primary/70 to-primary transition-all duration-500"
-          style={{ width: `${(step / TOTAL) * 100}%` }}
+          className="h-full transition-all duration-500"
+          style={{ width: `${(step / TOTAL) * 100}%`, background: "var(--gradient-brand)" }}
         />
       </div>
 
@@ -119,7 +135,7 @@ export default function OnboardingPage() {
           </button>
         ) : (
           <div className="w-10 h-10 flex items-center justify-start">
-            <span className="font-quote text-lg text-primary font-extrabold">마음</span>
+            <span className="font-quote text-lg text-brand font-extrabold">마음</span>
           </div>
         )}
         <div className="flex gap-1.5">
@@ -129,7 +145,7 @@ export default function OnboardingPage() {
               className="h-[5px] rounded-full transition-all duration-400"
               style={{
                 width: i + 1 === step ? "20px" : "5px",
-                backgroundColor: i + 1 <= step ? "#E07A5F" : "rgba(224,122,95,0.15)",
+                backgroundColor: i + 1 <= step ? "var(--color-brand-start)" : "rgba(253,38,122,0.16)",
               }}
             />
           ))}
@@ -149,7 +165,7 @@ export default function OnboardingPage() {
           <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">감정 성향 파악</p>
           <h1 className="font-quote text-[2.2rem] font-light text-textMain leading-snug mb-2">
             지금 당신의<br />
-            <span className="text-primary font-extrabold">마음</span>은 어떤가요?
+            <span className="text-brand font-extrabold">마음</span>은 어떤가요?
           </h1>
           <p className="text-textMuted text-sm mb-7 font-sans">최대 4개까지 선택할 수 있어요.</p>
           <EmotionGrid onNext={handleEmotionNext} />
@@ -161,7 +177,7 @@ export default function OnboardingPage() {
         <div className="animate-fade-in-up">
           <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">글귀 시간대</p>
           <h2 className="font-quote text-[2.2rem] font-light text-textMain leading-snug mb-2">
-            언제 <span className="text-primary font-extrabold">글귀</span>가<br />생각나세요?
+            언제 <span className="text-brand font-extrabold">글귀</span>가<br />생각나세요?
           </h2>
           <p className="text-textMuted text-sm mb-7 font-sans">선택한 시간에 맞춰 보내드려요.</p>
 
@@ -175,7 +191,7 @@ export default function OnboardingPage() {
               w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider mt-6 transition-all duration-300
               ${time === ""
                 ? "bg-warm text-textMuted/50 cursor-not-allowed"
-                : "bg-primary text-white shadow-lg shadow-primary/25 hover:opacity-90 active:scale-[0.98]"
+                : "brand-fill"
               }
             `}
           >
@@ -190,7 +206,7 @@ export default function OnboardingPage() {
           <p className="text-primary text-[11px] tracking-[0.18em] mb-3 font-sans uppercase">맞춤 추천 강화</p>
           <h2 className="font-quote text-[2rem] font-light text-textMain leading-snug mb-2">
             딱 맞는<br />
-            <span className="text-primary font-extrabold">글귀</span>를<br />
+            <span className="text-brand font-extrabold">글귀</span>를<br />
             준비할게요 ✦
           </h2>
           <p className="text-textMuted text-sm mb-7 font-sans">모두 선택 사항이에요.</p>
@@ -212,7 +228,7 @@ export default function OnboardingPage() {
             className={`w-full py-[18px] rounded-2xl font-sans text-sm font-semibold tracking-wider shadow-lg shadow-primary/25 transition-all mt-6 ${
               isSubmitting
                 ? "bg-warm text-textMuted/50 cursor-not-allowed"
-                : "bg-primary text-white hover:opacity-90 active:scale-[0.98]"
+                : "brand-fill"
             }`}
           >
             {isSubmitting ? "시작하는 중..." : "나만의 피드 시작하기 ✦"}

@@ -1,16 +1,29 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
-import type { Quote } from "@/src/models/feed";
+import type { Quote, SwipeDirection } from "@/src/models/feed";
 import { generateShareImage, shareImage } from "@/src/lib/generateShareImage";
+import { generateMindCardImage } from "@/src/lib/generateMindCardImage";
 import { resolveQuoteImage } from "@/src/hooks/useQuoteImage";
 import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
+import { quotePublicPath, quoteShareText } from "@/src/lib/quoteShareCore.mjs";
+import { buildMindCard } from "@/src/lib/mindCardCore.mjs";
+import { loadPrefsLocally } from "@/src/models/onboarding";
+import MindCardView, { type MindCardData } from "@/src/components/mind/MindCardView";
+
+interface SessionRead {
+  quote: Quote;
+  durationMs: number;
+  action: SwipeDirection;
+}
 
 interface Props {
   sessionDurationMs: number;
   onContinue: () => void;
   shareQuote: Quote | null; // 세션 중 체류시간이 가장 길었던 글귀
+  sessionReads: SessionRead[];
+  streakCount: number;
 }
 
 function formatDuration(ms: number): string {
@@ -39,12 +52,38 @@ function getNativeShareSupport() {
   return typeof navigator !== "undefined" && typeof navigator.share === "function";
 }
 
-export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote }: Props) {
+export default function ShareScreen({
+  sessionDurationMs,
+  onContinue,
+  shareQuote,
+  sessionReads,
+  streakCount,
+}: Props) {
   const router = useRouter();
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
   const [shareState, setShareState] = useState<"idle" | "done">("idle");
   const [imageState, setImageState] = useState<"idle" | "loading" | "done" | "error">("idle");
-  const shareUrl = useSyncExternalStore(subscribeToBrowserReady, getBrowserOrigin, () => "");
+  const [cardState, setCardState] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const origin = useSyncExternalStore(subscribeToBrowserReady, getBrowserOrigin, () => "");
+  const quotePath = shareQuote ? (quotePublicPath(shareQuote.id) as string) : "/";
+  const shareUrl = origin ? new URL(quotePath, origin).href : "";
+  const mindCard = useMemo(
+    () =>
+      buildMindCard({
+        reads: sessionReads.map((row) => ({
+          action: row.action,
+          durationMs: row.durationMs,
+          emotionTags: row.quote.emotion_tags,
+          quote: {
+            id: row.quote.id,
+            content: row.quote.content,
+            author: row.quote.author,
+          },
+        })),
+        prefs: loadPrefsLocally(),
+      }) as MindCardData,
+    [sessionReads],
+  );
   const canNativeShare = useSyncExternalStore(
     subscribeToBrowserReady,
     getNativeShareSupport,
@@ -68,7 +107,10 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
         gradientIndex: idSum,
         imageUrl,
       });
-      await shareImage(blob, shareQuote);
+      const linkText = quoteShareText({ content: shareQuote.content }) as string;
+      await shareImage(blob, shareQuote, {
+        text: shareUrl ? `${linkText}\n${shareUrl}` : linkText,
+      });
       setImageState("done");
     } catch {
       setImageState("error");
@@ -76,7 +118,33 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
     }
   };
 
-  const shareText = "오늘 마음에서 10개의 글귀를 만났어요 ✨\n글귀 한 장으로 마음을 채워보세요.";
+  const shareText = shareQuote
+    ? (quoteShareText({ content: shareQuote.content }) as string)
+    : "오늘 마음에서 글귀를 만났어요 ✨\n글귀 한 장으로 마음을 채워보세요.";
+
+  const handleCardShare = async () => {
+    if (cardState === "loading" || mindCard.readCount === 0) return;
+    setCardState("loading");
+    try {
+      const blob = await generateMindCardImage({
+        headline: mindCard.headline,
+        detail: mindCard.detail,
+        emoji: mindCard.emoji,
+        mbti: mindCard.mbti,
+        quoteContent: mindCard.quote?.content ?? null,
+        quoteAuthor: mindCard.quote?.author ?? null,
+        streakCount,
+      });
+      await shareImage(blob, { content: mindCard.headline }, {
+        text: `${mindCard.headline}\n마음에서 만든 카드예요.`,
+      });
+      setCardState("done");
+      setTimeout(() => setCardState("idle"), 2200);
+    } catch {
+      setCardState("error");
+      setTimeout(() => setCardState("idle"), 2200);
+    }
+  };
   const shareTitle = "마음 — 글귀 한 장으로 마음을 채워요";
 
   const handleNativeShare = async () => {
@@ -163,6 +231,26 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
         </span>
       </div>
 
+      {mindCard.readCount > 0 && (
+        <div className="w-full flex flex-col gap-3 mb-6">
+          <MindCardView card={mindCard} streakCount={streakCount} />
+          <button
+            type="button"
+            onClick={handleCardShare}
+            disabled={cardState === "loading"}
+            className="brand-fill w-full py-4 disabled:opacity-60"
+          >
+            {cardState === "loading"
+              ? "카드 만드는 중..."
+              : cardState === "done"
+              ? "공유됨"
+              : cardState === "error"
+              ? "다시 시도해 주세요"
+              : "마음 카드 공유하기"}
+          </button>
+        </div>
+      )}
+
       {/* 공유 섹션 */}
       <div className="w-full flex flex-col gap-3 mb-5">
         <p className="font-sans text-[11px] text-textMuted/70 text-center tracking-[0.15em] uppercase">
@@ -178,10 +266,10 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
             style={{
               background:
                 imageState === "done"
-                  ? "#E07A5F"
+                  ? "var(--color-brand-start)"
                   : "linear-gradient(135deg, rgba(224,122,95,0.12) 0%, rgba(244,162,97,0.12) 100%)",
               border: "1.5px solid rgba(224,122,95,0.3)",
-              color: imageState === "done" ? "white" : "#E07A5F",
+              color: imageState === "done" ? "white" : "var(--color-brand-start)",
             }}
           >
             <span className="text-lg">
@@ -214,7 +302,7 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
             <span className="font-sans text-[10px] text-textMuted/60 tracking-widest">MAEUM</span>
           </div>
           <p className="font-sans text-[12px] text-textMuted leading-relaxed">
-            글귀 한 장으로 마음을 채워보세요 ✨
+            이 링크로 글귀 한 장이 열려요 ✨
           </p>
           <p className="font-sans text-[11px] text-primary/70 truncate">{shareUrl}</p>
         </div>
@@ -227,8 +315,8 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
             className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl border transition-all active:scale-[0.97]"
             style={{
               background: copyState === "copied" ? "rgba(224,122,95,0.1)" : "white",
-              borderColor: copyState === "copied" ? "#E07A5F" : "rgba(224,122,95,0.2)",
-              color: copyState === "copied" ? "#E07A5F" : "#868e96",
+              borderColor: copyState === "copied" ? "var(--color-brand-start)" : "rgba(224,122,95,0.2)",
+              color: copyState === "copied" ? "var(--color-brand-start)" : "#868e96",
             }}
           >
             <span className="text-base">
@@ -245,8 +333,8 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
               onClick={handleNativeShare}
               className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl transition-all active:scale-[0.97]"
               style={{
-                background: shareState === "done" ? "#E07A5F" : "rgba(224,122,95,0.08)",
-                color: shareState === "done" ? "white" : "#E07A5F",
+                background: shareState === "done" ? "var(--color-brand-start)" : "rgba(224,122,95,0.08)",
+                color: shareState === "done" ? "white" : "var(--color-brand-start)",
               }}
             >
               <span className="text-base">{shareState === "done" ? "✓" : "↗"}</span>
@@ -267,8 +355,8 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
               }}
               className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl transition-all active:scale-[0.97]"
               style={{
-                background: shareState === "done" ? "#E07A5F" : "rgba(224,122,95,0.08)",
-                color: shareState === "done" ? "white" : "#E07A5F",
+                background: shareState === "done" ? "var(--color-brand-start)" : "rgba(224,122,95,0.08)",
+                color: shareState === "done" ? "white" : "var(--color-brand-start)",
               }}
             >
               <span className="text-base">{shareState === "done" ? "✓" : "📋"}</span>
@@ -326,7 +414,7 @@ export default function ShareScreen({ sessionDurationMs, onContinue, shareQuote 
       {/* 계속하기 버튼 */}
       <button
         onClick={onContinue}
-        className="w-full py-4 rounded-2xl bg-primary text-white font-sans text-sm font-semibold tracking-widest shadow-lg shadow-primary/20 hover:opacity-90 active:scale-[0.97] transition-all"
+        className="brand-fill w-full py-4"
       >
         잠시 쉬어갈게요 🌙
       </button>

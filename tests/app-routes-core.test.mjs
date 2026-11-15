@@ -8,6 +8,7 @@ test("app routes expose stable internal navigation targets", () => {
     collection: "/collection",
     insights: "/insights",
     onboarding: "/onboarding",
+    mind: "/mind",
   });
 });
 

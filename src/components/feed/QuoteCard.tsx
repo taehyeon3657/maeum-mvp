@@ -2,13 +2,15 @@
 
 import type { Quote } from "@/src/models/feed";
 import { getQuoteBackground } from "@/src/lib/quoteBackground";
+import QuoteSendButton from "@/src/components/quote/QuoteSendButton";
 
 interface Props {
   quote: Quote;
   imageUrl: string | null;
+  shareable?: boolean;
 }
 
-export default function QuoteCard({ quote, imageUrl }: Props) {
+export default function QuoteCard({ quote, imageUrl, shareable = false }: Props) {
   const bg = getQuoteBackground(quote);
   const imgOk = imageUrl !== null;
 
@@ -29,7 +31,7 @@ export default function QuoteCard({ quote, imageUrl }: Props) {
 
   return (
     <div
-      className="relative w-full h-full flex flex-col rounded-[28px] shadow-2xl shadow-primary/10 select-none overflow-hidden animate-scale-in"
+      className="quote-card-shell relative w-full h-full flex flex-col select-none overflow-hidden animate-scale-in"
       style={rootStyle}
     >
       {/* 상단 포인트 라인 (이미지 모드에서는 생략) */}
@@ -54,6 +56,14 @@ export default function QuoteCard({ quote, imageUrl }: Props) {
         />
       )}
 
+      {shareable && (
+        <QuoteSendButton
+          id={quote.id}
+          content={quote.content}
+          tone={imgOk ? "photo" : "paper"}
+        />
+      )}
+
       {/* 본문 */}
       <div className="flex-1 flex flex-col px-8 pt-7 pb-6 relative">
         {/* 배경 따옴표 장식 (이미지 모드에서는 생략) */}
@@ -74,7 +84,7 @@ export default function QuoteCard({ quote, imageUrl }: Props) {
           }`}
         >
           <p
-            className="font-quote text-[1.45rem] leading-[1.9] break-keep text-center font-bold"
+            className="quote-body font-quote break-keep text-center"
             style={{ color: textColor, textShadow }}
           >
             {quote.content}
@@ -105,18 +115,18 @@ export default function QuoteCard({ quote, imageUrl }: Props) {
 
         {/* 출처 + 워터마크 */}
         <div className="flex items-end justify-between z-10">
-          <div className="flex flex-col gap-0.5">
+          <div className="flex flex-col gap-0.5 min-w-0 pr-2">
             {quote.author && (
               <p
-                className="font-quote text-[0.95rem] font-semibold"
-                style={{ color: textColor, opacity: 0.85, textShadow }}
+                className="quote-name font-quote"
+                style={{ color: textColor, textShadow }}
               >
-                — {quote.author}
+                {quote.author}
               </p>
             )}
             {quote.source && (
               <p
-                className="font-sans text-[11px] tracking-wide"
+                className="quote-caption font-sans mt-1"
                 style={{ color: mutedColor, textShadow }}
               >
                 〈{quote.source}〉
@@ -124,19 +134,14 @@ export default function QuoteCard({ quote, imageUrl }: Props) {
             )}
             {!quote.author && !quote.source && (
               <p
-                className="font-sans text-[11px]"
-                style={{ color: mutedColor, opacity: 0.6, textShadow }}
+                className="quote-caption font-sans"
+                style={{ color: mutedColor, opacity: 0.75, textShadow }}
               >
                 작자 미상
               </p>
             )}
           </div>
-          <span
-            className="font-quote text-[11px] font-bold tracking-[0.25em]"
-            style={{ color: accentColor, opacity: 0.55, textShadow }}
-          >
-            마음
-          </span>
+          <span className="match-badge">마음</span>
         </div>
       </div>
     </div>

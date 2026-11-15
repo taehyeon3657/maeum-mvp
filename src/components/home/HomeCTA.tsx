@@ -44,10 +44,10 @@ export default function HomeCTA() {
             onClick={() => router.push("/collection")}
             style={{
               flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: "7px",
-              padding: "14px 10px", borderRadius: "14px", border: "1.5px solid rgba(224,122,95,0.25)",
+              padding: "14px 10px", borderRadius: "14px", border: "1.5px solid rgba(253,38,122,0.28)",
               background: "rgba(255,255,255,0.7)", cursor: "pointer",
               fontFamily: "var(--nsr)", fontSize: "13px", fontWeight: 700,
-              color: "var(--rust)", transition: "all 0.2s ease",
+              color: "var(--color-text-primary)", transition: "all 0.2s ease",
             }}
           >
             <span>💛</span> 내 마음함
@@ -57,10 +57,10 @@ export default function HomeCTA() {
           onClick={() => router.push("/insights")}
           style={{
             flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: "7px",
-            padding: "14px 10px", borderRadius: "14px", border: "1.5px solid rgba(224,122,95,0.25)",
+            padding: "14px 10px", borderRadius: "14px", border: "1.5px solid rgba(253,38,122,0.28)",
             background: "rgba(255,255,255,0.7)", cursor: "pointer",
             fontFamily: "var(--nsr)", fontSize: "13px", fontWeight: 700,
-            color: "var(--rust)", transition: "all 0.2s ease",
+            color: "var(--color-text-primary)", transition: "all 0.2s ease",
           }}
         >
           <span>📊</span> 인사이트

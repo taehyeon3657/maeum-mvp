@@ -1,17 +1,25 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import { formatCountdown } from "@/src/hooks/useFeedCooldown";
 import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
+import { readStreak } from "@/src/lib/streakStorage";
 
 interface Props {
   remainingMs: number;
   onResume: () => void;
 }
 
+function subscribeStreak(onStoreChange: () => void) {
+  window.addEventListener("focus", onStoreChange);
+  return () => window.removeEventListener("focus", onStoreChange);
+}
+
 export default function CooldownScreen({ remainingMs, onResume }: Props) {
   const router = useRouter();
   const isDone = remainingMs === 0;
+  const streakCount = useSyncExternalStore(subscribeStreak, () => readStreak().count, () => 0);
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center gap-7 px-10 text-center animate-fade-in">
@@ -39,7 +47,7 @@ export default function CooldownScreen({ remainingMs, onResume }: Props) {
 
           <button
             onClick={onResume}
-            className="px-10 py-4 rounded-2xl bg-primary text-white font-sans text-sm font-semibold tracking-widest shadow-xl shadow-primary/25 hover:opacity-90 active:scale-[0.97] transition-all"
+            className="brand-fill px-10 py-4"
           >
             만나러 가기 →
           </button>
@@ -73,7 +81,28 @@ export default function CooldownScreen({ remainingMs, onResume }: Props) {
             <div className="w-12 h-px bg-primary/15 mt-1" />
           </div>
 
-          {/* 인사이트 진입 */}
+          {/* 마음 카드 / 인사이트 */}
+          {streakCount > 0 && (
+            <p className="font-sans text-sm text-primary font-bold -mb-3">
+              {streakCount}일째 글귀를 만나고 있어요
+            </p>
+          )}
+          <button
+            type="button"
+            className="w-full rounded-2xl px-4 py-3.5 flex items-center gap-3 active:scale-[0.98] transition-all cursor-pointer"
+            style={{ background: "linear-gradient(160deg, rgba(253,38,122,0.10) 0%, rgba(255,96,54,0.08) 100%)", border: "1px solid rgba(253,38,122,0.18)" }}
+            onClick={() => router.push(APP_ROUTES.mind)}
+          >
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-none"
+              style={{ background: "rgba(253,38,122,0.12)" }}>
+              <span className="text-lg">✦</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-sans text-[12px] font-bold text-textMain leading-tight">나의 마음 카드</p>
+              <p className="font-sans text-[10px] text-textMuted leading-tight mt-0.5">이번 마음을 한 장으로 봐요</p>
+            </div>
+            <span className="text-primary text-base flex-none">→</span>
+          </button>
           <button
             type="button"
             className="w-full rounded-2xl px-4 py-3.5 flex items-center gap-3 active:scale-[0.98] transition-all cursor-pointer"

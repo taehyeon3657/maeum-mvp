@@ -178,8 +178,13 @@ export async function generateShareImage(options: GenerateOptions): Promise<Blob
   });
 }
 
-export async function shareImage(blob: Blob, quote: { content: string }): Promise<void> {
+export async function shareImage(
+  blob: Blob,
+  quote: { content: string },
+  extra?: { text?: string },
+): Promise<void> {
   const file = new File([blob], "maeum-quote.png", { type: "image/png" });
+  const text = extra?.text ?? quote.content;
 
   if (
     typeof navigator.share === "function" &&
@@ -189,7 +194,7 @@ export async function shareImage(blob: Blob, quote: { content: string }): Promis
     await navigator.share({
       files: [file],
       title: "마음 — 오늘의 글귀",
-      text: quote.content,
+      text,
     });
     return;
   }
