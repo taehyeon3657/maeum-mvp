@@ -30,7 +30,7 @@ export function useUserCollection(userId: string | null) {
 
       const { data, error } = await supabase
         .from("user_quotes")
-        .select("created_at, quotes(id, content, author, source, emotion_tags)")
+        .select("created_at, quotes(id, content, author, source, emotion_tags, has_image)")
         .eq("user_id", userId)
         .eq("action", "like")
         .order("created_at", { ascending: false });
