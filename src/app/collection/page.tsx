@@ -11,79 +11,8 @@ import {
   type AuthGateState,
 } from "@/src/lib/authGateCore.mjs";
 import { APP_ROUTES } from "@/src/lib/appRoutesCore.mjs";
-import { getQuoteBackground } from "@/src/lib/quoteBackground";
-
-function formatRelativeDate(iso: string): string {
-  const diff = Date.now() - new Date(iso).getTime();
-  const days = Math.floor(diff / 86400000);
-  if (days === 0) return "오늘";
-  if (days === 1) return "어제";
-  if (days < 7) return `${days}일 전`;
-  if (days < 30) return `${Math.floor(days / 7)}주 전`;
-  if (days < 365) return `${Math.floor(days / 30)}개월 전`;
-  return `${Math.floor(days / 365)}년 전`;
-}
-
-function CollectionCard({ item }: { item: CollectionItem }) {
-  const { quote, likedAt } = item;
-  const bg = getQuoteBackground(quote);
-
-  return (
-    <div
-      className="w-full rounded-3xl overflow-hidden shadow-sm"
-      style={{ ...bg.style, border: "1px solid rgba(224,122,95,0.08)" }}
-    >
-      <div
-        className="h-[2px]"
-        style={{
-          background: `linear-gradient(to right, transparent, ${bg.accentColor}, transparent)`,
-        }}
-      />
-      <div className="px-6 py-5">
-        <p
-          className="font-quote text-[1.15rem] leading-[1.85] font-bold break-keep mb-4"
-          style={{ color: bg.textColor }}
-        >
-          {quote.content}
-        </p>
-        <div className="flex items-end justify-between">
-          <div className="flex flex-col gap-0.5">
-            {quote.author && (
-              <p
-                className="font-quote text-[0.85rem] font-semibold"
-                style={{ color: bg.textColor, opacity: 0.8 }}
-              >
-                — {quote.author}
-              </p>
-            )}
-            {quote.source && (
-              <p
-                className="font-sans text-[10px] tracking-wide"
-                style={{ color: bg.mutedColor }}
-              >
-                〈{quote.source}〉
-              </p>
-            )}
-            {!quote.author && !quote.source && (
-              <p
-                className="font-sans text-[10px]"
-                style={{ color: bg.mutedColor, opacity: 0.6 }}
-              >
-                작자 미상
-              </p>
-            )}
-          </div>
-          <span
-            className="font-sans text-[10px] shrink-0 ml-3"
-            style={{ color: bg.mutedColor, opacity: 0.7 }}
-          >
-            {formatRelativeDate(likedAt)}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
+import CollectionCard from "@/src/components/collection/CollectionCard";
+import CollectionDetailModal from "@/src/components/collection/CollectionDetailModal";
 
 export default function CollectionPage() {
   const router = useRouter();
@@ -92,6 +21,7 @@ export default function CollectionPage() {
   const { items, loading, error, retry: retryCollection } = useUserCollection(
     authState.status === "authenticated" ? authState.userId : null,
   );
+  const [openItem, setOpenItem] = useState<CollectionItem | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -263,9 +193,15 @@ export default function CollectionPage() {
 
         {!loading && !error && items.length > 0 && (
           <>
-            {items.map((item) => (
-              <CollectionCard key={`${item.quote.id}-${item.likedAt}`} item={item} />
-            ))}
+            <div className="grid grid-cols-2 gap-3">
+              {items.map((item) => (
+                <CollectionCard
+                  key={`${item.quote.id}-${item.likedAt}`}
+                  item={item}
+                  onOpen={() => setOpenItem(item)}
+                />
+              ))}
+            </div>
 
             {/* 하단 CTA */}
             <div className="rounded-3xl bg-warm border border-primary/12 px-5 py-5 flex flex-col items-center gap-3 text-center mt-2">
@@ -284,6 +220,10 @@ export default function CollectionPage() {
           </>
         )}
       </main>
+
+      {openItem && (
+        <CollectionDetailModal item={openItem} onClose={() => setOpenItem(null)} />
+      )}
     </div>
   );
 }
