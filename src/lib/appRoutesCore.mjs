@@ -3,6 +3,7 @@ export const APP_ROUTES = Object.freeze({
   collection: "/collection",
   insights: "/insights",
   onboarding: "/onboarding",
+  mind: "/mind",
 });
 
 export function isKnownAppRoute(route) {

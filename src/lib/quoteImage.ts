@@ -1,16 +1,15 @@
 // ─────────────────────────────────────────────────────────────
 // 문구 배경 이미지 URL (공개 CDN)
 //
-// 공개 CDN 베이스 URL 에서 <quote-id>.png 를 가져온다.
-// Cloudflare R2 public 버킷(r2.dev) 또는 R2 에 연결한 커스텀 도메인 등
-// 어떤 CDN 이든 NEXT_PUBLIC_QUOTE_IMAGE_BASE_URL 만 바꾸면 된다.
+// R2 커스텀 도메인에서 <quote-id>.png 를 가져온다.
+// NEXT_PUBLIC_QUOTE_IMAGE_BASE_URL 만 바꾸면 된다.
 // (객체 키 = <id>.png, 버킷명은 공개 URL 에 포함돼 있으므로 경로에 넣지 않음)
+// r2.dev 개발 URL은 전송 속도가 제한되므로 사용하지 않는다.
 //
 // 파일이 없으면 이미지 resolve 훅이 로드 실패를 감지해 그라디언트 배경으로 fallback.
 //
 // 예)
-//   NEXT_PUBLIC_QUOTE_IMAGE_BASE_URL=https://pub-xxxxxxxx.r2.dev
-//   NEXT_PUBLIC_QUOTE_IMAGE_BASE_URL=https://img.maeum.app
+//   NEXT_PUBLIC_QUOTE_IMAGE_BASE_URL=https://img.maeum.stream
 // ─────────────────────────────────────────────────────────────
 
 const BASE_URL = process.env.NEXT_PUBLIC_QUOTE_IMAGE_BASE_URL;

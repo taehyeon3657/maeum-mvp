@@ -2,13 +2,15 @@
 
 import type { Quote } from "@/src/models/feed";
 import { getQuoteBackground } from "@/src/lib/quoteBackground";
+import QuoteSendButton from "@/src/components/quote/QuoteSendButton";
 
 interface Props {
   quote: Quote;
   imageUrl: string | null;
+  shareable?: boolean;
 }
 
-export default function QuoteCard({ quote, imageUrl }: Props) {
+export default function QuoteCard({ quote, imageUrl, shareable = false }: Props) {
   const bg = getQuoteBackground(quote);
   const imgOk = imageUrl !== null;
 
@@ -51,6 +53,14 @@ export default function QuoteCard({ quote, imageUrl }: Props) {
               "linear-gradient(180deg, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.18) 28%, rgba(0,0,0,0.04) 52%, rgba(0,0,0,0.30) 78%, rgba(0,0,0,0.58) 100%)",
           }}
           aria-hidden
+        />
+      )}
+
+      {shareable && (
+        <QuoteSendButton
+          id={quote.id}
+          content={quote.content}
+          tone={imgOk ? "photo" : "paper"}
         />
       )}
 

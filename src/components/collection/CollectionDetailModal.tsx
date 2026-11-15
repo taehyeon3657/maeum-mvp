@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Check, Copy, Download, X } from "lucide-react";
+import { Check, Copy, Download, Share, X } from "lucide-react";
 import type { CollectionItem } from "@/src/hooks/useUserCollection";
 import { resolveQuoteImage, useResolvedQuoteImage } from "@/src/hooks/useQuoteImage";
 import { getQuoteBackground } from "@/src/lib/quoteBackground";
 import { generateShareImage, shareImage } from "@/src/lib/generateShareImage";
+import { shareQuoteLink } from "@/src/lib/shareQuoteLink";
 
 interface Props {
   item: CollectionItem;
@@ -25,6 +26,7 @@ export default function CollectionDetailModal({ item, onClose }: Props) {
 
   const [saveState, setSaveState] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
+  const [sendState, setSendState] = useState<"idle" | "done">("idle");
 
   useEffect(() => {
     const prevOverflow = document.body.style.overflow;
@@ -76,6 +78,17 @@ export default function CollectionDetailModal({ item, onClose }: Props) {
     } catch {
       setCopyState("error");
       setTimeout(() => setCopyState("idle"), 2200);
+    }
+  };
+
+  const handleSend = async () => {
+    try {
+      const result = await shareQuoteLink({ id: quote.id, content: quote.content, gift: true });
+      if (result === "cancelled") return;
+      setSendState("done");
+      setTimeout(() => setSendState("idle"), 2200);
+    } catch {
+      setSendState("idle");
     }
   };
 
@@ -183,6 +196,20 @@ export default function CollectionDetailModal({ item, onClose }: Props) {
             <Check className="w-5 h-5 text-white" strokeWidth={2} />
           ) : (
             <Copy className="w-5 h-5 text-white" strokeWidth={2} />
+          )}
+        </button>
+
+        <button
+          type="button"
+          onClick={handleSend}
+          aria-label="건네기"
+          className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 active:scale-90 transition-transform"
+          style={{ background: "rgba(255,255,255,0.14)" }}
+        >
+          {sendState === "done" ? (
+            <Check className="w-5 h-5 text-white" strokeWidth={2} />
+          ) : (
+            <Share className="w-5 h-5 text-white" strokeWidth={2} />
           )}
         </button>
 

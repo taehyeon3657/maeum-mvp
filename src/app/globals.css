@@ -367,6 +367,81 @@ body {
   box-shadow: var(--shadow-card);
 }
 
+.quote-share {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 20;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+
+.quote-share svg {
+  width: 16px;
+  height: 16px;
+}
+
+.quote-share:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.quote-share:disabled {
+  cursor: default;
+}
+
+.quote-share--photo {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.42);
+}
+
+.quote-share--paper {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow:
+    0 1px 2px rgba(26, 23, 20, 0.06),
+    inset 0 0 0 0.5px rgba(26, 23, 20, 0.08);
+}
+
+.quote-share-quiet {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+}
+
+.quote-share-quiet svg {
+  width: 16px;
+  height: 16px;
+}
+
+.quote-share-quiet:active:not(:disabled) {
+  opacity: 0.55;
+}
+
+.quote-share-quiet:disabled {
+  cursor: default;
+}
+
 .quote-body {
   font-size: var(--text-card);
   line-height: 1.9;

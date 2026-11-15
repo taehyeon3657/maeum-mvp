@@ -10,6 +10,7 @@ import {
 } from "@/src/hooks/useQuoteImage";
 import { createSessionCompletionSnapshot } from "@/src/lib/feedSessionCore.mjs";
 import { saveUserQuote } from "@/src/lib/userQuotes";
+import { recordSessionStreak } from "@/src/lib/streakStorage";
 import SwipeCard, { type SwipeCardHandle } from "./SwipeCard";
 import QuoteCard from "./QuoteCard";
 import TutorialCard from "./TutorialCard";
@@ -18,6 +19,12 @@ import ShareScreen from "./ShareScreen";
 import FeedActionBar from "./FeedActionBar";
 import type { SwipeCommand } from "@/src/hooks/useSwipe";
 import type { Quote, SwipeDirection } from "@/src/models/feed";
+
+interface SessionRead {
+  quote: Quote;
+  durationMs: number;
+  action: SwipeDirection;
+}
 
 interface Props {
   userId: string;
@@ -36,10 +43,12 @@ export default function FeedStack({ userId }: Props) {
   const [showShare, setShowShare] = useState(false);
   const [isFinishingSession, setIsFinishingSession] = useState(false);
   // 카드별 체류시간 추적 { quote, durationMs }
-  const readQuotesRef = useRef<{ quote: Quote; durationMs: number }[]>([]);
+  const readQuotesRef = useRef<SessionRead[]>([]);
   const pendingSavesRef = useRef<Promise<void>[]>([]);
   const mountedRef = useRef(true);
   const [shareQuote, setShareQuote] = useState<Quote | null>(null);
+  const [sessionReads, setSessionReads] = useState<SessionRead[]>([]);
+  const [streakCount, setStreakCount] = useState(0);
   const [actionsLocked, setActionsLocked] = useState(false);
   const cardRef = useRef<SwipeCardHandle>(null);
 
@@ -114,6 +123,8 @@ export default function FeedStack({ userId }: Props) {
     });
     setSessionDurationMs(snapshot.durationMs);
     setShareQuote(snapshot.shareQuote);
+    setSessionReads([...readQuotesRef.current]);
+    setStreakCount(recordSessionStreak().count);
     startCooldown();
     setShowShare(true);
     setIsFinishingSession(false);
@@ -131,7 +142,11 @@ export default function FeedStack({ userId }: Props) {
     const isLastCard = quoteProgress.current === quoteProgress.total - 1;
     enqueueQuoteSave({ user_id: userId, quote_id: currentQuote.id, action: direction, ...ctx });
     // 모든 카드의 체류시간 기록 (좋아요 여부 무관)
-    readQuotesRef.current.push({ quote: currentQuote, durationMs: ctx.read_duration_ms });
+    readQuotesRef.current.push({
+      quote: currentQuote,
+      durationMs: ctx.read_duration_ms,
+      action: direction,
+    });
     advance();
     if (isLastCard) {
       void completeSession();
@@ -166,6 +181,8 @@ export default function FeedStack({ userId }: Props) {
             sessionDurationMs={sessionDurationMs}
             onContinue={handleShareContinue}
             shareQuote={shareQuote}
+            sessionReads={sessionReads}
+            streakCount={streakCount}
           />
         </div>
       </div>
@@ -273,7 +290,7 @@ export default function FeedStack({ userId }: Props) {
           </SwipeCard>
         ) : currentQuote ? (
           <SwipeCard ref={cardRef} key={currentQuote.id} onSwipe={handleQuoteSwipe}>
-            <QuoteCard quote={currentQuote} imageUrl={currentQuoteImage.url} />
+            <QuoteCard quote={currentQuote} imageUrl={currentQuoteImage.url} shareable />
           </SwipeCard>
         ) : null}
       </div>

@@ -132,6 +132,14 @@ export default function CollectionPage() {
               >
                 💛 {items.length}개 저장됨
               </span>
+              <button
+                type="button"
+                className="px-2.5 py-1 rounded-full text-[10px] font-bold text-white/90"
+                style={{ background: "rgba(255,255,255,0.2)" }}
+                onClick={() => router.push(APP_ROUTES.mind)}
+              >
+                ✦ 마음 카드
+              </button>
             </div>
           )}
         </div>
